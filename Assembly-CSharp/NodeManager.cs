@@ -473,7 +473,8 @@ public class NodeManager : Lifecycle2
 		{
 			return null;
 		}
-		Vector3.zero.z = fAngle;
+		Vector3 v3 = Vector3.zero;
+		v3.z = fAngle;
 		Node node = this.CreateNode((NodeType)kind, tag, perfab);
 		node.nodeManager = this;
 		if (team == 0)

@@ -416,7 +416,7 @@ public class PacketHelper
 			TEAM team = (TEAM)(k + 1);
 			if (proto.match_type == MatchType.MT_Sing)
 			{
-				team = (TEAM)((userData.userid <= 0) ? (-(TEAM)userData.userid) : userData.userid);
+				team = (TEAM)((userData.userid <= 0) ? (-userData.userid) : userData.userid);
 			}
 			Team team2 = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetTeam(team);
 			if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_2v2)
@@ -660,7 +660,7 @@ public class PacketHelper
 		byte[] content = Json.EnCodeBytes(new FramePacket
 		{
 			type = 1,
-			skill = new SkillPacket(),
+			//skill = new SkillPacket(),
 			skill = 
 			{
 				skillID = skillId,
@@ -2291,7 +2291,7 @@ public class PacketHelper
 		byte[] content = Json.EnCodeBytes(new FramePacket
 		{
 			type = 2,
-			giveup = new GiveUpPacket(),
+			//giveup = new GiveUpPacket(),
 			giveup = 
 			{
 				team = TEAM.Team_1

@@ -551,7 +551,7 @@ public class PVPBattleController : IBattleController, Lifecycle2
 		byte[] content = Json.EnCodeBytes(new FramePacket
 		{
 			type = 2,
-			giveup = new GiveUpPacket(),
+			//giveup = new GiveUpPacket(),
 			giveup = 
 			{
 				team = this.battleData.currentTeam
@@ -787,7 +787,7 @@ public class PVPBattleController : IBattleController, Lifecycle2
 					byte[] content2 = Json.EnCodeBytes(new FramePacket
 					{
 						type = 16,
-						effect = new DriftEffect(),
+						//effect = new DriftEffect(),
 						effect = 
 						{
 							tag = this.bombTarget.tag,
@@ -811,7 +811,7 @@ public class PVPBattleController : IBattleController, Lifecycle2
 				byte[] content3 = Json.EnCodeBytes(new FramePacket
 				{
 					type = 6,
-					effect = new DriftEffect(),
+					//effect = new DriftEffect(),
 					effect = 
 					{
 						tag = this.bombTarget.tag,
@@ -835,7 +835,7 @@ public class PVPBattleController : IBattleController, Lifecycle2
 				byte[] content4 = Json.EnCodeBytes(new FramePacket
 				{
 					type = 4,
-					bomb = new PlanetBomb(),
+					//bomb = new PlanetBomb(),
 					bomb = 
 					{
 						tag = this.bombTarget.tag

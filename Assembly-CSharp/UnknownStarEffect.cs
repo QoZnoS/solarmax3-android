@@ -2,6 +2,7 @@
 using Plugin;
 using Solarmax;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class UnknownStarEffect : EffectNode
 {
@@ -70,11 +71,13 @@ public class UnknownStarEffect : EffectNode
 	{
 		if (base.go != null)
 		{
-			base.go.GetComponent<ParticleSystem>().main.simulationSpeed = speed;
+			MainModule mm = base.go.GetComponent<ParticleSystem>().main;
+			mm.simulationSpeed = speed;
 			ParticleSystem[] componentsInChildren = base.go.GetComponentsInChildren<ParticleSystem>();
 			foreach (ParticleSystem particleSystem in componentsInChildren)
 			{
-				particleSystem.main.simulationSpeed = speed;
+				MainModule mm2 = particleSystem.main;
+				mm2.simulationSpeed = speed;
 			}
 		}
 	}

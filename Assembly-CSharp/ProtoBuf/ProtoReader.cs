@@ -19,7 +19,7 @@ namespace ProtoBuf
 			this.blockEnd = int.MaxValue;
 			this.netCache = new NetObjectCache();
 			this.trapCount = 1U;
-			base..ctor();
+			//base..ctor();
 			if (source == null)
 			{
 				throw new ArgumentNullException("source");
@@ -47,7 +47,7 @@ namespace ProtoBuf
 			this.blockEnd = int.MaxValue;
 			this.netCache = new NetObjectCache();
 			this.trapCount = 1U;
-			base..ctor();
+			//base..ctor();
 			if (source == null)
 			{
 				throw new ArgumentNullException("source");
@@ -331,7 +331,7 @@ namespace ProtoBuf
 
 		private static long Zag(ulong ziggedValue)
 		{
-			return (long)(-(long)(ziggedValue & 1UL) ^ (ziggedValue >> 1 & 9223372036854775807UL));
+			return (long)(-(long)(ziggedValue & 1UL) ^ (long)(ziggedValue >> 1 & 0x7FFFFFFFFFFFFFFFUL));
 		}
 
 		public long ReadInt64()

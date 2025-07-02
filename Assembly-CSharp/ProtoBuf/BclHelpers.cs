@@ -229,19 +229,26 @@ namespace ProtoBuf
 			{
 				return 0m;
 			}
-			int lo = (int)(num & (ulong)-1);
-			int mid = (int)(num >> 32 & (ulong)-1);
-			int hi = (int)num2;
-			bool isNegative = (num3 & 1U) == 1U;
-			byte scale = (byte)((num3 & 510U) >> 1);
-			return new decimal(lo, mid, hi, isNegative, scale);
+			unchecked {
+                int lo = (int)(num & (ulong)-1);
+                int mid = (int)(num >> 32 & (ulong)-1);
+                int hi = (int)num2;
+                bool isNegative = (num3 & 1U) == 1U;
+                byte scale = (byte)((num3 & 510U) >> 1);
+                return new decimal(lo, mid, hi, isNegative, scale);
+            }
 		}
 
 		public static void WriteDecimal(decimal value, ProtoWriter writer)
 		{
 			int[] bits = decimal.GetBits(value);
 			ulong num = (ulong)((ulong)((long)bits[1]) << 32);
-			ulong num2 = (ulong)((long)bits[0] & (long)((ulong)-1));
+			ulong num2;
+			unchecked
+			{
+				num2 = (ulong)((long)bits[0] & (long)((ulong)-1));
+
+            }
 			ulong num3 = num | num2;
 			uint num4 = (uint)bits[2];
 			uint num5 = (uint)((bits[3] >> 15 & 510) | (bits[3] >> 31 & 1));

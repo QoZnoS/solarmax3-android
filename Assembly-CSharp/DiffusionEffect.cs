@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Plugin;
 using Solarmax;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class DiffusionEffect : EffectNode
 {
@@ -156,7 +157,8 @@ public class DiffusionEffect : EffectNode
 		{
 			foreach (ParticleSystem particleSystem in this.effectList)
 			{
-				particleSystem.main.simulationSpeed = speed;
+				MainModule mm = particleSystem.main;
+				mm.simulationSpeed = speed;
 			}
 		}
 		if (base.go != null && this.aniList != null)

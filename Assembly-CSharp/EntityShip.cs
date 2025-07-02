@@ -540,7 +540,7 @@ public class EntityShip : Entity
 		this.SetPosition(this.position);
 		this.SetScaleImage(this.imageScale);
 		this.SetScaleTrail(this.trailScale);
-		base.SetScale(this.scale);
+		base.SetScale(base.scale);
 		base.SetRotation(this.eulerAngles);
 	}
 

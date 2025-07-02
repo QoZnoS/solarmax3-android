@@ -2,6 +2,7 @@
 using Plugin;
 using Solarmax;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class CloneEffect : EffectNode
 {
@@ -76,7 +77,8 @@ public class CloneEffect : EffectNode
 		if (transform != null)
 		{
 			ParticleSystem component = transform2.GetComponent<ParticleSystem>();
-			component.main.startColor = this.selfColor;
+			MainModule mm = component.main;
+			mm.startColor = this.selfColor;
 		}
 		this.SetEffectSpeed(Solarmax.Singleton<BattleSystem>.Get().lockStep.playSpeed);
 		LockStep lockStep = Solarmax.Singleton<BattleSystem>.Get().lockStep;
@@ -134,7 +136,8 @@ public class CloneEffect : EffectNode
 			{
 				if (!(particleSystem == null))
 				{
-					particleSystem.main.simulationSpeed = speed;
+					MainModule mm = particleSystem.main;
+					mm.simulationSpeed = speed;
 				}
 			}
 		}

@@ -2,6 +2,7 @@
 using Plugin;
 using Solarmax;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class CannonEffect : EffectNode
 {
@@ -163,7 +164,8 @@ public class CannonEffect : EffectNode
 		{
 			foreach (ParticleSystem particleSystem in this.effectList)
 			{
-				particleSystem.main.simulationSpeed = speed;
+				MainModule mm = particleSystem.main;
+				mm.simulationSpeed = speed;
 			}
 		}
 	}
@@ -237,7 +239,7 @@ public class CannonEffect : EffectNode
 	private Vector3 BezierPoint()
 	{
 		float num = this.delta / this.CD;
-		Vector2 to = (1f - num) * (1f - num) * this.node.GetPosition() + 2f * num * (1f - num) * this.midPoint + num * num * this.attackPoint;
+		Vector2 to = (1f - num) * (1f - num) * (Vector2)this.node.GetPosition() + 2f * num * (1f - num) * this.midPoint + num * num * this.attackPoint;
 		float angle360BetweenVector = UtilTools.GetAngle360BetweenVector2(this.lastPoint, to);
 		this.lastPoint = to;
 		return new Vector3(to.x, to.y, angle360BetweenVector);

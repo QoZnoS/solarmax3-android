@@ -62,11 +62,12 @@ namespace Solarmax
 				}
 				foreach (string text2 in array)
 				{
+					string texttmp = text2;
 					if (text2.EndsWith("\r"))
 					{
-						text2 = text2.Substring(0, text2.Length - 1);
+						texttmp = text2.Substring(0, text2.Length - 1);
 					}
-					FileReader.lines_temp.Add(text2);
+					FileReader.lines_temp.Add(texttmp);
 				}
 				FileReader.DeleteComments();
 				return true;

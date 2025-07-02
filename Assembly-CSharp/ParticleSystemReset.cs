@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class ParticleSystemReset : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class ParticleSystemReset : MonoBehaviour
 	{
 		if (this.effect != null)
 		{
-			this.effect.main.startDelay = this.orgDelay;
+			MainModule mm = this.effect.main;
+			mm.startDelay = this.orgDelay;
 		}
 	}
 

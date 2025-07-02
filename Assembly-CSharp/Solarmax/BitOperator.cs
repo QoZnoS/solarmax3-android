@@ -47,7 +47,7 @@ namespace Solarmax
 			else
 			{
 				int num2 = index / 8;
-				data[num2] &= ~b;
+				data[num2] &= (byte) ~b;
 			}
 			return true;
 		}

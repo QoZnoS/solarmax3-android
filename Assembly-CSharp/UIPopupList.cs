@@ -635,7 +635,7 @@ public class UIPopupList : UIWidgetContainer
 			int num = (!this.separatePanel) ? NGUITools.CalculateNextDepth(this.mPanel.gameObject) : 0;
 			if (this.background2DSprite != null)
 			{
-				UI2DSprite ui2DSprite = UIPopupList.mChild.AddWidget(num);
+				UI2DSprite ui2DSprite = UIPopupList.mChild.AddWidget<UI2DSprite>(num);
 				ui2DSprite.sprite2D = this.background2DSprite;
 				this.mBackground = ui2DSprite;
 			}
@@ -654,7 +654,7 @@ public class UIPopupList : UIWidgetContainer
 			this.mBackground.cachedTransform.localPosition = new Vector3(0f, border.y, 0f);
 			if (this.highlight2DSprite != null)
 			{
-				UI2DSprite ui2DSprite2 = UIPopupList.mChild.AddWidget(num + 1);
+				UI2DSprite ui2DSprite2 = UIPopupList.mChild.AddWidget<UI2DSprite>(num + 1);
 				ui2DSprite2.sprite2D = this.highlight2DSprite;
 				this.mHighlight = ui2DSprite2;
 			}
@@ -690,7 +690,7 @@ public class UIPopupList : UIWidgetContainer
 			while (i < count)
 			{
 				string text = this.items[i];
-				UILabel uilabel = UIPopupList.mChild.AddWidget(this.mBackground.depth + 2);
+				UILabel uilabel = UIPopupList.mChild.AddWidget<UILabel>(this.mBackground.depth + 2);
 				uilabel.name = i.ToString();
 				uilabel.pivot = UIWidget.Pivot.TopLeft;
 				uilabel.bitmapFont = this.bitmapFont;

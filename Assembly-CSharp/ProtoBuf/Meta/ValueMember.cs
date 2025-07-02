@@ -587,7 +587,7 @@ namespace ProtoBuf.Meta
 			}
 			else
 			{
-				this.flags &= ~flag;
+				this.flags &= (byte)~flag;
 			}
 		}
 

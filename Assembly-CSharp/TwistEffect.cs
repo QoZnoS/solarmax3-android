@@ -2,6 +2,7 @@
 using Plugin;
 using Solarmax;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class TwistEffect : EffectNode
 {
@@ -85,13 +86,15 @@ public class TwistEffect : EffectNode
 		{
 			transform2.gameObject.SetActive(true);
 			ParticleSystem component = transform2.GetComponent<ParticleSystem>();
-			component.main.startColor = this.enemyColor;
+			MainModule mm = component.main;
+			mm.startColor = this.enemyColor;
 		}
 		if (transform != null)
 		{
 			Transform transform3 = transform.transform.Find("spark2");
 			ParticleSystem component2 = transform3.GetComponent<ParticleSystem>();
-			component2.main.startColor = this.selfColor;
+			MainModule mm = component2.main;
+			mm.startColor = this.selfColor;
 		}
 		this.SetEffectSpeed(Solarmax.Singleton<BattleSystem>.Get().lockStep.playSpeed);
 		LockStep lockStep = Solarmax.Singleton<BattleSystem>.Get().lockStep;
@@ -147,7 +150,8 @@ public class TwistEffect : EffectNode
 			{
 				if (!(particleSystem == null))
 				{
-					particleSystem.main.simulationSpeed = speed;
+					MainModule mm = particleSystem.main;
+					mm.simulationSpeed = speed;
 				}
 			}
 		}

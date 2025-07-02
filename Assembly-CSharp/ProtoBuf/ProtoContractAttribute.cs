@@ -127,7 +127,7 @@ namespace ProtoBuf
 			}
 			else
 			{
-				this.flags &= ~flag;
+				this.flags &= (byte)~flag;
 			}
 		}
 

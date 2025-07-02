@@ -2,6 +2,7 @@
 using Plugin;
 using Solarmax;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class CannonBombEffect : EffectNode
 {
@@ -136,7 +137,8 @@ public class CannonBombEffect : EffectNode
 		{
 			foreach (ParticleSystem particleSystem in this.effectList)
 			{
-				particleSystem.main.simulationSpeed = speed;
+                MainModule mm = particleSystem.main;
+				mm.simulationSpeed = speed;
 			}
 		}
 		foreach (Animator animator in this.animatorList)

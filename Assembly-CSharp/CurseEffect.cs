@@ -2,6 +2,7 @@
 using Plugin;
 using Solarmax;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class CurseEffect : EffectNode
 {
@@ -151,7 +152,8 @@ public class CurseEffect : EffectNode
 			{
 				if (!(particleSystem == null))
 				{
-					particleSystem.main.simulationSpeed = speed;
+					MainModule mm = particleSystem.main;
+					mm.simulationSpeed = speed;
 				}
 			}
 		}

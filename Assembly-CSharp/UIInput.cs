@@ -256,8 +256,9 @@ public class UIInput : MonoBehaviour
 			return string.Empty;
 		}
 		StringBuilder stringBuilder = new StringBuilder(val.Length);
-		foreach (char c in val)
+		foreach (char tmp in val)
 		{
+			char c = tmp;
 			if (this.onValidate != null)
 			{
 				c = this.onValidate(stringBuilder.ToString(), stringBuilder.Length, c);
@@ -912,7 +913,7 @@ public class UIInput : MonoBehaviour
 				{
 					if (this.mHighlight == null)
 					{
-						this.mHighlight = this.label.cachedGameObject.AddWidget(int.MaxValue);
+						this.mHighlight = this.label.cachedGameObject.AddWidget<UITexture>(int.MaxValue);
 						this.mHighlight.name = "Input Highlight";
 						this.mHighlight.mainTexture = this.mBlankTex;
 						this.mHighlight.fillGeometry = false;
@@ -929,7 +930,7 @@ public class UIInput : MonoBehaviour
 				}
 				if (this.mCaret == null)
 				{
-					this.mCaret = this.label.cachedGameObject.AddWidget(int.MaxValue);
+					this.mCaret = this.label.cachedGameObject.AddWidget<UITexture>(int.MaxValue);
 					this.mCaret.name = "Input Caret";
 					this.mCaret.mainTexture = this.mBlankTex;
 					this.mCaret.fillGeometry = false;
@@ -1017,7 +1018,7 @@ public class UIInput : MonoBehaviour
 		{
 			if (ch >= 'A' && ch <= 'Z')
 			{
-				return ch - 'A' + 'a';
+				return (char) (ch - 'A' + 'a');
 			}
 			if (ch >= 'a' && ch <= 'z')
 			{
@@ -1092,7 +1093,7 @@ public class UIInput : MonoBehaviour
 			{
 				if (c == ' ')
 				{
-					return ch - 'a' + 'A';
+					return (char)(ch - 'a' + 'A');
 				}
 				return ch;
 			}
@@ -1100,7 +1101,7 @@ public class UIInput : MonoBehaviour
 			{
 				if (c != ' ' && c != '\'')
 				{
-					return ch - 'A' + 'a';
+					return (char)(ch - 'A' + 'a');
 				}
 				return ch;
 			}

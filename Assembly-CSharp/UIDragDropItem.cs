@@ -248,7 +248,7 @@ public class UIDragDropItem : MonoBehaviour
 
 	protected virtual void OnDragDropMove(Vector2 delta)
 	{
-		this.mTrans.localPosition += delta;
+		this.mTrans.localPosition += (Vector3)delta;
 	}
 
 	protected virtual void OnDragDropRelease(GameObject surface)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Solarmax;
 using UnityEngine;
 
@@ -1993,7 +1994,10 @@ public class FriendSmartAILogic : BaseAILogic
 						{
 							float num7 = Vector3.Distance(position, position2) / t.speed;
 							float num8 = node.GetWidth() * node.GetAttackRage() / t.speed;
-							if ((node.isactive && node.act + num7 - num8 < 5f) || (!node.isactive && num7 + node.cd >= 7.5f))
+                            float cdValue = (float)typeof(Node)
+                                .GetField("cd", BindingFlags.NonPublic | BindingFlags.Instance)
+                                .GetValue(node);
+                            if ((node.isactive && node.act + num7 - num8 < 5f) || (!node.isactive && num7 + cdValue >= 7.5f))
 							{
 								num += 10000f;
 							}
@@ -2006,7 +2010,10 @@ public class FriendSmartAILogic : BaseAILogic
 						{
 							float num9 = Vector3.Distance(position, position2) / t.speed;
 							float num10 = node.GetWidth() * node.GetAttackRage() / t.speed;
-							if ((node.isactive && node.act + num9 - num10 < 5f) || (!node.isactive && num9 + node.cd >= 7.5f))
+                            float cdValue = (float)typeof(Node)
+								.GetField("cd", BindingFlags.NonPublic | BindingFlags.Instance)
+								.GetValue(node);
+                            if ((node.isactive && node.act + num9 - num10 < 5f) || (!node.isactive && num9 + cdValue >= 7.5f))
 							{
 								num += 10000f;
 							}
@@ -2021,7 +2028,10 @@ public class FriendSmartAILogic : BaseAILogic
 					{
 						float num11 = Vector3.Distance(position, position2) / t.speed;
 						float num12 = node.GetWidth() * node.GetAttackRage() / t.speed;
-						if ((node.isactive && node.act + num11 - num12 < 5f) || (!node.isactive && num11 + node.cd >= 7.5f))
+                        float cdValue = (float)typeof(Node)
+							.GetField("cd", BindingFlags.NonPublic | BindingFlags.Instance)
+							.GetValue(node);
+                        if ((node.isactive && node.act + num11 - num12 < 5f) || (!node.isactive && num11 + cdValue >= 7.5f))
 						{
 							num += 10000f;
 						}

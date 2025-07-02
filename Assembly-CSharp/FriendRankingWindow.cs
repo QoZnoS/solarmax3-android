@@ -74,9 +74,13 @@ public class FriendRankingWindow : BaseWindow
 			List<FriendSimplePlayer> list = args[1] as List<FriendSimplePlayer>;
 			this.ClearList(this.allList);
 			this.allList = list;
-			from o in this.allList
-			orderby o.score descending
-			select o;
+			//from o in this.allList
+			//orderby o.score descending
+			//select o;
+			if (this.allList != null)
+			{
+				this.allList = this.allList.OrderByDescending(x => x.score).ToList();
+			}
 			if (this.selectTab == this.All)
 			{
 				this.RefreshScrollView(this.allList);
@@ -84,9 +88,13 @@ public class FriendRankingWindow : BaseWindow
 			List<FriendSimplePlayer> list2 = args[2] as List<FriendSimplePlayer>;
 			this.ClearList(this.friendList);
 			this.friendList = list2;
-			from o in this.friendList
-			orderby o.score descending
-			select o;
+			//from o in this.friendList
+			//orderby o.score descending
+			//select o;
+			if (this.friendList != null)
+			{
+				this.friendList = this.friendList.OrderByDescending(x => x.score).ToList();
+			}
 			if (this.selectTab == this.Friend)
 			{
 				this.RefreshScrollView(this.friendList);

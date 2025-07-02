@@ -67,15 +67,18 @@ public class ByteReader
 				int num2 = (int)this.mBuffer[i++];
 				if (num2 == 10 || num2 == 13)
 				{
-					IL_87:
-					string result = ByteReader.ReadLine(this.mBuffer, this.mOffset, i - this.mOffset - 1);
+					//IL_87:
+					string result2 = ByteReader.ReadLine(this.mBuffer, this.mOffset, i - this.mOffset - 1);
 					this.mOffset = i;
-					return result;
+					return result2;
 				}
 			}
 			i++;
-			goto IL_87;
-		}
+            //goto IL_87;
+            string result = ByteReader.ReadLine(this.mBuffer, this.mOffset, i - this.mOffset - 1);
+            this.mOffset = i;
+            return result;
+        }
 		this.mOffset = num;
 		return null;
 	}
