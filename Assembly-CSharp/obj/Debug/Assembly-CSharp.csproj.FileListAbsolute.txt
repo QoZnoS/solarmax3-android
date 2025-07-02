@@ -1,0 +1,2 @@
+D:\ring\kde_connect_file\UnityKiller\Assembly-CSharp\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
+D:\ring\kde_connect_file\UnityKiller\Assembly-CSharp\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
