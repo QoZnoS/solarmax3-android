@@ -731,7 +731,7 @@ public class MapShow : MonoBehaviour
 		positions.Add(basePos);
 		for (int j = 0; j < positions.Count; j++)
 		{
-			int index;
+			int index = j;
 			positions[index = j] = positions[index] + centerPos;
 		}
 	}

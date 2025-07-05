@@ -468,8 +468,8 @@ public class NodeAttribute : MonoBehaviour
 		list.Add(basePos);
 		for (int j = 0; j < list.Count; j++)
 		{
-			List<Vector3> list2;
-			int index;
+			List<Vector3> list2 = list;
+			int index = j;
 			(list2 = list)[index = j] = list2[index] + centerPos;
 		}
 		return list;

@@ -1,3 +1,4 @@
 .vs
-UnityKiller/Assembly-CSharp/bin/
-UnityKiller/Assembly-CSharp/obj/
+Assembly-CSharp/bin/
+Assembly-CSharp/obj/
+*.dll

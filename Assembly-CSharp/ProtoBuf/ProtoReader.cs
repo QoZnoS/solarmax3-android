@@ -12,7 +12,7 @@ namespace ProtoBuf
 		{
 		}
 
-		public ProtoReader(Stream source)
+		public ProtoReader(Stream source) : base()
 		{
 			this.wireType = WireType.None;
 			this.internStrings = true;
@@ -40,7 +40,7 @@ namespace ProtoBuf
 			}
 		}
 
-		public ProtoReader(Stream source, TypeModel model, SerializationContext context, int length)
+		public ProtoReader(Stream source, TypeModel model, SerializationContext context, int length) : base()
 		{
 			this.wireType = WireType.None;
 			this.internStrings = true;

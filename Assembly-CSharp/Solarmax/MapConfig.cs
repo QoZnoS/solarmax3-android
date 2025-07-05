@@ -11,7 +11,7 @@ namespace Solarmax
 {
 	public class MapConfig
 	{
-		public MapConfig(string p_name)
+		public MapConfig(string p_name) : base()
 		{
 			this.mlcList = new List<MapLineConfig>();
 			this.mbcList = new List<MapBuildingConfig>();
