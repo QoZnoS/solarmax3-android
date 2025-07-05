@@ -38,7 +38,7 @@ public class CooperationLevelWindow : BaseWindow
 			return;
 		}
 		base.OnShow();
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_Linerender");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Linerender");
 		this.lineGo = (UnityEngine.Object.Instantiate(resources) as GameObject);
 		this.lineGo.transform.SetParent(GameObject.Find("Battle").transform);
 		this.lineRender = this.lineGo.GetComponentInChildren<LineRenderer>();
@@ -115,7 +115,7 @@ public class CooperationLevelWindow : BaseWindow
 		}
 		else if (eventId == EventId.UpdateMoney)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 		else if (eventId == EventId.SelectCooperationLevel)
 		{
@@ -274,15 +274,15 @@ public class CooperationLevelWindow : BaseWindow
 
 	private void SetPlayerBaseInfo()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData != null)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 	}
 
 	public void OnClickDifficult1(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (this.selectDiffuse == 1)
 		{
 			return;
@@ -300,7 +300,7 @@ public class CooperationLevelWindow : BaseWindow
 
 	public void OnClickDifficult2(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (this.selectDiffuse == 2)
 		{
 			return;
@@ -318,7 +318,7 @@ public class CooperationLevelWindow : BaseWindow
 
 	public void OnClickDifficult3(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (this.selectDiffuse == 3)
 		{
 			return;
@@ -336,7 +336,7 @@ public class CooperationLevelWindow : BaseWindow
 
 	public void OnClickDifficult4(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (this.selectDiffuse == 4)
 		{
 			return;
@@ -404,7 +404,7 @@ public class CooperationLevelWindow : BaseWindow
 		{
 			string matchMap = this.GetMatchMap(data);
 			int num = data.playerNum;
-			int userId = global::Singleton<LocalPlayer>.Get().playerData.userId;
+			int userId = Solarmax.Singleton<LocalPlayer>.Get().playerData.userId;
 			if (num == 2)
 			{
 				Solarmax.Singleton<NetSystem>.Instance.helper.StartMatchReq(MatchType.MT_Room, string.Empty, matchMap, CooperationType.CT_2vPC, 2, false, this.curDisplayChapterID, this.selectDiffuse, data.id, false);

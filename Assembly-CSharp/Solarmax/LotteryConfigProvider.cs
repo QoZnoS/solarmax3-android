@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class LotteryConfigProvider : Singleton<LotteryConfigProvider>, IDataProvider
+	public class LotteryConfigProvider : Solarmax.Singleton<LotteryConfigProvider>, IDataProvider
 	{
 		public bool IsXML()
 		{
@@ -42,7 +42,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/Lottery.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/Lottery.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

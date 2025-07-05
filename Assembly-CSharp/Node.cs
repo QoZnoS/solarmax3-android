@@ -1277,7 +1277,7 @@ public abstract class Node : Lifecycle2
 							if ((position - flyShip[num3].GetPosition()).sqrMagnitude <= num)
 							{
 								Solarmax.Singleton<EffectManager>.Get().AddLaserLine(position, flyShip[num3].GetPosition(), this.entity.GetColor(), true, false);
-								global::Singleton<AudioManger>.Get().PlayLaser(this.GetPosition());
+								Solarmax.Singleton<AudioManger>.Get().PlayLaser(this.GetPosition());
 								if (!flyShip[num3].currentTeam.hideFly)
 								{
 									this.AttackTeam = flyShip[num3].team;
@@ -1391,7 +1391,7 @@ public abstract class Node : Lifecycle2
 									isMax = true;
 								}
 								Solarmax.Singleton<EffectManager>.Get().PlayTwistEffect(this, position, flyShip[num3].GetPosition(), this.entity.GetColor(), flyShip[num3].currentTeam.color, isMax);
-								global::Singleton<AudioManger>.Get().PlayTwist(this.GetPosition());
+								Solarmax.Singleton<AudioManger>.Get().PlayTwist(this.GetPosition());
 								if (!flyShip[num3].currentTeam.hideFly)
 								{
 									this.AttackTeam = flyShip[num3].team;
@@ -1469,7 +1469,7 @@ public abstract class Node : Lifecycle2
 						if ((position - flyShip[j].GetPosition()).sqrMagnitude <= num)
 						{
 							Solarmax.Singleton<EffectManager>.Get().PlayCloneEffect(this, position, flyShip[j].GetPosition(), this.entity.GetColor());
-							global::Singleton<AudioManger>.Get().PlayClone(this.GetPosition());
+							Solarmax.Singleton<AudioManger>.Get().PlayClone(this.GetPosition());
 							if (!flyShip[j].currentTeam.hideFly)
 							{
 								if (flyShip[j].currentTeam != null && flyShip[j].currentTeam.current < flyShip[j].currentTeam.currentMax)
@@ -1537,7 +1537,7 @@ public abstract class Node : Lifecycle2
 			}
 		}
 		Solarmax.Singleton<EffectManager>.Get().AddLasergun(this, time, num, true, 3f, 10f, 0f);
-		global::Singleton<AudioManger>.Get().PlayLaser(this.GetPosition());
+		Solarmax.Singleton<AudioManger>.Get().PlayLaser(this.GetPosition());
 	}
 
 	public virtual void SetShowRange(bool show)
@@ -2148,10 +2148,10 @@ public abstract class Node : Lifecycle2
 			int currentMax = this.currentTeam.currentMax;
 			this.currentTeam = this.nodeManager.sceneManager.teamManager.GetTeam(TEAM.Neutral);
 			this.currentTeam.teamManager.sceneManager.newSkillManager.OnCaptured(this, currentTeam, this.nodeManager.sceneManager.teamManager.GetTeam(this.occupiedTeam));
-			if (global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Maker))
+			if (Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Maker))
 			{
 				Solarmax.Singleton<EffectManager>.Get().AddHalo(this, this.currentTeam.color, true, false);
-				global::Singleton<AudioManger>.Get().PlayCapture(this.GetPosition());
+				Solarmax.Singleton<AudioManger>.Get().PlayCapture(this.GetPosition());
 			}
 			if (this.type == NodeType.Tower || this.type == NodeType.Castle)
 			{
@@ -2334,7 +2334,7 @@ public abstract class Node : Lifecycle2
 								if (!flag)
 								{
 									flag = true;
-									global::Singleton<AudioManger>.Get().PlayLaser(this.GetPosition());
+									Solarmax.Singleton<AudioManger>.Get().PlayLaser(this.GetPosition());
 								}
 								ship.Bomb(this.type);
 								this.nodeManager.sceneManager.teamManager.AddDestory((TEAM)j);
@@ -2460,7 +2460,7 @@ public abstract class Node : Lifecycle2
 								if (!flag)
 								{
 									flag = true;
-									global::Singleton<AudioManger>.Get().PlayLaser(this.GetPosition());
+									Solarmax.Singleton<AudioManger>.Get().PlayLaser(this.GetPosition());
 								}
 								ship.Bomb(NodeType.None);
 								this.nodeManager.sceneManager.teamManager.AddDestory((TEAM)j);
@@ -2894,10 +2894,10 @@ public abstract class Node : Lifecycle2
 			this.currentTeam = this.nodeManager.sceneManager.teamManager.GetTeam(this.occupiedTeam);
 			this.occupiedTeam = TEAM.Neutral;
 			this.capturingTeam = TEAM.Neutral;
-			if (global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Maker))
+			if (Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Maker))
 			{
 				Solarmax.Singleton<EffectManager>.Get().AddHalo(this, this.currentTeam.color, true, false);
-				global::Singleton<AudioManger>.Get().PlayCapture(this.GetPosition());
+				Solarmax.Singleton<AudioManger>.Get().PlayCapture(this.GetPosition());
 			}
 			this.currentTeam.teamManager.sceneManager.newSkillManager.OnOccupied(this, this.currentTeam);
 			this.currentSkill = null;

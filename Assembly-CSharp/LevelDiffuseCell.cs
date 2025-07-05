@@ -27,7 +27,7 @@ public class LevelDiffuseCell : MonoBehaviour
 			}
 		}
 		List<string> list = new List<string>();
-		AchievementGroup achievementGroup = global::Singleton<AchievementModel>.Get().achievementGroups[groupID];
+		AchievementGroup achievementGroup = Solarmax.Singleton<AchievementModel>.Get().achievementGroups[groupID];
 		for (int j = 0; j < achievementGroup.achievements.Count; j++)
 		{
 			Achievement achievement = achievementGroup.achievements[j];

@@ -57,7 +57,7 @@ public class GuideEffect : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources(this.effectName);
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(this.effectName);
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 		}
 		this.animator = base.go.GetComponent<Animator>();

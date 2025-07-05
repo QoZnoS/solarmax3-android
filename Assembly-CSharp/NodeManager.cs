@@ -773,7 +773,7 @@ public class NodeManager : Lifecycle2
 		if ((from.team == team || this.sceneManager.teamManager.GetTeam(team).IsFriend(from.currentTeam.groupID)) && from.type == NodeType.WarpDoor)
 		{
 			Solarmax.Singleton<EffectManager>.Get().AddWarpPulse(from, to, team, rate);
-			global::Singleton<AudioManger>.Get().PlayWarpCharge(from.GetPosition());
+			Solarmax.Singleton<AudioManger>.Get().PlayWarpCharge(from.GetPosition());
 			this.sceneManager.warpManager.AddWarpItem(from, to, team, rate, num, true);
 			return;
 		}
@@ -782,7 +782,7 @@ public class NodeManager : Lifecycle2
 			if (this.sceneManager.IsFixedPortal(from.GetPosition(), to.GetPosition()))
 			{
 				Solarmax.Singleton<EffectManager>.Get().AddWarpPulse(from, to, team, rate);
-				global::Singleton<AudioManger>.Get().PlayWarpCharge(from.GetPosition());
+				Solarmax.Singleton<AudioManger>.Get().PlayWarpCharge(from.GetPosition());
 				this.sceneManager.warpManager.AddWarpItem(from, to, team, rate, num, true);
 				return;
 			}
@@ -790,7 +790,7 @@ public class NodeManager : Lifecycle2
 		else if (team2.GetAttributeInt(TeamAttr.QuickMove) > 0)
 		{
 			Solarmax.Singleton<EffectManager>.Get().AddWarpPulse(from, to, team, rate);
-			global::Singleton<AudioManger>.Get().PlayWarpCharge(from.GetPosition());
+			Solarmax.Singleton<AudioManger>.Get().PlayWarpCharge(from.GetPosition());
 			this.sceneManager.warpManager.AddWarpItem(from, to, team, rate, num, true);
 			return;
 		}

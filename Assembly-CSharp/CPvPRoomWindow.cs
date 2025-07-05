@@ -19,12 +19,12 @@ public class CPvPRoomWindow : BaseWindow
 	{
 		base.OnShow();
 		this.SetPlayerBaseInfo();
-		this.SetSublabelModel(global::Singleton<LocalPvpSeasonSystem>.Get().pvpType, global::Singleton<LocalPvpSeasonSystem>.Get().seasonStart, global::Singleton<LocalPvpSeasonSystem>.Get().seasonEnd);
-		if (!global::Singleton<LocalPlayer>.Get().IsInSeason())
+		this.SetSublabelModel(Solarmax.Singleton<LocalPvpSeasonSystem>.Get().pvpType, Solarmax.Singleton<LocalPvpSeasonSystem>.Get().seasonStart, Solarmax.Singleton<LocalPvpSeasonSystem>.Get().seasonEnd);
+		if (!Solarmax.Singleton<LocalPlayer>.Get().IsInSeason())
 		{
 			this.seasonTip2.text = LanguageDataProvider.GetValue(1162);
 		}
-		this.RefreshMoneyUI(global::Singleton<LocalPlayer>.Get().nCurAccumulMoney, global::Singleton<LocalPlayer>.Get().nMaxAccumulMoney);
+		this.RefreshMoneyUI(Solarmax.Singleton<LocalPlayer>.Get().nCurAccumulMoney, Solarmax.Singleton<LocalPlayer>.Get().nMaxAccumulMoney);
 	}
 
 	public override void OnHide()
@@ -35,24 +35,24 @@ public class CPvPRoomWindow : BaseWindow
 	{
 		if (eventId == EventId.UpdateMoney)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 		else if (eventId == EventId.UpdateAccumulMoney)
 		{
-			this.RefreshMoneyUI(global::Singleton<LocalPlayer>.Get().nCurAccumulMoney, global::Singleton<LocalPlayer>.Get().nMaxAccumulMoney);
+			this.RefreshMoneyUI(Solarmax.Singleton<LocalPlayer>.Get().nCurAccumulMoney, Solarmax.Singleton<LocalPlayer>.Get().nMaxAccumulMoney);
 		}
 		else if (eventId == EventId.OnUpdateLeagueMode)
 		{
 			this.SetPlayerBaseInfo();
-			this.SetSublabelModel(global::Singleton<LocalPvpSeasonSystem>.Get().pvpType, global::Singleton<LocalPvpSeasonSystem>.Get().seasonStart, global::Singleton<LocalPvpSeasonSystem>.Get().seasonEnd);
-			this.RefreshMoneyUI(global::Singleton<LocalPlayer>.Get().nCurAccumulMoney, global::Singleton<LocalPlayer>.Get().nMaxAccumulMoney);
+			this.SetSublabelModel(Solarmax.Singleton<LocalPvpSeasonSystem>.Get().pvpType, Solarmax.Singleton<LocalPvpSeasonSystem>.Get().seasonStart, Solarmax.Singleton<LocalPvpSeasonSystem>.Get().seasonEnd);
+			this.RefreshMoneyUI(Solarmax.Singleton<LocalPlayer>.Get().nCurAccumulMoney, Solarmax.Singleton<LocalPlayer>.Get().nMaxAccumulMoney);
 			SeasonRewardView component = this.seasonReward.GetComponent<SeasonRewardView>();
 			component.UpdateUI();
 		}
 		else if (eventId == EventId.OnSeasonReward)
 		{
 			int num = (int)args[0];
-			SeasonRewardModel seasonRewardModel = global::Singleton<SeasonRewardModel>.Get();
+			SeasonRewardModel seasonRewardModel = Solarmax.Singleton<SeasonRewardModel>.Get();
 			seasonRewardModel.rewardStatus[num.ToString()] = true;
 			SeasonRewardView component2 = this.seasonReward.GetComponent<SeasonRewardView>();
 			component2.RefreshUI();
@@ -125,18 +125,18 @@ public class CPvPRoomWindow : BaseWindow
 
 	private void SetPlayerBaseInfo()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData != null)
 		{
-			if (string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().playerData.name))
+			if (string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().playerData.name))
 			{
 				this.playerName.text = "无名喵喵";
 			}
 			else
 			{
-				this.playerName.text = global::Singleton<LocalPlayer>.Get().playerData.name;
+				this.playerName.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.name;
 			}
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
-			int score = global::Singleton<LocalPlayer>.Get().playerData.score;
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			int score = Solarmax.Singleton<LocalPlayer>.Get().playerData.score;
 			this.playerScore.text = score.ToString();
 		}
 	}
@@ -307,7 +307,7 @@ public class CPvPRoomWindow : BaseWindow
 	public void OnClickAvatar()
 	{
 		Solarmax.Singleton<UISystem>.Get().ShowWindow("CollectionWindow");
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 	}
 
 	private void RefreshMoneyUI(int nCurMoney, int nMaxMoney)

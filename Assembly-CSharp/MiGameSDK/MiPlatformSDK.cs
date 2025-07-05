@@ -61,7 +61,7 @@ namespace MiGameSDK
 		public static void pay(string productID, string productName, int productNum, string currency, float price, string productDesc, string orderID, string notifyUrl)
 		{
 			Debug.Log("buy -> BuyProduct pay---" + orderID);
-			string account = global::Singleton<LocalAccountStorage>.Get().account;
+			string account = Solarmax.Singleton<LocalAccountStorage>.Get().account;
 			if (MiPlatformSDK.IsVisitor)
 			{
 				Solarmax.Singleton<UISystem>.Instance.ShowWindow("CommonDialogWindow");
@@ -122,7 +122,7 @@ namespace MiGameSDK
 			}
 			else
 			{
-				if (global::Singleton<LocalPlayer>.Get().playerData.adchannel.ContainsKey(AdChannel.AD_PANGOLIN) && MiPlatformSDK.androidClass != null)
+				if (Solarmax.Singleton<LocalPlayer>.Get().playerData.adchannel.ContainsKey(AdChannel.AD_PANGOLIN) && MiPlatformSDK.androidClass != null)
 				{
 					Debug.Log("---播放穿山甲广告----");
 					MiPlatformSDK.androidClass.CallStatic("ShowAds", new object[0]);
@@ -141,7 +141,7 @@ namespace MiGameSDK
 					MiPlatformSDK.androidClass.CallStatic("StopAds", new object[0]);
 				}
 			}
-			else if (global::Singleton<LocalPlayer>.Get().playerData.adchannel.ContainsKey(AdChannel.AD_PANGOLIN) && MiPlatformSDK.androidClass != null)
+			else if (Solarmax.Singleton<LocalPlayer>.Get().playerData.adchannel.ContainsKey(AdChannel.AD_PANGOLIN) && MiPlatformSDK.androidClass != null)
 			{
 				Debug.Log("---停止穿山甲广告----");
 				MiPlatformSDK.androidClass.CallStatic("StopAds", new object[0]);

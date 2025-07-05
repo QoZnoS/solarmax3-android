@@ -53,9 +53,9 @@ public class BattleSystem : Solarmax.Singleton<BattleSystem>, Lifecycle
 		this.battleData.Init();
 		this.sceneManager.Init();
 		this.replayManager.Init();
-		global::Singleton<AssetManager>.Get().Init();
+		Solarmax.Singleton<AssetManager>.Get().Init();
 		Solarmax.Singleton<EffectManager>.Get().Init();
-		global::Singleton<GameTimeManager>.Get().Init();
+		Solarmax.Singleton<GameTimeManager>.Get().Init();
 		this.pause = false;
 		Solarmax.Singleton<LoggerSystem>.Instance.Debug("BattleSystem    init  end", new object[0]);
 		return true;
@@ -95,7 +95,7 @@ public class BattleSystem : Solarmax.Singleton<BattleSystem>, Lifecycle
 		float interval2 = interval * num;
 		Solarmax.Singleton<EffectManager>.Get().fPlayAniSpeed = num;
 		Solarmax.Singleton<EffectManager>.Get().Tick(Time.frameCount, interval2);
-		global::Singleton<ShipFadeManager>.Get().UpdateFadeInOut(interval);
+		Solarmax.Singleton<ShipFadeManager>.Get().UpdateFadeInOut(interval);
 	}
 
 	public void UpdateRender(float interval)
@@ -117,7 +117,7 @@ public class BattleSystem : Solarmax.Singleton<BattleSystem>, Lifecycle
 			this.battleController.Destroy();
 		}
 		this.lockStep.StopLockStep(true);
-		global::Singleton<AssetManager>.Get().UnLoadBattleResources();
+		Solarmax.Singleton<AssetManager>.Get().UnLoadBattleResources();
 		Solarmax.Singleton<LoggerSystem>.Instance.Debug("BattleSystem    destroy  end", new object[0]);
 	}
 
@@ -136,7 +136,7 @@ public class BattleSystem : Solarmax.Singleton<BattleSystem>, Lifecycle
 		this.battleData.Destroy();
 		this.replayManager.Destroy();
 		TouchHandler.Clean();
-		global::Singleton<GameTimeManager>.Get().Release();
+		Solarmax.Singleton<GameTimeManager>.Get().Release();
 		Resources.UnloadUnusedAssets();
 		GC.Collect();
 	}
@@ -209,7 +209,7 @@ public class BattleSystem : Solarmax.Singleton<BattleSystem>, Lifecycle
 		{
 			this.battleController.Init();
 		}
-		global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = false;
+		Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = false;
 		this.pause = false;
 		this.bStartBattle = true;
 		this.lockStep.StarLockStep();

@@ -23,7 +23,7 @@ public class WaitWindow : BaseWindow
 		{
 			this.posRoots[i].SetActive(false);
 		}
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Wandering", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Wandering", 0.5f);
 	}
 
 	public override void OnHide()
@@ -138,7 +138,7 @@ public class WaitWindow : BaseWindow
 		component4.color = color;
 		component5.text = playerData.unionName;
 		Animator component6 = gameObject.GetComponent<Animator>();
-		if (playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+		if (playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 		{
 			component6.Play("WaitWindow_information1_mine");
 		}

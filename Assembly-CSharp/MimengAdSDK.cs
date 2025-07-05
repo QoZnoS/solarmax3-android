@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class MimengAdSDK : Singleton<MimengAdSDK>
+public class MimengAdSDK : Solarmax.Singleton<MimengAdSDK>
 {
 	public void Init()
 	{

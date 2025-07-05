@@ -40,7 +40,7 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 
 	public static void AddDelegate()
 	{
-		AchievementModel achievementModel = global::Singleton<AchievementModel>.Get();
+		AchievementModel achievementModel = Solarmax.Singleton<AchievementModel>.Get();
 		achievementModel.onAchieveSuccess = (AchievementModel.OnAchieveSuccess)Delegate.Combine(achievementModel.onAchieveSuccess, new AchievementModel.OnAchieveSuccess(Solarmax.Singleton<LevelDataHandler>.Instance.SetLevelStar));
 	}
 
@@ -75,7 +75,7 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 	{
 		if (this.currentChapterIndex == -1)
 		{
-			this.currentChapterIndex = PlayerPrefs.GetInt(string.Format("Chapter_id_{0}", global::Singleton<LocalPlayer>.Get().playerData.userId.ToString()));
+			this.currentChapterIndex = PlayerPrefs.GetInt(string.Format("Chapter_id_{0}", Solarmax.Singleton<LocalPlayer>.Get().playerData.userId.ToString()));
 		}
 		return this.currentChapterIndex;
 	}
@@ -258,9 +258,9 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 			{
 				foreach (ChapterLevelInfo chapterLevelInfo in chapterLevelGroup.mapList)
 				{
-					if (global::Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(chapterLevelInfo.id))
+					if (Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(chapterLevelInfo.id))
 					{
-						chapterLevelInfo.Score = global::Singleton<LocalLevelScoreStorage>.Get().levelScore[chapterLevelInfo.id];
+						chapterLevelInfo.Score = Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore[chapterLevelInfo.id];
 						chapterLevelGroup.ModifyLevel(chapterLevelInfo);
 					}
 				}
@@ -272,9 +272,9 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 			{
 				foreach (ChapterLevelInfo chapterLevelInfo2 in chapterLevelGroup2.mapList)
 				{
-					if (global::Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(chapterLevelInfo2.id))
+					if (Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(chapterLevelInfo2.id))
 					{
-						chapterLevelInfo2.Score = global::Singleton<LocalLevelScoreStorage>.Get().levelScore[chapterLevelInfo2.id];
+						chapterLevelInfo2.Score = Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore[chapterLevelInfo2.id];
 						chapterLevelGroup2.ModifyLevel(chapterLevelInfo2);
 					}
 				}
@@ -286,9 +286,9 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 			{
 				foreach (ChapterLevelInfo chapterLevelInfo3 in chapterLevelGroup3.mapList)
 				{
-					if (global::Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(chapterLevelInfo3.id))
+					if (Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(chapterLevelInfo3.id))
 					{
-						chapterLevelInfo3.Score = global::Singleton<LocalLevelScoreStorage>.Get().levelScore[chapterLevelInfo3.id];
+						chapterLevelInfo3.Score = Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore[chapterLevelInfo3.id];
 						chapterLevelGroup3.ModifyLevel(chapterLevelInfo3);
 					}
 				}
@@ -301,9 +301,9 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("AfterAccountLogin", new object[0]);
 		foreach (ChapterInfo chapterInfo in this.chapterList)
 		{
-			int @int = PlayerPrefs.GetInt(string.Format("Chapter_id_passd_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, chapterInfo.id));
+			int @int = PlayerPrefs.GetInt(string.Format("Chapter_id_passd_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, chapterInfo.id));
 			chapterInfo.hasPassed = (@int == 1);
-			if (PlayerPrefs.GetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, chapterInfo.id), -1) == 1)
+			if (PlayerPrefs.GetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, chapterInfo.id), -1) == 1)
 			{
 				chapterInfo.isWattingUnlock = true;
 			}
@@ -314,9 +314,9 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 		}
 		foreach (ChapterInfo chapterInfo2 in this.payChapterList)
 		{
-			int int2 = PlayerPrefs.GetInt(string.Format("Chapter_id_passd_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, chapterInfo2.id));
+			int int2 = PlayerPrefs.GetInt(string.Format("Chapter_id_passd_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, chapterInfo2.id));
 			chapterInfo2.hasPassed = (int2 == 1);
-			if (PlayerPrefs.GetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, chapterInfo2.id), -1) == 1)
+			if (PlayerPrefs.GetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, chapterInfo2.id), -1) == 1)
 			{
 				chapterInfo2.isWattingUnlock = true;
 			}
@@ -327,9 +327,9 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 		}
 		foreach (ChapterInfo chapterInfo3 in this.coopertionList)
 		{
-			int int3 = PlayerPrefs.GetInt(string.Format("Chapter_id_passd_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, chapterInfo3.id));
+			int int3 = PlayerPrefs.GetInt(string.Format("Chapter_id_passd_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, chapterInfo3.id));
 			chapterInfo3.hasPassed = (int3 == 1);
-			if (PlayerPrefs.GetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, chapterInfo3.id), -1) == 1)
+			if (PlayerPrefs.GetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, chapterInfo3.id), -1) == 1)
 			{
 				chapterInfo3.isWattingUnlock = true;
 			}
@@ -343,7 +343,7 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 	public void SetLevelStar(string achieveId, bool success)
 	{
 		AchievementConfig achievementConfig = Solarmax.Singleton<AchievementConfigProvider>.Get().dataList[achieveId];
-		string groupId = global::Singleton<AchievementModel>.Get().dicAchievements[achieveId].groupId;
+		string groupId = Solarmax.Singleton<AchievementModel>.Get().dicAchievements[achieveId].groupId;
 		if (Solarmax.Singleton<LevelDataHandler>.Get().FindGroupLevel(groupId) != null)
 		{
 			ChapterLevelInfo level = Solarmax.Singleton<LevelDataHandler>.Get().FindGroupLevel(groupId).GetLevel(achievementConfig.difficult);
@@ -416,13 +416,13 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 				while (enumerator2.MoveNext())
 				{
 					ChapterLevelInfo level = enumerator2.Current;
-					if (global::Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(level.id) && !dictionary.ContainsKey(level.id))
+					if (Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(level.id) && !dictionary.ContainsKey(level.id))
 					{
 						global::Coroutine.DelayDo((float)(++num), new EventDelegate(delegate()
 						{
 							LevelConfig data2 = Solarmax.Singleton<LevelConfigConfigProvider>.Instance.GetData(level.id);
-							int num2 = global::Singleton<LocalLevelScoreStorage>.Get().levelScore[level.id];
-							Solarmax.Singleton<NetSystem>.Instance.helper.RequestSetLevelSorce(data2.id, data2.levelGroup, global::Singleton<LocalAccountStorage>.Get().account, num2);
+							int num2 = Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore[level.id];
+							Solarmax.Singleton<NetSystem>.Instance.helper.RequestSetLevelSorce(data2.id, data2.levelGroup, Solarmax.Singleton<LocalAccountStorage>.Get().account, num2);
 							Solarmax.Singleton<NetSystem>.Instance.helper.SetLevelStar(this.currentChapter.id, data2.id, level.star, num2);
 						}));
 					}
@@ -658,7 +658,7 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 				num2 += completedStars;
 				foreach (ChapterLevelInfo chapterLevelInfo in chapterLevelGroup.mapList)
 				{
-					if (global::Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(chapterLevelInfo.id))
+					if (Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore.ContainsKey(chapterLevelInfo.id))
 					{
 						num++;
 					}
@@ -1016,9 +1016,9 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 		{
 			foreach (ChapterLevelGroup chapterLevelGroup in this.currentChapter.levelList)
 			{
-				if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(chapterLevelGroup.groupID))
+				if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(chapterLevelGroup.groupID))
 				{
-					AchievementGroup achievementGroup = global::Singleton<AchievementModel>.Get().achievementGroups[chapterLevelGroup.groupID];
+					AchievementGroup achievementGroup = Solarmax.Singleton<AchievementModel>.Get().achievementGroups[chapterLevelGroup.groupID];
 					foreach (Achievement achievement in achievementGroup.achievements)
 					{
 						if (achievement.success && achievement.types[0] == AchievementType.PassDiffcult && Solarmax.Singleton<TaskConfigProvider>.Get().dataList.ContainsKey(achievement.taskId))
@@ -1035,7 +1035,7 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 		}
 		if (list.Count > 0)
 		{
-			global::Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
+			Solarmax.Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
 		}
 	}
 
@@ -1044,7 +1044,7 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 		if (index >= 0 && this.currentChapterIndex != index)
 		{
 			this.currentChapterIndex = index;
-			PlayerPrefs.SetInt(string.Format("Chapter_id_{0}", global::Singleton<LocalPlayer>.Get().playerData.userId.ToString()), index);
+			PlayerPrefs.SetInt(string.Format("Chapter_id_{0}", Solarmax.Singleton<LocalPlayer>.Get().playerData.userId.ToString()), index);
 		}
 	}
 
@@ -1179,30 +1179,30 @@ public class LevelDataHandler : Solarmax.Singleton<LevelDataHandler>, IDataHandl
 		}
 		if (waitting)
 		{
-			PlayerPrefs.SetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, this.chapterList[index].id), 1);
+			PlayerPrefs.SetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, this.chapterList[index].id), 1);
 		}
 		else
 		{
-			PlayerPrefs.SetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, this.chapterList[index].id), 0);
+			PlayerPrefs.SetInt(string.Format("Chapter_id_is_watting_unlock_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, this.chapterList[index].id), 0);
 		}
 		this.chapterList[index].isWattingUnlock = waitting;
 	}
 
 	public void SaveNextLevelFirstUnlock()
 	{
-		PlayerPrefs.SetInt(string.Format("Level_id_is_unlock_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, this.currentChapter.levelList[this.currentLevelIndex].groupID), 1);
+		PlayerPrefs.SetInt(string.Format("Level_id_is_unlock_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, this.currentChapter.levelList[this.currentLevelIndex].groupID), 1);
 	}
 
 	public bool NextLevelIsFirstUnlock()
 	{
-		int @int = PlayerPrefs.GetInt(string.Format("Level_id_is_unlock_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, this.currentChapter.levelList[this.currentLevelIndex].groupID), -1);
+		int @int = PlayerPrefs.GetInt(string.Format("Level_id_is_unlock_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, this.currentChapter.levelList[this.currentLevelIndex].groupID), -1);
 		return @int == -1;
 	}
 
 	public void SaveChapterAnimationStatus()
 	{
 		this.currentChapter.hasPassed = true;
-		PlayerPrefs.SetInt(string.Format("Chapter_id_passd_{0}{1}", global::Singleton<LocalAccountStorage>.Get().account, this.currentChapter.id), 1);
+		PlayerPrefs.SetInt(string.Format("Chapter_id_passd_{0}{1}", Solarmax.Singleton<LocalAccountStorage>.Get().account, this.currentChapter.id), 1);
 	}
 
 	public bool GetChapterAnimationStatus()

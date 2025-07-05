@@ -1,7 +1,7 @@
 ﻿using System;
 using Solarmax;
 
-public class LocalOrderStorage : global::Singleton<LocalOrderStorage>, ILocalStorage
+public class LocalOrderStorage : Solarmax.Singleton<LocalOrderStorage>, ILocalStorage
 {
 	public string Name()
 	{

@@ -6,7 +6,7 @@ public class AchievementTaskTemplate : MonoBehaviour
 {
 	public void UpdateUI(TaskConfig config)
 	{
-		Achievement achievement = global::Singleton<AchievementModel>.Get().dicAchievements[config.levelId];
+		Achievement achievement = Solarmax.Singleton<AchievementModel>.Get().dicAchievements[config.levelId];
 		if (achievement.success && config.status != TaskStatus.Received)
 		{
 			config.status = TaskStatus.Completed;
@@ -49,10 +49,10 @@ public class AchievementTaskTemplate : MonoBehaviour
 		{
 			return;
 		}
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		this.canClick = false;
 		this.onCDTime = 0.02f;
-		global::Singleton<TaskModel>.Get().ClaimReward(this.config.id, delegate(bool success)
+		Solarmax.Singleton<TaskModel>.Get().ClaimReward(this.config.id, delegate(bool success)
 		{
 			if (success)
 			{

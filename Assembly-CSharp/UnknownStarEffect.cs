@@ -52,7 +52,7 @@ public class UnknownStarEffect : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("EFF_XJ_BianHuan");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("EFF_XJ_BianHuan");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 		}
 		base.go.transform.localPosition = localPosition;

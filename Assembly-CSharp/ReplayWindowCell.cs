@@ -24,7 +24,7 @@ public class ReplayWindowCell : MonoBehaviour
 		for (int j = 0; j < list.Count; j++)
 		{
 			SimplePlayerData simplePlayerData = list[j];
-			if (simplePlayerData.userId != global::Singleton<LocalPlayer>.Get().playerData.userId || j == 0)
+			if (simplePlayerData.userId != Solarmax.Singleton<LocalPlayer>.Get().playerData.userId || j == 0)
 			{
 			}
 			Team team = null;
@@ -43,7 +43,7 @@ public class ReplayWindowCell : MonoBehaviour
 			UISprite component = this.races[j].transform.Find("icon_effect").GetComponent<UISprite>();
 			NetTexture component2 = this.races[j].transform.Find("icon").GetComponent<NetTexture>();
 			UILabel component3 = this.races[j].transform.Find("name").GetComponent<UILabel>();
-			if (simplePlayerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+			if (simplePlayerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 			{
 				this.races[j].transform.Find("kuang").gameObject.SetActive(true);
 			}
@@ -219,8 +219,8 @@ public class ReplayWindowCell : MonoBehaviour
 			if (team.team == (TEAM)data.playerTeam)
 			{
 				this.races[l].transform.Find("icon").gameObject.SetActive(true);
-				component3.text = global::Singleton<LocalPlayer>.Get().playerData.name;
-				string text = global::Singleton<LocalPlayer>.Get().playerData.icon;
+				component3.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.name;
+				string text = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 				if (!text.EndsWith(".png"))
 				{
 					text += ".png";

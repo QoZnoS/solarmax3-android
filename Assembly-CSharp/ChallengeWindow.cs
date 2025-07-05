@@ -22,13 +22,13 @@ public class ChallengeWindow : BaseWindow
 	{
 		base.OnShow();
 		this.animatorMoney = 0;
-		this.currentMoney = global::Singleton<LocalPlayer>.Get().playerData.money;
+		this.currentMoney = Solarmax.Singleton<LocalPlayer>.Get().playerData.money;
 		this.levelTemplate.SetActive(false);
 		this.chapterTemplate.SetActive(false);
 		this.challengeTemplate.SetActive(false);
 		EngineSystem engineSystem = Solarmax.Singleton<EngineSystem>.Get();
 		engineSystem.onNetStatusChanged = (EngineSystem.OnNetStatusChanged)Delegate.Combine(engineSystem.onNetStatusChanged, new EngineSystem.OnNetStatusChanged(this.NetStatus));
-		this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+		this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		this.NetStatus((NetworkReachability)Solarmax.Singleton<EngineSystem>.Get().GetNetworkRechability());
 		this.challengeChapters = new Dictionary<ChapterInfo, ChallengeChapterTemplate>();
 		this.UpdateUI();
@@ -44,10 +44,10 @@ public class ChallengeWindow : BaseWindow
 		{
 			if (!this.moneyAnimator)
 			{
-				global::Singleton<AudioManger>.Get().PlayEffect("Gold");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("Gold");
 			}
 			this.moneyAnimator = true;
-			this.animatorMoney = global::Singleton<LocalPlayer>.Get().playerData.money - this.currentMoney;
+			this.animatorMoney = Solarmax.Singleton<LocalPlayer>.Get().playerData.money - this.currentMoney;
 		}
 		else if (eventId == EventId.OnTaskOkEvent)
 		{
@@ -89,8 +89,8 @@ public class ChallengeWindow : BaseWindow
 			else if (this.animatorMoney == 0)
 			{
 				this.moneyAnimator = false;
-				this.currentMoney = global::Singleton<LocalPlayer>.Get().playerData.money;
-				this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+				this.currentMoney = Solarmax.Singleton<LocalPlayer>.Get().playerData.money;
+				this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			}
 		}
 	}
@@ -159,7 +159,7 @@ public class ChallengeWindow : BaseWindow
 			}
 			if (list.Count != 0)
 			{
-				global::Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
+				Solarmax.Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
 			}
 		}
 		this.onekeyCD = false;

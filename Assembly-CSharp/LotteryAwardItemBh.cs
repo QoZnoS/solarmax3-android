@@ -15,7 +15,7 @@ public class LotteryAwardItemBh : MonoBehaviour
 
 	public void SetExtraId(int extarId)
 	{
-		AwardItem extraItem = global::Singleton<LuckModel>.Get().GetExtraItem(extarId);
+		AwardItem extraItem = Solarmax.Singleton<LuckModel>.Get().GetExtraItem(extarId);
 		this.numLabel.text = "x" + extraItem.itemNum;
 		this.awardInfo = Solarmax.Singleton<LotteryAddProvider>.Get().dataDict[extarId];
 		this.cntLabel.text = LanguageDataProvider.Format(2316, new object[]
@@ -44,7 +44,7 @@ public class LotteryAwardItemBh : MonoBehaviour
 	public void OnItemClick()
 	{
 		Debug.Log("OnItemClick");
-		if (global::Singleton<LuckModel>.Get().tweener != null && global::Singleton<LuckModel>.Get().tweener.IsPlaying())
+		if (Solarmax.Singleton<LuckModel>.Get().tweener != null && Solarmax.Singleton<LuckModel>.Get().tweener.IsPlaying())
 		{
 			return;
 		}

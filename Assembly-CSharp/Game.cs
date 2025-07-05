@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
 				Game.tmp0 = new Callback<string>(Debug.Log);
 			}
 			instance.SetConsoleLogger(new Solarmax.Logger(Game.tmp0));
-			global::Singleton<LoadResManager>.Get().Init();
+			Solarmax.Singleton<LoadResManager>.Get().Init();
 		}
 		catch (Exception ex)
 		{
@@ -121,7 +121,7 @@ public class Game : MonoBehaviour
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.root = this.battleRoot;
 		base.gameObject.AddComponent<BGManager>();
 		this.AsyncInitMsg();
-		global::Singleton<AudioManger>.Get().Init();
+		Solarmax.Singleton<AudioManger>.Get().Init();
 		UISystem.DirectShowPrefab("ui/loadingwindow.prefab");
 	}
 

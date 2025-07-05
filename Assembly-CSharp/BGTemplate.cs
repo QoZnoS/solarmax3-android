@@ -126,7 +126,7 @@ public class BGTemplate : MonoBehaviour
 			if ((BGManager.Inst.CurrentSkinConfig() == null && this.config.id == BGManager.DEFAULT_BG_ID) || BGManager.Inst.CurrentSkinConfig() == this.config)
 			{
 				this.select.startsActive = true;
-				global::Singleton<LocalSettingStorage>.Get().bg = this.config.id;
+				Solarmax.Singleton<LocalSettingStorage>.Get().bg = this.config.id;
 				Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalSetting();
 				Solarmax.Singleton<LoggerSystem>.Instance.Info("背景相同，不要更换", new object[0]);
 				return;
@@ -161,7 +161,7 @@ public class BGTemplate : MonoBehaviour
 			return;
 		}
 		this.bBuyBG = true;
-		if ((double)global::Singleton<LocalPlayer>.Get().playerData.money < this.config.goodValue)
+		if ((double)Solarmax.Singleton<LocalPlayer>.Get().playerData.money < this.config.goodValue)
 		{
 			Tips.Make(LanguageDataProvider.GetValue(1102));
 			return;
@@ -189,10 +189,10 @@ public class BGTemplate : MonoBehaviour
 			if ((BGManager.Inst.CurrentSkinConfig() == null && this.config.id == BGManager.DEFAULT_BG_ID) || BGManager.Inst.CurrentSkinConfig() == this.config)
 			{
 				this.select.startsActive = true;
-				global::Singleton<LocalSettingStorage>.Get().bg = this.config.id;
+				Solarmax.Singleton<LocalSettingStorage>.Get().bg = this.config.id;
 				Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalSetting();
 			}
-			else if (this.config.id == global::Singleton<LocalSettingStorage>.Get().bg)
+			else if (this.config.id == Solarmax.Singleton<LocalSettingStorage>.Get().bg)
 			{
 				this.select.startsActive = true;
 			}
@@ -204,7 +204,7 @@ public class BGTemplate : MonoBehaviour
 	{
 		if (this.isPreview)
 		{
-			if (this.bApllyBg && global::Singleton<LocalSettingStorage>.Get().bg != this.config.id)
+			if (this.bApllyBg && Solarmax.Singleton<LocalSettingStorage>.Get().bg != this.config.id)
 			{
 				this.labelApply.text = string.Empty;
 			}
@@ -221,7 +221,7 @@ public class BGTemplate : MonoBehaviour
 				this.labelApply.text = string.Empty;
 			}
 		}
-		else if (this.bApllyBg && global::Singleton<LocalSettingStorage>.Get().bg != this.config.id)
+		else if (this.bApllyBg && Solarmax.Singleton<LocalSettingStorage>.Get().bg != this.config.id)
 		{
 			this.labelApply.text = string.Empty;
 		}
@@ -229,7 +229,7 @@ public class BGTemplate : MonoBehaviour
 		{
 			this.labelApply.text = LanguageDataProvider.GetValue(2087);
 		}
-		else if (global::Singleton<LocalSettingStorage>.Get().bg == this.config.id)
+		else if (Solarmax.Singleton<LocalSettingStorage>.Get().bg == this.config.id)
 		{
 			this.isDownloading = false;
 			this.labelApply.text = LanguageDataProvider.GetValue(2163);

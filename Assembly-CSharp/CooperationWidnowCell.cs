@@ -39,7 +39,7 @@ public class CooperationWidnowCell : MonoBehaviour
 
 	public void OnClickBuy(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (this.chapter == null)
 		{
 			return;
@@ -64,7 +64,7 @@ public class CooperationWidnowCell : MonoBehaviour
 		}
 		else
 		{
-			if (global::Singleton<LocalPlayer>.Get().playerData.money < data.costGold)
+			if (Solarmax.Singleton<LocalPlayer>.Get().playerData.money < data.costGold)
 			{
 				global::Coroutine.DelayDo(0.2f, new EventDelegate(delegate()
 				{
@@ -95,7 +95,7 @@ public class CooperationWidnowCell : MonoBehaviour
 			Tips.Make(LanguageDataProvider.GetValue(1101));
 			return;
 		}
-		if (global::Singleton<LocalPlayer>.Get().playerData.money < data.costGold)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.money < data.costGold)
 		{
 			global::Coroutine.DelayDo(0.2f, new EventDelegate(delegate()
 			{

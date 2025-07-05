@@ -34,14 +34,14 @@ public class HallSelectionWindow : BaseWindow
 		{
 			"HallWindow"
 		});
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 	}
 
 	public void OnBnPvpRoomClick()
 	{
 		Solarmax.Singleton<UISystem>.Get().HideAllWindow();
 		Solarmax.Singleton<UISystem>.Get().ShowWindow("CreateRoomWindow");
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 	}
 
 	public void OnBackClick()

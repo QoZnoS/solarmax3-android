@@ -1,7 +1,7 @@
 ﻿using System;
 using Solarmax;
 
-public class OldLocalPvpStorage : global::Singleton<OldLocalPvpStorage>, OldILocalStorage
+public class OldLocalPvpStorage : Solarmax.Singleton<OldLocalPvpStorage>, OldILocalStorage
 {
 	public string Name()
 	{

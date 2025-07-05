@@ -64,7 +64,7 @@ namespace Solarmax
 				NoticeRequest.OnResponse();
 				return;
 			}
-			string languageNameConfig = Singleton<LanguageDataProvider>.Get().GetLanguageNameConfig();
+			string languageNameConfig = Solarmax.Singleton<LanguageDataProvider>.Get().GetLanguageNameConfig();
 			string text = string.Format("channel={0}&language={1}", UnityWebRequest.EscapeURL(channelConfig.ChannelId), UnityWebRequest.EscapeURL(languageNameConfig));
 			NoticeRequest.mOnResponseDelegate = onResponseDelegate;
 			string tag = "GetNotice";

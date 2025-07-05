@@ -16,7 +16,7 @@ namespace Solarmax
 
 		public static void GetServerList(Action onResponseDelegate)
 		{
-			Singleton<LoggerSystem>.Instance.Info("Request for game server", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("Request for game server", new object[0]);
 			string[] array = new string[]
 			{
 				"服务器"
@@ -31,7 +31,7 @@ namespace Solarmax
 				}
 				return;
 			}
-			string languageNameConfig = Singleton<LanguageDataProvider>.Get().GetLanguageNameConfig();
+			string languageNameConfig = Solarmax.Singleton<LanguageDataProvider>.Get().GetLanguageNameConfig();
 			string param = string.Format("language={0}", UnityWebRequest.EscapeURL(languageNameConfig));
 			ServerListRequest.mRequestor = new WebRequestor<ServerListResponse>("GetServerList", array, "serverList", param, false, onResponseDelegate);
 			ServerListRequest.mRequestor.StartRequest(-1);

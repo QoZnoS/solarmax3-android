@@ -23,7 +23,7 @@ public class ResultWindow : BaseWindow
 		base.OnShow();
 		Solarmax.Singleton<EffectManager>.Instance.Destroy();
 		this.IsShowMoneyChange = false;
-		this.mapId = global::Singleton<LocalPlayer>.Get().battleMap;
+		this.mapId = Solarmax.Singleton<LocalPlayer>.Get().battleMap;
 		for (int i = 0; i < this.posRoots.Length; i++)
 		{
 		}
@@ -42,7 +42,7 @@ public class ResultWindow : BaseWindow
 
 	public override void OnHide()
 	{
-		global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
+		Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.root.SetActive(true);
 	}
 
@@ -77,7 +77,7 @@ public class ResultWindow : BaseWindow
 		{
 			this.showAdBtn.GetComponent<UIButton>().enabled = false;
 			int num = this.selfScoreChange / 2;
-			this.score.text = global::Singleton<LocalPlayer>.Get().playerData.score.ToString();
+			this.score.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.score.ToString();
 			this.scoreChange.text = string.Format("{0}[-][FF0000]{1}[-]", LanguageDataProvider.GetValue(2214), num);
 			if (this.selfInfo != null)
 			{
@@ -189,11 +189,11 @@ public class ResultWindow : BaseWindow
 			}
 			if (team.scoreMod > 0)
 			{
-				global::Singleton<AudioManger>.Get().PlayEffect("onPVPvictory");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("onPVPvictory");
 			}
 			else
 			{
-				global::Singleton<AudioManger>.Get().PlayEffect("onPVPdefeated");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("onPVPdefeated");
 			}
 		}
 		else
@@ -204,16 +204,16 @@ public class ResultWindow : BaseWindow
 		{
 			if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_2v2)
 			{
-				bool flag2 = global::Singleton<LocalPlayer>.Get().IsInSeason(Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType);
+				bool flag2 = Solarmax.Singleton<LocalPlayer>.Get().IsInSeason(Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType);
 				if (flag2)
 				{
-					global::Singleton<LocalPlayer>.Get().playerData.battle_count++;
+					Solarmax.Singleton<LocalPlayer>.Get().playerData.battle_count++;
 				}
 				if (team2.IsFriend(team.groupID))
 				{
 					if (flag2)
 					{
-						global::Singleton<LocalPlayer>.Get().playerData.mvp_count++;
+						Solarmax.Singleton<LocalPlayer>.Get().playerData.mvp_count++;
 					}
 					this.result.text = LanguageDataProvider.GetValue(100);
 				}
@@ -241,14 +241,14 @@ public class ResultWindow : BaseWindow
 				{
 					array[num]
 				});
-				bool flag3 = global::Singleton<LocalPlayer>.Get().IsInSeason(Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType);
+				bool flag3 = Solarmax.Singleton<LocalPlayer>.Get().IsInSeason(Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType);
 				if (flag3)
 				{
-					global::Singleton<LocalPlayer>.Get().playerData.battle_count++;
+					Solarmax.Singleton<LocalPlayer>.Get().playerData.battle_count++;
 				}
 				if (num == 0 && flag3)
 				{
-					global::Singleton<LocalPlayer>.Get().playerData.mvp_count++;
+					Solarmax.Singleton<LocalPlayer>.Get().playerData.mvp_count++;
 				}
 			}
 			else
@@ -293,9 +293,9 @@ public class ResultWindow : BaseWindow
 				Team team7 = list[k];
 				if (team7.playerData.userId != -1)
 				{
-					bool isSeason = global::Singleton<LocalPlayer>.Get().IsInSeason(Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType) && Solarmax.Singleton<BattleSystem>.Instance.battleData.matchType != MatchType.MT_Room;
+					bool isSeason = Solarmax.Singleton<LocalPlayer>.Get().IsInSeason(Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType) && Solarmax.Singleton<BattleSystem>.Instance.battleData.matchType != MatchType.MT_Room;
 					this.SetPosInfo(num3, team7, team7.scoreMod, team7.hitships, team2, isSeason, false);
-					if (team7.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+					if (team7.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 					{
 						this.selfScoreChange = team7.scoreMod;
 						this.selfMoneyChange = team7.rewardMoney;
@@ -312,17 +312,17 @@ public class ResultWindow : BaseWindow
 		this.IsShowMoneyChange = false;
 		this.showAdBtn.SetActive(false);
 		this.showAdMoney.SetActive(false);
-		bool flag4 = global::Singleton<LocalPlayer>.Get().IsInSeason(Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType) && Solarmax.Singleton<BattleSystem>.Instance.battleData.matchType != MatchType.MT_Room;
+		bool flag4 = Solarmax.Singleton<LocalPlayer>.Get().IsInSeason(Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType) && Solarmax.Singleton<BattleSystem>.Instance.battleData.matchType != MatchType.MT_Room;
 		if (flag4)
 		{
 			this.scoreCup.SetActive(true);
 			this.scoreChange.gameObject.SetActive(true);
-			global::Singleton<LocalPlayer>.Get().playerData.score = ((global::Singleton<LocalPlayer>.Get().playerData.score + this.selfScoreChange <= 0) ? 0 : (global::Singleton<LocalPlayer>.Get().playerData.score + this.selfScoreChange));
-			this.score.text = global::Singleton<LocalPlayer>.Get().playerData.score.ToString();
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.score = ((Solarmax.Singleton<LocalPlayer>.Get().playerData.score + this.selfScoreChange <= 0) ? 0 : (Solarmax.Singleton<LocalPlayer>.Get().playerData.score + this.selfScoreChange));
+			this.score.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.score.ToString();
 			this.showAdBtn.GetComponent<UIButton>().enabled = false;
 			if (this.selfScoreChange < 0 && !Solarmax.Singleton<BattleSystem>.Instance.battleData.isReplay)
 			{
-				if (global::Singleton<LocalPlayer>.Get().playerData.score > 0)
+				if (Solarmax.Singleton<LocalPlayer>.Get().playerData.score > 0)
 				{
 					this.showAdBtn.SetActive(true);
 					this.showAdBtn.GetComponent<UIButton>().enabled = true;
@@ -468,7 +468,7 @@ public class ResultWindow : BaseWindow
 			component.Init(team, team.playerData.icon, team.playerData.name, score, destroy.ToString(), team.rewardMoney, team.color, pos, isSeason);
 			this.grid.Reposition();
 			this.dicResultBehavior.Add(team.playerData.userId, component);
-			if (team.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+			if (team.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 			{
 				this.selfInfo = component;
 			}
@@ -522,13 +522,13 @@ public class ResultWindow : BaseWindow
 			return;
 		}
 		Solarmax.Singleton<UISystem>.Get().HideAllWindow();
-		if (!string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().HomeWindow))
+		if (!string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow))
 		{
 			Solarmax.Singleton<BattleSystem>.Instance.Reset();
-			Solarmax.Singleton<UISystem>.Get().ShowWindow(global::Singleton<LocalPlayer>.Get().HomeWindow);
+			Solarmax.Singleton<UISystem>.Get().ShowWindow(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow);
 			return;
 		}
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		if (Solarmax.Singleton<BattleSystem>.Instance.battleData.isReplay)
 		{
 			Solarmax.Singleton<UISystem>.Get().ShowWindow("ReplayWindow");

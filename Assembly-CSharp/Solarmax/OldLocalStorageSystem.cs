@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public sealed class OldLocalStorageSystem : Singleton<OldLocalStorageSystem>, Lifecycle
+	public sealed class OldLocalStorageSystem : Solarmax.Singleton<OldLocalStorageSystem>, Lifecycle
 	{
 		public OldLocalStorageSystem()
 		{
@@ -17,14 +17,14 @@ namespace Solarmax
 
 		public bool Init()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("LocalStorageSystem    init   begin", new object[0]);
-			this.RegisterLocalStorage(Singleton<OldLocalAccountStorage>.Get());
-			this.RegisterLocalStorage(Singleton<OldLocalSettingStorage>.Get());
-			this.RegisterLocalStorage(Singleton<OldLocalChaptersStorage>.Get());
-			this.RegisterLocalStorage(Singleton<OldLocalLevelStorage>.Get());
-			this.RegisterLocalStorage(Singleton<OldLocalPvpStorage>.Get());
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("LocalStorageSystem    init   begin", new object[0]);
+			this.RegisterLocalStorage(Solarmax.Singleton<OldLocalAccountStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<OldLocalSettingStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<OldLocalChaptersStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<OldLocalLevelStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<OldLocalPvpStorage>.Get());
 			this.LoadLocalStorage();
-			Singleton<LoggerSystem>.Instance.Debug("OldLocalStorageSystem    init   end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("OldLocalStorageSystem    init   end", new object[0]);
 			return true;
 		}
 
@@ -54,11 +54,11 @@ namespace Solarmax
 
 		public void LoadLocalStorage()
 		{
-			OldILocalStorage oldILocalStorage = Singleton<OldLocalAccountStorage>.Get();
+			OldILocalStorage oldILocalStorage = Solarmax.Singleton<OldLocalAccountStorage>.Get();
 			this.saveTempName = oldILocalStorage.Name();
 			this.saveTempIndex = 0;
 			oldILocalStorage.Load(this);
-			oldILocalStorage = Singleton<OldLocalSettingStorage>.Get();
+			oldILocalStorage = Solarmax.Singleton<OldLocalSettingStorage>.Get();
 			this.saveTempName = oldILocalStorage.Name();
 			this.saveTempIndex = 0;
 			oldILocalStorage.Load(this);
@@ -66,7 +66,7 @@ namespace Solarmax
 
 		public CSUploadOldVersionData LoadUploadStorage()
 		{
-			OldILocalStorage oldILocalStorage = Singleton<OldLocalChaptersStorage>.Get();
+			OldILocalStorage oldILocalStorage = Solarmax.Singleton<OldLocalChaptersStorage>.Get();
 			this.saveTempName = oldILocalStorage.Name();
 			this.saveTempIndex = 0;
 			oldILocalStorage.Load(this);
@@ -93,32 +93,32 @@ namespace Solarmax
 
 		public void SaveLocalAccount(bool bSaveTime = false)
 		{
-			this.saveTempName = Singleton<LocalAccountStorage>.Get().Name();
+			this.saveTempName = Solarmax.Singleton<LocalAccountStorage>.Get().Name();
 			this.saveTempIndex = 0;
 			if (bSaveTime)
 			{
 				DateTime d = new DateTime(1970, 1, 1);
 				long regtimeSaveFile = (long)(DateTime.Now - d).TotalSeconds;
-				Singleton<OldLocalAccountStorage>.Get().regtimeSaveFile = regtimeSaveFile;
+                Solarmax.Singleton<OldLocalAccountStorage>.Get().regtimeSaveFile = regtimeSaveFile;
 			}
-			Singleton<OldLocalAccountStorage>.Get().Save(this);
+            Solarmax.Singleton<OldLocalAccountStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalChapters()
 		{
-			this.saveTempName = Singleton<OldLocalChaptersStorage>.Get().Name();
+			this.saveTempName = Solarmax.Singleton<OldLocalChaptersStorage>.Get().Name();
 			this.saveTempIndex = 0;
-			Singleton<OldLocalChaptersStorage>.Get().Save(this);
+            Solarmax.Singleton<OldLocalChaptersStorage>.Get().Save(this);
 		}
 
 		public void SavePvp(int days, int win, int destroy)
 		{
 			this.saveTempIndex = 0;
-			this.saveTempName = Singleton<OldLocalPvpStorage>.Get().Name();
-			Singleton<OldLocalPvpStorage>.Get().days = days;
-			Singleton<OldLocalPvpStorage>.Get().pvpWin = win;
-			Singleton<OldLocalPvpStorage>.Get().pvpDestroy = destroy;
-			Singleton<OldLocalPvpStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<OldLocalPvpStorage>.Get().Name();
+            Solarmax.Singleton<OldLocalPvpStorage>.Get().days = days;
+            Solarmax.Singleton<OldLocalPvpStorage>.Get().pvpWin = win;
+            Solarmax.Singleton<OldLocalPvpStorage>.Get().pvpDestroy = destroy;
+            Solarmax.Singleton<OldLocalPvpStorage>.Get().Save(this);
 		}
 
 		public void DeleteStorage()

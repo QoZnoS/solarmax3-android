@@ -209,7 +209,7 @@ public class MiGameSDKCallbackImpl : LoginSDKCallback
 		}
 		if (resuldCode.Equals("VideoOpened"))
 		{
-			string rewardbyNum = Solarmax.Singleton<CollectionModel>.Get().GetRewardbyNum(global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum);
+			string rewardbyNum = Solarmax.Singleton<CollectionModel>.Get().GetRewardbyNum(Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum);
 			MonoSingleton<FlurryAnalytis>.Instance.FlurryOpenADSEvent(rewardbyNum);
 			AppsFlyerTool.FlyerOpenADSEvent();
 			return;
@@ -220,18 +220,18 @@ public class MiGameSDKCallbackImpl : LoginSDKCallback
 		}
 		MonoSingleton<FlurryAnalytis>.Instance.FlurryAdsEndEvent();
 		AppsFlyerTool.FlyerAdsEndEvent();
-		global::Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Ads, 1);
+		Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Ads, 1);
 		if (AdManager.currentShowType == AdManager.ShowAdType.ShopAd)
 		{
 			if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() != ConnectionStatus.CONNECTED)
 			{
 				Solarmax.Singleton<ReconnectHandler>.Get().StartReconnect();
-				if (global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum <= Solarmax.Singleton<storeConfigProvider>.Get().MAX_SHOW_ADS_NUM)
+				if (Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum <= Solarmax.Singleton<storeConfigProvider>.Get().MAX_SHOW_ADS_NUM)
 				{
 					Solarmax.Singleton<NetSystem>.Instance.helper.StartCSAdRewardCache();
 				}
 			}
-			else if (global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum <= Solarmax.Singleton<storeConfigProvider>.Get().MAX_SHOW_ADS_NUM)
+			else if (Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum <= Solarmax.Singleton<storeConfigProvider>.Get().MAX_SHOW_ADS_NUM)
 			{
 				Solarmax.Singleton<NetSystem>.Instance.helper.StartCSAdReward();
 			}

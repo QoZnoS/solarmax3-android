@@ -11,7 +11,7 @@ namespace Solarmax
 			this.MaxNoReplyCount = 3;
 			this.pingInterval = 5;
 			this.noReplyCount = 0;
-			this.lastNetState = Singleton<EngineSystem>.Instance.GetNetworkRechability();
+			this.lastNetState = Solarmax.Singleton<EngineSystem>.Instance.GetNetworkRechability();
 		}
 
 		public bool Init()
@@ -44,23 +44,23 @@ namespace Solarmax
 		{
 			if (this.noReplyCount >= this.MaxNoReplyCount)
 			{
-				if (Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED)
+				if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED)
 				{
 					Debug.LogFormat("由于连续{0}次未收到Ping回复，主动断开连接！", new object[]
 					{
 						this.noReplyCount
 					});
-					Singleton<NetSystem>.Instance.Close();
+                    Solarmax.Singleton<NetSystem>.Instance.Close();
 				}
 				this.noReplyCount = 0;
 				this.lastPingTime = 0f;
 			}
-			if (Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED)
+			if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED)
 			{
-				Singleton<NetSystem>.Instance.helper.PingNet();
+                Solarmax.Singleton<NetSystem>.Instance.helper.PingNet();
 				this.noReplyCount++;
 			}
-			int networkRechability = Singleton<EngineSystem>.Instance.GetNetworkRechability();
+			int networkRechability = Solarmax.Singleton<EngineSystem>.Instance.GetNetworkRechability();
 			if (this.lastNetState != networkRechability)
 			{
 				this.lastNetState = networkRechability;
@@ -70,7 +70,7 @@ namespace Solarmax
 				});
 				if (this.lastNetState != 0 && networkRechability == 0)
 				{
-					Singleton<NetSystem>.Instance.Close();
+                    Solarmax.Singleton<NetSystem>.Instance.Close();
 				}
 			}
 		}
@@ -97,7 +97,7 @@ namespace Solarmax
 			{
 				color = Color.green;
 			}
-			int networkRechability = Singleton<EngineSystem>.Instance.GetNetworkRechability();
+			int networkRechability = Solarmax.Singleton<EngineSystem>.Instance.GetNetworkRechability();
 			if (networkRechability == 0)
 			{
 				pic = "icon_net_offline";

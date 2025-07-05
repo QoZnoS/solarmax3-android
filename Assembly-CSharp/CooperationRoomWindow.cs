@@ -31,7 +31,7 @@ public class CooperationRoomWindow : BaseWindow
 	{
 		if (eventId == EventId.UpdateMoney)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 		else if (eventId == EventId.OnHaveNewChapterUnlocked)
 		{
@@ -69,9 +69,9 @@ public class CooperationRoomWindow : BaseWindow
 
 	private void SetPlayerBaseInfo()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData != null)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 	}
 

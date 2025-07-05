@@ -13,7 +13,7 @@ public class DailyTaskTemplate : MonoBehaviour
 			return;
 		}
 		this.task = config;
-		this.model = global::Singleton<TaskModel>.Get();
+		this.model = Solarmax.Singleton<TaskModel>.Get();
 		this.isMonthCardTask = month;
 		this.UpdateUI();
 	}
@@ -68,16 +68,16 @@ public class DailyTaskTemplate : MonoBehaviour
 					this.finished.SetActive(false);
 					if (this.task.subType == FinishConntion.Level)
 					{
-						int num = global::Singleton<LocalPvpStorage>.Get().pvpWin;
+						int num = Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin;
 						if (num > this.task.taskParameter)
 						{
 							num = this.task.taskParameter;
 						}
-						this.unfinishedLabel.text = global::Singleton<LocalPvpStorage>.Get().pvpWin.ToString() + "/" + this.task.taskParameter.ToString();
+						this.unfinishedLabel.text = Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin.ToString() + "/" + this.task.taskParameter.ToString();
 					}
 					else if (this.task.subType == FinishConntion.Pve)
 					{
-						int num2 = global::Singleton<LocalPvpStorage>.Get().pve;
+						int num2 = Solarmax.Singleton<LocalPvpStorage>.Get().pve;
 						if (num2 > this.task.taskParameter)
 						{
 							num2 = this.task.taskParameter;
@@ -86,7 +86,7 @@ public class DailyTaskTemplate : MonoBehaviour
 					}
 					else if (this.task.subType == FinishConntion.OnLine)
 					{
-						int num3 = (int)global::Singleton<LocalPlayer>.Get().mOnLineTime / 60;
+						int num3 = (int)Solarmax.Singleton<LocalPlayer>.Get().mOnLineTime / 60;
 						if (num3 > this.task.taskParameter)
 						{
 							num3 = this.task.taskParameter;
@@ -95,7 +95,7 @@ public class DailyTaskTemplate : MonoBehaviour
 					}
 					else if (this.task.subType == FinishConntion.Ads)
 					{
-						int num4 = global::Singleton<LocalPvpStorage>.Get().lookAds;
+						int num4 = Solarmax.Singleton<LocalPvpStorage>.Get().lookAds;
 						if (num4 > this.task.taskParameter)
 						{
 							num4 = this.task.taskParameter;
@@ -104,7 +104,7 @@ public class DailyTaskTemplate : MonoBehaviour
 					}
 					else
 					{
-						int num5 = global::Singleton<LocalPvpStorage>.Get().pvpDestroy;
+						int num5 = Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy;
 						if (num5 > this.task.taskParameter)
 						{
 							num5 = this.task.taskParameter;
@@ -142,7 +142,7 @@ public class DailyTaskTemplate : MonoBehaviour
 			{
 				if (this.task.subType == FinishConntion.OnLine)
 				{
-					int num = (int)global::Singleton<LocalPlayer>.Get().mOnLineTime / 60;
+					int num = (int)Solarmax.Singleton<LocalPlayer>.Get().mOnLineTime / 60;
 					if (num > this.task.taskParameter)
 					{
 						num = this.task.taskParameter;
@@ -182,7 +182,7 @@ public class DailyTaskTemplate : MonoBehaviour
 		this.canClick = false;
 		if (this.isMonthCardTask)
 		{
-			if (global::Singleton<LocalPlayer>.Get().IsRechargeRewardCard() && global::Singleton<LocalPlayer>.Get().IsMonthCardReceive)
+			if (Solarmax.Singleton<LocalPlayer>.Get().IsRechargeRewardCard() && Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive)
 			{
 				Solarmax.Singleton<LoggerSystem>.Instance.Info("领取月卡", new object[0]);
 				Solarmax.Singleton<NetSystem>.Instance.helper.CSReceiveMonthlyCard();
@@ -194,8 +194,8 @@ public class DailyTaskTemplate : MonoBehaviour
 			{
 				RewardTipsWindow.ViewType.AD
 			}));
-			global::Singleton<TaskModel>.Get().claimTask = this.task;
-			global::Singleton<TaskModel>.Get().claimReward = new RewardTipsModel(this.task.rewardValue, global::RewardType.Money, false, 0);
+			Solarmax.Singleton<TaskModel>.Get().claimTask = this.task;
+			Solarmax.Singleton<TaskModel>.Get().claimReward = new RewardTipsModel(this.task.rewardValue, global::RewardType.Money, false, 0);
 		}
 	}
 
@@ -212,9 +212,9 @@ public class DailyTaskTemplate : MonoBehaviour
 			if (this.task != null)
 			{
 				MonoSingleton<FlurryAnalytis>.Instance.LogTaskLookAds();
-				global::Singleton<TaskModel>.Get().claimTask = this.task;
-				global::Singleton<TaskModel>.Get().claimReward = new RewardTipsModel(this.task.rewardValue * 2, global::RewardType.Money, false, 0);
-				global::Singleton<TaskModel>.Get().ClaimReward(this.task.id, null, 2);
+				Solarmax.Singleton<TaskModel>.Get().claimTask = this.task;
+				Solarmax.Singleton<TaskModel>.Get().claimReward = new RewardTipsModel(this.task.rewardValue * 2, global::RewardType.Money, false, 0);
+				Solarmax.Singleton<TaskModel>.Get().ClaimReward(this.task.id, null, 2);
 			}
 			else
 			{

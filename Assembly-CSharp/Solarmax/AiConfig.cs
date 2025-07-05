@@ -40,7 +40,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error(this.Path() + "resource failed !" + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error(this.Path() + "resource failed !" + ex.ToString(), new object[0]);
 			}
 		}
 

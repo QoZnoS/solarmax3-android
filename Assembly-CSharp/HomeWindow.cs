@@ -19,7 +19,7 @@ public class HomeWindow : BaseWindow
 			this.mPlanetGo = UnityEngine.Object.Instantiate<GameObject>(this.PlanetPrefab);
 			this.mPlanetGo.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);
 		}
-		global::Singleton<MonthCheckModel>.Get().Init();
+		Solarmax.Singleton<MonthCheckModel>.Get().Init();
 		return true;
 	}
 
@@ -38,14 +38,14 @@ public class HomeWindow : BaseWindow
 		Solarmax.Singleton<NetSystem>.Instance.GetConnector().SetConnectStatus(ConnectionStatus.CONNECTED);
 		this.mShowAirShipWhenHide = false;
 		BGManager.Inst.SetAirShipVisible(true);
-		global::Singleton<LocalPlayer>.Get().HomeWindow = string.Empty;
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<LocalPlayer>.Get().HomeWindow = string.Empty;
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		this.functionOpenTips.Refresh();
 		this.RefeshFunctionButtons();
 		Solarmax.Singleton<NetSystem>.Get().helper.LotteryNotesFromServer();
 		Solarmax.Singleton<NetSystem>.Get().helper.GetMailList(0);
 		this.showReNameWindow = false;
-		if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED && global::Singleton<LocalPlayer>.Get().playerData.name == string.Empty)
+		if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED && Solarmax.Singleton<LocalPlayer>.Get().playerData.name == string.Empty)
 		{
 			this.showReNameWindow = true;
 			Solarmax.Singleton<UISystem>.Get().ShowWindow("SingleClearWindow");
@@ -64,9 +64,9 @@ public class HomeWindow : BaseWindow
 		{
 			this.mPlanetGo.SetActive(true);
 		}
-		if (global::Singleton<LocalPlayer>.Get().playerData.icon != string.Empty)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.icon != string.Empty)
 		{
-			this.headBehavior.Load(global::Singleton<LocalPlayer>.Get().playerData.icon, null, null);
+			this.headBehavior.Load(Solarmax.Singleton<LocalPlayer>.Get().playerData.icon, null, null);
 		}
 		RapidBlurEffect component = Camera.main.GetComponent<RapidBlurEffect>();
 		if (component != null && Camera.main.orthographicSize != 5.5f)
@@ -106,7 +106,7 @@ public class HomeWindow : BaseWindow
 		}
 		else if (eventId == EventId.UpdateMoney)
 		{
-			this.lblMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.lblMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 		else if (eventId == EventId.OnMonthCheckSuccess)
 		{
@@ -206,7 +206,7 @@ public class HomeWindow : BaseWindow
 
 	private void RefreshPlayerInfo()
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		if (playerData == null)
 		{
 			return;
@@ -252,29 +252,29 @@ public class HomeWindow : BaseWindow
 
 	private bool NeedShowMothCheckReddot()
 	{
-		return global::Singleton<MonthCheckModel>.Get().needCheck;
+		return Solarmax.Singleton<MonthCheckModel>.Get().needCheck;
 	}
 
 	private bool NeedRechargeReddot()
 	{
-		return global::Singleton<LocalPlayer>.Get().IsMonthCardReceive || (!global::Singleton<LocalPlayer>.Get().IsMonthCardReceive && !StoreWindow.hasOpened);
+		return Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive || (!Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive && !StoreWindow.hasOpened);
 	}
 
 	private void NeedShowRechareMonthCardWindow()
 	{
-		if (!global::Singleton<LocalPlayer>.Get().IsMonthCardReceive)
+		if (!Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive)
 		{
 			return;
 		}
-		if (!global::Singleton<MonthCheckModel>.Get().firstOpen)
+		if (!Solarmax.Singleton<MonthCheckModel>.Get().firstOpen)
 		{
 			return;
 		}
-		global::Singleton<MonthCheckModel>.Get().firstOpen = false;
+		Solarmax.Singleton<MonthCheckModel>.Get().firstOpen = false;
 		DateTime d = new DateTime(1970, 1, 1);
 		long num = (long)(Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d).TotalSeconds;
-		long num2 = (global::Singleton<LocalPlayer>.Get().month_card_end - num) / 86400L;
-		long num3 = (global::Singleton<LocalPlayer>.Get().month_card_end - num) % 86400L;
+		long num2 = (Solarmax.Singleton<LocalPlayer>.Get().month_card_end - num) / 86400L;
+		long num3 = (Solarmax.Singleton<LocalPlayer>.Get().month_card_end - num) % 86400L;
 		if (num3 > 0L)
 		{
 			num2 += 1L;
@@ -287,12 +287,12 @@ public class HomeWindow : BaseWindow
 
 	private bool NeedLotteryReddot()
 	{
-		return global::Singleton<LuckModel>.Get().needRedDot();
+		return Solarmax.Singleton<LuckModel>.Get().needRedDot();
 	}
 
 	private void UpdateMailReddot()
 	{
-		bool active = global::Singleton<MailModel>.Get().HasUnreadMails();
+		bool active = Solarmax.Singleton<MailModel>.Get().HasUnreadMails();
 		this.mailReddot.SetActive(active);
 	}
 

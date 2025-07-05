@@ -83,7 +83,7 @@ public class FriendRankingCell : MonoBehaviour
 
 	public void OnInviteClick(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (this.userID <= 0)
 		{
 			return;

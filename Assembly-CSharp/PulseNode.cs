@@ -69,7 +69,7 @@ public class PulseNode : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_Pulse");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Pulse");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.pulse = base.go.GetComponentInChildren<SpriteRenderer>();
 			base.go.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);

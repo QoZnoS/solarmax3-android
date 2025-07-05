@@ -7,7 +7,7 @@ public class LoadScene : MonoBehaviour
 	private void Start()
 	{
 		this.Init();
-		Singleton<LoadResManager>.Get().Init();
+        Solarmax.Singleton<LoadResManager>.Get().Init();
 		LoadResManager.LoadScene("scenes/game.ab");
 		UnityEngine.SceneManagement.SceneManager.LoadScene("Game", LoadSceneMode.Single);
 	}

@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class NameFilterConfigProvider : Singleton<NameFilterConfigProvider>, IDataProvider
+	public class NameFilterConfigProvider : Solarmax.Singleton<NameFilterConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -56,7 +56,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/RandomName.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/RandomName.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

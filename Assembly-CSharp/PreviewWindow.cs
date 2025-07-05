@@ -60,7 +60,7 @@ public class PreviewWindow : BaseWindow
 				{
 					if (team2 == team)
 					{
-						UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Effect_Birth");
+						UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Effect_Birth");
 						GameObject gameObject = UnityEngine.Object.Instantiate(resources) as GameObject;
 						gameObject.transform.SetParent(this.mapShow.GetEffectRoot(mapPlayerConfig.tag).transform);
 						NGUITools.SetLayer(gameObject, gameObject.transform.parent.gameObject.layer);
@@ -71,7 +71,7 @@ public class PreviewWindow : BaseWindow
 					}
 					else if (team.IsFriend(team2.groupID))
 					{
-						UnityEngine.Object resources2 = global::Singleton<AssetManager>.Get().GetResources("Effect_Birth_Other");
+						UnityEngine.Object resources2 = Solarmax.Singleton<AssetManager>.Get().GetResources("Effect_Birth_Other");
 						GameObject gameObject2 = UnityEngine.Object.Instantiate(resources2) as GameObject;
 						gameObject2.transform.SetParent(this.mapShow.GetEffectRoot(mapPlayerConfig.tag).transform);
 						NGUITools.SetLayer(gameObject2, gameObject2.transform.parent.gameObject.layer);
@@ -91,7 +91,7 @@ public class PreviewWindow : BaseWindow
 		if (this.startCountTime > 0)
 		{
 			this.timeLabel.text = string.Format("{0}", this.startCountTime);
-			global::Singleton<AudioManger>.Get().PlayEffect("click");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("click");
 			this.timeLabel.transform.parent.gameObject.SetActive(true);
 		}
 		else
@@ -130,7 +130,7 @@ public class PreviewWindow : BaseWindow
 	{
 		GameType gameType = Solarmax.Singleton<BattleSystem>.Instance.battleData.gameType;
 		GameState gameState = Solarmax.Singleton<BattleSystem>.Instance.battleData.gameState;
-		global::Singleton<AudioManger>.Get().PlayEffect("startBattle");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("startBattle");
 		if (Solarmax.Singleton<BattleSystem>.Instance.battleData.isReplay)
 		{
 			Solarmax.Singleton<UISystem>.Get().ShowWindow("ReplayBattleWindow");
@@ -155,7 +155,7 @@ public class PreviewWindow : BaseWindow
 		{
 			Solarmax.Singleton<BattleSystem>.Instance.StartLockStep();
 		}));
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		Solarmax.Singleton<UISystem>.Get().HideWindow("PreviewWindow");
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NoticeSelfTeam, new object[0]);
 	}

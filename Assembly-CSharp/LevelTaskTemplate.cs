@@ -14,7 +14,7 @@ public class LevelTaskTemplate : MonoBehaviour
 			return;
 		}
 		this.task = config;
-		this.model = global::Singleton<TaskModel>.Get();
+		this.model = Solarmax.Singleton<TaskModel>.Get();
 		LevelConfig data = Solarmax.Singleton<LevelConfigConfigProvider>.Get().GetData(this.task.levelId);
 		base.name = this.task.levelId + "_" + LanguageDataProvider.GetValue(data.levelName);
 		base.StartCoroutine(this.UpdateUI());

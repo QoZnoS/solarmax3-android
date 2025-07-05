@@ -122,7 +122,7 @@ public class CompositeWindow : BaseWindow
 				return;
 			}
 			int num = data.Coprice * ((data.needCount - this.snSelect.num >= 0) ? (data.needCount - this.snSelect.num) : 0);
-			if (global::Singleton<LocalPlayer>.Get().playerData.money < num)
+			if (Solarmax.Singleton<LocalPlayer>.Get().playerData.money < num)
 			{
 				Tips.Make(Tips.TipsType.FlowUp, LanguageDataProvider.GetValue(1102), 3f);
 				return;

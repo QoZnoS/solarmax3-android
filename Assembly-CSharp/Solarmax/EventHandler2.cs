@@ -34,7 +34,7 @@ namespace Solarmax
 			}
 			else
 			{
-				Singleton<LoggerSystem>.Instance.Error(string.Concat(new object[]
+                Solarmax.Singleton<LoggerSystem>.Instance.Error(string.Concat(new object[]
 				{
 					"EventLisener Error! hoster:",
 					this.mHoster,

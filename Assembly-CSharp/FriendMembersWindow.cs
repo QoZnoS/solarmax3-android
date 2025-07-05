@@ -106,7 +106,7 @@ public class FriendMembersWindow : BaseWindow
 
 	private void OnTabClick(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onClick");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onClick");
 		List<SimplePlayerData> myFriendList = Solarmax.Singleton<FriendDataHandler>.Get().myFriendList;
 		if (myFriendList.Count > 0)
 		{

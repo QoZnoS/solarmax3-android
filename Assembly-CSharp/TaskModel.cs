@@ -2,57 +2,57 @@
 using System.Collections.Generic;
 using Solarmax;
 
-public class TaskModel : global::Singleton<TaskModel>
+public class TaskModel : Solarmax.Singleton<TaskModel>
 {
 	public void Init()
 	{
 		DateTime d = new DateTime(1970, 1, 1);
 		TimeSpan timeSpan = Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d;
-		if (global::Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
+		if (Solarmax.Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
 		{
-			global::Singleton<LocalPvpStorage>.Get().Clear();
+			Solarmax.Singleton<LocalPvpStorage>.Get().Clear();
 			Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalPvp(timeSpan.Days, 0, 0);
 		}
 		else
 		{
 			foreach (TaskConfig taskConfig in Solarmax.Singleton<TaskConfigProvider>.Get().dailyList)
 			{
-				if (taskConfig.subType == FinishConntion.Level && taskConfig.status == TaskStatus.Unfinished && global::Singleton<LocalPvpStorage>.Get().pvpWin >= taskConfig.taskParameter)
+				if (taskConfig.subType == FinishConntion.Level && taskConfig.status == TaskStatus.Unfinished && Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin >= taskConfig.taskParameter)
 				{
 					if (taskConfig.status != TaskStatus.Received)
 					{
 						taskConfig.status = TaskStatus.Completed;
 					}
 				}
-				else if (taskConfig.subType == FinishConntion.Achievement && taskConfig.status == TaskStatus.Unfinished && global::Singleton<LocalPvpStorage>.Get().pvpDestroy >= taskConfig.taskParameter)
+				else if (taskConfig.subType == FinishConntion.Achievement && taskConfig.status == TaskStatus.Unfinished && Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy >= taskConfig.taskParameter)
 				{
 					if (taskConfig.status != TaskStatus.Received)
 					{
 						taskConfig.status = TaskStatus.Completed;
 					}
 				}
-				else if (taskConfig.subType == FinishConntion.Pve && taskConfig.status == TaskStatus.Unfinished && global::Singleton<LocalPvpStorage>.Get().pve >= taskConfig.taskParameter)
+				else if (taskConfig.subType == FinishConntion.Pve && taskConfig.status == TaskStatus.Unfinished && Solarmax.Singleton<LocalPvpStorage>.Get().pve >= taskConfig.taskParameter)
 				{
 					if (taskConfig.status != TaskStatus.Received)
 					{
 						taskConfig.status = TaskStatus.Completed;
 					}
 				}
-				else if (taskConfig.subType == FinishConntion.OnLine && taskConfig.status == TaskStatus.Unfinished && global::Singleton<LocalPlayer>.Get().mOnLineTime / 60f >= (float)taskConfig.taskParameter)
+				else if (taskConfig.subType == FinishConntion.OnLine && taskConfig.status == TaskStatus.Unfinished && Solarmax.Singleton<LocalPlayer>.Get().mOnLineTime / 60f >= (float)taskConfig.taskParameter)
 				{
 					if (taskConfig.status != TaskStatus.Received)
 					{
 						taskConfig.status = TaskStatus.Completed;
 					}
 				}
-				else if (taskConfig.subType == FinishConntion.Ads && taskConfig.status == TaskStatus.Unfinished && global::Singleton<LocalPvpStorage>.Get().lookAds >= taskConfig.taskParameter && taskConfig.status != TaskStatus.Received)
+				else if (taskConfig.subType == FinishConntion.Ads && taskConfig.status == TaskStatus.Unfinished && Solarmax.Singleton<LocalPvpStorage>.Get().lookAds >= taskConfig.taskParameter && taskConfig.status != TaskStatus.Received)
 				{
 					taskConfig.status = TaskStatus.Completed;
 				}
 			}
 			foreach (TaskConfig taskConfig2 in Solarmax.Singleton<TaskConfigProvider>.Get().degreeList)
 			{
-				if (taskConfig2.subType == FinishConntion.Degree && taskConfig2.status == TaskStatus.Unfinished && global::Singleton<LocalPlayer>.Get().mActivityDegree >= taskConfig2.taskParameter && taskConfig2.status != TaskStatus.Received)
+				if (taskConfig2.subType == FinishConntion.Degree && taskConfig2.status == TaskStatus.Unfinished && Solarmax.Singleton<LocalPlayer>.Get().mActivityDegree >= taskConfig2.taskParameter && taskConfig2.status != TaskStatus.Received)
 				{
 					taskConfig2.status = TaskStatus.Completed;
 				}
@@ -87,22 +87,22 @@ public class TaskModel : global::Singleton<TaskModel>
 
 	public void WinTeam(Team team)
 	{
-		if (team.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+		if (team.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 		{
 			DateTime d = new DateTime(1970, 1, 1);
 			TimeSpan timeSpan = Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d;
-			if (global::Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
+			if (Solarmax.Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
 			{
-				global::Singleton<LocalPvpStorage>.Get().pvpWin = 1;
+				Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin = 1;
 			}
 			else
 			{
-				global::Singleton<LocalPvpStorage>.Get().pvpWin++;
+				Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin++;
 			}
-			Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalPvp(global::Singleton<LocalPvpStorage>.Get().pvpWin, global::Singleton<LocalPvpStorage>.Get().pvpDestroy);
+			Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalPvp(Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin, Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy);
 			foreach (TaskConfig taskConfig in Solarmax.Singleton<TaskConfigProvider>.Get().dailyList)
 			{
-				if (taskConfig.subType == FinishConntion.Level && taskConfig.status == TaskStatus.Unfinished && global::Singleton<LocalPvpStorage>.Get().pvpWin >= taskConfig.taskParameter)
+				if (taskConfig.subType == FinishConntion.Level && taskConfig.status == TaskStatus.Unfinished && Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin >= taskConfig.taskParameter)
 				{
 					taskConfig.status = TaskStatus.Completed;
 				}
@@ -119,18 +119,18 @@ public class TaskModel : global::Singleton<TaskModel>
 		Team team = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetTeam(data.team);
 		DateTime d = new DateTime(1970, 1, 1);
 		TimeSpan timeSpan = Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d;
-		if (global::Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
+		if (Solarmax.Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
 		{
-			global::Singleton<LocalPvpStorage>.Get().pvpDestroy = team.hitships;
+			Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy = team.hitships;
 		}
 		else
 		{
-			global::Singleton<LocalPvpStorage>.Get().pvpDestroy += team.hitships;
+			Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy += team.hitships;
 		}
-		Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalPvp(global::Singleton<LocalPvpStorage>.Get().pvpWin, global::Singleton<LocalPvpStorage>.Get().pvpDestroy);
+		Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalPvp(Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin, Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy);
 		foreach (TaskConfig taskConfig in Solarmax.Singleton<TaskConfigProvider>.Get().dailyList)
 		{
-			if (taskConfig.subType == FinishConntion.Achievement && global::Singleton<LocalPvpStorage>.Get().pvpDestroy >= taskConfig.taskParameter && taskConfig.status == TaskStatus.Unfinished)
+			if (taskConfig.subType == FinishConntion.Achievement && Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy >= taskConfig.taskParameter && taskConfig.status == TaskStatus.Unfinished)
 			{
 				taskConfig.status = TaskStatus.Completed;
 			}
@@ -141,29 +141,29 @@ public class TaskModel : global::Singleton<TaskModel>
 	{
 		DateTime d = new DateTime(1970, 1, 1);
 		TimeSpan timeSpan = Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d;
-		if (global::Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
+		if (Solarmax.Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
 		{
-			global::Singleton<LocalPvpStorage>.Get().Clear(null);
+			Solarmax.Singleton<LocalPvpStorage>.Get().Clear(null);
 		}
 		if (co == FinishConntion.Degree)
 		{
-			global::Singleton<LocalPlayer>.Get().mActivityDegree += nParam;
+			Solarmax.Singleton<LocalPlayer>.Get().mActivityDegree += nParam;
 			this.FinishDegreeQuest(co);
 			return;
 		}
 		if (co == FinishConntion.Ads)
 		{
-			global::Singleton<LocalPvpStorage>.Get().lookAds += nParam;
+			Solarmax.Singleton<LocalPvpStorage>.Get().lookAds += nParam;
 		}
 		else if (co == FinishConntion.Pve)
 		{
-			global::Singleton<LocalPvpStorage>.Get().pve += nParam;
+			Solarmax.Singleton<LocalPvpStorage>.Get().pve += nParam;
 		}
 		foreach (TaskConfig taskConfig in Solarmax.Singleton<TaskConfigProvider>.Get().dailyList)
 		{
 			if (taskConfig.subType == co && taskConfig.status == TaskStatus.Unfinished)
 			{
-				if (co == FinishConntion.Ads && global::Singleton<LocalPvpStorage>.Get().lookAds >= taskConfig.taskParameter)
+				if (co == FinishConntion.Ads && Solarmax.Singleton<LocalPvpStorage>.Get().lookAds >= taskConfig.taskParameter)
 				{
 					taskConfig.status = TaskStatus.Completed;
 				}
@@ -171,7 +171,7 @@ public class TaskModel : global::Singleton<TaskModel>
 				{
 					taskConfig.status = TaskStatus.Completed;
 				}
-				else if (co == FinishConntion.Pve && global::Singleton<LocalPvpStorage>.Get().pve >= taskConfig.taskParameter)
+				else if (co == FinishConntion.Pve && Solarmax.Singleton<LocalPvpStorage>.Get().pve >= taskConfig.taskParameter)
 				{
 					taskConfig.status = TaskStatus.Completed;
 				}
@@ -181,12 +181,12 @@ public class TaskModel : global::Singleton<TaskModel>
 				}
 			}
 		}
-		Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalPvp(global::Singleton<LocalPvpStorage>.Get().pvpWin, global::Singleton<LocalPvpStorage>.Get().pvpDestroy);
+		Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalPvp(Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin, Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy);
 	}
 
 	private void FinishDegreeQuest(FinishConntion co)
 	{
-		int mActivityDegree = global::Singleton<LocalPlayer>.Get().mActivityDegree;
+		int mActivityDegree = Solarmax.Singleton<LocalPlayer>.Get().mActivityDegree;
 		foreach (TaskConfig taskConfig in Solarmax.Singleton<TaskConfigProvider>.Get().degreeList)
 		{
 			if (taskConfig.subType == co && taskConfig.status == TaskStatus.Unfinished && co == FinishConntion.Degree && mActivityDegree >= taskConfig.taskParameter)
@@ -201,7 +201,7 @@ public class TaskModel : global::Singleton<TaskModel>
 	{
 		DateTime d = new DateTime(1970, 1, 1);
 		TimeSpan timeSpan = Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d;
-		if (global::Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
+		if (Solarmax.Singleton<LocalPvpStorage>.Get().days != timeSpan.Days)
 		{
 			foreach (TaskConfig taskConfig in Solarmax.Singleton<TaskConfigProvider>.Get().dailyList)
 			{
@@ -211,7 +211,7 @@ public class TaskModel : global::Singleton<TaskModel>
 			{
 				taskConfig2.status = TaskStatus.Unfinished;
 			}
-			global::Singleton<LocalPvpStorage>.Get().Clear();
+			Solarmax.Singleton<LocalPvpStorage>.Get().Clear();
 			Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalPvp(timeSpan.Days, 0, 0);
 			return true;
 		}

@@ -9,7 +9,7 @@ public class EntityWarpDoor : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_Door");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Door");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

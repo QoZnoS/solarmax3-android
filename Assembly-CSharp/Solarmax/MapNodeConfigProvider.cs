@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class MapNodeConfigProvider : Singleton<MapNodeConfigProvider>, IDataProvider
+	public class MapNodeConfigProvider : Solarmax.Singleton<MapNodeConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -40,7 +40,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/mapnode.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/mapnode.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

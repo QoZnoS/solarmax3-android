@@ -4,7 +4,7 @@ using DG.Tweening;
 using NetMessage;
 using Solarmax;
 
-public class LuckModel : global::Singleton<LuckModel>
+public class LuckModel : Solarmax.Singleton<LuckModel>
 {
 	public LuckModel()
 	{

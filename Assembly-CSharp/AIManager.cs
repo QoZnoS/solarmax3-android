@@ -81,7 +81,7 @@ public class AIManager : Lifecycle2
 
 	public static string GetAIName(int userId)
 	{
-		int localLanguage = global::Singleton<LocalAccountStorage>.Get().localLanguage;
+		int localLanguage = Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage;
 		Random random = new Random(userId);
 		List<NameConfig> firstNameList = Solarmax.Singleton<NameConfigProvider>.Instance.GetFirstNameList();
 		int index = random.Next(0, firstNameList.Count - 1);

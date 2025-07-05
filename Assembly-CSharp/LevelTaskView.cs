@@ -14,7 +14,7 @@ public class LevelTaskView : MonoBehaviour
 		}
 		List<TaskConfig> list = new List<TaskConfig>();
 		List<TaskConfig> list2 = new List<TaskConfig>();
-		global::Singleton<TaskModel>.Get().completedTasks.Clear();
+		Solarmax.Singleton<TaskModel>.Get().completedTasks.Clear();
 		this.groups = (list2.Count + 2) / 3;
 		this.lastGroupCount = list2.Count % 3;
 		if (this.lastGroupCount == 0)
@@ -35,20 +35,20 @@ public class LevelTaskView : MonoBehaviour
 
 	public void OnClickedOneKeyClaim()
 	{
-		int num = (global::Singleton<TaskModel>.Get().completedTasks.Count + 19) / 20;
+		int num = (Solarmax.Singleton<TaskModel>.Get().completedTasks.Count + 19) / 20;
 		List<string> list = new List<string>();
 		for (int i = 0; i < num; i++)
 		{
 			list.Clear();
 			for (int j = 0; j < 20; j++)
 			{
-				if (i * 20 + j >= global::Singleton<TaskModel>.Get().completedTasks.Count)
+				if (i * 20 + j >= Solarmax.Singleton<TaskModel>.Get().completedTasks.Count)
 				{
 					break;
 				}
-				list.Add(global::Singleton<TaskModel>.Get().completedTasks[i * 20 + j]);
+				list.Add(Solarmax.Singleton<TaskModel>.Get().completedTasks[i * 20 + j]);
 			}
-			global::Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
+			Solarmax.Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
 		}
 	}
 

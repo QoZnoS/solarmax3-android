@@ -6,19 +6,19 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public class OrderManager : Singleton<OrderManager>, IDataHandler, Lifecycle
+	public class OrderManager : Solarmax.Singleton<OrderManager>, IDataHandler, Lifecycle
 	{
 		public bool Init()
 		{
 			this.padding.Clear();
-			Singleton<EventSystem>.Instance.RegisterEvent(EventId.OnVerityOrder, this, null, new Callback<int, object, object[]>(this.OnEventHandler));
-			Singleton<EventSystem>.Instance.RegisterEvent(EventId.OnGenerateOrderID, this, null, new Callback<int, object, object[]>(this.OnEventHandler));
+            Solarmax.Singleton<EventSystem>.Instance.RegisterEvent(EventId.OnVerityOrder, this, null, new Callback<int, object, object[]>(this.OnEventHandler));
+            Solarmax.Singleton<EventSystem>.Instance.RegisterEvent(EventId.OnGenerateOrderID, this, null, new Callback<int, object, object[]>(this.OnEventHandler));
 			return true;
 		}
 
 		public void Tick(float interval)
 		{
-			if (Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() != ConnectionStatus.CONNECTED)
+			if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() != ConnectionStatus.CONNECTED)
 			{
 				return;
 			}
@@ -37,10 +37,10 @@ namespace Solarmax
 
 		public void Destroy()
 		{
-			Singleton<LocalStorageSystem>.Get().SaveLocalOrder();
+            Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalOrder();
 			this.padding.Clear();
-			Singleton<EventSystem>.Instance.UnRegisterEvent(EventId.OnVerityOrder, this);
-			Singleton<EventSystem>.Instance.UnRegisterEvent(EventId.OnGenerateOrderID, this);
+            Solarmax.Singleton<EventSystem>.Instance.UnRegisterEvent(EventId.OnVerityOrder, this);
+            Solarmax.Singleton<EventSystem>.Instance.UnRegisterEvent(EventId.OnGenerateOrderID, this);
 		}
 
 		private void OnEventHandler(int eventId, object data, params object[] args)
@@ -52,7 +52,7 @@ namespace Solarmax
 				if (!string.IsNullOrEmpty(text))
 				{
 					this.SyncOrder(text);
-					Singleton<LocalStorageSystem>.Get().SaveLocalOrder();
+                    Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalOrder();
 				}
 			}
 			else if (eventId == 143)
@@ -101,7 +101,7 @@ namespace Solarmax
 				return;
 			}
 			Debug.Log("buy -> BuyProduct productID---" + productID);
-			StoreConfig data = Singleton<storeConfigProvider>.Instance.GetData(productID);
+			StoreConfig data = Solarmax.Singleton<storeConfigProvider>.Instance.GetData(productID);
 			if (data != null)
 			{
 				float price = data.GetPrice();
@@ -127,7 +127,7 @@ namespace Solarmax
 			{
 				return;
 			}
-			Singleton<NetSystem>.Instance.helper.StartVerityOrder(orderID);
+            Solarmax.Singleton<NetSystem>.Instance.helper.StartVerityOrder(orderID);
 		}
 
 		private bool IsPadding(string orderID)

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class ShipFadeManager : Singleton<ShipFadeManager>
+public class ShipFadeManager : Solarmax.Singleton<ShipFadeManager>
 {
 	public void SetFadeType(ShipFadeManager.FADETYPE eType, float duration)
 	{

@@ -58,7 +58,7 @@ public class RankWindowCell : MonoBehaviour
 		if (rankid % 2 == 1)
 		{
 		}
-		this.addFriendGo.SetActive(!Solarmax.Singleton<FriendDataHandler>.Get().IsMyFriend(userId) && global::Singleton<LocalPlayer>.Get().playerData.userId != userId);
+		this.addFriendGo.SetActive(!Solarmax.Singleton<FriendDataHandler>.Get().IsMyFriend(userId) && Solarmax.Singleton<LocalPlayer>.Get().playerData.userId != userId);
 		foreach (GameObject gameObject in this.scorePic)
 		{
 			gameObject.SetActive(false);
@@ -73,7 +73,7 @@ public class RankWindowCell : MonoBehaviour
 
 	public void OnAddFriendSuccess()
 	{
-		this.addFriendGo.SetActive(!Solarmax.Singleton<FriendDataHandler>.Get().IsMyFriend(this.userId) && global::Singleton<LocalPlayer>.Get().playerData.userId != this.userId);
+		this.addFriendGo.SetActive(!Solarmax.Singleton<FriendDataHandler>.Get().IsMyFriend(this.userId) && Solarmax.Singleton<LocalPlayer>.Get().playerData.userId != this.userId);
 	}
 
 	public UISprite bg;

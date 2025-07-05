@@ -92,7 +92,7 @@ public class AirShip : MonoBehaviour
 			return;
 		}
 		this.mCurFlyTrack = this.FlyTracks[trackIndex];
-		global::Singleton<AudioManger>.Get().PlayEffect(this.FlyTracks[trackIndex].audioName);
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.FlyTracks[trackIndex].audioName);
 		this.mState = AirShip.State.Fly;
 		this.mStateTime = 0f;
 		this.mPreCurveValue = 0f;

@@ -90,9 +90,9 @@ public class MiGameAnalytics
 
 	public static void MiAnalyticsUserDataInit()
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("UserId", playerData.userId.ToString());
 		dictionary.Add("UserName", playerData.name);
 		dictionary.Add("Money", playerData.money.ToString());
@@ -112,7 +112,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsMoneyCostEvent(string costType, string szReason, string strValue)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("CostType", costType);
 		dictionary.Add("CostReason", szReason);
 		dictionary.Add("CostValue", strValue);
@@ -128,7 +128,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsBattleEndEvent(string strLevel, string szRet, string score, string star, string destroy, string lost, string totalTime)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("Level", strLevel);
 		dictionary.Add("Type", szRet);
 		dictionary.Add("Score", score);
@@ -148,7 +148,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsPVPBattleEndEvent(string matchType, string strLevel, string score, string destroy, string lost, string totalTime)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("MatchType", matchType);
 		dictionary.Add("Level", strLevel);
 		dictionary.Add("Score", score);
@@ -167,7 +167,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsPVPBattleMatchEvent(string matchType, string strLevel, string matchState, string matchTime, string roomID)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("MatchType", matchType);
 		dictionary.Add("Level", strLevel);
 		dictionary.Add("MatchState", matchState);
@@ -185,7 +185,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsPaymentEvent(string productName, string productId, int num, string currency, double price, string transactionId)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("channel", MiGameAnalytics.channel);
 		string empty = string.Empty;
 		MiGameAnalytics.miGameAnalyticsClass.CallStatic("LogEvent", new object[]
@@ -198,7 +198,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsAdsClickEvent()
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("Channel", MiGameAnalytics.channel);
 		string empty = string.Empty;
 		MiGameAnalytics.miGameAnalyticsClass.CallStatic("LogEvent", new object[]
@@ -211,7 +211,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsAdsEndEvent()
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("Channel", MiGameAnalytics.channel);
 		string empty = string.Empty;
 		MiGameAnalytics.miGameAnalyticsClass.CallStatic("LogEvent", new object[]
@@ -224,7 +224,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsOpenADSEvent(string rewardCoin)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("Channel", MiGameAnalytics.channel);
 		dictionary.Add("RewardCoin", rewardCoin);
 		string empty = string.Empty;
@@ -238,7 +238,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsRewardCoinADSEvent(string rewardCoin)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("Channel", MiGameAnalytics.channel);
 		dictionary.Add("RewardCoin", rewardCoin);
 		string empty = string.Empty;
@@ -252,7 +252,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsFinishTaskEvent(string taskId)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("channel", MiGameAnalytics.channel);
 		dictionary.Add("taskId", taskId);
 		string empty = string.Empty;
@@ -266,7 +266,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsCreateOrderIDEvent(string productName, string productId, int num, string currency, double price, string transactionId)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("ProductId", productId);
 		dictionary.Add("ProductName", productName);
 		dictionary.Add("ProductNum", num.ToString());
@@ -285,7 +285,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsLogPayStart(string productName, string productId, int num, string currency, double price, string orderId, string notifyUrl)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("ProductId", productId);
 		dictionary.Add("ProductName", productName);
 		dictionary.Add("ProductNum", num.ToString());
@@ -305,7 +305,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsLogPaySuccess(string info)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("Info", info);
 		dictionary.Add("Channel", MiGameAnalytics.channel);
 		string empty = string.Empty;
@@ -319,7 +319,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsLogPayFailed(string info)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("Info", info);
 		dictionary.Add("Channel", MiGameAnalytics.channel);
 		string empty = string.Empty;
@@ -333,7 +333,7 @@ public class MiGameAnalytics
 	public static void MiAnalyticsLogOrderComplete(string productName, string productId, int num, string currency, double price, string orderId)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
-		dictionary.Add("Account", global::Singleton<LocalAccountStorage>.Get().account);
+		dictionary.Add("Account", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		dictionary.Add("ProductId", productId);
 		dictionary.Add("ProductName", productName);
 		dictionary.Add("ProductNum", num.ToString());

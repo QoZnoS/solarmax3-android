@@ -176,7 +176,7 @@ public class EffectManager : Solarmax.Singleton<EffectManager>, Lifecycle2
 		{
 			return;
 		}
-		if (!preload && !global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Bomber))
+		if (!preload && !Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Bomber))
 		{
 			return;
 		}
@@ -187,7 +187,7 @@ public class EffectManager : Solarmax.Singleton<EffectManager>, Lifecycle2
 		bombEffect.InitEffectNode(anim);
 		if (anim)
 		{
-			global::Singleton<AudioManger>.Get().PlayExlposion(position);
+			Solarmax.Singleton<AudioManger>.Get().PlayExlposion(position);
 		}
 	}
 
@@ -197,7 +197,7 @@ public class EffectManager : Solarmax.Singleton<EffectManager>, Lifecycle2
 		{
 			return null;
 		}
-		if (!preload && !global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Bomber))
+		if (!preload && !Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Bomber))
 		{
 			return null;
 		}
@@ -209,7 +209,7 @@ public class EffectManager : Solarmax.Singleton<EffectManager>, Lifecycle2
 		blackholeHitEffect.InitEffectNode(anim);
 		if (anim)
 		{
-			global::Singleton<AudioManger>.Get().PlayExlposion(position);
+			Solarmax.Singleton<AudioManger>.Get().PlayExlposion(position);
 		}
 		return blackholeHitEffect;
 	}
@@ -225,13 +225,13 @@ public class EffectManager : Solarmax.Singleton<EffectManager>, Lifecycle2
 		bombEffect.bombPosition = position;
 		bombEffect.color = color;
 		bombEffect.InitEffectNode(anim);
-		if (!preload && !global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Bomber))
+		if (!preload && !Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Bomber))
 		{
 			return;
 		}
 		if (anim)
 		{
-			global::Singleton<AudioManger>.Get().PlayExlposion(position);
+			Solarmax.Singleton<AudioManger>.Get().PlayExlposion(position);
 		}
 	}
 
@@ -241,7 +241,7 @@ public class EffectManager : Solarmax.Singleton<EffectManager>, Lifecycle2
 		{
 			return;
 		}
-		if (!preload && !global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Maker))
+		if (!preload && !Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Maker))
 		{
 			return;
 		}
@@ -454,7 +454,7 @@ public class EffectManager : Solarmax.Singleton<EffectManager>, Lifecycle2
 		{
 			return;
 		}
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources(effectName);
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(effectName);
 		GameObject gameObject = UnityEngine.Object.Instantiate(resources) as GameObject;
 		ParticleSystem component = gameObject.GetComponent<ParticleSystem>();
 		gameObject.transform.position = node.GetPosition();
@@ -467,7 +467,7 @@ public class EffectManager : Solarmax.Singleton<EffectManager>, Lifecycle2
 		{
 			return null;
 		}
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources(effectName);
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(effectName);
 		GameObject gameObject = UnityEngine.Object.Instantiate(resources) as GameObject;
 		gameObject.transform.SetParent(node.GetGO().transform);
 		gameObject.transform.localPosition = Vector3.zero;

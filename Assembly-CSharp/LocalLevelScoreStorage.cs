@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Solarmax;
 
-public class LocalLevelScoreStorage : global::Singleton<LocalLevelScoreStorage>, ILocalStorage
+public class LocalLevelScoreStorage : Solarmax.Singleton<LocalLevelScoreStorage>, ILocalStorage
 {
 	public string Name()
 	{

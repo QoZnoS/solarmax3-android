@@ -8,7 +8,7 @@ public class LotteryItemBh : MonoBehaviour
 	{
 		this.wheelID = wheelId;
 		LotteryConfig lotteryConfig = Solarmax.Singleton<LotteryConfigProvider>.Get().dataDict[wheelId];
-		AwardItem lotteryWheelItem = global::Singleton<LuckModel>.Get().GetLotteryWheelItem(wheelId);
+		AwardItem lotteryWheelItem = Solarmax.Singleton<LuckModel>.Get().GetLotteryWheelItem(wheelId);
 		this.numLabel.text = "x" + lotteryWheelItem.itemNum;
 		if (lotteryWheelItem.type == 1)
 		{

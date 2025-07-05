@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public class ThirdPartySystem : Singleton<ThirdPartySystem>, Lifecycle
+	public class ThirdPartySystem : Solarmax.Singleton<ThirdPartySystem>, Lifecycle
 	{
 		public bool GettingProductsInfo { get; private set; }
 
@@ -30,10 +30,10 @@ namespace Solarmax
 		{
 			MonoSingleton<FlurryAnalytis>.Instance.SetUserID(account);
 			MonoSingleton<BuglyTools>.Instance.SetUserId(account);
-			Singleton<LocalAccountStorage>.Get().account = account;
-			Singleton<LocalAccountStorage>.Get().webTest = false;
-			Singleton<LocalAccountStorage>.Get().token = token;
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKLoginResult, new object[]
+            Solarmax.Singleton<LocalAccountStorage>.Get().account = account;
+            Solarmax.Singleton<LocalAccountStorage>.Get().webTest = false;
+            Solarmax.Singleton<LocalAccountStorage>.Get().token = token;
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKLoginResult, new object[]
 			{
 				1
 			});
@@ -43,10 +43,10 @@ namespace Solarmax
 		{
 			MonoSingleton<FlurryAnalytis>.Instance.SetUserID(account);
 			MonoSingleton<BuglyTools>.Instance.SetUserId(account);
-			Singleton<LocalAccountStorage>.Get().account = account;
-			Singleton<LocalAccountStorage>.Get().webTest = false;
-			Singleton<LocalAccountStorage>.Get().token = token;
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKLoginResult, new object[]
+            Solarmax.Singleton<LocalAccountStorage>.Get().account = account;
+            Solarmax.Singleton<LocalAccountStorage>.Get().webTest = false;
+            Solarmax.Singleton<LocalAccountStorage>.Get().token = token;
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKLoginResult, new object[]
 			{
 				1
 			});
@@ -54,7 +54,7 @@ namespace Solarmax
 
 		public void OnSDKLoginFailed()
 		{
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKLoginResult, new object[]
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKLoginResult, new object[]
 			{
 				0
 			});
@@ -65,14 +65,14 @@ namespace Solarmax
 			Debug.Log("Login -》 OnGetPrivactyResult ret = " + ret);
 			if (ret.Equals("1"))
 			{
-				Singleton<EventSystem>.Instance.FireEvent(EventId.OnGetPrivactyResult, new object[]
+                Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnGetPrivactyResult, new object[]
 				{
 					1
 				});
 			}
 			else
 			{
-				Singleton<EventSystem>.Instance.FireEvent(EventId.OnGetPrivactyResult, new object[]
+                Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnGetPrivactyResult, new object[]
 				{
 					0
 				});
@@ -89,7 +89,7 @@ namespace Solarmax
 			{
 				return;
 			}
-			string[] productIds = Singleton<storeConfigProvider>.Instance.ProductIds;
+			string[] productIds = Solarmax.Singleton<storeConfigProvider>.Instance.ProductIds;
 			if (productIds == null || productIds.Length == 0)
 			{
 				Debug.LogError("GetProductsInfo - Empty ProductIds");
@@ -106,18 +106,18 @@ namespace Solarmax
 		public void OnSDKGetProductInfoFailed()
 		{
 			this.GettingProductsInfo = false;
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKGetProductInfoFailed, new object[0]);
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKGetProductInfoFailed, new object[0]);
 		}
 
 		public void OnSDKGetProductInfoSuccess(SDKProductInfoList list)
 		{
 			this.GettingProductsInfo = false;
-			if (!Singleton<storeConfigProvider>.Get().SetProductInfoList(list))
+			if (!Solarmax.Singleton<storeConfigProvider>.Get().SetProductInfoList(list))
 			{
 				return;
 			}
 			this.mProductsInfoInited = true;
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKGetProductInfoSuccess, new object[0]);
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnSDKGetProductInfoSuccess, new object[0]);
 		}
 
 		public string GetChannel()

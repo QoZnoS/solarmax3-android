@@ -21,7 +21,7 @@ public class storeView : MonoBehaviour
 		}
 		int num = this.productTemplate.Length;
 		this.product = new string[num];
-		this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+		this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		this.monthCardEffect.SetActive(false);
 		this.UpdateUI();
 		if (!UpgradeUtil.GetGameConfig().EnablePay)
@@ -41,12 +41,12 @@ public class storeView : MonoBehaviour
 
 	public void Update()
 	{
-		if (global::Singleton<LocalPlayer>.Get().showAdsRefreshTime > 0f)
+		if (Solarmax.Singleton<LocalPlayer>.Get().showAdsRefreshTime > 0f)
 		{
-			int nLookAdsNum = global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum;
+			int nLookAdsNum = Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum;
 			if (nLookAdsNum >= 0 && nLookAdsNum < Solarmax.Singleton<storeConfigProvider>.Get().MAX_SHOW_ADS_NUM)
 			{
-				this.adProcess.value = global::Singleton<LocalPlayer>.Get().showAdsRefreshTime / (float)this.cdList[nLookAdsNum].cd;
+				this.adProcess.value = Solarmax.Singleton<LocalPlayer>.Get().showAdsRefreshTime / (float)this.cdList[nLookAdsNum].cd;
 			}
 		}
 		else
@@ -70,7 +70,7 @@ public class storeView : MonoBehaviour
 			return;
 		}
 		go.SetActive(true);
-		bool flag = !global::Singleton<LocalPlayer>.Get().IsBuyed(prodcutID);
+		bool flag = !Solarmax.Singleton<LocalPlayer>.Get().IsBuyed(prodcutID);
 		UITable[] componentsInChildren = go.GetComponentsInChildren<UITable>();
 		if (data.type == 1)
 		{
@@ -116,17 +116,17 @@ public class storeView : MonoBehaviour
 		UILabel component2 = gameObject.transform.Find("num").GetComponent<UILabel>();
 		DateTime d = new DateTime(1970, 1, 1);
 		long num = (long)(Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d).TotalSeconds;
-		long num2 = (global::Singleton<LocalPlayer>.Get().month_card_end - num) / 86400L;
-		long num3 = (global::Singleton<LocalPlayer>.Get().month_card_end - num) % 86400L;
+		long num2 = (Solarmax.Singleton<LocalPlayer>.Get().month_card_end - num) / 86400L;
+		long num3 = (Solarmax.Singleton<LocalPlayer>.Get().month_card_end - num) % 86400L;
 		if (num3 > 0L)
 		{
 			num2 += 1L;
 		}
 		UILabel component3 = gameObject.transform.Find("moneyLabel").transform.Find("day").GetComponent<UILabel>();
 		component3.gameObject.SetActive(false);
-		if (global::Singleton<LocalPlayer>.Get().IsRechargeRewardCard())
+		if (Solarmax.Singleton<LocalPlayer>.Get().IsRechargeRewardCard())
 		{
-			if (global::Singleton<LocalPlayer>.Get().IsMonthCardReceive)
+			if (Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive)
 			{
 				UILabel component4 = gameObject.transform.Find("moneyLabel").transform.Find("Label").GetComponent<UILabel>();
 				component4.text = LanguageDataProvider.GetValue(2023);
@@ -143,7 +143,7 @@ public class storeView : MonoBehaviour
 				component2.text = data.GetPriceDesc();
 			}
 		}
-		if (!global::Singleton<LocalPlayer>.Get().IsRechargeRewardCard())
+		if (!Solarmax.Singleton<LocalPlayer>.Get().IsRechargeRewardCard())
 		{
 			UILabel component6 = gameObject.transform.Find("moneyLabel").transform.Find("Label").GetComponent<UILabel>();
 			component6.text = LanguageDataProvider.GetValue(1154);
@@ -153,7 +153,7 @@ public class storeView : MonoBehaviour
 
 	private void UpdateUI()
 	{
-		int num = global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum;
+		int num = Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum;
 		if (num >= 0 && num < this.cdList.Count)
 		{
 			this.money.text = this.cdList[num].GoldValue.ToString();
@@ -180,7 +180,7 @@ public class storeView : MonoBehaviour
 		UIButton component = this.rawardMonth.GetComponent<UIButton>();
 		if (component != null)
 		{
-			if (global::Singleton<LocalPlayer>.Get().IsMonthCardReceive)
+			if (Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive)
 			{
 				component.enabled = true;
 				component.SetState(UIButtonColor.State.Normal, true);
@@ -206,9 +206,9 @@ public class storeView : MonoBehaviour
 
 	public void OnClickedAds()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum < Solarmax.Singleton<storeConfigProvider>.Get().MAX_SHOW_ADS_NUM)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum < Solarmax.Singleton<storeConfigProvider>.Get().MAX_SHOW_ADS_NUM)
 		{
-			if (global::Singleton<LocalPlayer>.Get().showAdsRefreshTime <= 0f)
+			if (Solarmax.Singleton<LocalPlayer>.Get().showAdsRefreshTime <= 0f)
 			{
 				AdManager.ShowAd(AdManager.ShowAdType.ShopAd, null);
 			}
@@ -290,10 +290,10 @@ public class storeView : MonoBehaviour
 
 	public void CoodDown()
 	{
-		int nLookAdsNum = global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum;
+		int nLookAdsNum = Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum;
 		if (nLookAdsNum >= 0 && nLookAdsNum < Solarmax.Singleton<storeConfigProvider>.Get().MAX_SHOW_ADS_NUM)
 		{
-			global::Singleton<LocalPlayer>.Get().showAdsRefreshTime = (float)this.cdList[nLookAdsNum].cd;
+			Solarmax.Singleton<LocalPlayer>.Get().showAdsRefreshTime = (float)this.cdList[nLookAdsNum].cd;
 			this.money.text = this.cdList[nLookAdsNum].GoldValue.ToString();
 		}
 		else
@@ -320,7 +320,7 @@ public class storeView : MonoBehaviour
 
 	public void OnRewardMonthCard()
 	{
-		if (global::Singleton<LocalPlayer>.Get().IsRechargeRewardCard() && global::Singleton<LocalPlayer>.Get().IsMonthCardReceive)
+		if (Solarmax.Singleton<LocalPlayer>.Get().IsRechargeRewardCard() && Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive)
 		{
 			Solarmax.Singleton<NetSystem>.Instance.helper.CSReceiveMonthlyCard();
 		}

@@ -17,7 +17,7 @@ public class EntityPlanet : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_Planet");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Planet");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

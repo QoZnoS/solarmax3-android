@@ -15,7 +15,7 @@ public class PersonalView : MonoBehaviour
 
 	private void UpdateUI()
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		if (playerData != null)
 		{
 			this.scoreLabel.text = playerData.score.ToString();

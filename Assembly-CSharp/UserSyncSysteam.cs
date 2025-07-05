@@ -14,7 +14,7 @@ public class UserSyncSysteam : Solarmax.Singleton<UserSyncSysteam>, IDataHandler
 	{
 		get
 		{
-			return global::Singleton<LocalAccountStorage>.Get().account;
+			return Solarmax.Singleton<LocalAccountStorage>.Get().account;
 		}
 	}
 
@@ -602,7 +602,7 @@ public class UserSyncSysteam : Solarmax.Singleton<UserSyncSysteam>, IDataHandler
 
 	public void SaveAccout2Cloud()
 	{
-		string text = global::Singleton<LocalAccountStorage>.Get().account + ".txt";
+		string text = Solarmax.Singleton<LocalAccountStorage>.Get().account + ".txt";
 		string file = MonoSingleton<UpdateSystem>.Instance.saveRoot + text;
 		Solarmax.Singleton<NetSystem>.Instance.helper.GenPresignedUrl(text, "PUT", "text/plain", file, 117);
 	}

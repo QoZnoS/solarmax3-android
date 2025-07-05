@@ -2,7 +2,7 @@
 
 namespace Solarmax
 {
-	public class TimeSystem : Singleton<TimeSystem>, Lifecycle
+	public class TimeSystem : Solarmax.Singleton<TimeSystem>, Lifecycle
 	{
 		public TimeSystem()
 		{
@@ -14,10 +14,10 @@ namespace Solarmax
 
 		public bool Init()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("TimeSystem    init  begin", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("TimeSystem    init  begin", new object[0]);
 			this.mLocalStartTime = this.GetMillisecods();
 			this.mTotalTickSeconds = 0.0;
-			Singleton<LoggerSystem>.Instance.Debug("TimeSystem    init  end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("TimeSystem    init  end", new object[0]);
 			return true;
 		}
 
@@ -29,8 +29,8 @@ namespace Solarmax
 
 		public void Destroy()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("TimeSystem    destroy  begin", new object[0]);
-			Singleton<LoggerSystem>.Instance.Debug("TimeSystem    destroy  end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("TimeSystem    destroy  begin", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("TimeSystem    destroy  end", new object[0]);
 		}
 
 		public float GetRemoteTimeOffset()
@@ -45,7 +45,7 @@ namespace Solarmax
 
 		public double GetMillisecods()
 		{
-			return Singleton<TimeSystem>.Instance.GetServerTime().Subtract(this._BaseTime).TotalMilliseconds;
+			return Solarmax.Singleton<TimeSystem>.Instance.GetServerTime().Subtract(this._BaseTime).TotalMilliseconds;
 		}
 
 		public double GetLocalMilliseconds()

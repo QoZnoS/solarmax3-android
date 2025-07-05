@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public class ConfigSystem : Singleton<ConfigSystem>, Lifecycle
+	public class ConfigSystem : Solarmax.Singleton<ConfigSystem>, Lifecycle
 	{
 		public ConfigSystem()
 		{

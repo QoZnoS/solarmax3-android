@@ -42,7 +42,7 @@ public class LasergunEffectNode : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_LaserLineNew0.1");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_LaserLineNew0.1");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			base.go.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);
 			this.lineRender = base.go.GetComponentInChildren<LineRenderer>();

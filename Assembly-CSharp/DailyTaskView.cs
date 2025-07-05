@@ -8,7 +8,7 @@ public class DailyTaskView : MonoBehaviour
 {
 	public void EnsureInit()
 	{
-		this.model = global::Singleton<TaskModel>.Get();
+		this.model = Solarmax.Singleton<TaskModel>.Get();
 		this.degreeConfig = Solarmax.Singleton<TaskConfigProvider>.Get().GeDegreeData();
 		this.degreeConfig.Sort(delegate(TaskConfig p1, TaskConfig p2)
 		{
@@ -53,10 +53,10 @@ public class DailyTaskView : MonoBehaviour
 		if (this.fDeltAccTimer >= 120f)
 		{
 			this.fDeltAccTimer = 0f;
-			if (global::Singleton<TaskModel>.Get().AfterDayRefrushTask())
+			if (Solarmax.Singleton<TaskModel>.Get().AfterDayRefrushTask())
 			{
-				global::Singleton<LocalPlayer>.Get().mOnLineTime = 0f;
-				global::Singleton<LocalPlayer>.Get().mActivityDegree = 0;
+				Solarmax.Singleton<LocalPlayer>.Get().mOnLineTime = 0f;
+				Solarmax.Singleton<LocalPlayer>.Get().mActivityDegree = 0;
 				this.RefrushDegreeStats();
 				base.StartCoroutine(this.UpdateUI());
 			}
@@ -134,15 +134,15 @@ public class DailyTaskView : MonoBehaviour
 			{
 				return;
 			}
-			global::Singleton<TaskModel>.Get().claimTask = taskConfig;
-			global::Singleton<TaskModel>.Get().claimReward = new RewardTipsModel(taskConfig.rewardValue, global::RewardType.Money, false, 0);
-			global::Singleton<TaskModel>.Get().ClaimReward(global::Singleton<TaskModel>.Get().claimTask.id, null, 1);
+			Solarmax.Singleton<TaskModel>.Get().claimTask = taskConfig;
+			Solarmax.Singleton<TaskModel>.Get().claimReward = new RewardTipsModel(taskConfig.rewardValue, global::RewardType.Money, false, 0);
+			Solarmax.Singleton<TaskModel>.Get().ClaimReward(Solarmax.Singleton<TaskModel>.Get().claimTask.id, null, 1);
 		}
 	}
 
 	private void UpdateDegreeProcess()
 	{
-		int mActivityDegree = global::Singleton<LocalPlayer>.Get().mActivityDegree;
+		int mActivityDegree = Solarmax.Singleton<LocalPlayer>.Get().mActivityDegree;
 		int num = 150;
 		float value = (float)mActivityDegree / ((float)num * 1f);
 		this.curSlider.value = value;

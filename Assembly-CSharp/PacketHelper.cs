@@ -289,7 +289,7 @@ public class PacketHelper
 			Solarmax.Singleton<BattleSystem>.Instance.battleData.battleType = BattlePlayType.Normalize;
 		}
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.matchId = proto.match_id;
-		global::Singleton<LocalPlayer>.Get().battleMap = Solarmax.Singleton<BattleSystem>.Instance.battleData.matchId;
+		Solarmax.Singleton<LocalPlayer>.Get().battleMap = Solarmax.Singleton<BattleSystem>.Instance.battleData.matchId;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.rand.seed = proto.random_seed;
 		if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_4vPC)
 		{
@@ -446,7 +446,7 @@ public class PacketHelper
 					Solarmax.Singleton<BattleSystem>.Instance.battleData.currentTeam = team;
 					flag = true;
 				}
-				else if (global::Singleton<LocalPlayer>.Get().playerData.userId == userData.userid)
+				else if (Solarmax.Singleton<LocalPlayer>.Get().playerData.userId == userData.userid)
 				{
 					Solarmax.Singleton<BattleSystem>.Instance.battleData.currentTeam = team;
 					flag = true;
@@ -592,9 +592,9 @@ public class PacketHelper
 				{
 					team.leagueMvp = scfinishBattle.mvp_num[i];
 				}
-				if (global::Singleton<LocalPlayer>.Get().playerData.userId == scfinishBattle.users[i])
+				if (Solarmax.Singleton<LocalPlayer>.Get().playerData.userId == scfinishBattle.users[i])
 				{
-					global::Singleton<SeasonRewardModel>.Get().seasonMaxScore = scfinishBattle.max_score;
+					Solarmax.Singleton<SeasonRewardModel>.Get().seasonMaxScore = scfinishBattle.max_score;
 				}
 			}
 		}
@@ -624,7 +624,7 @@ public class PacketHelper
 		framePacket.move = new MovePacket();
 		framePacket.move.from = from.tag;
 		framePacket.move.to = to.tag;
-		if (global::Singleton<LocalSettingStorage>.Get().fightOption == 1)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().fightOption == 1)
 		{
 			int num = (int)Solarmax.Singleton<BattleSystem>.Instance.battleData.sliderNumber;
 			framePacket.move.optype = 1;
@@ -678,11 +678,11 @@ public class PacketHelper
 
 	public void RequestUser()
 	{
-		string localAccount = global::Singleton<LocalPlayer>.Get().GetLocalAccount();
+		string localAccount = Solarmax.Singleton<LocalPlayer>.Get().GetLocalAccount();
 		CSGetUserData csgetUserData = new CSGetUserData();
 		csgetUserData.account = localAccount;
-		csgetUserData.token = global::Singleton<LocalAccountStorage>.Get().token;
-		csgetUserData.web_test = global::Singleton<LocalAccountStorage>.Get().webTest;
+		csgetUserData.token = Solarmax.Singleton<LocalAccountStorage>.Get().token;
+		csgetUserData.web_test = Solarmax.Singleton<LocalAccountStorage>.Get().webTest;
 		csgetUserData.app_version = UpgradeUtil.GetAppVersion();
 		csgetUserData.imei_md5 = Solarmax.Singleton<EngineSystem>.Instance.GetUUID();
 		csgetUserData.channel = Solarmax.Singleton<ThirdPartySystem>.Instance.GetChannel();
@@ -699,8 +699,8 @@ public class PacketHelper
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("On Request User", new object[0]);
 		VoiceEngine.SetAppId(1108207306L.ToString());
 		UserData userData = new UserData();
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
-		string localName = global::Singleton<LocalPlayer>.Get().GetLocalName();
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
+		string localName = Solarmax.Singleton<LocalPlayer>.Get().GetLocalName();
 		if (!string.IsNullOrEmpty(localName))
 		{
 			Solarmax.Singleton<LoggerSystem>.Instance.Info("Get Local name: " + localName, new object[0]);
@@ -717,44 +717,44 @@ public class PacketHelper
 		userData.account_id = "喵喵";
 		userData.battle_count = 0;
 		userData.mvp_count = 0;
-		global::Singleton<LocalPlayer>.Get().playerData.Init(userData);
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.Init(userData);
 		if (playerData.raceList.Count < 1)
 		{
 			RaceData raceData = new RaceData();
 			raceData.level = 1;
 			raceData.race = 1;
-			global::Singleton<LocalPlayer>.Get().playerData.InitRace(new List<RaceData>
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.InitRace(new List<RaceData>
 			{
 				raceData
 			});
 		}
 		else
 		{
-			global::Singleton<LocalPlayer>.Get().playerData.InitRace(playerData.raceList);
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.InitRace(playerData.raceList);
 		}
-		global::Singleton<LocalPlayer>.Get().isAccountTokenOver = false;
+		Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver = false;
 		this.OnUserDataInit();
 		Solarmax.Singleton<LevelDataHandler>.Get().UnLockPayChapter("0");
 		Solarmax.Singleton<CollectionModel>.Get().UnLock(0);
-		global::Singleton<LocalPlayer>.Get().AddBuy("0");
+		Solarmax.Singleton<LocalPlayer>.Get().AddBuy("0");
 		int id = 1;
-		global::Singleton<SeasonRewardModel>.Get().Init(id, 99999, new List<bool>
+		Solarmax.Singleton<SeasonRewardModel>.Get().Init(id, 99999, new List<bool>
 		{
 			true
 		});
 		Solarmax.Singleton<ItemDataHandler>.Get().InitPage(new Pack());
-		global::Singleton<LocalPlayer>.Get().InitAntiConfig(0L, 0L);
-		string singleCurrentLevel = global::Singleton<LocalAccountStorage>.Get().singleCurrentLevel;
-		string guideFightLevel = global::Singleton<LocalAccountStorage>.Get().guideFightLevel;
+		Solarmax.Singleton<LocalPlayer>.Get().InitAntiConfig(0L, 0L);
+		string singleCurrentLevel = Solarmax.Singleton<LocalAccountStorage>.Get().singleCurrentLevel;
+		string guideFightLevel = Solarmax.Singleton<LocalAccountStorage>.Get().guideFightLevel;
 		if (GuideManager.Guide != null && !string.IsNullOrEmpty(guideFightLevel))
 		{
 			GuideManager.Guide.InitCompletedGuide(guideFightLevel);
 		}
-		global::Singleton<LocalPlayer>.Get().playerData.singleFightLevel = singleCurrentLevel;
-		global::Singleton<LocalPlayer>.Get().playerData.adchannel = new Dictionary<AdChannel, AdConfig>();
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightLevel = singleCurrentLevel;
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.adchannel = new Dictionary<AdChannel, AdConfig>();
 		MonoSingleton<FlurryAnalytis>.Instance.FlurryRequestUserSuccess(ErrCode.EC_Ok.ToString());
 		AppsFlyerTool.FlyerLoginEvent();
-		global::Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Login, 1);
+		Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Login, 1);
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.RequestUserResult, new object[]
 		{
 			ErrCode.EC_Ok
@@ -763,7 +763,7 @@ public class PacketHelper
 
 	private void OnUserDataInit()
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		VoiceEngine.Init(playerData.userId);
 		MonoSingleton<FlurryAnalytis>.Instance.FlurryUserDataInit();
 		MiGameAnalytics.MiAnalyticsUserDataInit();
@@ -771,7 +771,7 @@ public class PacketHelper
 
 	public void CreateUser(string name, string iconPath)
 	{
-		string localAccount = global::Singleton<LocalPlayer>.Get().GetLocalAccount();
+		string localAccount = Solarmax.Singleton<LocalPlayer>.Get().GetLocalAccount();
 		if (string.IsNullOrEmpty(localAccount))
 		{
 			Debug.LogError("注册时本地账号为空");
@@ -791,7 +791,7 @@ public class PacketHelper
 		if (sccreateUserData.errcode == ErrCode.EC_Ok)
 		{
 			UserData data = sccreateUserData.data;
-			global::Singleton<LocalPlayer>.Get().playerData.Init(data);
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.Init(data);
 			if (sccreateUserData.data != null && sccreateUserData.data.chapterBuy != null && sccreateUserData.data.chapterBuy.Count > 0)
 			{
 				for (int i = 0; i < sccreateUserData.data.chapterBuy.Count; i++)
@@ -804,7 +804,7 @@ public class PacketHelper
 				int id = 0;
 				if (int.TryParse(sccreateUserData.data.LadderID, out id))
 				{
-					global::Singleton<SeasonRewardModel>.Get().Init(id, sccreateUserData.data.maxscore, sccreateUserData.data.LadderReward);
+					Solarmax.Singleton<SeasonRewardModel>.Get().Init(id, sccreateUserData.data.maxscore, sccreateUserData.data.LadderReward);
 				}
 			}
 			this.OnUserDataInit();
@@ -822,7 +822,7 @@ public class PacketHelper
 
 	public void ChangeIcon(string iconPath)
 	{
-		global::Singleton<LocalPlayer>.Get().playerData.icon = iconPath;
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.icon = iconPath;
 		CSSetIcon cssetIcon = new CSSetIcon();
 		cssetIcon.icon = iconPath;
 		Solarmax.Singleton<NetSystem>.Instance.Send<CSSetIcon>(15, cssetIcon, true);
@@ -1180,7 +1180,7 @@ public class PacketHelper
 
 	public void TeamCreate(bool is2v2, bool is3v3)
 	{
-		global::Singleton<TeamInviteData>.Get().Reset();
+		Solarmax.Singleton<TeamInviteData>.Get().Reset();
 		CSTeamCreate csteamCreate = new CSTeamCreate();
 		if (is2v2)
 		{
@@ -1199,7 +1199,7 @@ public class PacketHelper
 		SCTeamCreate scteamCreate = Serializer.Deserialize<SCTeamCreate>(source);
 		if (scteamCreate.code == ErrCode.EC_Ok)
 		{
-			global::Singleton<TeamInviteData>.Get().isLeader = true;
+			Solarmax.Singleton<TeamInviteData>.Get().isLeader = true;
 		}
 		else
 		{
@@ -1229,14 +1229,14 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCTeamUpdate scteamUpdate = Serializer.Deserialize<SCTeamUpdate>(source);
-		global::Singleton<TeamInviteData>.Get().battleType = scteamUpdate.type;
-		global::Singleton<TeamInviteData>.Get().version = scteamUpdate.version;
-		global::Singleton<TeamInviteData>.Get().teamPlayers.Clear();
+		Solarmax.Singleton<TeamInviteData>.Get().battleType = scteamUpdate.type;
+		Solarmax.Singleton<TeamInviteData>.Get().version = scteamUpdate.version;
+		Solarmax.Singleton<TeamInviteData>.Get().teamPlayers.Clear();
 		for (int i = 0; i < scteamUpdate.simUsers.Count; i++)
 		{
 			SimplePlayerData simplePlayerData = new SimplePlayerData();
 			simplePlayerData.Init(scteamUpdate.simUsers[i]);
-			global::Singleton<TeamInviteData>.Get().teamPlayers.Add(simplePlayerData);
+			Solarmax.Singleton<TeamInviteData>.Get().teamPlayers.Add(simplePlayerData);
 		}
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnTeamUpdate, new object[0]);
 	}
@@ -1280,7 +1280,7 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCTeamInviteReq scteamInviteReq = Serializer.Deserialize<SCTeamInviteReq>(source);
-		global::Singleton<TeamInviteData>.Get().Reset();
+		Solarmax.Singleton<TeamInviteData>.Get().Reset();
 		SimplePlayerData simplePlayerData = new SimplePlayerData();
 		simplePlayerData.Init(scteamInviteReq.leader);
 		if (Solarmax.Singleton<BattleSystem>.Instance.battleData.gameState != GameState.Game)
@@ -1373,7 +1373,7 @@ public class PacketHelper
 		MemoryStream source = msg.Data as MemoryStream;
 		SCBattleResume scbattleResume = Serializer.Deserialize<SCBattleResume>(source);
 		PbSCFrames report = scbattleResume.report;
-		global::Singleton<AssetManager>.Get().LoadBattleResources();
+		Solarmax.Singleton<AssetManager>.Get().LoadBattleResources();
 		GameState gameState = Solarmax.Singleton<BattleSystem>.Instance.battleData.gameState;
 		if (gameState == GameState.Game || gameState == GameState.GameWatch || gameState == GameState.Watcher)
 		{
@@ -1657,7 +1657,7 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCMatch2CurNum scmatch2CurNum = Serializer.Deserialize<SCMatch2CurNum>(source);
-		global::Singleton<LocalPlayer>.Get().CurBattlePlayerNum = scmatch2CurNum.playernum;
+		Solarmax.Singleton<LocalPlayer>.Get().CurBattlePlayerNum = scmatch2CurNum.playernum;
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnRoomListREfresh, new object[]
 		{
 			scmatch2CurNum.playernum
@@ -1720,7 +1720,7 @@ public class PacketHelper
 		MemoryStream source = msg.Data as MemoryStream;
 		SCMatch3Notify scmatch3Notify = Serializer.Deserialize<SCMatch3Notify>(source);
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.matchId = scmatch3Notify.matchid;
-		global::Singleton<LocalPlayer>.Get().battleMap = scmatch3Notify.matchid;
+		Solarmax.Singleton<LocalPlayer>.Get().battleMap = scmatch3Notify.matchid;
 		List<PlayerData> list = new List<PlayerData>();
 		list.Add(null);
 		list.Add(null);
@@ -1742,7 +1742,7 @@ public class PacketHelper
 		{
 			list
 		});
-		global::Singleton<LocalPlayer>.Get().mathPlayer = list;
+		Solarmax.Singleton<LocalPlayer>.Get().mathPlayer = list;
 	}
 
 	private void OnChangeRace(int msgid, PacketEvent msg)
@@ -1816,7 +1816,7 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCGetRaceData scgetRaceData = Serializer.Deserialize<SCGetRaceData>(source);
-		global::Singleton<LocalPlayer>.Get().playerData.InitRace(scgetRaceData.races);
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.InitRace(scgetRaceData.races);
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnGetRaceData, new object[]
 		{
 			scgetRaceData.races
@@ -1900,7 +1900,7 @@ public class PacketHelper
 			if (scunlockChest.time2unlock > 0)
 			{
 				int slot = scunlockChest.slot;
-				ChessItem[] chesses = global::Singleton<LocalPlayer>.Get().playerData.chesses;
+				ChessItem[] chesses = Solarmax.Singleton<LocalPlayer>.Get().playerData.chesses;
 				long num = (long)scunlockChest.time2unlock;
 				chesses[slot].timeout = num;
 				if (num > 0L)
@@ -1947,17 +1947,17 @@ public class PacketHelper
 		if (scaddChest.added != null)
 		{
 			int slot = scaddChest.added.slot;
-			global::Singleton<LocalPlayer>.Get().playerData.chesses[slot] = new ChessItem();
-			global::Singleton<LocalPlayer>.Get().playerData.chesses[slot].id = scaddChest.added.id;
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.chesses[slot] = new ChessItem();
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.chesses[slot].id = scaddChest.added.id;
 			long timeout = scaddChest.added.timeout;
-			global::Singleton<LocalPlayer>.Get().playerData.chesses[slot].timeout = timeout;
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.chesses[slot].timeout = timeout;
 			if (timeout > 0L)
 			{
-				ChessItem chessItem = global::Singleton<LocalPlayer>.Get().playerData.chesses[slot];
+				ChessItem chessItem = Solarmax.Singleton<LocalPlayer>.Get().playerData.chesses[slot];
 				DateTime dateTime = new DateTime(1970, 1, 1);
 				chessItem.timefinish = dateTime.AddSeconds((double)scaddChest.added.timeout);
 			}
-			global::Singleton<LocalPlayer>.Get().playerData.chesses[slot].slot = scaddChest.added.slot;
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.chesses[slot].slot = scaddChest.added.slot;
 			Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnChestNotify, new object[0]);
 		}
 	}
@@ -1986,7 +1986,7 @@ public class PacketHelper
 		}
 		else
 		{
-			global::Singleton<LocalPlayer>.Get().playerData.timechest = scgainTimerChest.time_out;
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.timechest = scgainTimerChest.time_out;
 			Debug.Log(string.Format("OnOpenTimerChest:{0}", scgainTimerChest.time_out));
 			Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnChestNotify, new object[0]);
 			Solarmax.Singleton<UISystem>.Get().ShowWindow("ChestWindow");
@@ -2007,7 +2007,7 @@ public class PacketHelper
 		}
 		else
 		{
-			global::Singleton<LocalPlayer>.Get().playerData.curbattlechest = (int)scgainBattleChest.num;
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.curbattlechest = (int)scgainBattleChest.num;
 			Debug.Log(string.Format("OnOpenBattleChest:{0}", scgainBattleChest.num));
 			Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnChestNotify, new object[0]);
 			Solarmax.Singleton<UISystem>.Get().ShowWindow("ChestWindow");
@@ -2022,7 +2022,7 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCUpdateTimerChest scupdateTimerChest = Serializer.Deserialize<SCUpdateTimerChest>(source);
-		global::Singleton<LocalPlayer>.Get().playerData.timechest = scupdateTimerChest.chest_gainpoint;
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.timechest = scupdateTimerChest.chest_gainpoint;
 		Debug.Log(string.Format("OnUpdateTimeChest:{0}", scupdateTimerChest.chest_gainpoint));
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnChestNotify, new object[0]);
 	}
@@ -2031,8 +2031,8 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCUpdateBattleChest scupdateBattleChest = Serializer.Deserialize<SCUpdateBattleChest>(source);
-		global::Singleton<LocalPlayer>.Get().playerData.curbattlechest = scupdateBattleChest.chest_winnum;
-		Debug.Log(string.Format("OnUpdateBattleChest:{0}", global::Singleton<LocalPlayer>.Get().playerData.curbattlechest));
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.curbattlechest = scupdateBattleChest.chest_winnum;
+		Debug.Log(string.Format("OnUpdateBattleChest:{0}", Solarmax.Singleton<LocalPlayer>.Get().playerData.curbattlechest));
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnChestNotify, new object[0]);
 	}
 
@@ -2051,7 +2051,7 @@ public class PacketHelper
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.gameType = etype;
 		Solarmax.Singleton<BattleSystem>.Instance.bStartBattle = true;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.matchId = matchId;
-		global::Singleton<LocalPlayer>.Get().battleMap = Solarmax.Singleton<BattleSystem>.Instance.battleData.matchId;
+		Solarmax.Singleton<LocalPlayer>.Get().battleMap = Solarmax.Singleton<BattleSystem>.Instance.battleData.matchId;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.rand.seed = DateTime.UtcNow.Millisecond;
 		int seed = Solarmax.Singleton<BattleSystem>.Instance.battleData.rand.seed;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.teamFight = false;
@@ -2113,7 +2113,7 @@ public class PacketHelper
 				Team team = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetTeam((TEAM)(j + 1));
 				if (team.team == (TEAM)num2)
 				{
-					team.playerData.Init(global::Singleton<LocalPlayer>.Get().playerData);
+					team.playerData.Init(Solarmax.Singleton<LocalPlayer>.Get().playerData);
 					Solarmax.Singleton<BattleSystem>.Instance.battleData.currentTeam = team.team;
 				}
 				else
@@ -2180,12 +2180,12 @@ public class PacketHelper
 			Team team = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetTeam((TEAM)(i + 1));
 			team.groupID = 99;
 		}
-		global::Singleton<AssetManager>.Get().FakeLoadBattleResources();
+		Solarmax.Singleton<AssetManager>.Get().FakeLoadBattleResources();
 		Solarmax.Singleton<BattleSystem>.Instance.sceneManager.CreateScene(null, false, false);
 		Solarmax.Singleton<BattleSystem>.Instance.lockStep.replay = true;
 		Solarmax.Singleton<BattleSystem>.Instance.lockStep.playSpeed = 1f;
 		Solarmax.Singleton<BattleSystem>.Instance.sceneManager.FadePlanet(true, 0.1f);
-		global::Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.IN, 0.1f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.IN, 0.1f);
 		Solarmax.Singleton<BattleSystem>.Instance.StartLockStep();
 		List<global::Packet> list = new List<global::Packet>();
 		for (int j = 0; j < 600; j++)
@@ -2242,7 +2242,7 @@ public class PacketHelper
 		SCClientStorageLoad scclientStorageLoad = Serializer.Deserialize<SCClientStorageLoad>(source);
 		for (int i = 0; i < scclientStorageLoad.values.Count; i++)
 		{
-			global::Singleton<LocalPlayer>.Get().playerData.clientStorages[i] = scclientStorageLoad.values[i];
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.clientStorages[i] = scclientStorageLoad.values[i];
 		}
 		if (scclientStorageLoad.values.Count >= 3)
 		{
@@ -2271,7 +2271,7 @@ public class PacketHelper
 			{
 				int num = scclientStorageSet.index[i];
 				string text = scclientStorageSet.value[i];
-				global::Singleton<LocalPlayer>.Get().playerData.clientStorages[num] = text;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.clientStorages[num] = text;
 			}
 		}
 	}
@@ -2352,7 +2352,7 @@ public class PacketHelper
 		else if (scresume.report != null)
 		{
 			PbSCFrames report = scresume.report;
-			global::Singleton<AssetManager>.Get().LoadBattleResources();
+			Solarmax.Singleton<AssetManager>.Get().LoadBattleResources();
 			GameState gameState = Solarmax.Singleton<BattleSystem>.Instance.battleData.gameState;
 			if (gameState == GameState.Game || gameState == GameState.GameWatch || gameState == GameState.Watcher)
 			{
@@ -2408,16 +2408,16 @@ public class PacketHelper
 		SCKickUserNtf sckickUserNtf = Serializer.Deserialize<SCKickUserNtf>(source);
 		if (sckickUserNtf.code == ErrCode.EC_AAOvertime)
 		{
-			global::Singleton<LocalPlayer>.Get().isAccountTokenOver = true;
+			Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver = true;
 			if (Solarmax.Singleton<BattleSystem>.Instance.bStartBattle)
 			{
 				return;
 			}
-			global::Singleton<LocalPlayer>.Get().AccountTokenOver();
+			Solarmax.Singleton<LocalPlayer>.Get().AccountTokenOver();
 		}
 		else
 		{
-			global::Singleton<LocalPlayer>.Get().isAccountTokenOver = true;
+			Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver = true;
 			if (Solarmax.Singleton<BattleSystem>.Instance.bStartBattle)
 			{
 				return;
@@ -2545,13 +2545,13 @@ public class PacketHelper
 			{
 				Solarmax.Singleton<UISystem>.Get().HideAllWindow();
 				Solarmax.Singleton<UISystem>.Get().ShowWindow("PVPWaitWindow");
-				global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = false;
+				Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = false;
 			}
 			else
 			{
 				Solarmax.Singleton<UISystem>.Instance.HideAllWindow();
 				Solarmax.Singleton<UISystem>.Instance.ShowWindow("Room2V2Window");
-				global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
+				Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
 			}
 		}
 		else if (scstartMatchReq.typ == MatchType.MT_Room)
@@ -2562,7 +2562,7 @@ public class PacketHelper
 				{
 					Solarmax.Singleton<UISystem>.Instance.HideAllWindow();
 					Solarmax.Singleton<UISystem>.Get().ShowWindow("PVPWaitWindow");
-					global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = false;
+					Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = false;
 				}
 				else if (scstartMatchReq.code == ErrCode.EC_Ok)
 				{
@@ -2572,7 +2572,7 @@ public class PacketHelper
 					{
 						scstartMatchReq.code
 					});
-					global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
+					Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
 				}
 			}
 			else if (scstartMatchReq.code == ErrCode.EC_Ok)
@@ -2583,7 +2583,7 @@ public class PacketHelper
 				{
 					scstartMatchReq.code
 				});
-				global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
+				Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
 			}
 		}
 	}
@@ -2691,7 +2691,7 @@ public class PacketHelper
 			{
 				Solarmax.Singleton<UISystem>.Get().ShowWindow("PVPWaitWindow");
 			}
-			global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = false;
+			Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = false;
 			Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnHideQuitMatchButton, new object[0]);
 		}
 		else if (scmatchComplete.code == ErrCode.EC_MatchIsFull)
@@ -2772,7 +2772,7 @@ public class PacketHelper
 	{
 		CSQuitBattle csquitBattle = new CSQuitBattle();
 		EndEvent endEvent = new EndEvent();
-		endEvent.userid = global::Singleton<LocalPlayer>.Get().playerData.userId;
+		endEvent.userid = Solarmax.Singleton<LocalPlayer>.Get().playerData.userId;
 		endEvent.end_type = EndType.ET_Giveup;
 		endEvent.end_frame = 0;
 		endEvent.end_destroy = 0;
@@ -2867,7 +2867,7 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCChangeMoney scchangeMoney = Serializer.Deserialize<SCChangeMoney>(source);
-		global::Singleton<LocalPlayer>.Get().SetMoney(scchangeMoney.curMoney);
+		Solarmax.Singleton<LocalPlayer>.Get().SetMoney(scchangeMoney.curMoney);
 	}
 
 	public void GenPresignedUrl(string objectName, string method, string contentType, string file, int eventId)
@@ -3015,11 +3015,11 @@ public class PacketHelper
 				task.status = TaskStatus.Received;
 				if (task.reward2Type == Solarmax.RewardType.Degree)
 				{
-					global::Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Degree, task.reward2Value);
+					Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Degree, task.reward2Value);
 				}
 				if (task.rewardType == Solarmax.RewardType.Degree)
 				{
-					global::Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Degree, task.rewardValue);
+					Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Degree, task.rewardValue);
 				}
 				list.Add(sctaskOk.okTaskIds[i]);
 			}
@@ -3029,9 +3029,9 @@ public class PacketHelper
 		{
 			list2.Add(sctaskOk.failTaskIds[j]);
 		}
-		if (global::Singleton<TaskModel>.Get().onRequestTaskOk != null)
+		if (Solarmax.Singleton<TaskModel>.Get().onRequestTaskOk != null)
 		{
-			global::Singleton<TaskModel>.Get().onRequestTaskOk(list, list2);
+			Solarmax.Singleton<TaskModel>.Get().onRequestTaskOk(list, list2);
 		}
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnTaskOkEvent, new object[]
 		{
@@ -3121,7 +3121,7 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCMatchInviteReq scmatchInviteReq = Serializer.Deserialize<SCMatchInviteReq>(source);
-		if (global::Singleton<LocalPlayer>.Get().isAccountTokenOver)
+		if (Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver)
 		{
 			Solarmax.Singleton<NetSystem>.Instance.helper.StartCSMatchInviteResp(false, scmatchInviteReq.srcUserId);
 			return;
@@ -3149,7 +3149,7 @@ public class PacketHelper
 		SCMatchInviteResp scmatchInviteResp = Serializer.Deserialize<SCMatchInviteResp>(source);
 		if (scmatchInviteResp.code == ErrCode.EC_Ok)
 		{
-			global::Singleton<LocalPlayer>.Get().HomeWindow = "HomeWindow";
+			Solarmax.Singleton<LocalPlayer>.Get().HomeWindow = "HomeWindow";
 		}
 		else if (scmatchInviteResp.code == ErrCode.EC_MatchIsFull)
 		{
@@ -3213,24 +3213,24 @@ public class PacketHelper
 
 	public void OnRequestSCUserInit(int msgId, PacketEvent msg)
 	{
-		global::Singleton<LocalPlayer>.Get().SeasonType = 0;
-		global::Singleton<LocalPlayer>.Get().SeasonStartTime = 0;
-		global::Singleton<LocalPlayer>.Get().SeasonEndTime = 99999;
-		global::Singleton<LocalPlayer>.Get().nextSasonStart = 99999.0;
-		global::Singleton<LocalPlayer>.Get().nMaxAccumulMoney = 999999;
-		global::Singleton<LocalPlayer>.Get().nCurAccumulMoney = 99999;
-		global::Singleton<LocalPlayer>.Get().mActivityDegree = 99999;
-		global::Singleton<LocalPlayer>.Get().mOnLineTime = 999999f;
-		global::Singleton<LocalPvpSeasonSystem>.Get().pvpType = 0;
-		global::Singleton<LocalPvpSeasonSystem>.Get().seasonStart = 0;
-		global::Singleton<LocalPvpSeasonSystem>.Get().seasonEnd = 999999;
+		Solarmax.Singleton<LocalPlayer>.Get().SeasonType = 0;
+		Solarmax.Singleton<LocalPlayer>.Get().SeasonStartTime = 0;
+		Solarmax.Singleton<LocalPlayer>.Get().SeasonEndTime = 99999;
+		Solarmax.Singleton<LocalPlayer>.Get().nextSasonStart = 99999.0;
+		Solarmax.Singleton<LocalPlayer>.Get().nMaxAccumulMoney = 999999;
+		Solarmax.Singleton<LocalPlayer>.Get().nCurAccumulMoney = 99999;
+		Solarmax.Singleton<LocalPlayer>.Get().mActivityDegree = 99999;
+		Solarmax.Singleton<LocalPlayer>.Get().mOnLineTime = 999999f;
+		Solarmax.Singleton<LocalPvpSeasonSystem>.Get().pvpType = 0;
+		Solarmax.Singleton<LocalPvpSeasonSystem>.Get().seasonStart = 0;
+		Solarmax.Singleton<LocalPvpSeasonSystem>.Get().seasonEnd = 999999;
 		Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalSeason();
 		Solarmax.Singleton<LevelDataHandler>.Instance.topChapterList.Clear();
 		Solarmax.Singleton<LevelDataHandler>.Instance.topChapterList.Add("0");
 		Solarmax.Singleton<LevelDataHandler>.Instance.InitEvaluationChapter(new List<string>());
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnUpdateLeagueMode, new object[0]);
-		global::Singleton<SeasonRewardModel>.Get().Init(1);
-		global::Singleton<TaskModel>.Get().Init();
+		Solarmax.Singleton<SeasonRewardModel>.Get().Init(1);
+		Solarmax.Singleton<TaskModel>.Get().Init();
 	}
 
 	public void StartVerityOrder(string orderID)
@@ -3282,8 +3282,8 @@ public class PacketHelper
 	{
 		MemoryStream source = msg.Data as MemoryStream;
 		SCAdReward scadReward = Serializer.Deserialize<SCAdReward>(source);
-		global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum++;
-		string rewardbyNum = Solarmax.Singleton<CollectionModel>.Get().GetRewardbyNum(global::Singleton<LocalPlayer>.Get().playerData.nLookAdsNum);
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum++;
+		string rewardbyNum = Solarmax.Singleton<CollectionModel>.Get().GetRewardbyNum(Solarmax.Singleton<LocalPlayer>.Get().playerData.nLookAdsNum);
 		MonoSingleton<FlurryAnalytis>.Instance.FlurryRewardCoinADSEvent(rewardbyNum);
 		AppsFlyerTool.FlyerRewardCoinADSEvent();
 		MiGameAnalytics.MiAnalyticsRewardCoinADSEvent(rewardbyNum);
@@ -3341,7 +3341,7 @@ public class PacketHelper
 		string groupID = array[0] as string;
 		foreach (string achieveID in (array[1] as List<string>))
 		{
-			global::Singleton<AchievementModel>.Get().SetAchievement(groupID, achieveID, true, false);
+			Solarmax.Singleton<AchievementModel>.Get().SetAchievement(groupID, achieveID, true, false);
 		}
 	}
 
@@ -3369,10 +3369,10 @@ public class PacketHelper
 			foreach (string text in pbAchievement.achieveIds)
 			{
 				dictionary[text] = true;
-				global::Singleton<AchievementModel>.Get().SetAchievement(pbAchievement.lvGroupId, text, true, false);
-				if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(pbAchievement.lvGroupId) && global::Singleton<AchievementModel>.Get().achievementGroups[pbAchievement.lvGroupId].idAchievements.ContainsKey(text) && global::Singleton<AchievementModel>.Get().achievementGroups[pbAchievement.lvGroupId].idAchievements[text].types[0] == AchievementType.PassDiffcult)
+				Solarmax.Singleton<AchievementModel>.Get().SetAchievement(pbAchievement.lvGroupId, text, true, false);
+				if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(pbAchievement.lvGroupId) && Solarmax.Singleton<AchievementModel>.Get().achievementGroups[pbAchievement.lvGroupId].idAchievements.ContainsKey(text) && Solarmax.Singleton<AchievementModel>.Get().achievementGroups[pbAchievement.lvGroupId].idAchievements[text].types[0] == AchievementType.PassDiffcult)
 				{
-					Achievement achievement = global::Singleton<AchievementModel>.Get().achievementGroups[pbAchievement.lvGroupId].idAchievements[text];
+					Achievement achievement = Solarmax.Singleton<AchievementModel>.Get().achievementGroups[pbAchievement.lvGroupId].idAchievements[text];
 					TaskConfig task = Solarmax.Singleton<TaskConfigProvider>.Get().GetTask(achievement.taskId);
 					if (task != null && task.status != TaskStatus.Received)
 					{
@@ -3393,7 +3393,7 @@ public class PacketHelper
 		AchievementModel.responseCount++;
 		if (AchievementModel.responseCount == AchievementModel.requestCount)
 		{
-			global::Singleton<LocalAchievementStorage>.Get().CheckSyncData(AchievementModel.achieveDic);
+			Solarmax.Singleton<LocalAchievementStorage>.Get().CheckSyncData(AchievementModel.achieveDic);
 		}
 		Solarmax.Singleton<LevelDataHandler>.Get().ResetChapterStars();
 		Solarmax.Singleton<LevelDataHandler>.Get().UnlockChapters(false);
@@ -3405,7 +3405,7 @@ public class PacketHelper
 		}
 		if (list.Count > 0)
 		{
-			global::Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
+			Solarmax.Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
 		}
 	}
 
@@ -3421,7 +3421,7 @@ public class PacketHelper
 		SCReceiveMonthlyCard screceiveMonthlyCard = Serializer.Deserialize<SCReceiveMonthlyCard>(source);
 		if (screceiveMonthlyCard.code == ErrCode.EC_Ok)
 		{
-			global::Singleton<LocalPlayer>.Get().IsMonthCardReceive = false;
+			Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive = false;
 		}
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.UpdateMothCard, new object[0]);
 	}
@@ -3432,9 +3432,9 @@ public class PacketHelper
 		SCChangeMonthlyCard scchangeMonthlyCard = Serializer.Deserialize<SCChangeMonthlyCard>(source);
 		if (scchangeMonthlyCard != null)
 		{
-			global::Singleton<LocalPlayer>.Get().IsMonthCardReceive = scchangeMonthlyCard.last_receive_time;
-			global::Singleton<LocalPlayer>.Get().month_card_end = scchangeMonthlyCard.monthly_card_end_time;
-			MonthCheckModel monthCheckModel = global::Singleton<MonthCheckModel>.Get();
+			Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive = scchangeMonthlyCard.last_receive_time;
+			Solarmax.Singleton<LocalPlayer>.Get().month_card_end = scchangeMonthlyCard.monthly_card_end_time;
+			MonthCheckModel monthCheckModel = Solarmax.Singleton<MonthCheckModel>.Get();
 			if (monthCheckModel != null)
 			{
 				monthCheckModel.SetCheckedTime();
@@ -3444,9 +3444,9 @@ public class PacketHelper
 			{
 				return;
 			}
-			if (!global::Singleton<LocalPlayer>.Get().IsBuyed(scchangeMonthlyCard.id))
+			if (!Solarmax.Singleton<LocalPlayer>.Get().IsBuyed(scchangeMonthlyCard.id))
 			{
-				global::Singleton<LocalPlayer>.Get().AddBuy(scchangeMonthlyCard.id);
+				Solarmax.Singleton<LocalPlayer>.Get().AddBuy(scchangeMonthlyCard.id);
 			}
 			StoreConfig data = Solarmax.Singleton<storeConfigProvider>.Instance.GetData(scchangeMonthlyCard.id);
 			if (data != null)
@@ -3494,8 +3494,8 @@ public class PacketHelper
 			if (scuploadOldVersionData.errcode == ErrCode.EC_Ok)
 			{
 				UserData data = scuploadOldVersionData.data;
-				global::Singleton<LocalPlayer>.Get().playerData.Init(data);
-				global::Singleton<LocalPlayer>.Get().isAccountTokenOver = false;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.Init(data);
+				Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver = false;
 				this.OnUserDataInit();
 			}
 			if (scuploadOldVersionData.data != null && scuploadOldVersionData.data.chapterBuy != null && scuploadOldVersionData.data.chapterBuy.Count > 0)
@@ -3518,11 +3518,11 @@ public class PacketHelper
 				{
 					for (int k = 0; k < scuploadOldVersionData.data.RechargeData.first_recharge_mark.Count; k++)
 					{
-						global::Singleton<LocalPlayer>.Get().AddBuy(scuploadOldVersionData.data.RechargeData.first_recharge_mark[k]);
+						Solarmax.Singleton<LocalPlayer>.Get().AddBuy(scuploadOldVersionData.data.RechargeData.first_recharge_mark[k]);
 					}
 				}
-				global::Singleton<LocalPlayer>.Get().IsMonthCardReceive = scuploadOldVersionData.data.RechargeData.last_receive_time;
-				global::Singleton<LocalPlayer>.Get().month_card_end = scuploadOldVersionData.data.RechargeData.monthly_card_end_time;
+				Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive = scuploadOldVersionData.data.RechargeData.last_receive_time;
+				Solarmax.Singleton<LocalPlayer>.Get().month_card_end = scuploadOldVersionData.data.RechargeData.monthly_card_end_time;
 			}
 		}
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnUploadOldVersionData, new object[0]);
@@ -3532,7 +3532,7 @@ public class PacketHelper
 	{
 		CSGetLadderReward csgetLadderReward = new CSGetLadderReward();
 		csgetLadderReward.index = type;
-		global::Singleton<SeasonRewardModel>.Get().claimRewardType = type;
+		Solarmax.Singleton<SeasonRewardModel>.Get().claimRewardType = type;
 		Solarmax.Singleton<NetSystem>.Instance.Send<CSGetLadderReward>(330, csgetLadderReward, true);
 	}
 
@@ -3569,7 +3569,7 @@ public class PacketHelper
 		SCChangeLadderScore scchangeLadderScore = Serializer.Deserialize<SCChangeLadderScore>(source);
 		if (scchangeLadderScore != null && scchangeLadderScore.code == ErrCode.EC_Ok)
 		{
-			global::Singleton<LocalPlayer>.Get().playerData.score = scchangeLadderScore.ladder_score;
+			Solarmax.Singleton<LocalPlayer>.Get().playerData.score = scchangeLadderScore.ladder_score;
 			Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnLadderScoreChange, null);
 		}
 	}
@@ -3586,7 +3586,7 @@ public class PacketHelper
 		SCPushMonthCheck scpushMonthCheck = Serializer.Deserialize<SCPushMonthCheck>(source);
 		if (scpushMonthCheck != null && scpushMonthCheck.code == ErrCode.EC_Ok)
 		{
-			MonthCheckModel monthCheckModel = global::Singleton<MonthCheckModel>.Get();
+			MonthCheckModel monthCheckModel = Solarmax.Singleton<MonthCheckModel>.Get();
 			monthCheckModel.checkedId = scpushMonthCheck.checked_id;
 			monthCheckModel.nextCheckId = scpushMonthCheck.checked_id + 1;
 			monthCheckModel.currentMonth = scpushMonthCheck.current_month;
@@ -3621,8 +3621,8 @@ public class PacketHelper
 		SCMonthCheck scmonthCheck = Serializer.Deserialize<SCMonthCheck>(source);
 		if (scmonthCheck != null && scmonthCheck.code == ErrCode.EC_Ok)
 		{
-			global::Singleton<MonthCheckModel>.Get().needCheck = false;
-			MonthCheckModel monthCheckModel = global::Singleton<MonthCheckModel>.Get();
+			Solarmax.Singleton<MonthCheckModel>.Get().needCheck = false;
+			MonthCheckModel monthCheckModel = Solarmax.Singleton<MonthCheckModel>.Get();
 			monthCheckModel.needCheck = false;
 			monthCheckModel.checkedId = scmonthCheck.check_id;
 			monthCheckModel.SetCheckedTimeEX(scmonthCheck.check_time);
@@ -3642,7 +3642,7 @@ public class PacketHelper
 		SCRVPReward scrvpreward = Serializer.Deserialize<SCRVPReward>(source);
 		if (scrvpreward != null)
 		{
-			global::Singleton<LocalPlayer>.Get().nCurAccumulMoney = scrvpreward.pvp_reward;
+			Solarmax.Singleton<LocalPlayer>.Get().nCurAccumulMoney = scrvpreward.pvp_reward;
 			Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.UpdateAccumulMoney, new object[0]);
 		}
 	}
@@ -3733,7 +3733,7 @@ public class PacketHelper
 		MemoryStream source = msg.Data as MemoryStream;
 		SCLotteryInfo sclotteryInfo = Serializer.Deserialize<SCLotteryInfo>(source);
 		Debug.Log("OnLotteryInfoResponse error code " + sclotteryInfo.errcode);
-		global::Singleton<LuckModel>.Get().lotteryInfo = sclotteryInfo;
+		Solarmax.Singleton<LuckModel>.Get().lotteryInfo = sclotteryInfo;
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnLotteryResultDone, new object[0]);
 	}
 
@@ -3748,7 +3748,7 @@ public class PacketHelper
 		Debug.Log("OnLotteryNotesResponse");
 		MemoryStream source = msg.Data as MemoryStream;
 		SCLotterNotes lotteryNotes = Serializer.Deserialize<SCLotterNotes>(source);
-		global::Singleton<LuckModel>.Get().lotteryNotes = lotteryNotes;
+		Solarmax.Singleton<LuckModel>.Get().lotteryNotes = lotteryNotes;
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnLotteryNotesDone, new object[0]);
 	}
 
@@ -3764,7 +3764,7 @@ public class PacketHelper
 		Debug.Log("OnLotteryAwardResponse");
 		MemoryStream source = msg.Data as MemoryStream;
 		SCLotteryAward lotteryAward = Serializer.Deserialize<SCLotteryAward>(source);
-		global::Singleton<LuckModel>.Get().lotteryAward = lotteryAward;
+		Solarmax.Singleton<LuckModel>.Get().lotteryAward = lotteryAward;
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnLotteryExtraAwardAccepted, new object[0]);
 	}
 
@@ -3822,7 +3822,7 @@ public class PacketHelper
 		SCMailList scmailList = Serializer.Deserialize<SCMailList>(source);
 		if (scmailList.code == ErrCode.EC_Ok)
 		{
-			global::Singleton<MailModel>.Get().mailList = scmailList;
+			Solarmax.Singleton<MailModel>.Get().mailList = scmailList;
 		}
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnMailListResponse, new object[0]);
 	}

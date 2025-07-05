@@ -13,7 +13,7 @@ public class UICustomWrapContent : MonoBehaviour
 	public void EnsureInit()
 	{
 		this.MAX_REUSE = 9;
-		this.maxIndex = Singleton<CommentModel>.Get().comments.Count - 1;
+		this.maxIndex = Solarmax.Singleton<CommentModel>.Get().comments.Count - 1;
 		this.currentTail = this.MAX_REUSE;
 		this.SortBasedOnScrollMovement();
 		if (this.mScroll != null)
@@ -29,7 +29,7 @@ public class UICustomWrapContent : MonoBehaviour
 
 	public void ResetMax(int maxTemplate)
 	{
-		this.maxIndex = Singleton<CommentModel>.Get().comments.Count - 1;
+		this.maxIndex = Solarmax.Singleton<CommentModel>.Get().comments.Count - 1;
 	}
 
 	public void EnsureClear()
@@ -185,7 +185,7 @@ public class UICustomWrapContent : MonoBehaviour
 	protected void UpdateItem(Transform item, int index, int realIndex = 0)
 	{
 		CommentTemplate component = this.mChildren[index].gameObject.GetComponent<CommentTemplate>();
-		component.EnsureInit(Singleton<CommentModel>.Get().comments[realIndex]);
+		component.EnsureInit(Solarmax.Singleton<CommentModel>.Get().comments[realIndex]);
 	}
 
 	private IEnumerator ToTop(int child)

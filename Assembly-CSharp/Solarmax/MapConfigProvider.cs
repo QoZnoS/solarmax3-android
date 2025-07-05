@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public class MapConfigProvider : Singleton<MapConfigProvider>, IDataProvider
+	public class MapConfigProvider : Solarmax.Singleton<MapConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -66,7 +66,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/MapList.xml save failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/MapList.xml save failed " + ex.ToString(), new object[0]);
 			}
 			return result;
 		}
@@ -135,7 +135,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("maplist resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("maplist resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 
@@ -262,7 +262,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("maplist resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("maplist resource failed " + ex.ToString(), new object[0]);
 			}
 			return dictionary;
 		}
@@ -297,7 +297,7 @@ namespace Solarmax
 				}
 				catch (Exception ex)
 				{
-					Singleton<LoggerSystem>.Instance.Error("data/MapList.xml save failed " + ex.ToString(), new object[0]);
+                    Solarmax.Singleton<LoggerSystem>.Instance.Error("data/MapList.xml save failed " + ex.ToString(), new object[0]);
 				}
 			}
 		}
@@ -362,7 +362,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("maplist resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("maplist resource failed " + ex.ToString(), new object[0]);
 			}
 			return null;
 		}

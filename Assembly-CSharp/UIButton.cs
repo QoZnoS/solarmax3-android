@@ -173,7 +173,7 @@ public class UIButton : UIButtonColor
 		if (UIButton.current == null && this.isEnabled && UICamera.currentTouchID != -2 && UICamera.currentTouchID != -3)
 		{
 			UIButton.current = this;
-			Singleton<AudioManger>.Get().PlayEffect(this.clickSound, this.clickSoundVolumn);
+            Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.clickSound, this.clickSoundVolumn);
 			EventDelegate.Execute(this.onClick);
 			UIButton.current = null;
 		}

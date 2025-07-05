@@ -1,7 +1,7 @@
 ﻿using System;
 using Solarmax;
 
-public class OldLocalLevelStorage : global::Singleton<OldLocalLevelStorage>, OldILocalStorage
+public class OldLocalLevelStorage : Solarmax.Singleton<OldLocalLevelStorage>, OldILocalStorage
 {
 	public string Name()
 	{

@@ -8,14 +8,14 @@ public class LobbyAchieveTemplate : MonoBehaviour
 	public void Init(TaskConfig config)
 	{
 		this.task = config;
-		TaskModel taskModel = global::Singleton<TaskModel>.Get();
+		TaskModel taskModel = Solarmax.Singleton<TaskModel>.Get();
 		taskModel.onRequestTaskOk = (TaskModel.OnRequestTaskOk)Delegate.Combine(taskModel.onRequestTaskOk, new TaskModel.OnRequestTaskOk(this.OnRecieveResponsed));
 		this.UpdateUI();
 	}
 
 	public void Destroy()
 	{
-		TaskModel taskModel = global::Singleton<TaskModel>.Get();
+		TaskModel taskModel = Solarmax.Singleton<TaskModel>.Get();
 		taskModel.onRequestTaskOk = (TaskModel.OnRequestTaskOk)Delegate.Remove(taskModel.onRequestTaskOk, new TaskModel.OnRequestTaskOk(this.OnRecieveResponsed));
 	}
 
@@ -26,7 +26,7 @@ public class LobbyAchieveTemplate : MonoBehaviour
 			Tips.Make(LanguageDataProvider.GetValue(18));
 			return;
 		}
-		global::Singleton<TaskModel>.Get().ClaimReward(this.task.id, null, 1);
+		Solarmax.Singleton<TaskModel>.Get().ClaimReward(this.task.id, null, 1);
 	}
 
 	private void OnRecieveResponsed(List<string> successes, List<string> failures)

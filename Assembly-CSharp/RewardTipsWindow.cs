@@ -137,7 +137,7 @@ public class RewardTipsWindow : BaseWindow
 			{
 				gameObject2.SetActive(false);
 				component.spriteName = "icon_currency";
-				count = global::Singleton<TaskModel>.Get().claimReward.count;
+				count = Solarmax.Singleton<TaskModel>.Get().claimReward.count;
 				component2.text = string.Format("{0}", data.Coprice * count);
 			}
 			else
@@ -159,7 +159,7 @@ public class RewardTipsWindow : BaseWindow
 		{
 			gameObject2.SetActive(false);
 			component.spriteName = "icon_currency";
-			count = global::Singleton<TaskModel>.Get().claimReward.count;
+			count = Solarmax.Singleton<TaskModel>.Get().claimReward.count;
 			component2.text = string.Format("{0}", count);
 		}
 		else

@@ -97,7 +97,7 @@ public class CooperationAssistCell : MonoBehaviour
 
 	public void OnClickEvent(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (this.Config == null)
 		{
 			return;

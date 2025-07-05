@@ -107,7 +107,7 @@ public class ChapterWindow : BaseWindow
 		int num7 = Math.Abs((int)((this.numParent.transform.localPosition.x - num) / this.changePageLength));
 		if (num7 != ChapterWindow.selectMapIndex && num7 >= 0 && num7 <= this.MapIndexMax)
 		{
-			global::Singleton<AudioManger>.Get().PlayEffect("moveClick");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("moveClick");
 			this.ShowMap(num7, true, false);
 			this.mapShow.ManualFade(0f);
 		}
@@ -225,7 +225,7 @@ public class ChapterWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		this.IsPause = false;
 		this.SetPlayerBaseInfo();
 		if (this.ShowType == ChapterWindow.SHOW_TYPE.SHOW_LEVELS)
@@ -241,8 +241,8 @@ public class ChapterWindow : BaseWindow
 				}
 			}
 		}
-		global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
-		global::Singleton<LocalPlayer>.Get().LeaveBattle();
+		Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
+		Solarmax.Singleton<LocalPlayer>.Get().LeaveBattle();
 		if (!ChapterWindow.bFristOpenChapterWindow || this.ShowType == ChapterWindow.SHOW_TYPE.SHOW_CHAPTERS)
 		{
 			Solarmax.Singleton<UISystem>.Instance.ShowWindow("PaidLevelBuyTOPWindow");
@@ -302,7 +302,7 @@ public class ChapterWindow : BaseWindow
 		{
 			if (eventId == EventId.OnStartSingleBattle)
 			{
-				global::Singleton<AudioManger>.Get().PlayEffect("startBattle");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("startBattle");
 				this.OnStartSingleBattle();
 				this.bShowFriendRanking = false;
 				Solarmax.Singleton<UISystem>.Get().HideWindow("FriendRanking");
@@ -315,7 +315,7 @@ public class ChapterWindow : BaseWindow
 			}
 			if (eventId == EventId.UpdateMoney)
 			{
-				this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+				this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 				return;
 			}
 			if (eventId == EventId.OnHaveNewChapterUnlocked)
@@ -481,15 +481,15 @@ public class ChapterWindow : BaseWindow
 
 	private void SetPlayerBaseInfo()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData != null)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 	}
 
 	private string FormatPower()
 	{
-		int power = global::Singleton<LocalPlayer>.Get().playerData.power;
+		int power = Solarmax.Singleton<LocalPlayer>.Get().playerData.power;
 		string empty = string.Empty;
 		return string.Format("{0} / 30", power);
 	}
@@ -550,7 +550,7 @@ public class ChapterWindow : BaseWindow
 		if (Solarmax.Singleton<LevelDataHandler>.Get().currentChapter != null && !Solarmax.Singleton<LevelDataHandler>.Get().currentChapter.levelList[ChapterWindow.selectMapIndex].unLock)
 		{
 			this.PlayAnimation("PaidLevelWindow_UnlockLvun", 1f);
-			global::Singleton<AudioManger>.Get().PlayEffect("click");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("click");
 		}
 		if (this.numSelect.transform.localScale.x < 0.9f)
 		{
@@ -895,7 +895,7 @@ public class ChapterWindow : BaseWindow
 		this.aniPlayer.onFinished.Clear();
 		this.aniPlayer.onFinished.Add(new EventDelegate(new EventDelegate.Callback(this.UnLockAnimationEffectEnd)));
 		this.PlayAnimation("PaidLevelWindow_UnlockLv", 1f);
-		global::Singleton<AudioManger>.Get().PlayEffect("unlock");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("unlock");
 	}
 
 	private void UnLockAnimationEffectEnd()
@@ -912,7 +912,7 @@ public class ChapterWindow : BaseWindow
 			return;
 		}
 		string id = Solarmax.Singleton<LevelDataHandler>.Get().currentLevel.id;
-		global::Singleton<LocalPlayer>.Get().playerData.singleFightNext = (ChapterWindow.selectMapIndex == this.MapIndexMax);
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightNext = (ChapterWindow.selectMapIndex == this.MapIndexMax);
 		if (this.difficultyLevel == 0)
 		{
 			this.difficultyLevel = 1;
@@ -943,7 +943,7 @@ public class ChapterWindow : BaseWindow
 	public void OnStartSingleBattle()
 	{
 		GuideManager.TriggerGuidecompleted(GuildEndEvent.startbattle);
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		this.mapShow.AlphaFadeOut(0.5f, null);
 		TweenAlpha tweenAlpha = base.gameObject.GetComponent<TweenAlpha>();
 		if (tweenAlpha == null)
@@ -1126,7 +1126,7 @@ public class ChapterWindow : BaseWindow
 	public void OnClickAvatar()
 	{
 		Solarmax.Singleton<UISystem>.Get().ShowWindow("CollectionWindow");
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 	}
 
 	public void OnBuyChapter()
@@ -1167,7 +1167,7 @@ public class ChapterWindow : BaseWindow
 		}
 		int num = data.costGold;
 		num = ((currentChapter.nPromotionPrice <= 0) ? data.costGold : currentChapter.nPromotionPrice);
-		if (global::Singleton<LocalPlayer>.Get().playerData.money < num)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.money < num)
 		{
 			Tips.Make(LanguageDataProvider.GetValue(1102));
 			global::Coroutine.DelayDo(0.2f, new EventDelegate(delegate()

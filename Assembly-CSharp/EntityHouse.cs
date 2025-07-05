@@ -15,7 +15,7 @@ public class EntityHouse : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_House");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_House");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

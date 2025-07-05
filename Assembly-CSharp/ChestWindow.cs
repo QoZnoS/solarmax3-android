@@ -42,7 +42,7 @@ public class ChestWindow : BaseWindow
 				if (eventId == EventId.OnChestBattle)
 				{
 					this.msg2 = (args[0] as SCGainBattleChest);
-					int battlechestid = global::Singleton<LocalPlayer>.Get().playerData.battlechestid;
+					int battlechestid = Solarmax.Singleton<LocalPlayer>.Get().playerData.battlechestid;
 					ChestConfig data = Solarmax.Singleton<ChestConfigProvider>.Instance.GetData(battlechestid);
 					if (data == null)
 					{
@@ -55,7 +55,7 @@ public class ChestWindow : BaseWindow
 			else
 			{
 				this.msg1 = (args[0] as SCGainTimerChest);
-				int timechestid = global::Singleton<LocalPlayer>.Get().playerData.timechestid;
+				int timechestid = Solarmax.Singleton<LocalPlayer>.Get().playerData.timechestid;
 				ChestConfig data2 = Solarmax.Singleton<ChestConfigProvider>.Instance.GetData(timechestid);
 				if (data2 == null)
 				{
@@ -73,7 +73,7 @@ public class ChestWindow : BaseWindow
 				return;
 			}
 			int slot = this.msg.slot;
-			ChessItem chessItem = global::Singleton<LocalPlayer>.Get().playerData.chesses[slot];
+			ChessItem chessItem = Solarmax.Singleton<LocalPlayer>.Get().playerData.chesses[slot];
 			ChestConfig data3 = Solarmax.Singleton<ChestConfigProvider>.Instance.GetData(chessItem.id);
 			if (data3 == null)
 			{
@@ -137,7 +137,7 @@ public class ChestWindow : BaseWindow
 			if (this.chestType == 0 && this.msg.slot > 0)
 			{
 				int slot = this.msg.slot;
-				global::Singleton<LocalPlayer>.Get().playerData.chesses[slot] = null;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.chesses[slot] = null;
 			}
 			Solarmax.Singleton<NetSystem>.Instance.helper.LoadClientStorage();
 			Solarmax.Singleton<UISystem>.Get().HideWindow("ChestWindow");

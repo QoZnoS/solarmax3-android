@@ -24,7 +24,7 @@ public class CollectionWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+		this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		if (!CollectionWindow.isShowBuyView)
 		{
 			this.topTitle.gameObject.SetActive(true);
@@ -158,7 +158,7 @@ public class CollectionWindow : BaseWindow
 		{
 			if (eventId == EventId.OnBuySkinRespose)
 			{
-				this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+				this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 				int id = (int)args[0];
 				Solarmax.Singleton<CollectionModel>.Get().UnLock(id);
 				AvatarView component = this.imageView.GetComponent<AvatarView>();

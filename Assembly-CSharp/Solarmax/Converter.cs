@@ -22,7 +22,7 @@ namespace Solarmax
 			catch (Exception ex)
 			{
 				string message = string.Format("ConvertNumber data:{0}, error:{1}, stack:{2}", data, ex.Message, ex.StackTrace);
-				Singleton<LoggerSystem>.Instance.Error(message, new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error(message, new object[0]);
 			}
 			return result;
 		}
@@ -92,7 +92,7 @@ namespace Solarmax
 			catch (Exception ex)
 			{
 				string message = string.Format("ConvertNumberList data:{0}, error:{1}, stack:{2}", data, ex.Message, ex.StackTrace);
-				Singleton<LoggerSystem>.Instance.Error(message, new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error(message, new object[0]);
 			}
 			return list;
 		}

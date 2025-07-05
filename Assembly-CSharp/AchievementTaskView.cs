@@ -9,13 +9,13 @@ public class AchievementTaskView : MonoBehaviour
 	{
 		this.tasks.Clear();
 		this.wattingTasks.Clear();
-		this.model = global::Singleton<TaskModel>.Get();
+		this.model = Solarmax.Singleton<TaskModel>.Get();
 		int num = 0;
 		foreach (TaskConfig taskConfig in Solarmax.Singleton<TaskConfigProvider>.Get().GetAchieveData())
 		{
 			if (taskConfig.status != TaskStatus.Received)
 			{
-				Achievement achievement = global::Singleton<AchievementModel>.Get().dicAchievements[taskConfig.levelId];
+				Achievement achievement = Solarmax.Singleton<AchievementModel>.Get().dicAchievements[taskConfig.levelId];
 				if (achievement.success)
 				{
 					taskConfig.status = TaskStatus.Completed;
@@ -98,7 +98,7 @@ public class AchievementTaskView : MonoBehaviour
 			}
 			if (list.Count > 0)
 			{
-				global::Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
+				Solarmax.Singleton<TaskModel>.Get().ClaimAllReward(list, null, 1);
 			}
 		}
 	}

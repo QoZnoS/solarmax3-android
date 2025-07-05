@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
-public class CultureInfoDict : Singleton<CultureInfoDict>
+public class CultureInfoDict : Solarmax.Singleton<CultureInfoDict>
 {
 	public CultureInfoDict()
 	{

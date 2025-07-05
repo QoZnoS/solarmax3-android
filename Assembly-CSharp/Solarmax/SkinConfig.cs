@@ -23,7 +23,7 @@ namespace Solarmax
 				this.type = SkinType.Avatar;
 				if (this.skinType == 1)
 				{
-					Singleton<AssetManager>.Get().AddEffect(this.bgImage);
+                    Solarmax.Singleton<AssetManager>.Get().AddEffect(this.bgImage);
 				}
 			}
 			this.unlock = true;

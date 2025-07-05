@@ -4,7 +4,7 @@ using System.Linq;
 using Solarmax;
 using UnityEngine;
 
-public class LocalAchievementStorage : global::Singleton<LocalAchievementStorage>, ILocalStorage
+public class LocalAchievementStorage : Solarmax.Singleton<LocalAchievementStorage>, ILocalStorage
 {
 	public string Name()
 	{
@@ -20,7 +20,7 @@ public class LocalAchievementStorage : global::Singleton<LocalAchievementStorage
 	public void Load(LocalStorageSystem manager)
 	{
 		this.ver = manager.GetInt("Version", 0);
-		AchievementModel achievementModel = global::Singleton<AchievementModel>.Get();
+		AchievementModel achievementModel = Solarmax.Singleton<AchievementModel>.Get();
 		achievementModel.onAchieveSuccess = (AchievementModel.OnAchieveSuccess)Delegate.Combine(achievementModel.onAchieveSuccess, new AchievementModel.OnAchieveSuccess(this.OnSuccessChanged));
 		string @string = manager.GetString("ACHIEVE", string.Empty);
 		this.StringToDic(@string);
@@ -28,7 +28,7 @@ public class LocalAchievementStorage : global::Singleton<LocalAchievementStorage
 
 	public void Clear(LocalStorageSystem manager)
 	{
-		AchievementModel achievementModel = global::Singleton<AchievementModel>.Get();
+		AchievementModel achievementModel = Solarmax.Singleton<AchievementModel>.Get();
 		achievementModel.onAchieveSuccess = (AchievementModel.OnAchieveSuccess)Delegate.Remove(achievementModel.onAchieveSuccess, new AchievementModel.OnAchieveSuccess(this.OnSuccessChanged));
 	}
 
@@ -53,13 +53,13 @@ public class LocalAchievementStorage : global::Singleton<LocalAchievementStorage
 			return;
 		}
 		Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-		foreach (KeyValuePair<string, AchievementGroup> keyValuePair in global::Singleton<AchievementModel>.Get().achievementGroups)
+		foreach (KeyValuePair<string, AchievementGroup> keyValuePair in Solarmax.Singleton<AchievementModel>.Get().achievementGroups)
 		{
 			foreach (Achievement achievement in keyValuePair.Value.achievements)
 			{
 				if (this.dicAchievement[achievement.id] && (!dic.ContainsKey(keyValuePair.Key) || !dic[keyValuePair.Key].ContainsKey(achievement.id)))
 				{
-					string groupId = global::Singleton<AchievementModel>.Get().dicAchievements[achievement.id].groupId;
+					string groupId = Solarmax.Singleton<AchievementModel>.Get().dicAchievements[achievement.id].groupId;
 					if (!dictionary.ContainsKey(groupId))
 					{
 						dictionary[groupId] = new List<string>();
@@ -89,11 +89,11 @@ public class LocalAchievementStorage : global::Singleton<LocalAchievementStorage
 	public void CheckSyncData(string gId, Dictionary<string, bool> sAchievemets)
 	{
 		Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-		foreach (Achievement achievement in global::Singleton<AchievementModel>.Get().achievementGroups[gId].achievements)
+		foreach (Achievement achievement in Solarmax.Singleton<AchievementModel>.Get().achievementGroups[gId].achievements)
 		{
 			if (this.dicAchievement[achievement.id] && !sAchievemets.ContainsKey(achievement.id))
 			{
-				string groupId = global::Singleton<AchievementModel>.Get().dicAchievements[achievement.id].groupId;
+				string groupId = Solarmax.Singleton<AchievementModel>.Get().dicAchievements[achievement.id].groupId;
 				if (!dictionary.ContainsKey(groupId))
 				{
 					dictionary[groupId] = new List<string>();

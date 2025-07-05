@@ -47,19 +47,19 @@ public class HomeTitleWindow : BaseWindow
 
 	private void RefreshPlayerInfo()
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		if (playerData == null)
 		{
 			return;
 		}
 		string picUrl = string.Empty;
-		if (!global::Singleton<LocalPlayer>.Get().playerData.icon.EndsWith(".png"))
+		if (!Solarmax.Singleton<LocalPlayer>.Get().playerData.icon.EndsWith(".png"))
 		{
-			picUrl = global::Singleton<LocalPlayer>.Get().playerData.icon + ".png";
+			picUrl = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon + ".png";
 		}
 		else
 		{
-			picUrl = global::Singleton<LocalPlayer>.Get().playerData.icon;
+			picUrl = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 		}
 		this.playerIcon.picUrl = picUrl;
 		this.playerName.text = ((!string.IsNullOrEmpty(playerData.name)) ? playerData.name : "无名喵喵");
@@ -70,13 +70,13 @@ public class HomeTitleWindow : BaseWindow
 	public void OnBnStoreClick()
 	{
 		Solarmax.Singleton<UISystem>.Get().ShowWindow("StoreWindow");
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 	}
 
 	public void OnClickAvatar()
 	{
 		Solarmax.Singleton<UISystem>.Get().ShowWindow("CollectionWindow");
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 	}
 
 	public void OnBnSettingsClick()

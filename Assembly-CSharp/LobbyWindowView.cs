@@ -107,7 +107,7 @@ public class LobbyWindowView : BaseWindow
 		int num5 = Math.Abs((int)((this.numParent.transform.localPosition.x - num) / this.changePageLength));
 		if (num5 != LobbyWindowView.selectMapIndex && num5 >= 0 && num5 <= this.MapIndexMax)
 		{
-			global::Singleton<AudioManger>.Get().PlayEffect("moveClick");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("moveClick");
 			this.ShowMap(num5, true, this.Showtype, false);
 			if (this.Showtype == LobbyWindowView.SHOW_TYPE.SHOW_CHAPTERS)
 			{
@@ -178,7 +178,7 @@ public class LobbyWindowView : BaseWindow
 		}
 		Solarmax.Singleton<LevelDataHandler>.Instance.allStars = AchievementModel.GetALLCompletedStars();
 		Solarmax.Singleton<LevelDataHandler>.Instance.ResetChapterStars();
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		this.SetPlayerBaseInfo();
 		GuideManager.StartGuide(GuildCondition.GC_Ui, "LobbyWindowView", base.gameObject);
 		this.titleLight.GetComponent<Animator>().Play("LobbyWindowView_light1 0");
@@ -194,9 +194,9 @@ public class LobbyWindowView : BaseWindow
 				GuideManager.StartGuide(GuildCondition.GC_BTFaild, array[0], base.gameObject);
 			}
 		}
-		if (global::Singleton<LocalPlayer>.Get().playerData.icon != string.Empty)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.icon != string.Empty)
 		{
-			this.headBehavior.Load(global::Singleton<LocalPlayer>.Get().playerData.icon, null, null);
+			this.headBehavior.Load(Solarmax.Singleton<LocalPlayer>.Get().playerData.icon, null, null);
 		}
 		if (LobbyWindowView.isFirstShow)
 		{
@@ -228,8 +228,8 @@ public class LobbyWindowView : BaseWindow
 			this.chapterStar.text = string.Format("{0} / {1}", Solarmax.Singleton<LevelDataHandler>.Instance.currentChapter.star, Solarmax.Singleton<LevelDataHandler>.Instance.currentChapter.allstar);
 		}
 		this.SetSubNumAlpha();
-		global::Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
-		global::Singleton<LocalPlayer>.Get().LeaveBattle();
+		Solarmax.Singleton<LocalPlayer>.Get().IsCanOpenAntiWindow = true;
+		Solarmax.Singleton<LocalPlayer>.Get().LeaveBattle();
 	}
 
 	public override void OnHide()
@@ -297,7 +297,7 @@ public class LobbyWindowView : BaseWindow
 			}
 			else
 			{
-				global::Singleton<AudioManger>.Get().PlayEffect("LevelEntry");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("LevelEntry");
 				this.unLockView.SetActive(false);
 				this.mapShow.MapFadeIn(0.35f);
 				this.aniPlayer.onFinished.Clear();
@@ -311,7 +311,7 @@ public class LobbyWindowView : BaseWindow
 		}
 		else if (eventId == EventId.OnStartSingleBattle)
 		{
-			global::Singleton<AudioManger>.Get().PlayEffect("startBattle");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("startBattle");
 			if (this.bShowFriendRanking)
 			{
 				Solarmax.Singleton<UISystem>.Get().HideWindow("FriendRanking");
@@ -321,7 +321,7 @@ public class LobbyWindowView : BaseWindow
 		}
 		if (eventId == EventId.UpdateMoney)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			return;
 		}
 		if (eventId == EventId.UpdatePower)
@@ -475,7 +475,7 @@ public class LobbyWindowView : BaseWindow
 	public void OnClickAvatar()
 	{
 		Solarmax.Singleton<UISystem>.Get().ShowWindow("CollectionWindow");
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 	}
 
 	public void OnClickAddMoney1()
@@ -540,7 +540,7 @@ public class LobbyWindowView : BaseWindow
 		{
 			GuideManager.ClearGuideData();
 			GuideManager.StartGuide(GuildCondition.GC_Ui, "LobbyWindowView", base.gameObject);
-			global::Singleton<AudioManger>.Get().PlayEffect("LevelExit");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("LevelExit");
 			this.mapShowChapters.galaxyTweenAlpa.enabled = false;
 			this.aniPlayer.onFinished.Clear();
 			this.mapShowChapters.EnableEffect(false);
@@ -787,7 +787,7 @@ public class LobbyWindowView : BaseWindow
 	private void UnlockNextChapter()
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("LobbyWindowView  UnlockNextChapter", new object[0]);
-		if (global::Singleton<LocalPlayer>.Get().playerData.name == string.Empty && Solarmax.Singleton<LevelDataHandler>.Get().currentChapter.id == "1001")
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.name == string.Empty && Solarmax.Singleton<LevelDataHandler>.Get().currentChapter.id == "1001")
 		{
 			this.PassChapterMapFadeOutOver();
 			return;
@@ -872,7 +872,7 @@ public class LobbyWindowView : BaseWindow
 	public void AudioBGVolumeGradualChange(float to, float delta)
 	{
 		float num = delta / 0.1f;
-		float bgvolume = global::Singleton<AudioManger>.Get().GetBGVolume();
+		float bgvolume = Solarmax.Singleton<AudioManger>.Get().GetBGVolume();
 		if (bgvolume < 1E-45f)
 		{
 			return;
@@ -888,7 +888,7 @@ public class LobbyWindowView : BaseWindow
 
 	private void SetBGVolume()
 	{
-		global::Singleton<AudioManger>.Get().ChangeBGVolume(this.audioBGVolumeRatio);
+		Solarmax.Singleton<AudioManger>.Get().ChangeBGVolume(this.audioBGVolumeRatio);
 	}
 
 	private void ShowUnlockChapter()
@@ -899,7 +899,7 @@ public class LobbyWindowView : BaseWindow
 		this.aniPlayer.onFinished.Add(new EventDelegate(new EventDelegate.Callback(this.UnLockChapterEffectEnd)));
 		this.lockBackground.SetActive(true);
 		this.PlayAnimation("LobbyWindowView_lockOpen", 1f);
-		global::Singleton<AudioManger>.Get().PlayEffect("unlock");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("unlock");
 	}
 
 	private void UnLockChapterEffectEnd()
@@ -916,17 +916,17 @@ public class LobbyWindowView : BaseWindow
 
 	private void SetPlayerBaseInfo()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData != null)
 		{
-			if (string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().playerData.name))
+			if (string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().playerData.name))
 			{
 				this.playerName.text = "guest";
 			}
 			else
 			{
-				this.playerName.text = global::Singleton<LocalPlayer>.Get().playerData.name;
+				this.playerName.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.name;
 			}
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			int allStars = Solarmax.Singleton<LevelDataHandler>.Instance.allStars;
 			this.playerScore.text = allStars.ToString();
 			this.playerPower.text = this.FormatPower();
@@ -935,7 +935,7 @@ public class LobbyWindowView : BaseWindow
 
 	private string FormatPower()
 	{
-		int power = global::Singleton<LocalPlayer>.Get().playerData.power;
+		int power = Solarmax.Singleton<LocalPlayer>.Get().playerData.power;
 		string empty = string.Empty;
 		return string.Format("{0} / 30", power);
 	}
@@ -960,7 +960,7 @@ public class LobbyWindowView : BaseWindow
 		}
 		if (this.Showtype == LobbyWindowView.SHOW_TYPE.SHOW_CHAPTERS && !Solarmax.Singleton<LevelDataHandler>.Instance.chapterList[LobbyWindowView.selectChapterIndex].unLock)
 		{
-			global::Singleton<AudioManger>.Get().PlayEffect("click");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("click");
 			ChapterConfig data = Solarmax.Singleton<ChapterConfigProvider>.Instance.GetData(Solarmax.Singleton<LevelDataHandler>.Instance.chapterList[LobbyWindowView.selectChapterIndex].id);
 			LanguageDataProvider.GetValue(Solarmax.Singleton<ChapterConfigProvider>.Instance.GetData(data.dependChapter).name);
 			Tips.Make(LanguageDataProvider.GetValue(2220));
@@ -993,7 +993,7 @@ public class LobbyWindowView : BaseWindow
 			ChapterInfo chapterInfo = Solarmax.Singleton<LevelDataHandler>.Get().chapterList[LobbyWindowView.selectMapIndex];
 			if (Solarmax.Singleton<ChapterConfigProvider>.Instance.GetData(chapterInfo.id).costGold > 0 && !Solarmax.Singleton<LevelDataHandler>.Instance.IsBuyChapter(chapterInfo.id))
 			{
-				global::Singleton<AudioManger>.Get().PlayEffect("click");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("click");
 				ChapterConfig data2 = Solarmax.Singleton<ChapterConfigProvider>.Instance.GetData(Solarmax.Singleton<LevelDataHandler>.Instance.chapterList[LobbyWindowView.selectChapterIndex].id);
 				LanguageDataProvider.GetValue(Solarmax.Singleton<ChapterConfigProvider>.Instance.GetData(data2.dependChapter).name);
 				Tips.Make(LanguageDataProvider.GetValue(2220));
@@ -1009,7 +1009,7 @@ public class LobbyWindowView : BaseWindow
 				this.waittingUnLockView.SetActive(false);
 				this.CoverBgEnable(true);
 				this.PlayAnimation("LobbyWindowView_lockOpen", 1f);
-				global::Singleton<AudioManger>.Get().PlayEffect("unlock");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("unlock");
 				base.Invoke("ChapterUnLockAnimation", 1f);
 				Solarmax.Singleton<LevelDataHandler>.Instance.chapterList[LobbyWindowView.selectChapterIndex].isWattingUnlock = false;
 				return;
@@ -1025,7 +1025,7 @@ public class LobbyWindowView : BaseWindow
 			if (!this.lockList[LobbyWindowView.selectMapIndex])
 			{
 				Solarmax.Singleton<LoggerSystem>.Instance.Info("LobbyWindowView  OnTriggerClick  SHOW_LEVELS  Locked", new object[0]);
-				global::Singleton<AudioManger>.Get().PlayEffect("click");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("click");
 				this.PlayAnimation("LobbyWindowView_lockUN", 1f);
 				Tips.Make(LanguageDataProvider.GetValue(205));
 				return;
@@ -1075,7 +1075,7 @@ public class LobbyWindowView : BaseWindow
 			Tips.Make(LanguageDataProvider.GetValue(1101));
 			return;
 		}
-		if (global::Singleton<LocalPlayer>.Get().playerData.money < config.costGold)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.money < config.costGold)
 		{
 			global::Coroutine.DelayDo(0.2f, new EventDelegate(delegate()
 			{
@@ -1090,7 +1090,7 @@ public class LobbyWindowView : BaseWindow
 			LanguageDataProvider.GetValue(1100),
 			new EventDelegate(delegate()
 			{
-				if (global::Singleton<LocalPlayer>.Get().playerData.money < config.costGold)
+				if (Solarmax.Singleton<LocalPlayer>.Get().playerData.money < config.costGold)
 				{
 					Tips.Make(LanguageDataProvider.GetValue(1102));
 					global::Coroutine.DelayDo(0.2f, new EventDelegate(delegate()
@@ -1540,7 +1540,7 @@ public class LobbyWindowView : BaseWindow
 		this.MapIndexMax = ((this.MapIndexMax <= this.mapList.Count - 1) ? this.MapIndexMax : (this.mapList.Count - 1));
 		if (eType == LobbyWindowView.SHOW_TYPE.SHOW_CHAPTERS)
 		{
-			global::Singleton<LocalSettingStorage>.Get().lobbyWindowType = 0;
+			Solarmax.Singleton<LocalSettingStorage>.Get().lobbyWindowType = 0;
 			if (LobbyWindowView.selectChapterIndex > this.MapIndexMax)
 			{
 				LobbyWindowView.selectChapterIndex = -1;
@@ -1558,7 +1558,7 @@ public class LobbyWindowView : BaseWindow
 		}
 		else if (eType == LobbyWindowView.SHOW_TYPE.SHOW_LEVELS)
 		{
-			global::Singleton<LocalSettingStorage>.Get().lobbyWindowType = 1;
+			Solarmax.Singleton<LocalSettingStorage>.Get().lobbyWindowType = 1;
 			if (LobbyWindowView.selectLevelIndex > this.MapIndexMax)
 			{
 				LobbyWindowView.selectLevelIndex = -1;
@@ -1651,7 +1651,7 @@ public class LobbyWindowView : BaseWindow
 		this.aniPlayer.onFinished.Clear();
 		this.aniPlayer.onFinished.Add(new EventDelegate(new EventDelegate.Callback(this.UnLockAnimationEffectEnd)));
 		this.PlayAnimation("LobbyWindowView_lockOpen", 1f);
-		global::Singleton<AudioManger>.Get().PlayEffect("unlock");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("unlock");
 		this.lockBackground.SetActive(true);
 		this.CoverBgEnable(false);
 	}
@@ -1715,7 +1715,7 @@ public class LobbyWindowView : BaseWindow
 		BGManager.Inst.SetAirShipVisible(false);
 		GuideManager.TriggerGuidecompleted(GuildEndEvent.startbattle);
 		this.mapShow.AlphaFadeOut(0.5f, null);
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		TweenAlpha tweenAlpha = base.gameObject.GetComponent<TweenAlpha>();
 		if (tweenAlpha == null)
 		{
@@ -1761,7 +1761,7 @@ public class LobbyWindowView : BaseWindow
 			return;
 		}
 		string id = Solarmax.Singleton<LevelDataHandler>.Get().currentLevel.id;
-		global::Singleton<LocalPlayer>.Get().playerData.singleFightNext = (LobbyWindowView.selectMapIndex == this.MapIndexMax);
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightNext = (LobbyWindowView.selectMapIndex == this.MapIndexMax);
 		if (this.difficultyLevel == 0)
 		{
 			this.difficultyLevel = 1;
@@ -2126,7 +2126,7 @@ public class LobbyWindowView : BaseWindow
 	public override void OnLanguageChanged()
 	{
 		base.OnLanguageChanged();
-		global::Singleton<AchievementModel>.Get().onLanguageChanged();
+		Solarmax.Singleton<AchievementModel>.Get().onLanguageChanged();
 		if (this.Showtype == LobbyWindowView.SHOW_TYPE.SHOW_LEVELS)
 		{
 			this.ChangeTopLanguage();
@@ -2194,7 +2194,7 @@ public class LobbyWindowView : BaseWindow
 
 	public void StartSingleGame()
 	{
-		global::Singleton<TaskModel>.Get().Init();
+		Solarmax.Singleton<TaskModel>.Get().Init();
 		Solarmax.Singleton<NetSystem>.Instance.helper.RequestChapters();
 		TweenAlpha tweenAlpha = base.gameObject.GetComponent<TweenAlpha>();
 		if (tweenAlpha == null)

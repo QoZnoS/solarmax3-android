@@ -171,7 +171,7 @@ public class SceneManager : Lifecycle2
 			{
 				if (packet.packet.effect.effect == "EFF_XJ_Boom_1")
 				{
-					global::Singleton<AudioManger>.Get().PlayPlanetExplosion(node2.GetPosition());
+					Solarmax.Singleton<AudioManger>.Get().PlayPlanetExplosion(node2.GetPosition());
 					Solarmax.Singleton<EffectManager>.Get().PlaySyncEffect(node2, packet.packet.effect.effect, packet.packet.effect.time, packet.packet.effect.scale);
 				}
 				else
@@ -229,7 +229,7 @@ public class SceneManager : Lifecycle2
 				node8.hp = node8.hpMax;
 				node8.currentTeam = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetTeam(packet.packet.team.t);
 				Solarmax.Singleton<EffectManager>.Get().AddHalo(node8, node8.currentTeam.color, true, false);
-				global::Singleton<AudioManger>.Get().PlayCapture(node8.GetPosition());
+				Solarmax.Singleton<AudioManger>.Get().PlayCapture(node8.GetPosition());
 				node8.currentTeam.teamManager.sceneManager.newSkillManager.OnOccupied(node8, node8.currentTeam);
 				node8.currentSkill = null;
 				node8.OccupiedHUD();
@@ -325,16 +325,16 @@ public class SceneManager : Lifecycle2
 			{
 				if (!string.IsNullOrEmpty(data.musicName))
 				{
-					global::Singleton<AudioManger>.Get().PlayAudioBG(data.musicName, 0.5f);
+					Solarmax.Singleton<AudioManger>.Get().PlayAudioBG(data.musicName, 0.5f);
 				}
 				else
 				{
-					global::Singleton<AudioManger>.Get().PlayAudioBG("Wandering", 0.5f);
+					Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Wandering", 0.5f);
 				}
 			}
 			else
 			{
-				global::Singleton<AudioManger>.Get().PlayAudioBG("Wandering", 0.5f);
+				Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Wandering", 0.5f);
 			}
 		}
 	}
@@ -443,7 +443,7 @@ public class SceneManager : Lifecycle2
 			node.RevoSpeed = (float)mapBuildingConfig.orbitRevoSpeed;
 			if (node != null && Solarmax.Singleton<BattleSystem>.Instance.battleData.winType == "occupy" && (Solarmax.Singleton<BattleSystem>.Instance.battleData.winTypeParam1 == node.tag || Solarmax.Singleton<BattleSystem>.Instance.battleData.winTypeParam2 == node.tag))
 			{
-				GameObject gameObject = UnityEngine.Object.Instantiate(global::Singleton<AssetManager>.Get().GetResources("Effect_Aims")) as GameObject;
+				GameObject gameObject = UnityEngine.Object.Instantiate(Solarmax.Singleton<AssetManager>.Get().GetResources("Effect_Aims")) as GameObject;
 				gameObject.transform.SetParent(node.entity.GetGO().transform);
 				float num = 0.4f / data.size;
 				gameObject.transform.localScale = new Vector3(0.03f * num, 0.03f * num, 0.03f * num);
@@ -681,10 +681,10 @@ public class SceneManager : Lifecycle2
 				{
 					node.hp = 0f;
 				}
-				if (global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Maker))
+				if (Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Maker))
 				{
 					Solarmax.Singleton<EffectManager>.Get().AddHalo(node, node.currentTeam.color, true, false);
-					global::Singleton<AudioManger>.Get().PlayCapture(node.GetPosition());
+					Solarmax.Singleton<AudioManger>.Get().PlayCapture(node.GetPosition());
 				}
 			}
 			else if (node.GetShipCount((int)team) > 0)

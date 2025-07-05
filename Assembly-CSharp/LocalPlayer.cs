@@ -4,7 +4,7 @@ using NetMessage;
 using Solarmax;
 using UnityEngine;
 
-public class LocalPlayer : global::Singleton<LocalPlayer>
+public class LocalPlayer : Solarmax.Singleton<LocalPlayer>
 {
 	public int battleRace { get; set; }
 
@@ -16,7 +16,7 @@ public class LocalPlayer : global::Singleton<LocalPlayer>
 	{
 		if (string.IsNullOrEmpty(this.localAccount))
 		{
-			this.localAccount = global::Singleton<LocalAccountStorage>.Get().account;
+			this.localAccount = Solarmax.Singleton<LocalAccountStorage>.Get().account;
 		}
 		return this.localAccount;
 	}
@@ -29,7 +29,7 @@ public class LocalPlayer : global::Singleton<LocalPlayer>
 			int num = UnityEngine.Random.Range(0, 10000);
 			this.localAccount = this.localAccount + "__force__" + num.ToString();
 		}
-		global::Singleton<LocalAccountStorage>.Get().account = this.localAccount;
+		Solarmax.Singleton<LocalAccountStorage>.Get().account = this.localAccount;
 		return this.localAccount;
 	}
 
@@ -56,7 +56,7 @@ public class LocalPlayer : global::Singleton<LocalPlayer>
 		if (this.refrushOnline > 60f)
 		{
 			this.refrushOnline = 0f;
-			global::Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.OnLine, (int)this.mOnLineTime);
+			Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.OnLine, (int)this.mOnLineTime);
 		}
 		this.showAdsRefreshTime -= interval;
 		if (this.showAdsRefreshTime <= 0f)
@@ -72,7 +72,7 @@ public class LocalPlayer : global::Singleton<LocalPlayer>
 			this.player_Offline_time -= interval;
 		}
 		this.nextSasonStart = 0.0;
-		global::Singleton<LocalPlayer>.Get().playerData.score = 0;
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.score = 0;
 		Solarmax.Singleton<NetSystem>.Instance.helper.RequestUserInit();
 	}
 
@@ -270,7 +270,7 @@ public class LocalPlayer : global::Singleton<LocalPlayer>
 	{
 		if (string.IsNullOrEmpty(this.localName))
 		{
-			this.localName = global::Singleton<LocalAccountStorage>.Get().name;
+			this.localName = Solarmax.Singleton<LocalAccountStorage>.Get().name;
 		}
 		return this.localName;
 	}

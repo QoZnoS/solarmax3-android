@@ -76,7 +76,7 @@ public class CurseEffect : EffectNode
 	{
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("EFF_XJ_SaoGuang_B");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("EFF_XJ_SaoGuang_B");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			base.go.transform.SetParent(GameObject.Find("Battle").transform);
 			this.effectList = base.go.GetComponentsInChildren<ParticleSystem>();

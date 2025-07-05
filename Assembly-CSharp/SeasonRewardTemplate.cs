@@ -7,13 +7,13 @@ public class SeasonRewardTemplate : MonoBehaviour
 	public void UpdateUI(string id)
 	{
 		this.rewardId = id;
-		if (!global::Singleton<SeasonRewardModel>.Get().rewardStatus.ContainsKey(this.rewardId))
+		if (!Solarmax.Singleton<SeasonRewardModel>.Get().rewardStatus.ContainsKey(this.rewardId))
 		{
 			Solarmax.Singleton<LoggerSystem>.Instance.Error("赛季奖励错误id:" + this.rewardId, new object[0]);
 			return;
 		}
-		SeasonRewardModel seasonRewardModel = global::Singleton<SeasonRewardModel>.Get();
-		int seasonId = global::Singleton<SeasonRewardModel>.Get().seasonId;
+		SeasonRewardModel seasonRewardModel = Solarmax.Singleton<SeasonRewardModel>.Get();
+		int seasonId = Solarmax.Singleton<SeasonRewardModel>.Get().seasonId;
 		SeasonRewardConfig seasonRewardConfig = Solarmax.Singleton<SeasonRewardProvider>.Get().dataList[seasonId.ToString()];
 		this.desc.text = string.Format(seasonRewardConfig.GetDesc(this.rewardId), seasonRewardConfig.ladderScore[this.rewardId]);
 		this.score.text = string.Format("{0}/{1}", seasonRewardModel.seasonMaxScore, seasonRewardConfig.ladderScore[this.rewardId]);

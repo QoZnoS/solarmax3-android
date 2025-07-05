@@ -10,7 +10,7 @@ public class EntityTower : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_Tower");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Tower");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

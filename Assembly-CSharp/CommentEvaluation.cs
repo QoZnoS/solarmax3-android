@@ -14,8 +14,8 @@ public class CommentEvaluation : MonoBehaviour
 
 	public void EnsureInit()
 	{
-		this.averageNumber.text = global::Singleton<CommentModel>.Get().averageScore.ToString();
-		if (global::Singleton<CommentModel>.Get().canEvaluate)
+		this.averageNumber.text = Solarmax.Singleton<CommentModel>.Get().averageScore.ToString();
+		if (Solarmax.Singleton<CommentModel>.Get().canEvaluate)
 		{
 			foreach (UISprite uisprite in this.likeBtns)
 			{
@@ -27,7 +27,7 @@ public class CommentEvaluation : MonoBehaviour
 			for (int j = 0; j < 5; j++)
 			{
 				this.likeBtns[j].GetComponent<BoxCollider>().enabled = false;
-				if (j < global::Singleton<CommentModel>.Get().levelScore)
+				if (j < Solarmax.Singleton<CommentModel>.Get().levelScore)
 				{
 					this.likeBtns[j].spriteName = "Btn_comment_likeAC";
 				}
@@ -36,21 +36,21 @@ public class CommentEvaluation : MonoBehaviour
 					this.likeBtns[j].spriteName = "Btn_comment_likeA";
 				}
 			}
-			global::Singleton<CommentModel>.Get().PullLevelScore(delegate(bool result)
+			Solarmax.Singleton<CommentModel>.Get().PullLevelScore(delegate(bool result)
 			{
 				if (result)
 				{
 				}
 			});
-			global::Singleton<CommentModel>.Get().PullAverageLevelScore(delegate(bool result)
+			Solarmax.Singleton<CommentModel>.Get().PullAverageLevelScore(delegate(bool result)
 			{
 				if (result)
 				{
-					this.averageNumber.text = global::Singleton<CommentModel>.Get().averageScore.ToString();
+					this.averageNumber.text = Solarmax.Singleton<CommentModel>.Get().averageScore.ToString();
 				}
 				else
 				{
-					this.averageNumber.text = global::Singleton<CommentModel>.Get().averageScore.ToString();
+					this.averageNumber.text = Solarmax.Singleton<CommentModel>.Get().averageScore.ToString();
 				}
 			});
 		}
@@ -98,7 +98,7 @@ public class CommentEvaluation : MonoBehaviour
 				this.likeBtns[i].spriteName = "Btn_comment_likeA";
 			}
 		}
-		global::Singleton<CommentModel>.Get().SendLevelEvalution(num, delegate(bool result)
+		Solarmax.Singleton<CommentModel>.Get().SendLevelEvalution(num, delegate(bool result)
 		{
 			if (result)
 			{

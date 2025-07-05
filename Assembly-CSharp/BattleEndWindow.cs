@@ -103,7 +103,7 @@ public class BattleEndWindow : BaseWindow
 	public void FinishSingle()
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("BattleEndWindow  FinishSingle", new object[0]);
-		global::Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.OUT, 0.25f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.OUT, 0.25f);
 		Solarmax.Singleton<UISystem>.Get().FadeBattle(false, new EventDelegate(delegate()
 		{
 			if (Solarmax.Singleton<BattleSystem>.Instance.battleData.gameType == GameType.SingleLevel || Solarmax.Singleton<BattleSystem>.Instance.battleData.gameType == GameType.GuildeLevel)

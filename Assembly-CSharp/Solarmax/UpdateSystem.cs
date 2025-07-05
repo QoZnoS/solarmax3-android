@@ -73,7 +73,7 @@ namespace Solarmax
 			MonoSingleton<FlurryAnalytis>.Instance.LogEvent("CheckUpgradeResponse");
 			MonoSingleton<FlurryAnalytis>.Instance.LogEvent("NeedNotUppgrade");
 			Debug.Log("OnGetUpgradeInfoResponse: Already newest version.");
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnABDownloadingFinished, new object[0]);
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnABDownloadingFinished, new object[0]);
 		}
 
 		private void SaveAsset2Local(string path, WWW www)
@@ -199,8 +199,8 @@ namespace Solarmax
 			UpdateSystem.IsLoginUpdate = false;
 			this.localFiles.Clear();
 			this.serverFiles.Clear();
-			Singleton<DataProviderSystem>.Instance.Destroy();
-			Singleton<DataProviderSystem>.Instance.Init();
+            Solarmax.Singleton<DataProviderSystem>.Instance.Destroy();
+            Solarmax.Singleton<DataProviderSystem>.Instance.Init();
 			UpgradeUtil.ReLoadGameCofig();
 			LoadResManager.ReLoadManifest();
 			Debug.Log("UpdateSystem: ReloadClient complete.");
@@ -237,11 +237,11 @@ namespace Solarmax
 					url,
 					path
 				});
-				Singleton<EventSystem>.Instance.FireEvent(EventId.OnUpdateDownLoad, new object[]
+                Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnUpdateDownLoad, new object[]
 				{
 					(long)bytes.Length
 				});
-				Singleton<EventSystem>.Instance.FireEvent(EventId.OnUpdateDownLoad2, new object[]
+                Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnUpdateDownLoad2, new object[]
 				{
 					1
 				});
@@ -317,12 +317,12 @@ namespace Solarmax
 			long num = this.nDownAllSize;
 			long num2 = 0L;
 			UpdateSystem.downLoadIndex = 0;
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnStartDownLoad, new object[]
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnStartDownLoad, new object[]
 			{
 				num2,
 				num
 			});
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnStartDownLoad2, new object[]
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnStartDownLoad2, new object[]
 			{
 				num2,
 				this.downList.Count
@@ -354,7 +354,7 @@ namespace Solarmax
 			Debug.Log("UpdateSystem: Download files complete.");
 			Debug.Log("UpdateSystem: Update complete.");
 			MonoSingleton<FlurryAnalytis>.Instance.LogEvent("HotUpdateSuccess");
-			Singleton<EventSystem>.Instance.FireEvent(EventId.OnABDownloadingFinished, new object[0]);
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnABDownloadingFinished, new object[0]);
 			yield break;
 		}
 

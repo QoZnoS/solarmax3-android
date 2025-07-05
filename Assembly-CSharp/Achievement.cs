@@ -6,7 +6,7 @@ public class Achievement
 {
 	public Achievement()
 	{
-		AchievementModel achievementModel = global::Singleton<AchievementModel>.Get();
+		AchievementModel achievementModel = Solarmax.Singleton<AchievementModel>.Get();
 		achievementModel.onLanguageChanged = (AchievementModel.OnLanguageChanged)Delegate.Combine(achievementModel.onLanguageChanged, new AchievementModel.OnLanguageChanged(this.OnChangeLanguage));
 	}
 
@@ -19,9 +19,9 @@ public class Achievement
 		set
 		{
 			this.completed = value;
-			if (global::Singleton<AchievementModel>.Get().onAchieveSuccess != null)
+			if (Solarmax.Singleton<AchievementModel>.Get().onAchieveSuccess != null)
 			{
-				global::Singleton<AchievementModel>.Get().onAchieveSuccess(this.id, this.completed);
+                Solarmax.Singleton<AchievementModel>.Get().onAchieveSuccess(this.id, this.completed);
 			}
 		}
 	}

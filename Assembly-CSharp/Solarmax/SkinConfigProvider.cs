@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class SkinConfigProvider : Singleton<SkinConfigProvider>, IDataProvider
+	public class SkinConfigProvider : Solarmax.Singleton<SkinConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -54,7 +54,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/Skin.Xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/Skin.Xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

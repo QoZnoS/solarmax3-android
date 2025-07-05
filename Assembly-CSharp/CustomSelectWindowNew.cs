@@ -119,7 +119,7 @@ public class CustomSelectWindowNew : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		this.SetVersion();
 		this.mapList.Add("X");
 		string data = Solarmax.Singleton<GameVariableConfigProvider>.Instance.GetData(5);
@@ -199,7 +199,7 @@ public class CustomSelectWindowNew : BaseWindow
 		}
 		this.numTemplate.SetActive(false);
 		this.bgParent = GameObject.Find("Battle/BG");
-		if (this.MapIndexMax == this.mapList.Count - 1 && string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().playerData.name))
+		if (this.MapIndexMax == this.mapList.Count - 1 && string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().playerData.name))
 		{
 			Solarmax.Singleton<UISystem>.Get().ShowWindow("SingleClearWindow");
 			this.ShowMap(this.MapIndexMax - 2, false, true);
@@ -376,7 +376,7 @@ public class CustomSelectWindowNew : BaseWindow
 			return;
 		}
 		string matchId = this.mapList[CustomSelectWindowNew.selectMapIndex];
-		global::Singleton<LocalPlayer>.Get().playerData.singleFightNext = (CustomSelectWindowNew.selectMapIndex == this.MapIndexMax);
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightNext = (CustomSelectWindowNew.selectMapIndex == this.MapIndexMax);
 		Solarmax.Singleton<NetSystem>.Instance.helper.RequestSingleMatch(matchId, GameType.Single, true);
 	}
 
@@ -486,7 +486,7 @@ public class CustomSelectWindowNew : BaseWindow
 	public void OnStartSingleBattle()
 	{
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NoticeSelfTeam, new object[0]);
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		this.mapShow.AlphaFadeOut(0.5f, null);
 		TweenAlpha tweenAlpha = base.gameObject.GetComponent<TweenAlpha>();
 		if (tweenAlpha == null)

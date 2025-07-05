@@ -102,12 +102,12 @@ public class BattleWindow_off : BaseWindow
 		UIEventListener component = this.ProcessAram.GetComponent<UIEventListener>();
 		component.onClick = (UIEventListener.VoidDelegate)Delegate.Combine(component.onClick, new UIEventListener.VoidDelegate(this.OnSelectProcessAram));
 		this.SetLevelStarsAndDesc();
-		if (!global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID()))
+		if (!Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID()))
 		{
 			this.achievementView.SetActive(false);
 			return;
 		}
-		if (global::Singleton<AchievementModel>.Get().achievementGroups[Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID()].GetAchievementByDifficult((AchievementDifficult)Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentDiffcult(), false).Count == 0)
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID()].GetAchievementByDifficult((AchievementDifficult)Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentDiffcult(), false).Count == 0)
 		{
 			this.achievementView.SetActive(false);
 			return;
@@ -129,7 +129,7 @@ public class BattleWindow_off : BaseWindow
 		Vector2 vector = UICamera.currentCamera.WorldToScreenPoint(this.percentleft.gameObject.transform.position);
 		Vector2 vector2 = UICamera.currentCamera.WorldToScreenPoint(this.percentright.gameObject.transform.position);
 		Vector2 lastEventPosition = UICamera.lastEventPosition;
-		if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 0)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 0)
 		{
 			this.percent = (lastEventPosition.x - vector.x) / (vector2.x - vector.x);
 		}
@@ -368,7 +368,7 @@ public class BattleWindow_off : BaseWindow
 
 	private void SetPercent(bool bfouce = false)
 	{
-		if (global::Singleton<LocalSettingStorage>.Get().fightOption != 1)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().fightOption != 1)
 		{
 			float num = this.lineTotalLength * this.percent;
 			Vector3 localPosition = this.percentZeroPos;
@@ -404,7 +404,7 @@ public class BattleWindow_off : BaseWindow
 		{
 			return;
 		}
-		int fightOption = global::Singleton<LocalSettingStorage>.Get().fightOption;
+		int fightOption = Solarmax.Singleton<LocalSettingStorage>.Get().fightOption;
 		if (fightOption == 1)
 		{
 			this.ShowNewProgress1(false, null);
@@ -418,13 +418,13 @@ public class BattleWindow_off : BaseWindow
 			this.percentZeroPos = new Vector3(this.percetPic.transform.localPosition.x - this.lineTotalLength / 2f, this.percetPic.transform.localPosition.y, 0f);
 			UIAnchor component2 = this.percentGo.GetComponent<UIAnchor>();
 			component2.enabled = true;
-			if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 0)
+			if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 0)
 			{
 				component2.side = UIAnchor.Side.Bottom;
 				component2.relativeOffset.x = 0f;
 				component2.relativeOffset.y = 0.05f;
 			}
-			else if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 1)
+			else if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 1)
 			{
 				this.percentGo.transform.eulerAngles = new Vector3(0f, 0f, 90f);
 				this.percentGo.transform.localScale = new Vector3(0.56f, 0.8f, 0f);
@@ -435,7 +435,7 @@ public class BattleWindow_off : BaseWindow
 				this.percentLabel.transform.localPosition = new Vector3(this.percentLabel.transform.localPosition.x, -this.percentLabel.transform.localPosition.y, this.percentLabel.transform.localPosition.z);
 				this.ProcessLine.transform.localPosition = new Vector3(this.ProcessLine.transform.localPosition.x, -18f, this.ProcessLine.transform.localPosition.z);
 			}
-			else if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 2)
+			else if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 2)
 			{
 				this.percentGo.transform.eulerAngles = new Vector3(0f, 0f, 90f);
 				this.percentGo.transform.localScale = new Vector3(0.56f, 0.8f, 0f);
@@ -450,21 +450,21 @@ public class BattleWindow_off : BaseWindow
 	private void ShowNewProgress1(bool show, Node node = null)
 	{
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.sliderNumber = -1f;
-		if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 0)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 0)
 		{
 			this.Processdown.SetActive(true);
 			this.Processleft.SetActive(false);
 			this.Processright.SetActive(false);
 			this.SetSelectEffect(this.unitdown[7]);
 		}
-		else if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 1)
+		else if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 1)
 		{
 			this.Processdown.SetActive(false);
 			this.Processleft.SetActive(true);
 			this.Processright.SetActive(false);
 			this.SetSelectEffect(this.unitleft[7]);
 		}
-		else if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 2)
+		else if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 2)
 		{
 			this.Processdown.SetActive(false);
 			this.Processleft.SetActive(false);
@@ -560,7 +560,7 @@ public class BattleWindow_off : BaseWindow
 		}
 		this.searchFriendTime = new DateTime?(Solarmax.Singleton<TimeSystem>.Instance.GetServerTime());
 		this.isRetrying = true;
-		global::Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.OUT, 0.25f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.OUT, 0.25f);
 		Solarmax.Singleton<UISystem>.Get().FadeOutBattle(false, new EventDelegate(delegate()
 		{
 			this.ReStartLevelBattle();
@@ -583,25 +583,25 @@ public class BattleWindow_off : BaseWindow
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("BattleWindow_off OnStar1Click", new object[0]);
 		string currentGroupID = Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID();
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
 		{
-			global::Singleton<AchievementManager>.Get().completeList.Clear();
+			Solarmax.Singleton<AchievementManager>.Get().completeList.Clear();
 			for (int i = 0; i < 1; i++)
 			{
-				if (global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] != AchievementType.Ads)
+				if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] != AchievementType.Ads)
 				{
-					if (!global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success)
+					if (!Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success)
 					{
-						global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success = true;
-						global::Singleton<AchievementManager>.Get().completeList.Add(global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i]);
+						Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success = true;
+						Solarmax.Singleton<AchievementManager>.Get().completeList.Add(Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i]);
 					}
-					if (global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] == AchievementType.PassDiffcult)
+					if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] == AchievementType.PassDiffcult)
 					{
-						global::Singleton<AchievementModel>.Get().SendAchievement(currentGroupID, global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
+						Solarmax.Singleton<AchievementModel>.Get().SendAchievement(currentGroupID, Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
 					}
 					else
 					{
-						global::Singleton<AchievementModel>.Get().SendAchievementWithoutReward(currentGroupID, global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
+						Solarmax.Singleton<AchievementModel>.Get().SendAchievementWithoutReward(currentGroupID, Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
 					}
 					Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalAchievement();
 				}
@@ -616,25 +616,25 @@ public class BattleWindow_off : BaseWindow
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("BattleWindow_off OnStar2Click", new object[0]);
 		string currentGroupID = Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID();
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
 		{
-			global::Singleton<AchievementManager>.Get().completeList.Clear();
-			for (int i = 0; i < global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements.Count; i++)
+			Solarmax.Singleton<AchievementManager>.Get().completeList.Clear();
+			for (int i = 0; i < Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements.Count; i++)
 			{
-				if (global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] != AchievementType.Ads && global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].diffcult < AchievementDifficult.Hell)
+				if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] != AchievementType.Ads && Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].diffcult < AchievementDifficult.Hell)
 				{
-					if (!global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success)
+					if (!Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success)
 					{
-						global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success = true;
-						global::Singleton<AchievementManager>.Get().completeList.Add(global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i]);
+						Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success = true;
+						Solarmax.Singleton<AchievementManager>.Get().completeList.Add(Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i]);
 					}
-					if (global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] == AchievementType.PassDiffcult)
+					if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] == AchievementType.PassDiffcult)
 					{
-						global::Singleton<AchievementModel>.Get().SendAchievement(currentGroupID, global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
+						Solarmax.Singleton<AchievementModel>.Get().SendAchievement(currentGroupID, Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
 					}
 					else
 					{
-						global::Singleton<AchievementModel>.Get().SendAchievementWithoutReward(currentGroupID, global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
+						Solarmax.Singleton<AchievementModel>.Get().SendAchievementWithoutReward(currentGroupID, Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
 					}
 					Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalAchievement();
 				}
@@ -649,25 +649,25 @@ public class BattleWindow_off : BaseWindow
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("BattleWindow_off OnStar3Click", new object[0]);
 		string currentGroupID = Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID();
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
 		{
-			global::Singleton<AchievementManager>.Get().completeList.Clear();
-			for (int i = 0; i < global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements.Count; i++)
+			Solarmax.Singleton<AchievementManager>.Get().completeList.Clear();
+			for (int i = 0; i < Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements.Count; i++)
 			{
-				if (global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] != AchievementType.Ads && global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].diffcult < (AchievementDifficult)3)
+				if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] != AchievementType.Ads && Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].diffcult < (AchievementDifficult)3)
 				{
-					if (!global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success)
+					if (!Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success)
 					{
-						global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success = true;
-						global::Singleton<AchievementManager>.Get().completeList.Add(global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i]);
+						Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success = true;
+						Solarmax.Singleton<AchievementManager>.Get().completeList.Add(Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i]);
 					}
-					if (global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] == AchievementType.PassDiffcult)
+					if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] == AchievementType.PassDiffcult)
 					{
-						global::Singleton<AchievementModel>.Get().SendAchievement(currentGroupID, global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
+						Solarmax.Singleton<AchievementModel>.Get().SendAchievement(currentGroupID, Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
 					}
 					else
 					{
-						global::Singleton<AchievementModel>.Get().SendAchievementWithoutReward(currentGroupID, global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
+						Solarmax.Singleton<AchievementModel>.Get().SendAchievementWithoutReward(currentGroupID, Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
 					}
 					Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalAchievement();
 				}
@@ -690,25 +690,25 @@ public class BattleWindow_off : BaseWindow
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("BattleWindow_off OnStar4Click", new object[0]);
 		string currentGroupID = Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID();
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
 		{
-			global::Singleton<AchievementManager>.Get().completeList.Clear();
-			for (int i = 0; i < global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements.Count; i++)
+			Solarmax.Singleton<AchievementManager>.Get().completeList.Clear();
+			for (int i = 0; i < Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements.Count; i++)
 			{
-				if (global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] != AchievementType.Ads)
+				if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] != AchievementType.Ads)
 				{
-					if (!global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success)
+					if (!Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success)
 					{
-						global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success = true;
-						global::Singleton<AchievementManager>.Get().completeList.Add(global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i]);
+						Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].success = true;
+						Solarmax.Singleton<AchievementManager>.Get().completeList.Add(Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i]);
 					}
-					if (global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] == AchievementType.PassDiffcult)
+					if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].types[0] == AchievementType.PassDiffcult)
 					{
-						global::Singleton<AchievementModel>.Get().SendAchievement(currentGroupID, global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
+						Solarmax.Singleton<AchievementModel>.Get().SendAchievement(currentGroupID, Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
 					}
 					else
 					{
-						global::Singleton<AchievementModel>.Get().SendAchievementWithoutReward(currentGroupID, global::Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
+						Solarmax.Singleton<AchievementModel>.Get().SendAchievementWithoutReward(currentGroupID, Solarmax.Singleton<AchievementModel>.Get().achievementGroups[currentGroupID].achievements[i].id);
 					}
 					Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalAchievement();
 				}
@@ -828,17 +828,17 @@ public class BattleWindow_off : BaseWindow
 			}
 		}
 		string currentGroupID = Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID();
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(currentGroupID))
 		{
-			if (global::Singleton<AchievementManager>.Get().difficult == AchievementDifficult.Simple)
+			if (Solarmax.Singleton<AchievementManager>.Get().difficult == AchievementDifficult.Simple)
 			{
 				this.aims.text = string.Format("[{0}]{1}{2}", LanguageDataProvider.GetValue(2104), LanguageDataProvider.GetValue(2186), this.aims.text);
 			}
-			else if (global::Singleton<AchievementManager>.Get().difficult == AchievementDifficult.Hard)
+			else if (Solarmax.Singleton<AchievementManager>.Get().difficult == AchievementDifficult.Hard)
 			{
 				this.aims.text = string.Format("[{0}]{1}{2}", LanguageDataProvider.GetValue(2105), LanguageDataProvider.GetValue(2186), this.aims.text);
 			}
-			else if (global::Singleton<AchievementManager>.Get().difficult == AchievementDifficult.Hell)
+			else if (Solarmax.Singleton<AchievementManager>.Get().difficult == AchievementDifficult.Hell)
 			{
 				this.aims.text = string.Format("[{0}]{1}{2}", LanguageDataProvider.GetValue(2106), LanguageDataProvider.GetValue(2186), this.aims.text);
 			}
@@ -960,7 +960,7 @@ public class BattleWindow_off : BaseWindow
 
 	public void OnStartSingleBattle()
 	{
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		TweenAlpha tweenAlpha = base.gameObject.GetComponent<TweenAlpha>();
 		if (tweenAlpha == null)
 		{

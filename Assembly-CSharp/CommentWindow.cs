@@ -8,7 +8,7 @@ public class CommentWindow : BaseWindow
 	public override bool Init()
 	{
 		base.Init();
-		this.model = global::Singleton<CommentModel>.Get();
+		this.model = Solarmax.Singleton<CommentModel>.Get();
 		return true;
 	}
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public class FunctionOpenConfigProvider : Singleton<FunctionOpenConfigProvider>, IDataProvider
+	public class FunctionOpenConfigProvider : Solarmax.Singleton<FunctionOpenConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -43,7 +43,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("{0} resource failed {1}", new object[]
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("{0} resource failed {1}", new object[]
 				{
 					this.Path(),
 					ex.ToString()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public sealed class LocalStorageSystem : Singleton<LocalStorageSystem>, Lifecycle
+	public sealed class LocalStorageSystem : Solarmax.Singleton<LocalStorageSystem>, Lifecycle
 	{
 		public LocalStorageSystem()
 		{
@@ -16,15 +16,15 @@ namespace Solarmax
 
 		public bool Init()
 		{
-			this.RegisterLocalStorage(Singleton<LocalAccountStorage>.Get());
-			this.RegisterLocalStorage(Singleton<LocalSettingStorage>.Get());
-			this.RegisterLocalStorage(Singleton<LocalChaptersStorage>.Get());
-			this.RegisterLocalStorage(Singleton<LocalPvpStorage>.Get());
-			this.RegisterLocalStorage(Singleton<LocalOrderStorage>.Get());
-			this.RegisterLocalStorage(Singleton<LocalAchievementStorage>.Get());
-			this.RegisterLocalStorage(Singleton<LocalTaskStorage>.Get());
-			this.RegisterLocalStorage(Singleton<LocalLevelScoreStorage>.Get());
-			this.RegisterLocalStorage(Singleton<LocalPvpSeasonSystem>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalAccountStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalSettingStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalChaptersStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalPvpStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalOrderStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalAchievementStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalTaskStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalLevelScoreStorage>.Get());
+			this.RegisterLocalStorage(Solarmax.Singleton<LocalPvpSeasonSystem>.Get());
 			this.IsAccountRelatedDataLoaded = false;
 			return true;
 		}
@@ -55,7 +55,7 @@ namespace Solarmax
 
 		public bool LoadAccountRelated(string account)
 		{
-			Singleton<LoggerSystem>.Instance.Info("LoadAccountRelated", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("LoadAccountRelated", new object[0]);
 			if (string.IsNullOrEmpty(account))
 			{
 				return false;
@@ -73,7 +73,7 @@ namespace Solarmax
 
 		public void SaveStorage()
 		{
-			Singleton<LoggerSystem>.Instance.Info("LocalStorageSystem  SaveStorage", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("LocalStorageSystem  SaveStorage", new object[0]);
 			if (!this.needSaveDisk)
 			{
 				return;
@@ -90,67 +90,67 @@ namespace Solarmax
 
 		public void SaveLocalAccount(bool bSaveTime = false)
 		{
-			this.saveTempName = Singleton<LocalAccountStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalAccountStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalAccountStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalAccountStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalChapters()
 		{
-			this.saveTempName = Singleton<LocalChaptersStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalChaptersStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalChaptersStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalChaptersStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalSetting()
 		{
-			this.saveTempName = Singleton<LocalSettingStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalSettingStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalSettingStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalSettingStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalOrder()
 		{
-			this.saveTempName = Singleton<LocalOrderStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalOrderStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalOrderStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalOrderStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalPvp(int days, int win, int destroy)
 		{
-			this.saveTempName = Singleton<LocalPvpStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalPvpStorage>.Get().days = days;
-			Singleton<LocalPvpStorage>.Get().pvpWin = win;
-			Singleton<LocalPvpStorage>.Get().pvpDestroy = destroy;
-			Singleton<LocalPvpStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalPvpStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalPvpStorage>.Get().days = days;
+            Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin = win;
+            Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy = destroy;
+            Solarmax.Singleton<LocalPvpStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalPvp(int win, int destroy)
 		{
-			this.saveTempName = Singleton<LocalPvpStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalPvpStorage>.Get().pvpWin = win;
-			Singleton<LocalPvpStorage>.Get().pvpDestroy = destroy;
-			Singleton<LocalPvpStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalPvpStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalPvpStorage>.Get().pvpWin = win;
+            Solarmax.Singleton<LocalPvpStorage>.Get().pvpDestroy = destroy;
+            Solarmax.Singleton<LocalPvpStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalAchievement()
 		{
-			this.saveTempName = Singleton<LocalAchievementStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalAchievementStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalAchievementStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalAchievementStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalTask()
 		{
-			this.saveTempName = Singleton<LocalTaskStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalTaskStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalTaskStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalTaskStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalLevelScore()
 		{
-			this.saveTempName = Singleton<LocalLevelScoreStorage>.Get().Name() + this.acountTempName;
-			Singleton<LocalLevelScoreStorage>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalLevelScoreStorage>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalLevelScoreStorage>.Get().Save(this);
 		}
 
 		public void SaveLocalSeason()
 		{
-			this.saveTempName = Singleton<LocalPvpSeasonSystem>.Get().Name() + this.acountTempName;
-			Singleton<LocalPvpSeasonSystem>.Get().Save(this);
+			this.saveTempName = Solarmax.Singleton<LocalPvpSeasonSystem>.Get().Name() + this.acountTempName;
+            Solarmax.Singleton<LocalPvpSeasonSystem>.Get().Save(this);
 		}
 
 		public void DeleteStorage()
@@ -176,7 +176,7 @@ namespace Solarmax
 			}
 			PlayerPrefs.SetString(LocalStorageSystem.LastLoginAccountIdKey, accountId);
 			PlayerPrefs.SetInt(LocalStorageSystem.LastLoginAsVisitorKey, (!isVisitor) ? 0 : 1);
-			Singleton<LoggerSystem>.Instance.Info("SetLastLoginAccountId: {0}, isVisitor: {1}", new object[]
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("SetLastLoginAccountId: {0}, isVisitor: {1}", new object[]
 			{
 				accountId,
 				isVisitor
@@ -186,7 +186,7 @@ namespace Solarmax
 		public string GetLastLoginAccountId()
 		{
 			string @string = PlayerPrefs.GetString(LocalStorageSystem.LastLoginAccountIdKey, string.Empty);
-			Singleton<LoggerSystem>.Instance.Info("GetLastLoginAccountId: {0}", new object[]
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("GetLastLoginAccountId: {0}", new object[]
 			{
 				@string
 			});
@@ -196,7 +196,7 @@ namespace Solarmax
 		public void SetLastLoginAsVisitor(bool b)
 		{
 			PlayerPrefs.SetInt(LocalStorageSystem.LastLoginAsVisitorKey, (!b) ? 0 : 1);
-			Singleton<LoggerSystem>.Instance.Info("SetLastLoginAsVisitor: {0}", new object[]
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("SetLastLoginAsVisitor: {0}", new object[]
 			{
 				b
 			});
@@ -205,7 +205,7 @@ namespace Solarmax
 		public bool IsLastLoginAsVisitor()
 		{
 			bool flag = PlayerPrefs.GetInt(LocalStorageSystem.LastLoginAsVisitorKey, 0) == 1;
-			Singleton<LoggerSystem>.Instance.Info("IsLastLoginAsVisitor: {0}", new object[]
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("IsLastLoginAsVisitor: {0}", new object[]
 			{
 				flag
 			});

@@ -22,8 +22,8 @@ public class CommonDialogAntiWindow : BaseWindow
 
 	private void Update()
 	{
-		float player_Online_time = global::Singleton<LocalPlayer>.Get().player_Online_time;
-		float player_Offline_time = global::Singleton<LocalPlayer>.Get().player_Offline_time;
+		float player_Online_time = Solarmax.Singleton<LocalPlayer>.Get().player_Online_time;
+		float player_Offline_time = Solarmax.Singleton<LocalPlayer>.Get().player_Offline_time;
 		if (player_Offline_time > 0f && player_Offline_time < 60f && player_Online_time >= 10800f)
 		{
 			this.AcceTime.text = string.Format("00:00:{0:D2}", (int)player_Offline_time);

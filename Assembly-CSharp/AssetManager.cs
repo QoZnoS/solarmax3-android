@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssetManager : Singleton<AssetManager>
+public class AssetManager : Solarmax.Singleton<AssetManager>
 {
 	public void Init()
 	{

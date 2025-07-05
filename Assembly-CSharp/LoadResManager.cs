@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class LoadResManager : Singleton<LoadResManager>
+public class LoadResManager : Solarmax.Singleton<LoadResManager>
 {
 	public bool Init()
 	{

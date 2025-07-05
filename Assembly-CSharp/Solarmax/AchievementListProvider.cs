@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class AchievementListProvider : Singleton<AchievementListProvider>, IDataProvider
+	public class AchievementListProvider : Solarmax.Singleton<AchievementListProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -39,7 +39,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/AchievementList.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/AchievementList.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 
@@ -54,7 +54,7 @@ namespace Solarmax
 
 		public static int GetAchievementCount(string groupId)
 		{
-			foreach (KeyValuePair<string, AchievementListConfig> keyValuePair in Singleton<AchievementListProvider>.Instance.dataList)
+			foreach (KeyValuePair<string, AchievementListConfig> keyValuePair in Solarmax.Singleton<AchievementListProvider>.Instance.dataList)
 			{
 				if (keyValuePair.Value.levelGroup.Equals(groupId))
 				{
@@ -67,13 +67,13 @@ namespace Solarmax
 		public static List<int> GetAchievement(string groupId, int diffcult)
 		{
 			List<int> list = new List<int>();
-			foreach (KeyValuePair<string, AchievementListConfig> keyValuePair in Singleton<AchievementListProvider>.Instance.dataList)
+			foreach (KeyValuePair<string, AchievementListConfig> keyValuePair in Solarmax.Singleton<AchievementListProvider>.Instance.dataList)
 			{
 				if (keyValuePair.Value.levelGroup.Equals(groupId))
 				{
 					foreach (string key in keyValuePair.Value.achieveList)
 					{
-						AchievementConfig achievementConfig = Singleton<AchievementConfigProvider>.Get().dataList[key];
+						AchievementConfig achievementConfig = Solarmax.Singleton<AchievementConfigProvider>.Get().dataList[key];
 						if (achievementConfig.difficult == diffcult)
 						{
 							foreach (int item in achievementConfig.types)

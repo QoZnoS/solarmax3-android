@@ -29,7 +29,7 @@ public class StoreWindow : BaseWindow
 		base.OnShow();
 		EngineSystem engineSystem = Solarmax.Singleton<EngineSystem>.Get();
 		engineSystem.onNetStatusChanged = (EngineSystem.OnNetStatusChanged)Delegate.Combine(engineSystem.onNetStatusChanged, new EngineSystem.OnNetStatusChanged(this.NetStatus));
-		this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+		this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		this.NetStatus((NetworkReachability)Solarmax.Singleton<EngineSystem>.Get().GetNetworkRechability());
 		Solarmax.Singleton<ThirdPartySystem>.Instance.GetProductsInfo();
 		if (this.storeBehavior != null)
@@ -95,7 +95,7 @@ public class StoreWindow : BaseWindow
 		}
 		else if (eventId == EventId.UpdateMoney)
 		{
-			this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			if (base.gameObject.activeSelf && this.storeBehavior.gameObject.activeSelf)
 			{
 				this.storeBehavior.EnsureDestroy();
@@ -104,7 +104,7 @@ public class StoreWindow : BaseWindow
 		}
 		else if (eventId == EventId.UpdateMothCard)
 		{
-			this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			if (base.gameObject.activeSelf && this.storeBehavior.gameObject.activeSelf)
 			{
 				this.storeBehavior.RefreshMothGo();

@@ -22,7 +22,7 @@ public class BattleWarningHalo
 		{
 			return;
 		}
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_Warning");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Warning");
 		this.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 		this.sprite = this.go.GetComponentInChildren<SpriteRenderer>();
 		this.go.transform.position = hostNode.GetPosition();

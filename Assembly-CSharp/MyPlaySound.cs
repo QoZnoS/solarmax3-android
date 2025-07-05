@@ -20,7 +20,7 @@ public class MyPlaySound : MonoBehaviour
 	{
 		if (this.trigger == MyPlaySound.Trigger.OnEnable)
 		{
-			Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
+            Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
 		}
 	}
 
@@ -28,7 +28,7 @@ public class MyPlaySound : MonoBehaviour
 	{
 		if (this.trigger == MyPlaySound.Trigger.OnDisable)
 		{
-			Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
+            Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
 		}
 	}
 
@@ -44,7 +44,7 @@ public class MyPlaySound : MonoBehaviour
 		}
 		if (this.canPlay && ((isOver && this.trigger == MyPlaySound.Trigger.OnMouseOver) || (!isOver && this.trigger == MyPlaySound.Trigger.OnMouseOut)))
 		{
-			Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
+            Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
 		}
 	}
 
@@ -60,7 +60,7 @@ public class MyPlaySound : MonoBehaviour
 		}
 		if (this.canPlay && ((isPressed && this.trigger == MyPlaySound.Trigger.OnPress) || (!isPressed && this.trigger == MyPlaySound.Trigger.OnRelease)))
 		{
-			Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
+            Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
 		}
 	}
 
@@ -68,13 +68,13 @@ public class MyPlaySound : MonoBehaviour
 	{
 		if (this.canPlay && this.trigger == MyPlaySound.Trigger.OnClick)
 		{
-			Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
+            Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
 		}
 	}
 
 	public void Play()
 	{
-		Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
+        Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.audioClip, this.volume);
 	}
 
 	public AudioClip audioClip;

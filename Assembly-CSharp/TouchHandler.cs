@@ -74,7 +74,7 @@ public class TouchHandler : MonoBehaviour
 		this.m_Node = node;
 		if (TouchHandler.beginHalo == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_Selected");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Selected");
 			TouchHandler.beginHalo = (UnityEngine.Object.Instantiate(resources) as GameObject).GetComponent<UISprite>();
 			TouchHandler.beginHalo.transform.localScale = Vector3.one * 0.0168f;
 			TouchHandler.beginHalo.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);
@@ -83,7 +83,7 @@ public class TouchHandler : MonoBehaviour
 		}
 		if (TouchHandler.endHalo == null)
 		{
-			UnityEngine.Object resources2 = global::Singleton<AssetManager>.Get().GetResources("Entity_Selected");
+			UnityEngine.Object resources2 = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Selected");
 			TouchHandler.endHalo = (UnityEngine.Object.Instantiate(resources2) as GameObject).GetComponent<UISprite>();
 			TouchHandler.endHalo.transform.localScale = Vector3.one * 0.0168f;
 			TouchHandler.endHalo.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);
@@ -92,7 +92,7 @@ public class TouchHandler : MonoBehaviour
 		}
 		if (TouchHandler.groundBegin == null)
 		{
-			UnityEngine.Object resources3 = global::Singleton<AssetManager>.Get().GetResources("Entity_Select");
+			UnityEngine.Object resources3 = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Select");
 			GameObject gameObject = UnityEngine.Object.Instantiate(resources3) as GameObject;
 			gameObject.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);
 			gameObject.transform.position = Vector3.zero;
@@ -102,7 +102,7 @@ public class TouchHandler : MonoBehaviour
 		}
 		if (TouchHandler.groundEnd == null)
 		{
-			UnityEngine.Object resources4 = global::Singleton<AssetManager>.Get().GetResources("Entity_Select");
+			UnityEngine.Object resources4 = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Select");
 			GameObject gameObject2 = UnityEngine.Object.Instantiate(resources4) as GameObject;
 			gameObject2.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);
 			gameObject2.transform.position = Vector3.zero;
@@ -112,7 +112,7 @@ public class TouchHandler : MonoBehaviour
 		}
 		if (TouchHandler.line == null)
 		{
-			UnityEngine.Object resources5 = global::Singleton<AssetManager>.Get().GetResources("Entity_Line");
+			UnityEngine.Object resources5 = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Line");
 			TouchHandler.line = (UnityEngine.Object.Instantiate(resources5) as GameObject).GetComponent<UISprite>();
 			TouchHandler.line.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);
 			TouchHandler.line.transform.position = Vector3.zero;

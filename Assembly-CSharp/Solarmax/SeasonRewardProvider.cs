@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class SeasonRewardProvider : Singleton<SeasonRewardProvider>, IDataProvider
+	public class SeasonRewardProvider : Solarmax.Singleton<SeasonRewardProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -41,7 +41,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/Reward.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/Reward.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

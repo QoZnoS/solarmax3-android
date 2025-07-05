@@ -98,10 +98,10 @@ namespace Solarmax
 				channel = channelConfig.ChannelId,
 				app_id = gameConfig.AppId,
 				package_name = Application.identifier,
-				platform = Singleton<EngineSystem>.Instance.GetPlatform(),
+				platform = Solarmax.Singleton<EngineSystem>.Instance.GetPlatform(),
 				system_version = string.Empty,
-				imei = Singleton<EngineSystem>.Instance.GetUUID(),
-				security_code = Singleton<LocalStorageSystem>.Instance.GetLastLoginAccountId()
+				imei = Solarmax.Singleton<EngineSystem>.Instance.GetUUID(),
+				security_code = Solarmax.Singleton<LocalStorageSystem>.Instance.GetLastLoginAccountId()
 			};
 			string text = JsonUtility.ToJson(obj);
 			UpgradeRequest.mOnResponseDelegate = onResponseDelegate;

@@ -15,9 +15,9 @@ public class AchievementView : MonoBehaviour
 		this.dicBehavior = new Dictionary<string, AchievementView.AchieveTemplate>();
 		this.ShowAchievement();
 		this.achievementInfo.gameObject.SetActive(false);
-		AchievementManager achievementManager = global::Singleton<AchievementManager>.Get();
+		AchievementManager achievementManager = Solarmax.Singleton<AchievementManager>.Get();
 		achievementManager.achieveStateChanged = (AchievementManager.AchieveStateChanged)Delegate.Combine(achievementManager.achieveStateChanged, new AchievementManager.AchieveStateChanged(this.OnAchieveStateChanged));
-		AchievementManager achievementManager2 = global::Singleton<AchievementManager>.Get();
+		AchievementManager achievementManager2 = Solarmax.Singleton<AchievementManager>.Get();
 		achievementManager2.battleEnd = (AchievementManager.BattleEnd)Delegate.Combine(achievementManager2.battleEnd, new AchievementManager.BattleEnd(this.OnDBattleEnd));
 		this.OnClickAchievementBtn();
 	}
@@ -25,9 +25,9 @@ public class AchievementView : MonoBehaviour
 	public void Destory()
 	{
 		this.dicBehavior.Clear();
-		AchievementManager achievementManager = global::Singleton<AchievementManager>.Get();
+		AchievementManager achievementManager = Solarmax.Singleton<AchievementManager>.Get();
 		achievementManager.achieveStateChanged = (AchievementManager.AchieveStateChanged)Delegate.Remove(achievementManager.achieveStateChanged, new AchievementManager.AchieveStateChanged(this.OnAchieveStateChanged));
-		AchievementManager achievementManager2 = global::Singleton<AchievementManager>.Get();
+		AchievementManager achievementManager2 = Solarmax.Singleton<AchievementManager>.Get();
 		achievementManager2.battleEnd = (AchievementManager.BattleEnd)Delegate.Remove(achievementManager2.battleEnd, new AchievementManager.BattleEnd(this.OnDBattleEnd));
 	}
 
@@ -45,7 +45,7 @@ public class AchievementView : MonoBehaviour
 
 	public void ShowAchievement()
 	{
-		List<Achievement> achievementByDifficult = global::Singleton<AchievementModel>.Get().achievementGroups[Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID()].GetAchievementByDifficult((AchievementDifficult)Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentDiffcult(), false);
+		List<Achievement> achievementByDifficult = Solarmax.Singleton<AchievementModel>.Get().achievementGroups[Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentGroupID()].GetAchievementByDifficult((AchievementDifficult)Solarmax.Singleton<LevelDataHandler>.Get().GetCurrentDiffcult(), false);
 		if (achievementByDifficult.Count > 0)
 		{
 		}
@@ -83,9 +83,9 @@ public class AchievementView : MonoBehaviour
 	{
 		if (this.dicBehavior.ContainsKey(id))
 		{
-			string desc = Solarmax.Singleton<AchievementConfigProvider>.Get().dataList[id].GetDesc(true, global::Singleton<AchievementModel>.Get().dicAchievements[id].currentCompleted);
-			bool success = global::Singleton<AchievementManager>.Get().IsCompleted(id);
-			if (global::Singleton<AchievementModel>.Get().dicAchievements[id].success)
+			string desc = Solarmax.Singleton<AchievementConfigProvider>.Get().dataList[id].GetDesc(true, Solarmax.Singleton<AchievementModel>.Get().dicAchievements[id].currentCompleted);
+			bool success = Solarmax.Singleton<AchievementManager>.Get().IsCompleted(id);
+			if (Solarmax.Singleton<AchievementModel>.Get().dicAchievements[id].success)
 			{
 				success = true;
 			}
@@ -95,9 +95,9 @@ public class AchievementView : MonoBehaviour
 
 	public void OnDBattleEnd()
 	{
-		AchievementManager achievementManager = global::Singleton<AchievementManager>.Get();
+		AchievementManager achievementManager = Solarmax.Singleton<AchievementManager>.Get();
 		achievementManager.achieveStateChanged = (AchievementManager.AchieveStateChanged)Delegate.Remove(achievementManager.achieveStateChanged, new AchievementManager.AchieveStateChanged(this.OnAchieveStateChanged));
-		AchievementManager achievementManager2 = global::Singleton<AchievementManager>.Get();
+		AchievementManager achievementManager2 = Solarmax.Singleton<AchievementManager>.Get();
 		achievementManager2.battleEnd = (AchievementManager.BattleEnd)Delegate.Remove(achievementManager2.battleEnd, new AchievementManager.BattleEnd(this.OnDBattleEnd));
 		this.dicBehavior.Clear();
 	}

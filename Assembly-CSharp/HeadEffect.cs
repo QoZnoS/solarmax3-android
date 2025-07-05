@@ -5,7 +5,7 @@ public class HeadEffect : IPoolGo
 {
 	public HeadEffect CreateEffect(string name)
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources(name);
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(name);
 		this.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 		return this;
 	}

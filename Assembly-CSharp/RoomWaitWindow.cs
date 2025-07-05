@@ -129,14 +129,14 @@ public class RoomWaitWindow : BaseWindow
 			for (int j = 0; j < list5.Count; j++)
 			{
 				int num3 = list5[j];
-				if (this.allPlayers[num3] != null && this.allPlayers[num3].userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+				if (this.allPlayers[num3] != null && this.allPlayers[num3].userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 				{
 					Solarmax.Singleton<UISystem>.Instance.HideWindow("RoomWaitWindow");
 					if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_4vPC)
 					{
-						if (!string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().HomeWindow))
+						if (!string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow))
 						{
-							Solarmax.Singleton<UISystem>.Get().ShowWindow(global::Singleton<LocalPlayer>.Get().HomeWindow);
+							Solarmax.Singleton<UISystem>.Get().ShowWindow(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow);
 						}
 						else if (Solarmax.Singleton<LevelDataHandler>.Instance.currentChapter != null)
 						{
@@ -152,9 +152,9 @@ public class RoomWaitWindow : BaseWindow
 							Solarmax.Singleton<UISystem>.Get().ShowWindow("CooperationRoomWindow");
 						}
 					}
-					else if (!string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().HomeWindow))
+					else if (!string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow))
 					{
-						Solarmax.Singleton<UISystem>.Get().ShowWindow(global::Singleton<LocalPlayer>.Get().HomeWindow);
+						Solarmax.Singleton<UISystem>.Get().ShowWindow(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow);
 					}
 					else
 					{
@@ -178,7 +178,7 @@ public class RoomWaitWindow : BaseWindow
 			}
 			for (int l = 0; l < list7.Count; l++)
 			{
-				global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 				int num5 = list7[l];
 				int num6 = list8[l];
 				PlayerData playerData3 = this.allPlayers[num5];
@@ -192,7 +192,7 @@ public class RoomWaitWindow : BaseWindow
 		{
 			ErrCode errCode = (ErrCode)args[0];
 			int num7 = (int)args[1];
-			if (num7 > 0 && global::Singleton<LocalPlayer>.Get().playerData.userId != num7)
+			if (num7 > 0 && Solarmax.Singleton<LocalPlayer>.Get().playerData.userId != num7)
 			{
 				Solarmax.Singleton<FriendDataHandler>.Instance.OnRefreshFriendStats(num7, false);
 				Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnRefreshFriendStats, new object[0]);
@@ -214,9 +214,9 @@ public class RoomWaitWindow : BaseWindow
 				Solarmax.Singleton<UISystem>.Get().HideAllWindow();
 				if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_4vPC)
 				{
-					if (!string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().HomeWindow))
+					if (!string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow))
 					{
-						Solarmax.Singleton<UISystem>.Get().ShowWindow(global::Singleton<LocalPlayer>.Get().HomeWindow);
+						Solarmax.Singleton<UISystem>.Get().ShowWindow(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow);
 					}
 					else if (Solarmax.Singleton<LevelDataHandler>.Instance.currentChapter != null)
 					{
@@ -232,9 +232,9 @@ public class RoomWaitWindow : BaseWindow
 						Solarmax.Singleton<UISystem>.Get().ShowWindow("CooperationRoomWindow");
 					}
 				}
-				else if (!string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().HomeWindow))
+				else if (!string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow))
 				{
-					Solarmax.Singleton<UISystem>.Get().ShowWindow(global::Singleton<LocalPlayer>.Get().HomeWindow);
+					Solarmax.Singleton<UISystem>.Get().ShowWindow(Solarmax.Singleton<LocalPlayer>.Get().HomeWindow);
 				}
 				else
 				{
@@ -307,7 +307,7 @@ public class RoomWaitWindow : BaseWindow
 				num++;
 			}
 		}
-		this.startBtn.gameObject.SetActive(global::Singleton<LocalPlayer>.Get().playerData.userId == this.hostId);
+		this.startBtn.gameObject.SetActive(Solarmax.Singleton<LocalPlayer>.Get().playerData.userId == this.hostId);
 		this.watchNumLabel.text = LanguageDataProvider.Format(910, new object[]
 		{
 			this.watchCount,
@@ -361,7 +361,7 @@ public class RoomWaitWindow : BaseWindow
 				this.playerGos[l] = this.player4H[l];
 			}
 		}
-		if (this.hostId != global::Singleton<LocalPlayer>.Get().playerData.userId)
+		if (this.hostId != Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 		{
 			this.inputSearch.gameObject.GetComponent<BoxCollider>().enabled = false;
 		}
@@ -415,7 +415,7 @@ public class RoomWaitWindow : BaseWindow
 		{
 			component.Load(pd.icon, null, null);
 			component2.gameObject.SetActive(true);
-			bool active = global::Singleton<LocalPlayer>.Get().playerData.userId == hostId && pd.userId != hostId;
+			bool active = Solarmax.Singleton<LocalPlayer>.Get().playerData.userId == hostId && pd.userId != hostId;
 			gameObject.SetActive(active);
 			if (pd.userId == hostId)
 			{
@@ -434,7 +434,7 @@ public class RoomWaitWindow : BaseWindow
 		if (pd != null && transform != null)
 		{
 			GameObject gameObject2 = transform.gameObject;
-			if (!Solarmax.Singleton<FriendDataHandler>.Get().IsMyFriend(pd.userId) && pd.userId > 0 && pd.userId != global::Singleton<LocalPlayer>.Get().playerData.userId)
+			if (!Solarmax.Singleton<FriendDataHandler>.Get().IsMyFriend(pd.userId) && pd.userId > 0 && pd.userId != Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 			{
 				gameObject2.SetActive(true);
 				UILabel component4 = gameObject2.transform.Find("useid").GetComponent<UILabel>();
@@ -456,7 +456,7 @@ public class RoomWaitWindow : BaseWindow
 
 	public void OnDeleteClick()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData.userId != this.hostId)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.userId != this.hostId)
 		{
 			return;
 		}
@@ -491,7 +491,7 @@ public class RoomWaitWindow : BaseWindow
 
 	public void OnStartClick()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData.userId != this.hostId)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.userId != this.hostId)
 		{
 			return;
 		}
@@ -510,7 +510,7 @@ public class RoomWaitWindow : BaseWindow
 
 	public void OnLockRoom(GameObject go)
 	{
-		if (this.hostId != global::Singleton<LocalPlayer>.Get().playerData.userId)
+		if (this.hostId != Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 		{
 			Tips.Make(LanguageDataProvider.GetValue(2228));
 			return;
@@ -587,7 +587,7 @@ public class RoomWaitWindow : BaseWindow
 		num = this.watchIndex + num - 4;
 		if (num < this.allPlayers.Length && this.allPlayers[num] == null)
 		{
-			Solarmax.Singleton<NetSystem>.Instance.helper.RequestMatchMovePos(global::Singleton<LocalPlayer>.Get().playerData.userId, num);
+			Solarmax.Singleton<NetSystem>.Instance.helper.RequestMatchMovePos(Solarmax.Singleton<LocalPlayer>.Get().playerData.userId, num);
 		}
 	}
 
@@ -601,7 +601,7 @@ public class RoomWaitWindow : BaseWindow
 		int num = int.Parse(go.transform.parent.name.Substring(6));
 		if (this.allPlayers[num] == null)
 		{
-			Solarmax.Singleton<NetSystem>.Instance.helper.RequestMatchMovePos(global::Singleton<LocalPlayer>.Get().playerData.userId, num);
+			Solarmax.Singleton<NetSystem>.Instance.helper.RequestMatchMovePos(Solarmax.Singleton<LocalPlayer>.Get().playerData.userId, num);
 		}
 	}
 
@@ -620,7 +620,7 @@ public class RoomWaitWindow : BaseWindow
 
 	public void OnModifyRoomName()
 	{
-		if (this.hostId != global::Singleton<LocalPlayer>.Get().playerData.userId)
+		if (this.hostId != Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 		{
 			Tips.Make(LanguageDataProvider.GetValue(2228));
 			return;

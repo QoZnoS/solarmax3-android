@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Solarmax;
 using UnityEngine;
 
-public class AchievementManager : global::Singleton<AchievementManager>
+public class AchievementManager : Solarmax.Singleton<AchievementManager>
 {
 	public void Init(BattleData data)
 	{
@@ -11,7 +11,7 @@ public class AchievementManager : global::Singleton<AchievementManager>
 		AchievementManager.isFirst = true;
 		this.battleData = data;
 		this.completeList.Clear();
-		this.model = global::Singleton<AchievementModel>.Get();
+		this.model = Solarmax.Singleton<AchievementModel>.Get();
 		this.groupId = Solarmax.Singleton<LevelDataHandler>.Instance.GetCurrentGroupID();
 		this.difficult = (AchievementDifficult)Solarmax.Singleton<LevelDataHandler>.Instance.GetCurrentDiffcult();
 	}

@@ -79,7 +79,7 @@ public class CannonEffect : EffectNode
 	{
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("EFF_XJ_Nuclear");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("EFF_XJ_Nuclear");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.effectList = base.go.GetComponentsInChildren<ParticleSystem>();
 			this.missileImage = base.go.transform.Find("image").transform.gameObject;

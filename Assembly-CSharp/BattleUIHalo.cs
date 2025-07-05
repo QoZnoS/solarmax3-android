@@ -16,7 +16,7 @@ public class BattleUIHalo
 		{
 			return;
 		}
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_UI_Halo");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_UI_Halo");
 		this.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 		this.image = this.go.GetComponent<UISprite>();
 		this.back = this.go.transform.Find("BackGround").GetComponent<UISprite>();

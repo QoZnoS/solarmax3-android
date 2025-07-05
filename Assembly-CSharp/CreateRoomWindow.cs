@@ -16,7 +16,7 @@ public class CreateRoomWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+		this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		this.upGo.SetActive(true);
 		this.centerGo.SetActive(true);
 		this.numPage.SetActive(false);

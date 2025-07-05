@@ -35,7 +35,7 @@ public class CRoom2V2Window : BaseWindow
 	{
 		if (eventId == EventId.UpdateMoney)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 		else if (eventId == EventId.OnMatchInit)
 		{
@@ -68,7 +68,7 @@ public class CRoom2V2Window : BaseWindow
 			for (int j = 0; j < list5.Count; j++)
 			{
 				int num3 = list5[j];
-				if (this.allPlayers[num3] != null && this.allPlayers[num3].userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+				if (this.allPlayers[num3] != null && this.allPlayers[num3].userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 				{
 					Solarmax.Singleton<UISystem>.Get().HideAllWindow();
 					Solarmax.Singleton<UISystem>.Get().ShowWindow("PvPRoomWindow");
@@ -91,7 +91,7 @@ public class CRoom2V2Window : BaseWindow
 		{
 			ErrCode errCode = (ErrCode)args[0];
 			int num5 = (int)args[1];
-			if (num5 > 0 && global::Singleton<LocalPlayer>.Get().playerData.userId != num5)
+			if (num5 > 0 && Solarmax.Singleton<LocalPlayer>.Get().playerData.userId != num5)
 			{
 				Solarmax.Singleton<FriendDataHandler>.Instance.OnRefreshFriendStats(num5, false);
 				Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnRefreshFriendStats, new object[0]);

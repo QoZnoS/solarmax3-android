@@ -68,7 +68,7 @@ public class PVEWaitWindow : BaseWindow
 			for (int j = 0; j < list5.Count; j++)
 			{
 				int num3 = list5[j];
-				if (this.allPlayers[num3] != null && this.allPlayers[num3].userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+				if (this.allPlayers[num3] != null && this.allPlayers[num3].userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 				{
 					Solarmax.Singleton<UISystem>.Instance.HideWindow("RoomWaitWindow");
 					Solarmax.Singleton<UISystem>.Instance.ShowWindow("CreateRoomWindow");
@@ -88,7 +88,7 @@ public class PVEWaitWindow : BaseWindow
 			}
 			for (int l = 0; l < list7.Count; l++)
 			{
-				global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+				Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 				int num5 = list7[l];
 				int num6 = list8[l];
 				PlayerData playerData3 = this.allPlayers[num5];
@@ -146,7 +146,7 @@ public class PVEWaitWindow : BaseWindow
 		{
 			this.SetPlayerInfo(this.playerGos[i], this.allPlayers[i], this.hostId);
 		}
-		this.startBtn.gameObject.SetActive(global::Singleton<LocalPlayer>.Get().playerData.userId == this.hostId);
+		this.startBtn.gameObject.SetActive(Solarmax.Singleton<LocalPlayer>.Get().playerData.userId == this.hostId);
 	}
 
 	private void SetUIPage()
@@ -211,7 +211,7 @@ public class PVEWaitWindow : BaseWindow
 		{
 			component.picUrl = pd.icon;
 			component.gameObject.SetActive(true);
-			bool active = global::Singleton<LocalPlayer>.Get().playerData.userId == hostId && pd.userId != hostId;
+			bool active = Solarmax.Singleton<LocalPlayer>.Get().playerData.userId == hostId && pd.userId != hostId;
 			gameObject.SetActive(active);
 			if (pd.userId == hostId)
 			{
@@ -230,7 +230,7 @@ public class PVEWaitWindow : BaseWindow
 
 	public void OnDeleteClick()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData.userId != this.hostId)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.userId != this.hostId)
 		{
 			return;
 		}
@@ -250,7 +250,7 @@ public class PVEWaitWindow : BaseWindow
 
 	public void OnStartClick()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData.userId != this.hostId)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.userId != this.hostId)
 		{
 			return;
 		}

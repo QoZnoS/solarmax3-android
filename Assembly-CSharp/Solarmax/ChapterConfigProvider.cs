@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class ChapterConfigProvider : Singleton<ChapterConfigProvider>, IDataProvider
+	public class ChapterConfigProvider : Solarmax.Singleton<ChapterConfigProvider>, IDataProvider
 	{
 		public bool IsXML()
 		{
@@ -18,7 +18,7 @@ namespace Solarmax
 
 		public void Load()
 		{
-			Singleton<LoggerSystem>.Instance.Info("ChapterConfigProvider   Load", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("ChapterConfigProvider   Load", new object[0]);
 			this.dataList.Clear();
 			try
 			{
@@ -61,7 +61,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/Chapter.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/Chapter.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

@@ -9,7 +9,7 @@ public class EntityCurse : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_Curse");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Curse");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

@@ -55,7 +55,7 @@ public class BlackholeHitEffect : EffectNode
 	{
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("EFF_XJ_XiShou");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("EFF_XJ_XiShou");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.effectList = base.go.GetComponentsInChildren<ParticleSystem>();
 		}

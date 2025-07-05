@@ -30,7 +30,7 @@ public class LogoWindow : BaseWindow
 		this.lblVersion.text = string.Format("Version: {0}", UpgradeUtil.GetAppVersion());
 		this.StatrButton.SetActive(false);
 		this.foreSprite.fillAmount = 0f;
-		if (!global::Singleton<LocalPlayer>.Get().isAccountTokenOver)
+		if (!Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver)
 		{
 			base.InvokeRepeating("UpdateProgress", this.progressChangeValue, this.progressChangeValue);
 			base.Invoke("DelayStart", 0.01f);
@@ -79,14 +79,14 @@ public class LogoWindow : BaseWindow
 	{
 		base.OnShow();
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("Logo Window -- on show", new object[0]);
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		this.serverPanel.SetActive(false);
 		this.selectPanel.SetActive(false);
 		this.curSlider.value = 0f;
 		this.enterHomeWindow = false;
 		this.SetProgress(0f);
 		this.logoutBtn.SetActive(false);
-		global::Singleton<AssetManager>.Get().LoadShipAudio();
+		Solarmax.Singleton<AssetManager>.Get().LoadShipAudio();
 		Solarmax.Singleton<LocalStorageSystem>.Get().LoadStorage();
 		this.OnVisitorLoginClick();
 		MonoSingleton<FlurryAnalytis>.Instance.LogEvent("LoginWindowShow");
@@ -113,7 +113,7 @@ public class LogoWindow : BaseWindow
 			ErrCode errCode = (ErrCode)args[0];
 			if (errCode == ErrCode.EC_Ok)
 			{
-				global::Singleton<AchievementModel>.Get().Init(true);
+				Solarmax.Singleton<AchievementModel>.Get().Init(true);
 				this.StartSingleGame();
 			}
 			else if (errCode == ErrCode.EC_NoExist)
@@ -132,8 +132,8 @@ public class LogoWindow : BaseWindow
 				});
 				Solarmax.Singleton<NetSystem>.Instance.helper.RequestUserInit();
 				Solarmax.Singleton<NetSystem>.Instance.helper.FriendLoad(0, false);
-				global::Singleton<AchievementModel>.Get().Init(true);
-				global::Singleton<TaskModel>.Get().Init();
+				Solarmax.Singleton<AchievementModel>.Get().Init(true);
+				Solarmax.Singleton<TaskModel>.Get().Init();
 			}
 			else if (errCode == ErrCode.EC_NeedUpdate)
 			{
@@ -142,14 +142,14 @@ public class LogoWindow : BaseWindow
 			}
 			else if (errCode == ErrCode.EC_NeedUpload)
 			{
-				global::Singleton<AchievementModel>.Get().Init(false);
-				global::Singleton<TaskModel>.Get().Init();
+				Solarmax.Singleton<AchievementModel>.Get().Init(false);
+				Solarmax.Singleton<TaskModel>.Get().Init();
 				Solarmax.Singleton<OldLocalStorageSystem>.Instance.LoadUploadStorage();
 				Solarmax.Singleton<NetSystem>.Instance.helper.UploadOldData();
 			}
 			else if (errCode == ErrCode.EC_AAOvertime)
 			{
-				global::Singleton<LocalPlayer>.Get().ShowFangChenMIInfo(LocalPlayer.FCM_TIP.Warring, true);
+				Solarmax.Singleton<LocalPlayer>.Get().ShowFangChenMIInfo(LocalPlayer.FCM_TIP.Warring, true);
 			}
 			this.SetProgress(1f);
 			return;
@@ -160,8 +160,8 @@ public class LogoWindow : BaseWindow
 			ErrCode errCode2 = (ErrCode)args[0];
 			if (errCode2 == ErrCode.EC_Ok)
 			{
-				global::Singleton<TaskModel>.Get().Init();
-				global::Singleton<AchievementModel>.Get().Init(true);
+				Solarmax.Singleton<TaskModel>.Get().Init();
+				Solarmax.Singleton<AchievementModel>.Get().Init(true);
 				this.StartGuideBattleGame();
 			}
 			else if (errCode2 == ErrCode.EC_NameExist)
@@ -281,7 +281,7 @@ public class LogoWindow : BaseWindow
 			if (eventId == EventId.OnUploadOldVersionData)
 			{
 				Solarmax.Singleton<LoggerSystem>.Instance.Info("OnUIEventHandler -- OnUploadOldVersionData", new object[0]);
-				global::Singleton<AchievementModel>.Get().Init(true);
+				Solarmax.Singleton<AchievementModel>.Get().Init(true);
 				this.StartSingleGame();
 				return;
 			}
@@ -322,10 +322,10 @@ public class LogoWindow : BaseWindow
 
 	public void ReconnectGiveup()
 	{
-		int userId = global::Singleton<LocalPlayer>.Get().playerData.userId;
+		int userId = Solarmax.Singleton<LocalPlayer>.Get().playerData.userId;
 		Solarmax.Singleton<NetSystem>.Instance.helper.QuitMatch(userId);
 		Solarmax.Singleton<NetSystem>.Instance.helper.QuitBattle(-1);
-		global::Singleton<AchievementModel>.Get().Init(true);
+		Solarmax.Singleton<AchievementModel>.Get().Init(true);
 		this.StartSingleGame();
 	}
 
@@ -406,7 +406,7 @@ public class LogoWindow : BaseWindow
 		yield return new WaitForSeconds(0.2f);
 		UILabel uilabel = this.loadingTip;
 		uilabel.text += LanguageDataProvider.GetValue(310);
-		global::Singleton<AssetManager>.Get().LoadBattleResources();
+		Solarmax.Singleton<AssetManager>.Get().LoadBattleResources();
 		this.SetProgress(0.6f);
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("Connect Gate --- Progress 60%", new object[0]);
 		MonoSingleton<FlurryAnalytis>.Instance.LogEvent("LoadBattleResources");
@@ -442,8 +442,8 @@ public class LogoWindow : BaseWindow
 	public void StartSingleGame()
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("LogoWindow  StartSingleGame ", new object[0]);
-		global::Singleton<RankModel>.Get().Init();
-		global::Singleton<TaskModel>.Get().Init();
+		Solarmax.Singleton<RankModel>.Get().Init();
+		Solarmax.Singleton<TaskModel>.Get().Init();
 		Solarmax.Singleton<NetSystem>.Instance.helper.RequestUserInit();
 		Solarmax.Singleton<NetSystem>.Instance.helper.RequestChapters();
 		Solarmax.Singleton<NetSystem>.Instance.helper.FriendLoad(0, false);
@@ -460,7 +460,7 @@ public class LogoWindow : BaseWindow
 
 	private void RequestAccountAndChapters()
 	{
-		string text = global::Singleton<LocalAccountStorage>.Get().account + ".txt";
+		string text = Solarmax.Singleton<LocalAccountStorage>.Get().account + ".txt";
 		string file = MonoSingleton<UpdateSystem>.Instance.saveRoot + text;
 		Solarmax.Singleton<NetSystem>.Instance.helper.GenPresignedUrl(text, "GET", "text/plain", file, 117);
 	}
@@ -468,14 +468,14 @@ public class LogoWindow : BaseWindow
 	public void HandleSdkLoginCallBack()
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("HandleSdkLoginCallBack", new object[0]);
-		string account = global::Singleton<LocalAccountStorage>.Get().account;
+		string account = Solarmax.Singleton<LocalAccountStorage>.Get().account;
 		if (string.IsNullOrEmpty(account))
 		{
 			return;
 		}
 		Solarmax.Singleton<LocalStorageSystem>.Instance.SetLastLoginAccountId(account, MiPlatformSDK.IsVisitor);
 		Solarmax.Singleton<LocalStorageSystem>.Instance.LoadAccountRelated(account);
-		global::Singleton<LocalAccountStorage>.Get().account = account;
+		Solarmax.Singleton<LocalAccountStorage>.Get().account = account;
 		Solarmax.Singleton<LanguageDataProvider>.Get().Load();
 		BGManager.Inst.ApplySkinConfig(null, false);
 		this.StartLable.text = LanguageDataProvider.GetValue(2135);
@@ -499,7 +499,7 @@ public class LogoWindow : BaseWindow
 		this.grid.gameObject.transform.DestroyChildren();
 		this.serverName.text = LanguageDataProvider.GetValue(2134);
 		ServerListItemConfig[] servers = ServerListRequest.Response.Servers;
-		string serverUrl = global::Singleton<LocalSettingStorage>.Get().serverUrl;
+		string serverUrl = Solarmax.Singleton<LocalSettingStorage>.Get().serverUrl;
 		int num = -1;
 		for (int i = 0; i < servers.Length; i++)
 		{
@@ -571,7 +571,7 @@ public class LogoWindow : BaseWindow
 		this.lblVersion.gameObject.SetActive(false);
 		BGManager.Inst.SetAirShipVisible(false);
 		string id = Solarmax.Singleton<LevelDataHandler>.Get().currentLevel.id;
-		global::Singleton<LocalPlayer>.Get().playerData.singleFightNext = false;
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightNext = false;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.difficultyLevel = this.difficultyLevel;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.aiLevel = 1;
 		LevelConfig data = Solarmax.Singleton<LevelConfigConfigProvider>.Get().GetData(id);
@@ -600,7 +600,7 @@ public class LogoWindow : BaseWindow
 	public void OnStartSingleBattle()
 	{
 		GuideManager.TriggerGuidecompleted(GuildEndEvent.startbattle);
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		TweenAlpha tweenAlpha = base.gameObject.GetComponent<TweenAlpha>();
 		if (tweenAlpha == null)
 		{

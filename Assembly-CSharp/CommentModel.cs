@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CommentModel : Singleton<CommentModel>
+public class CommentModel : Solarmax.Singleton<CommentModel>
 {
 	public void EnsureInit(string levelId)
 	{
@@ -40,7 +40,7 @@ public class CommentModel : Singleton<CommentModel>
 
 	public IEnumerator PullCommentsRequest(CommentModel.RequestResult result)
 	{
-		string url = string.Format("{0}/comments?tag=level:{1}&openId={2}", "http://120.92.133.64/comment/v1/app/n3n1rcpq", this.levelId, Singleton<LocalAccountStorage>.Get().account);
+		string url = string.Format("{0}/comments?tag=level:{1}&openId={2}", "http://120.92.133.64/comment/v1/app/n3n1rcpq", this.levelId, Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		using (UnityWebRequest www = UnityWebRequest.Get(url))
 		{
 			yield return www.SendWebRequest();
@@ -73,13 +73,13 @@ public class CommentModel : Singleton<CommentModel>
 	{
 		PostCommentJson json = new PostCommentJson
 		{
-			openId = Singleton<LocalAccountStorage>.Get().account,
+			openId = Solarmax.Singleton<LocalAccountStorage>.Get().account,
 			content = comment
 		};
 		json.tags = new string[3];
 		json.tags[0] = string.Format("level:{0}", this.levelId);
-		json.tags[1] = string.Format("icon:{0}", Singleton<LocalPlayer>.Get().playerData.icon);
-		json.tags[2] = string.Format("name:{0}", Singleton<LocalPlayer>.Get().playerData.name);
+		json.tags[1] = string.Format("icon:{0}", Solarmax.Singleton<LocalPlayer>.Get().playerData.icon);
+		json.tags[2] = string.Format("name:{0}", Solarmax.Singleton<LocalPlayer>.Get().playerData.name);
 		using (UnityWebRequest www = new UnityWebRequest(string.Format("{0}/comments", "http://120.92.133.64/comment/v1/app/n3n1rcpq"), "POST"))
 		{
 			byte[] bodyRaw = Json.EnCodeBytes(json);
@@ -102,8 +102,8 @@ public class CommentModel : Singleton<CommentModel>
 						Comment comment2 = new Comment();
 						comment2.isLike = false;
 						comment2.commentId = 0;
-						comment2.icon = Singleton<LocalPlayer>.Get().playerData.icon;
-						comment2.name = Singleton<LocalPlayer>.Get().playerData.name;
+						comment2.icon = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
+						comment2.name = Solarmax.Singleton<LocalPlayer>.Get().playerData.name;
 						comment2.comment = comment;
 						comment2.likeCount = 0;
 						this.comments.Add(comment2);
@@ -118,7 +118,7 @@ public class CommentModel : Singleton<CommentModel>
 
 	public IEnumerator LikeCommentRequest(int commentId, CommentModel.RequestResult result)
 	{
-		string url = string.Format("{0}/comments/{1}/likes?openId={2}", "http://120.92.133.64/comment/v1/app/n3n1rcpq", commentId, Singleton<LocalAccountStorage>.Get().account);
+		string url = string.Format("{0}/comments/{1}/likes?openId={2}", "http://120.92.133.64/comment/v1/app/n3n1rcpq", commentId, Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		using (UnityWebRequest www = new UnityWebRequest(url, "POST"))
 		{
 			yield return www.SendWebRequest();
@@ -137,7 +137,7 @@ public class CommentModel : Singleton<CommentModel>
 
 	public IEnumerator UnLikeCommentRequest(int commentId, CommentModel.RequestResult result)
 	{
-		string url = string.Format("{0}/comments/{1}/likes?openId={2}", "http://120.92.133.64/comment/v1/app/n3n1rcpq", commentId, Singleton<LocalAccountStorage>.Get().account);
+		string url = string.Format("{0}/comments/{1}/likes?openId={2}", "http://120.92.133.64/comment/v1/app/n3n1rcpq", commentId, Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		using (UnityWebRequest www = UnityWebRequest.Delete(url))
 		{
 			yield return www.SendWebRequest();
@@ -156,7 +156,7 @@ public class CommentModel : Singleton<CommentModel>
 
 	public IEnumerator PullLevelScore(CommentModel.RequestResult result)
 	{
-		string url = string.Format("{0}/scores/{1}/openId/{2}", "http://120.92.133.64/comment/v1/app/n3n1rcpq", this.levelId, Singleton<LocalAccountStorage>.Get().account);
+		string url = string.Format("{0}/scores/{1}/openId/{2}", "http://120.92.133.64/comment/v1/app/n3n1rcpq", this.levelId, Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		using (UnityWebRequest www = UnityWebRequest.Get(url))
 		{
 			yield return www.SendWebRequest();
@@ -218,7 +218,7 @@ public class CommentModel : Singleton<CommentModel>
 		{
 			"http://120.92.133.64/comment/v1/app/n3n1rcpq",
 			this.levelId,
-			Singleton<LocalAccountStorage>.Get().account,
+            Solarmax.Singleton<LocalAccountStorage>.Get().account,
 			score
 		});
 		using (UnityWebRequest www = new UnityWebRequest(url, "POST"))

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class NewSkillConfigProvider : Singleton<NewSkillConfigProvider>, IDataProvider
+	public class NewSkillConfigProvider : Solarmax.Singleton<NewSkillConfigProvider>, IDataProvider
 	{
 		public bool IsXML()
 		{

@@ -209,7 +209,7 @@ public class NodeHUD
 		}
 		for (int i = this.mHudLabel.Count; i < teamArray.Count; i++)
 		{
-			GameObject gameObject = global::Singleton<AssetManager>.Get().GetResources("TXT") as GameObject;
+			GameObject gameObject = Solarmax.Singleton<AssetManager>.Get().GetResources("TXT") as GameObject;
 			gameObject = this.mHudRoot.AddChild(gameObject);
 			this.mHudLabel.Add(gameObject.GetComponent<UILabel>());
 		}
@@ -267,7 +267,7 @@ public class NodeHUD
 		}
 		for (int i = this.mHudLabel.Count; i < teamArray.Count; i++)
 		{
-			GameObject gameObject = global::Singleton<AssetManager>.Get().GetResources("TXT") as GameObject;
+			GameObject gameObject = Solarmax.Singleton<AssetManager>.Get().GetResources("TXT") as GameObject;
 			gameObject = this.mHudRoot.AddChild(gameObject);
 			this.mHudLabel.Add(gameObject.GetComponent<UILabel>());
 		}

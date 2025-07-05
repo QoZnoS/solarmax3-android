@@ -126,7 +126,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/maplist/" + this.name + ".xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/maplist/" + this.name + ".xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 
@@ -227,7 +227,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/maplist/" + this.name + ".xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/maplist/" + this.name + ".xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 
@@ -246,7 +246,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/maplist/" + this.name + ".xml delete failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/maplist/" + this.name + ".xml delete failed " + ex.ToString(), new object[0]);
 			}
 			return result;
 		}
@@ -346,7 +346,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/maplist/" + this.name + ".xml save failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/maplist/" + this.name + ".xml save failed " + ex.ToString(), new object[0]);
 			}
 			return result;
 		}

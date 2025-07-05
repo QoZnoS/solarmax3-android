@@ -47,7 +47,7 @@ public class GroundNode : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_Select");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Select");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.sprite = base.go.GetComponentInChildren<SpriteRenderer>();
 		}

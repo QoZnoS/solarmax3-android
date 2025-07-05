@@ -52,7 +52,7 @@ public class DriftSkillEffect : EffectNode
 				Debug.Log("InitEffectNode is null");
 				return;
 			}
-			UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources(this.effectName);
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(this.effectName);
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 		}
 		if (base.go == null || this.hoodEntity == null)

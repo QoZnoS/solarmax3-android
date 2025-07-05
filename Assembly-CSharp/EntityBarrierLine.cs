@@ -41,7 +41,7 @@ public class EntityBarrierLine : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_BarrierLine");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_BarrierLine");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

@@ -63,7 +63,7 @@ public class ChapterWindowCell : MonoBehaviour
 
 	public void OnClickBuy(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (this.chapter == null)
 		{
 			return;

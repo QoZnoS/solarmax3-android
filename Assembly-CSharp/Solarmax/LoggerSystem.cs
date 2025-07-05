@@ -2,7 +2,7 @@
 
 namespace Solarmax
 {
-	public class LoggerSystem : Singleton<LoggerSystem>, Lifecycle
+	public class LoggerSystem : Solarmax.Singleton<LoggerSystem>, Lifecycle
 	{
 		public LoggerSystem()
 		{
@@ -17,33 +17,33 @@ namespace Solarmax
 		public bool Init()
 		{
 			string empty = string.Empty;
-			if (Singleton<ConfigSystem>.Instance.TryGetConfig("consolelogmode", out empty))
+			if (Solarmax.Singleton<ConfigSystem>.Instance.TryGetConfig("consolelogmode", out empty))
 			{
 				this.SetConsoleLogMode(Converter.ConvertBool(empty));
 			}
-			if (Singleton<ConfigSystem>.Instance.TryGetConfig("consoleloglevel", out empty))
+			if (Solarmax.Singleton<ConfigSystem>.Instance.TryGetConfig("consoleloglevel", out empty))
 			{
 				this.SetConsoleLogLevel(Converter.ConvertNumber<int>(empty));
 			}
-			if (Singleton<ConfigSystem>.Instance.TryGetConfig("filelogmode", out empty))
+			if (Solarmax.Singleton<ConfigSystem>.Instance.TryGetConfig("filelogmode", out empty))
 			{
 				this.SetFileLogMode(Converter.ConvertBool(empty));
 			}
-			if (Singleton<ConfigSystem>.Instance.TryGetConfig("fileloglevel", out empty))
+			if (Solarmax.Singleton<ConfigSystem>.Instance.TryGetConfig("fileloglevel", out empty))
 			{
 				this.SetFileLogLevel(Converter.ConvertNumber<int>(empty));
 			}
-			if (Singleton<ConfigSystem>.Instance.TryGetConfig("filelogfrontname", out empty))
+			if (Solarmax.Singleton<ConfigSystem>.Instance.TryGetConfig("filelogfrontname", out empty))
 			{
 				this.SetFileLogFrontName(empty);
 			}
-			if (Singleton<ConfigSystem>.Instance.TryGetConfig("filelogextname", out empty))
+			if (Solarmax.Singleton<ConfigSystem>.Instance.TryGetConfig("filelogextname", out empty))
 			{
 				this.SetFileLogExtName(empty);
 			}
 			if (this.mFileLogMode)
 			{
-				this.SetFileLogPath(Singleton<Framework>.Instance.GetWritableRootDir());
+				this.SetFileLogPath(Solarmax.Singleton<Framework>.Instance.GetWritableRootDir());
 				this.mFileLogger.Init();
 				this.ConsoleLog(LoggerSystem.LogLevel.ALWAYS, "FileLogger file path:" + (this.mFileLogger as FileLogger).GetFinalFilePath());
 			}
@@ -117,7 +117,7 @@ namespace Solarmax
 
 		private void WriteLog(LoggerSystem.LogLevel level, string message)
 		{
-			message = string.Format("[{0}], [{1}],\t\t [frame:{2}]", LoggerSystem.LOGTITLE[(int)level], message, Singleton<TimeSystem>.Instance.GetFrame());
+			message = string.Format("[{0}], [{1}],\t\t [frame:{2}]", LoggerSystem.LOGTITLE[(int)level], message, Solarmax.Singleton<TimeSystem>.Instance.GetFrame());
 			this.ConsoleLog(level, message);
 			this.FileLog(level, message);
 		}

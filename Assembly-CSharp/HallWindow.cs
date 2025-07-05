@@ -139,7 +139,7 @@ public class HallWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		global::Singleton<LocalPlayer>.Get().HomeWindow = string.Empty;
+		Solarmax.Singleton<LocalPlayer>.Get().HomeWindow = string.Empty;
 		this.uiToggleAllrooms.onChange.Add(new EventDelegate(new EventDelegate.Callback(this.OnSearchAllRooms)));
 		this.uiToggleCoopertion.onChange.Add(new EventDelegate(new EventDelegate.Callback(this.OnSearchCooperationType)));
 		this.uiToggleRoomType.onChange.Add(new EventDelegate(new EventDelegate.Callback(this.OnSearchRoomType)));
@@ -200,7 +200,7 @@ public class HallWindow : BaseWindow
 
 	private void RefreshPlayerInfo()
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		if (playerData == null)
 		{
 			return;

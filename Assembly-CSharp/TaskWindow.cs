@@ -27,9 +27,9 @@ public class TaskWindow : BaseWindow
 				component.EnsureDestroy();
 				component.EnsureInit(Solarmax.Singleton<TaskConfigProvider>.Get().GetLevelData());
 			}
-			if (component2.gameObject.activeSelf && global::Singleton<TaskModel>.Get().claimTask != null)
+			if (component2.gameObject.activeSelf && Solarmax.Singleton<TaskModel>.Get().claimTask != null)
 			{
-				int id = int.Parse(global::Singleton<TaskModel>.Get().claimTask.id);
+				int id = int.Parse(Solarmax.Singleton<TaskModel>.Get().claimTask.id);
 				Solarmax.Singleton<UISystem>.Instance.ShowWindow(new ShowWindowParams("RewardTipsWindow", EventId.OnShowRewardTipsWindow, new object[]
 				{
 					RewardTipsWindow.ViewType.RewardTask,
@@ -48,18 +48,18 @@ public class TaskWindow : BaseWindow
 		}
 		else if (eventId == EventId.UpdateMoney)
 		{
-			global::Singleton<AudioManger>.Get().PlayEffect("Gold");
-			this.moneyChange = global::Singleton<LocalPlayer>.Get().playerData.money - int.Parse(this.money.text);
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("Gold");
+			this.moneyChange = Solarmax.Singleton<LocalPlayer>.Get().playerData.money - int.Parse(this.money.text);
 			this.moneyChangeSpeed = ((this.moneyChange / 40 <= 0) ? 1 : (this.moneyChange / 40));
 		}
 		else if (eventId == EventId.OnDoubleAdClicked)
 		{
 			AdManager.ShowAd(AdManager.ShowAdType.DoubleAd, delegate(object[] param)
 			{
-				if (global::Singleton<TaskModel>.Get().claimTask != null)
+				if (Solarmax.Singleton<TaskModel>.Get().claimTask != null)
 				{
 					MonoSingleton<FlurryAnalytis>.Instance.LogTaskLookAds();
-					global::Singleton<TaskModel>.Get().ClaimReward(global::Singleton<TaskModel>.Get().claimTask.id, null, 2);
+					Solarmax.Singleton<TaskModel>.Get().ClaimReward(Solarmax.Singleton<TaskModel>.Get().claimTask.id, null, 2);
 				}
 				else
 				{
@@ -72,7 +72,7 @@ public class TaskWindow : BaseWindow
 			DailyTaskView component4 = this.dailyView.GetComponent<DailyTaskView>();
 			if (component4.gameObject.activeSelf)
 			{
-				global::Singleton<TaskModel>.Get().ClaimReward(global::Singleton<TaskModel>.Get().claimTask.id, delegate(bool success)
+				Solarmax.Singleton<TaskModel>.Get().ClaimReward(Solarmax.Singleton<TaskModel>.Get().claimTask.id, delegate(bool success)
 				{
 				}, 1);
 			}
@@ -111,7 +111,7 @@ public class TaskWindow : BaseWindow
 			this.moneyChange -= this.moneyChangeSpeed;
 			if (this.moneyChange <= 0)
 			{
-				this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+				this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			}
 		}
 	}
@@ -121,12 +121,12 @@ public class TaskWindow : BaseWindow
 		base.OnShow();
 		EngineSystem engineSystem = Solarmax.Singleton<EngineSystem>.Get();
 		engineSystem.onNetStatusChanged = (EngineSystem.OnNetStatusChanged)Delegate.Combine(engineSystem.onNetStatusChanged, new EngineSystem.OnNetStatusChanged(this.NetStatus));
-		this.money.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+		this.money.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		this.NetStatus((NetworkReachability)Solarmax.Singleton<EngineSystem>.Get().GetNetworkRechability());
 		this.levelTask.onChange.Add(new EventDelegate(new EventDelegate.Callback(this.OnLevelToggleChanged)));
 		this.dailyTask.onChange.Add(new EventDelegate(new EventDelegate.Callback(this.OnDailyToggleChanged)));
 		this.achieveTask.onChange.Add(new EventDelegate(new EventDelegate.Callback(this.OnAchieveToggleChanged)));
-		this.model = global::Singleton<TaskModel>.Get();
+		this.model = Solarmax.Singleton<TaskModel>.Get();
 		this.ShowRedDot();
 	}
 

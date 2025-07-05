@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public class UIWindowConfigProvider : Singleton<UIWindowConfigProvider>, IDataProvider
+	public class UIWindowConfigProvider : Solarmax.Singleton<UIWindowConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{

@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class AchievementConfigProvider : Singleton<AchievementConfigProvider>, IDataProvider
+	public class AchievementConfigProvider : Solarmax.Singleton<AchievementConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -39,7 +39,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/Achievement.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/Achievement.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

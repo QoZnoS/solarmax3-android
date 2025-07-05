@@ -1,7 +1,7 @@
 ﻿using System;
 using Solarmax;
 
-public class LocalPvpSeasonSystem : global::Singleton<LocalPvpSeasonSystem>, ILocalStorage
+public class LocalPvpSeasonSystem : Solarmax.Singleton<LocalPvpSeasonSystem>, ILocalStorage
 {
 	public string Name()
 	{

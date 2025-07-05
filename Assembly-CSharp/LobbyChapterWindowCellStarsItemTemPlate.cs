@@ -162,7 +162,7 @@ public class LobbyChapterWindowCellStarsItemTemPlate : MonoBehaviour
 		gameObject.SetActive(true);
 		gameObject.transform.localScale = new Vector3(this.needScale, this.needScale, this.needScale);
 		this.effectXJList.Add(gameObject);
-		global::Singleton<AudioManger>.Get().PlayCapture(base.gameObject.transform.localPosition);
+		Solarmax.Singleton<AudioManger>.Get().PlayCapture(base.gameObject.transform.localPosition);
 		base.Invoke("ReAddEffectAgainAndAgain", 0.2f);
 	}
 

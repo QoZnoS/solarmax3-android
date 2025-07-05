@@ -50,7 +50,7 @@ public class BombEffect : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources(BombEffect.bombEffect);
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(BombEffect.bombEffect);
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.animator = base.go.GetComponent<Animator>();
 			if (this.animator == null)

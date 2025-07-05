@@ -32,7 +32,7 @@ public class StartWindow : BaseWindow
 		base.OnShow();
 		this.OnCombatClick();
 		this.SetPlayerInfo();
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		this.PlayAnimation("StartWindow_in");
 	}
 
@@ -174,9 +174,9 @@ public class StartWindow : BaseWindow
 
 	private void SetPlayerInfo()
 	{
-		this.userRewardLabel.text = global::Singleton<LocalPlayer>.Get().playerData.score.ToString();
-		this.userNameLabel.text = string.Format("Hi, {0}", global::Singleton<LocalPlayer>.Get().playerData.name);
-		this.userIconTexture.picUrl = global::Singleton<LocalPlayer>.Get().playerData.icon;
+		this.userRewardLabel.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.score.ToString();
+		this.userNameLabel.text = string.Format("Hi, {0}", Solarmax.Singleton<LocalPlayer>.Get().playerData.name);
+		this.userIconTexture.picUrl = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 	}
 
 	private string GetDayStr(int day)

@@ -41,7 +41,7 @@ public class VictoryWindowViewNew : BaseWindow
 
 	public void PlaySingleStarSound()
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("starSound");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("starSound");
 	}
 
 	public int ShowScoreNum(int hitships, int produces, LevelConfig cfg)
@@ -53,9 +53,9 @@ public class VictoryWindowViewNew : BaseWindow
 		int num5 = (int)((float)cfg.scoreper * ((float)(num + num2 + num3) + num4));
 		if (Solarmax.Singleton<LevelDataHandler>.Instance.IsNeedSend(this.starNum, num5))
 		{
-			Solarmax.Singleton<NetSystem>.Instance.helper.RequestSetLevelSorce(cfg.id, cfg.levelGroup, global::Singleton<LocalAccountStorage>.Get().account, num5);
+			Solarmax.Singleton<NetSystem>.Instance.helper.RequestSetLevelSorce(cfg.id, cfg.levelGroup, Solarmax.Singleton<LocalAccountStorage>.Get().account, num5);
 			Solarmax.Singleton<NetSystem>.Instance.helper.SetLevelStar(Solarmax.Singleton<LevelDataHandler>.Instance.currentChapter.id, cfg.id, this.starNum, num5);
-			global::Singleton<LocalLevelScoreStorage>.Get().levelScore[Solarmax.Singleton<LevelDataHandler>.Instance.currentLevel.id] = num5;
+			Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore[Solarmax.Singleton<LevelDataHandler>.Instance.currentLevel.id] = num5;
 			Solarmax.Singleton<LocalStorageSystem>.Instance.SaveLocalLevelScore();
 		}
 		Solarmax.Singleton<LevelDataHandler>.Instance.SetLevelStarToLocalStorage(this.starNum, num5);

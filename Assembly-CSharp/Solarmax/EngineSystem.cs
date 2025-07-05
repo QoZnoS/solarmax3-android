@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public class EngineSystem : Singleton<EngineSystem>, Lifecycle
+	public class EngineSystem : Solarmax.Singleton<EngineSystem>, Lifecycle
 	{
 		public bool Init()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("EngineSystem    init  begin", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("EngineSystem    init  begin", new object[0]);
 			string empty = string.Empty;
-			if (Singleton<ConfigSystem>.Instance.TryGetConfig("fps", out empty))
+			if (Solarmax.Singleton<ConfigSystem>.Instance.TryGetConfig("fps", out empty))
 			{
 				this.SetFPS(Converter.ConvertNumber<int>(empty));
 			}
@@ -17,7 +17,7 @@ namespace Solarmax
 			Application.targetFrameRate = 60;
 			Screen.sleepTimeout = -1;
 			Input.multiTouchEnabled = true;
-			Singleton<LoggerSystem>.Instance.Debug("EngineSystem    init  end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("EngineSystem    init  end", new object[0]);
 			return true;
 		}
 

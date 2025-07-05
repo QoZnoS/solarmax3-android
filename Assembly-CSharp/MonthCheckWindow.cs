@@ -30,7 +30,7 @@ public class MonthCheckWindow : BaseWindow
 		this.TICK_NUM = 0;
 		if (this.IsShowNextCheckTime)
 		{
-			long checkedTime = global::Singleton<MonthCheckModel>.Get().GetCheckedTime();
+			long checkedTime = Solarmax.Singleton<MonthCheckModel>.Get().GetCheckedTime();
 			DateTime d = new DateTime(1970, 1, 1);
 			TimeSpan t = d.AddSeconds((double)checkedTime) - d;
 			long num = (long)this.MAX_DAY_SECOND - checkedTime % (long)this.MAX_DAY_SECOND;
@@ -59,7 +59,7 @@ public class MonthCheckWindow : BaseWindow
 		this.IsShowNextCheckTime = false;
 		this.GrandDely.text = string.Empty;
 		this.rewardTemplate.SetActive(false);
-		this.checkModel = global::Singleton<MonthCheckModel>.Get();
+		this.checkModel = Solarmax.Singleton<MonthCheckModel>.Get();
 		this.RefreshUI();
 	}
 
@@ -196,8 +196,8 @@ public class MonthCheckWindow : BaseWindow
 		this.repairTimeLabel.text = text2;
 		DateTime d = new DateTime(1970, 1, 1);
 		long num3 = (long)(Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d).TotalSeconds;
-		long num4 = (global::Singleton<LocalPlayer>.Get().month_card_end - num3) / 86400L;
-		long num5 = (global::Singleton<LocalPlayer>.Get().month_card_end - num3) % 86400L;
+		long num4 = (Solarmax.Singleton<LocalPlayer>.Get().month_card_end - num3) / 86400L;
+		long num5 = (Solarmax.Singleton<LocalPlayer>.Get().month_card_end - num3) % 86400L;
 		if (num5 > 0L)
 		{
 			num4 += 1L;

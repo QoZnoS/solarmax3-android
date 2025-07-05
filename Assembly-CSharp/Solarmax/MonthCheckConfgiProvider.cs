@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class MonthCheckConfgiProvider : Singleton<MonthCheckConfgiProvider>, IDataProvider
+	public class MonthCheckConfgiProvider : Solarmax.Singleton<MonthCheckConfgiProvider>, IDataProvider
 	{
 		public bool IsXML()
 		{
@@ -51,7 +51,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/Monthcheck.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/Monthcheck.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

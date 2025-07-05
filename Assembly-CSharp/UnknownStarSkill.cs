@@ -50,7 +50,7 @@ public class UnknownStarSkill : BaseNewSkill
 		{
 			Solarmax.Singleton<EffectManager>.Get().PlayUnknownStarEffect(node, node.entity.nodesize / 0.38f);
 		}
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_UnknownStar");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_UnknownStar");
 		GameObject gameObject = UnityEngine.Object.Instantiate(resources) as GameObject;
 		gameObject.transform.SetParent(node.entity.GetGO().transform);
 		if (node.state != NodeState.Idle)

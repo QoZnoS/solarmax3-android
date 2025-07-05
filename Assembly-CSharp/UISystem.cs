@@ -225,7 +225,7 @@ public class UISystem : Solarmax.Singleton<UISystem>, Lifecycle
 			});
 			return null;
 		}
-		GameObject gameObject = global::Singleton<AssetManager>.Get().LoadResource("gameres/" + data.mPrefabPath.ToLower() + ".prefab") as GameObject;
+		GameObject gameObject = Solarmax.Singleton<AssetManager>.Get().LoadResource("gameres/" + data.mPrefabPath.ToLower() + ".prefab") as GameObject;
 		if (null == gameObject)
 		{
 			Debug.LogErrorFormat("UISystem_ShowWindow : {0}'s prefab cannot Load!", new object[]
@@ -461,7 +461,7 @@ public class UISystem : Solarmax.Singleton<UISystem>, Lifecycle
 		{
 			if (fadeIn)
 			{
-				global::Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.IN, 0.25f);
+				Solarmax.Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.IN, 0.25f);
 			}
 			battle.transform.localScale = Vector3.one;
 			if (ed != null)
@@ -475,7 +475,7 @@ public class UISystem : Solarmax.Singleton<UISystem>, Lifecycle
 	public void FadeOutBattle(bool fadeIn, EventDelegate ed = null)
 	{
 		Solarmax.Singleton<BattleSystem>.Instance.sceneManager.FadePlanet(false, 0.15f);
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		GameObject root = Solarmax.Singleton<BattleSystem>.Instance.battleData.root;
 		root.SetActive(true);
 		TweenAlpha tweenAlpha = root.GetComponent<TweenAlpha>();

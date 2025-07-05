@@ -48,13 +48,13 @@ public class AvatarView : MonoBehaviour
 		}
 		this.table.Reposition();
 		this.scroll.ResetPosition();
-		string url = global::Singleton<LocalPlayer>.Get().playerData.icon;
+		string url = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 		if (!url.EndsWith(".png"))
 		{
 			url += ".png";
 		}
 		this.choosedAvatar.picUrl = url;
-		this.playerName.text = global::Singleton<LocalPlayer>.Get().playerData.name;
+		this.playerName.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.name;
 		yield break;
 	}
 
@@ -86,8 +86,8 @@ public class AvatarView : MonoBehaviour
 			{
 				text += ".png";
 			}
-			string text2 = global::Singleton<LocalPlayer>.Get().playerData.icon;
-			if (!global::Singleton<LocalPlayer>.Get().playerData.icon.EndsWith(".png"))
+			string text2 = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
+			if (!Solarmax.Singleton<LocalPlayer>.Get().playerData.icon.EndsWith(".png"))
 			{
 				text2 += ".png";
 			}
@@ -127,9 +127,9 @@ public class AvatarView : MonoBehaviour
 		SkinConfig choosedConfig = Solarmax.Singleton<CollectionModel>.Get().ChoosedConfig;
 		if (choosedConfig.unlock)
 		{
-			if (!global::Singleton<LocalPlayer>.Get().playerData.icon.Equals(choosedConfig.skinImageName))
+			if (!Solarmax.Singleton<LocalPlayer>.Get().playerData.icon.Equals(choosedConfig.skinImageName))
 			{
-				global::Singleton<LocalPlayer>.Get().playerData.icon = choosedConfig.skinImageName;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.icon = choosedConfig.skinImageName;
 				Solarmax.Singleton<NetSystem>.Instance.helper.ChangeIcon(choosedConfig.skinImageName);
 				AvatarTemplate[] componentsInChildren = this.table.transform.GetComponentsInChildren<AvatarTemplate>();
 				foreach (AvatarTemplate avatarTemplate in componentsInChildren)
@@ -142,7 +142,7 @@ public class AvatarView : MonoBehaviour
 		}
 		else
 		{
-			if ((double)global::Singleton<LocalPlayer>.Get().playerData.money < choosedConfig.goodValue)
+			if ((double)Solarmax.Singleton<LocalPlayer>.Get().playerData.money < choosedConfig.goodValue)
 			{
 				Tips.Make(LanguageDataProvider.GetValue(1102));
 				return;

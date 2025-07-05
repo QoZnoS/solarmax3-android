@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NetMessage;
 
-public class TeamInviteData : Singleton<TeamInviteData>
+public class TeamInviteData : Solarmax.Singleton<TeamInviteData>
 {
 	public TeamInviteData()
 	{

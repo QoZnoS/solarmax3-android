@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class GameVariableConfigProvider : Singleton<GameVariableConfigProvider>, IDataProvider
+	public class GameVariableConfigProvider : Solarmax.Singleton<GameVariableConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{

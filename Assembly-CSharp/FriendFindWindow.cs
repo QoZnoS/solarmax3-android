@@ -64,7 +64,7 @@ public class FriendFindWindow : BaseWindow
 				this.cellType = 2;
 				this.followBtn.isEnabled = true;
 			}
-			if (this.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+			if (this.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 			{
 				this.followBtn.gameObject.SetActive(false);
 			}

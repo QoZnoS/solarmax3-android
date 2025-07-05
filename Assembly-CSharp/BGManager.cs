@@ -24,7 +24,7 @@ public class BGManager : MonoBehaviour
 		this.mAirShipGo = UnityEngine.Object.Instantiate<GameObject>(this.mAirShipPrefab);
 		this.mAirShipGo.transform.SetParent(Solarmax.Singleton<BattleSystem>.Instance.battleData.root.transform);
 		this.mAirShip = this.mAirShipGo.GetComponent<AirShip>();
-		global::Singleton<LocalSettingStorage>.Get().LoadSoundStorage();
+		Solarmax.Singleton<LocalSettingStorage>.Get().LoadSoundStorage();
 	}
 
 	private void Start()
@@ -122,17 +122,17 @@ public class BGManager : MonoBehaviour
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("BGManager  ApplySkinConfig", new object[0]);
 		if (config == null)
 		{
-			int skinId = global::Singleton<LocalSettingStorage>.Get().GetSkinId();
+			int skinId = Solarmax.Singleton<LocalSettingStorage>.Get().GetSkinId();
 			config = Solarmax.Singleton<SkinConfigProvider>.Get().GetData(skinId);
 		}
 		if (config == null)
 		{
 			return;
 		}
-		int bg = global::Singleton<LocalSettingStorage>.Get().bg;
+		int bg = Solarmax.Singleton<LocalSettingStorage>.Get().bg;
 		if (config.unlock)
 		{
-			global::Singleton<LocalSettingStorage>.Get().bg = config.id;
+			Solarmax.Singleton<LocalSettingStorage>.Get().bg = config.id;
 			Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalSetting();
 		}
 		if (!force && this.mSkinConfig == config)
@@ -185,7 +185,7 @@ public class BGManager : MonoBehaviour
 					{
 						text2
 					});
-					Texture2D tex = global::Singleton<PortraitManager>.Get().TryGetTexture2DFromSkin(config.url, text2, array[j].ToLower());
+					Texture2D tex = Solarmax.Singleton<PortraitManager>.Get().TryGetTexture2DFromSkin(config.url, text2, array[j].ToLower());
 					this.SetTexture(BackgroundType.Normal, j, tex);
 				}
 			}
@@ -195,7 +195,7 @@ public class BGManager : MonoBehaviour
 			MonoSingleton<UpdateSystem>.Instance.StartDownLoad();
 			this.mSkinConfig = skinConfig;
 			this.lastSkinConfig = skinConfig2;
-			global::Singleton<LocalSettingStorage>.Get().bg = bg;
+			Solarmax.Singleton<LocalSettingStorage>.Get().bg = bg;
 			Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalSetting();
 		}
 	}

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class DataHandlerSystem : Singleton<DataHandlerSystem>, Lifecycle
+	public class DataHandlerSystem : Solarmax.Singleton<DataHandlerSystem>, Lifecycle
 	{
 		public bool Init()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("DataHandlerSystem   init   begin", new object[0]);
-			this.RegistDataHandler(Singleton<FriendDataHandler>.Instance);
-			this.RegistDataHandler(Singleton<LevelDataHandler>.Instance);
-			this.RegistDataHandler(Singleton<UserSyncSysteam>.Instance);
-			this.RegistDataHandler(Singleton<OrderManager>.Instance);
-			this.RegistDataHandler(Singleton<ReconnectHandler>.Instance);
-			this.RegistDataHandler(Singleton<ItemDataHandler>.Instance);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("DataHandlerSystem   init   begin", new object[0]);
+			this.RegistDataHandler(Solarmax.Singleton<FriendDataHandler>.Instance);
+			this.RegistDataHandler(Solarmax.Singleton<LevelDataHandler>.Instance);
+			this.RegistDataHandler(Solarmax.Singleton<UserSyncSysteam>.Instance);
+			this.RegistDataHandler(Solarmax.Singleton<OrderManager>.Instance);
+			this.RegistDataHandler(Solarmax.Singleton<ReconnectHandler>.Instance);
+			this.RegistDataHandler(Solarmax.Singleton<ItemDataHandler>.Instance);
 			bool result = this.doInit();
-			Singleton<LoggerSystem>.Instance.Debug("DataHandlerSystem   init   end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("DataHandlerSystem   init   end", new object[0]);
 			return result;
 		}
 

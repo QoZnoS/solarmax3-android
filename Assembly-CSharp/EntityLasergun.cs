@@ -10,7 +10,7 @@ public class EntityLasergun : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_Speedship");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Speedship");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

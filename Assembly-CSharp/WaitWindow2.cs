@@ -28,7 +28,7 @@ public class WaitWindow2 : BaseWindow
 		{
 			this.posRoots[i].SetActive(false);
 		}
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Wandering", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Wandering", 0.5f);
 		this.tips.gameObject.SetActive(false);
 		this.SetPage(true);
 	}
@@ -70,9 +70,9 @@ public class WaitWindow2 : BaseWindow
 			break;
 		}
 		case EventId.OnStartMatch2:
-			this.playerCount = global::Singleton<LocalPlayer>.Get().CurBattlePlayerNum;
+			this.playerCount = Solarmax.Singleton<LocalPlayer>.Get().CurBattlePlayerNum;
 			this.SetPage(false);
-			this.SetPosInfo(0, global::Singleton<LocalPlayer>.Get().playerData);
+			this.SetPosInfo(0, Solarmax.Singleton<LocalPlayer>.Get().playerData);
 			break;
 		case EventId.OnStartMatch3:
 			this.playerCount = 4;
@@ -188,7 +188,7 @@ public class WaitWindow2 : BaseWindow
 		component3.text = data.name;
 		component3.color = color;
 		Animator component4 = gameObject.GetComponent<Animator>();
-		if (data.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+		if (data.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 		{
 			component4.Play("WaitWindow_information1_mine");
 		}

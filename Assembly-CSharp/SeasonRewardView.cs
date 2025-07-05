@@ -13,7 +13,7 @@ public class SeasonRewardView : MonoBehaviour
 
 	public void UpdateUI()
 	{
-		SeasonRewardModel seasonRewardModel = global::Singleton<SeasonRewardModel>.Get();
+		SeasonRewardModel seasonRewardModel = Solarmax.Singleton<SeasonRewardModel>.Get();
 		if (seasonRewardModel.outSeason)
 		{
 			return;
@@ -40,7 +40,7 @@ public class SeasonRewardView : MonoBehaviour
 
 	public void RefreshUI()
 	{
-		SeasonRewardModel seasonRewardModel = global::Singleton<SeasonRewardModel>.Get();
+		SeasonRewardModel seasonRewardModel = Solarmax.Singleton<SeasonRewardModel>.Get();
 		if (seasonRewardModel.outSeason)
 		{
 			return;

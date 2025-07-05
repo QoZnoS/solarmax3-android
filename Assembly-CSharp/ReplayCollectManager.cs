@@ -64,8 +64,8 @@ public class ReplayCollectManager
 			if (list[j].camption == num)
 			{
 				userData.userid = num;
-				userData.name = global::Singleton<LocalPlayer>.Get().playerData.name;
-				userData.icon = global::Singleton<LocalPlayer>.Get().playerData.icon;
+				userData.name = Solarmax.Singleton<LocalPlayer>.Get().playerData.name;
+				userData.icon = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 			}
 			else
 			{
@@ -97,7 +97,7 @@ public class ReplayCollectManager
 		}
 		SCStartBattle start = new SCStartBattle();
 		SCFinishBattle scfinishBattle = new SCFinishBattle();
-		scfinishBattle.users.Add(global::Singleton<LocalPlayer>.Get().playerData.userId);
+		scfinishBattle.users.Add(Solarmax.Singleton<LocalPlayer>.Get().playerData.userId);
 		scfinishBattle.end_type.Add(EndType.ET_Timeout);
 		this.pbRecord.finish = scfinishBattle;
 		this.pbRecord.start = start;
@@ -162,7 +162,7 @@ public class ReplayCollectManager
 		{
 			Directory.CreateDirectory(saveVideo);
 		}
-		string account = global::Singleton<LocalAccountStorage>.Get().account;
+		string account = Solarmax.Singleton<LocalAccountStorage>.Get().account;
 		DateTime d = new DateTime(1970, 1, 1);
 		long timeStamp = (long)(Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d).TotalSeconds;
 		string text = string.Format("{0}_{1}", account, LevelId);

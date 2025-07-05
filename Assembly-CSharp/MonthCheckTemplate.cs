@@ -17,7 +17,7 @@ public class MonthCheckTemplate : MonoBehaviour
 		this.rewardConfig = reward;
 		this.checkType = type;
 		this.haveChecked.SetActive(this.checkType == CheckType.Checked);
-		this.monthDouble.SetActive(global::Singleton<MonthCheckModel>.Get().isDouble);
+		this.monthDouble.SetActive(Solarmax.Singleton<MonthCheckModel>.Get().isDouble);
 		int rewardType = reward.rewardType;
 		if (rewardType == 1)
 		{

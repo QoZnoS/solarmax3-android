@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class SkillConfigProvider : Singleton<SkillConfigProvider>, IDataProvider
+	public class SkillConfigProvider : Solarmax.Singleton<SkillConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{

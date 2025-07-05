@@ -16,8 +16,8 @@ public class AvatarTemplate : MonoBehaviour
 		this.moneyNum.gameObject.SetActive(!config.unlock);
 		this.moneyNum.text = config.goodValue.ToString();
 		this.UpdateAvatar();
-		string text = global::Singleton<LocalPlayer>.Get().playerData.icon;
-		if (!global::Singleton<LocalPlayer>.Get().playerData.icon.EndsWith(".png"))
+		string text = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
+		if (!Solarmax.Singleton<LocalPlayer>.Get().playerData.icon.EndsWith(".png"))
 		{
 			text += ".png";
 		}
@@ -46,8 +46,8 @@ public class AvatarTemplate : MonoBehaviour
 		{
 			text += ".png";
 		}
-		string text2 = global::Singleton<LocalPlayer>.Get().playerData.icon;
-		if (!global::Singleton<LocalPlayer>.Get().playerData.icon.EndsWith(".png"))
+		string text2 = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
+		if (!Solarmax.Singleton<LocalPlayer>.Get().playerData.icon.EndsWith(".png"))
 		{
 			text2 += ".png";
 		}

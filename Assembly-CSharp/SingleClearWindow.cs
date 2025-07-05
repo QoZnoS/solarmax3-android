@@ -38,8 +38,8 @@ public class SingleClearWindow : BaseWindow
 			if (errCode == ErrCode.EC_Ok)
 			{
 				Solarmax.Singleton<LoggerSystem>.Instance.Info("Rename with new name " + this.inputField.value, new object[0]);
-				global::Singleton<LocalPlayer>.Get().playerData.name = this.inputField.value;
-				global::Singleton<LocalAccountStorage>.Get().name = this.inputField.value;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.name = this.inputField.value;
+				Solarmax.Singleton<LocalAccountStorage>.Get().name = this.inputField.value;
 				Solarmax.Singleton<LocalStorageSystem>.Instance.SaveLocalAccount(false);
 				Solarmax.Singleton<UISystem>.Get().HideWindow("SingleClearWindow");
 				Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnUpdateName, new object[0]);

@@ -115,12 +115,12 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 
 	public void FlurryRequestUserSuccess(string code)
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		this.LogEvent("RequestUserSuccess", new Dictionary<string, string>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"UserId",
@@ -139,12 +139,12 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 
 	public void FlurryCreateUserSuccess()
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		this.LogEvent("RequestUserSuccess", new Dictionary<string, string>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"UserId",
@@ -159,12 +159,12 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 
 	public void FlurryUserDataInit()
 	{
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		this.LogEvent("UserDataInit", new Dictionary<string, string>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"UserId",
@@ -207,7 +207,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"CostType",
@@ -234,7 +234,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"Level",
@@ -277,7 +277,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"MatchType",
@@ -316,7 +316,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"MatchType",
@@ -351,7 +351,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"channel",
@@ -366,7 +366,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"Channel",
@@ -381,7 +381,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"Channel",
@@ -396,7 +396,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"Channel",
@@ -415,7 +415,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"Channel",
@@ -434,7 +434,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"channel",
@@ -453,7 +453,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"ProductId",
@@ -493,7 +493,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"ProductId",
@@ -537,7 +537,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"Info",
@@ -557,7 +557,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"Info",
@@ -577,7 +577,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"ProductId",
@@ -617,7 +617,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			}
 		};
 		this.LogEvent("CheckLookAds", parameters);
@@ -629,7 +629,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			}
 		};
 		this.LogEvent("RepairCheckLookAds", parameters);
@@ -641,7 +641,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			}
 		};
 		this.LogEvent("LotteryLookAds", parameters);
@@ -653,7 +653,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			}
 		};
 		this.LogEvent("TaskLookAds", parameters);
@@ -665,7 +665,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"param",
@@ -681,7 +681,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			}
 		};
 		this.LogEvent("SroceLookAds", parameters);
@@ -693,7 +693,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			}
 		};
 		this.LogEvent("ResultMoneyLookAds", parameters);
@@ -705,7 +705,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			}
 		};
 		this.LogEvent("CommentLookAds", parameters);
@@ -717,7 +717,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"Account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			}
 		};
 		this.LogEvent("PveResultLookAds", parameters);
@@ -759,7 +759,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"channel",
@@ -779,7 +779,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"channel",
@@ -803,7 +803,7 @@ public class FlurryAnalytis : MonoSingleton<FlurryAnalytis>
 		{
 			{
 				"account",
-				global::Singleton<LocalAccountStorage>.Get().account
+				Solarmax.Singleton<LocalAccountStorage>.Get().account
 			},
 			{
 				"channel",

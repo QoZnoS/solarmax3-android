@@ -30,7 +30,7 @@ public class CommentTemplate : MonoBehaviour
 		this.doLike = true;
 		if (this.isLike)
 		{
-			base.StartCoroutine(Singleton<CommentModel>.Get().UnLikeCommentRequest(this.comment.commentId, delegate(bool success)
+			base.StartCoroutine(Solarmax.Singleton<CommentModel>.Get().UnLikeCommentRequest(this.comment.commentId, delegate(bool success)
 			{
 				this.doLike = false;
 				if (success)
@@ -49,7 +49,7 @@ public class CommentTemplate : MonoBehaviour
 		}
 		else
 		{
-			base.StartCoroutine(Singleton<CommentModel>.Get().LikeCommentRequest(this.comment.commentId, delegate(bool success)
+			base.StartCoroutine(Solarmax.Singleton<CommentModel>.Get().LikeCommentRequest(this.comment.commentId, delegate(bool success)
 			{
 				this.doLike = false;
 				if (success)

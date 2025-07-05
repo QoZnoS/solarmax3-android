@@ -9,7 +9,7 @@ public class EntityPower : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_Power");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Power");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

@@ -120,7 +120,7 @@ public class CustomSelectLevelWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		this.mapList.Clear();
 		this.levelList.Clear();
 		this.mapList.Add("X");
@@ -163,7 +163,7 @@ public class CustomSelectLevelWindow : BaseWindow
 		this.numTemplate.SetActive(false);
 		this.bgParent = GameObject.Find("Battle/BG");
 		this.ShowMap(CustomSelectLevelWindow.selectMapIndex, false, true);
-		this.powerValue.text = global::Singleton<LocalPlayer>.Get().playerData.power.ToString();
+		this.powerValue.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.power.ToString();
 	}
 
 	private void refreshMap()
@@ -221,7 +221,7 @@ public class CustomSelectLevelWindow : BaseWindow
 		}
 		else if (eventId == EventId.UpdatePower)
 		{
-			this.powerValue.text = global::Singleton<LocalPlayer>.Get().playerData.power.ToString();
+			this.powerValue.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.power.ToString();
 		}
 	}
 
@@ -354,7 +354,7 @@ public class CustomSelectLevelWindow : BaseWindow
 		{
 			return;
 		}
-		if (global::Singleton<LocalPlayer>.Get().playerData.power > 0)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.power > 0)
 		{
 			Solarmax.Singleton<NetSystem>.Instance.helper.RequestStartLevel(this.levelList[CustomSelectLevelWindow.selectMapIndex]);
 		}
@@ -368,7 +368,7 @@ public class CustomSelectLevelWindow : BaseWindow
 	{
 		string matchId = this.mapList[CustomSelectLevelWindow.selectMapIndex];
 		string text = this.levelList[CustomSelectLevelWindow.selectMapIndex];
-		global::Singleton<LocalPlayer>.Get().playerData.singleFightNext = (CustomSelectLevelWindow.selectMapIndex == this.MapIndexMax);
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightNext = (CustomSelectLevelWindow.selectMapIndex == this.MapIndexMax);
 		if (this.difficultyLevel == 0)
 		{
 			this.difficultyLevel = 1;
@@ -505,7 +505,7 @@ public class CustomSelectLevelWindow : BaseWindow
 	public void OnStartSingleBattle()
 	{
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NoticeSelfTeam, new object[0]);
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		this.mapShow.AlphaFadeOut(0.5f, null);
 		TweenAlpha tweenAlpha = base.gameObject.GetComponent<TweenAlpha>();
 		if (tweenAlpha == null)

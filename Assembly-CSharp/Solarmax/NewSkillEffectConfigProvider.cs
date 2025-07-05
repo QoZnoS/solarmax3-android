@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class NewSkillEffectConfigProvider : Singleton<NewSkillEffectConfigProvider>, IDataProvider
+	public class NewSkillEffectConfigProvider : Solarmax.Singleton<NewSkillEffectConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{

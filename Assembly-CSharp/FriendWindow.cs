@@ -75,7 +75,7 @@ public class FriendWindow : BaseWindow
 		default:
 			if (eventId == EventId.UpdateMoney)
 			{
-				this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+				this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			}
 			break;
 		case EventId.OnFriendSearchResultAll:
@@ -148,9 +148,9 @@ public class FriendWindow : BaseWindow
 
 	private void SetInfo()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData != null)
 		{
-			this.playerMoney.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.playerMoney.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		}
 	}
 
@@ -325,7 +325,7 @@ public class FriendWindow : BaseWindow
 
 	private void OnTabClick(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (go.name.Equals(this.friendTab.gameObject.name))
 		{
 			this.selectTab = this.friendTab;

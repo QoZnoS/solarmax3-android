@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class TaskConfigProvider : Singleton<TaskConfigProvider>, IDataProvider
+	public class TaskConfigProvider : Solarmax.Singleton<TaskConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -57,12 +57,12 @@ namespace Solarmax
 						}
 					}
 				}
-				AchievementModel achievementModel = Singleton<AchievementModel>.Get();
+				AchievementModel achievementModel = Solarmax.Singleton<AchievementModel>.Get();
 				achievementModel.onAchieveSuccess = (AchievementModel.OnAchieveSuccess)Delegate.Combine(achievementModel.onAchieveSuccess, new AchievementModel.OnAchieveSuccess(this.OnChangeAchievementState));
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/Task.Xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/Task.Xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

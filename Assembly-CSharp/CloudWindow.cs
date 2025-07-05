@@ -25,7 +25,7 @@ public class CloudWindow : BaseWindow
 		this.tipLabel.text = string.Empty;
 		if (Solarmax.Singleton<UserSyncSysteam>.Get().curLoadStruct != null)
 		{
-			long regtimeSaveFile = global::Singleton<LocalAccountStorage>.Get().regtimeSaveFile;
+			long regtimeSaveFile = Solarmax.Singleton<LocalAccountStorage>.Get().regtimeSaveFile;
 			if (regtimeSaveFile > 0L)
 			{
 				DateTime dateTime = new DateTime(1970, 1, 1);
@@ -71,13 +71,13 @@ public class CloudWindow : BaseWindow
 
 	public void OnUpLoadChapterAndUser()
 	{
-		long regtimeSaveFile = global::Singleton<LocalAccountStorage>.Get().regtimeSaveFile;
+		long regtimeSaveFile = Solarmax.Singleton<LocalAccountStorage>.Get().regtimeSaveFile;
 		if (regtimeSaveFile <= 0L)
 		{
 			Tips.Make(Tips.TipsType.FlowUp, LanguageDataProvider.GetValue(2101), 2f);
 			return;
 		}
-		string text = global::Singleton<LocalAccountStorage>.Get().account + ".txt";
+		string text = Solarmax.Singleton<LocalAccountStorage>.Get().account + ".txt";
 		string file = MonoSingleton<UpdateSystem>.Instance.saveRoot + text;
 		Solarmax.Singleton<NetSystem>.Instance.helper.GenPresignedUrl(text, "PUT", "text/plain", file, 117);
 	}
@@ -89,10 +89,10 @@ public class CloudWindow : BaseWindow
 			SyncMessageStruct curLoadStruct = Solarmax.Singleton<UserSyncSysteam>.Get().curLoadStruct;
 			if (curLoadStruct != null)
 			{
-				global::Singleton<LocalPlayer>.Get().playerData.name = curLoadStruct.PlayerName;
-				global::Singleton<LocalPlayer>.Get().playerData.icon = curLoadStruct.PlayerIcon;
-				global::Singleton<LocalAccountStorage>.Get().regtimeSaveFile = curLoadStruct.regtimeSaveFile;
-				global::Singleton<LocalPlayer>.Get().playerData.RegisteredtimeStamp = curLoadStruct.PlayerFrist;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.name = curLoadStruct.PlayerName;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.icon = curLoadStruct.PlayerIcon;
+				Solarmax.Singleton<LocalAccountStorage>.Get().regtimeSaveFile = curLoadStruct.regtimeSaveFile;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.RegisteredtimeStamp = curLoadStruct.PlayerFrist;
 				foreach (KeyValuePair<string, string> keyValuePair in curLoadStruct.listChapters)
 				{
 					string key = keyValuePair.Key;

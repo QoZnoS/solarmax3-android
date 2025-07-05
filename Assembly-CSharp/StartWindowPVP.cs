@@ -24,7 +24,7 @@ public class StartWindowPVP : BaseWindow
 	{
 		base.OnShow();
 		this.SetPlayerInfo();
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		string[] array = base.gameObject.name.Split(new char[]
 		{
 			'('
@@ -37,7 +37,7 @@ public class StartWindowPVP : BaseWindow
 		}
 		if (this.userIconTexture != null)
 		{
-			this.userIconTexture.picUrl = global::Singleton<LocalPlayer>.Get().playerData.icon;
+			this.userIconTexture.picUrl = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 		}
 	}
 
@@ -53,7 +53,7 @@ public class StartWindowPVP : BaseWindow
 		{
 			if (eventId == EventId.UpdateMoney)
 			{
-				this.scoreLabel.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+				this.scoreLabel.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			}
 		}
 		else
@@ -64,29 +64,29 @@ public class StartWindowPVP : BaseWindow
 
 	private void SetPlayerInfo()
 	{
-		if (string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().playerData.name))
+		if (string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().playerData.name))
 		{
 			this.userNameLabel.text = "guest";
 		}
 		else
 		{
-			this.userNameLabel.text = global::Singleton<LocalPlayer>.Get().playerData.name;
+			this.userNameLabel.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.name;
 		}
 		this.powerLabel.text = this.FormatPower();
-		this.scoreLabel.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+		this.scoreLabel.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 		if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() != ConnectionStatus.CONNECTED)
 		{
 			this.userScore.text = LanguageDataProvider.GetValue(1115);
 		}
 		else
 		{
-			this.userScore.text = global::Singleton<LocalPlayer>.Get().playerData.score.ToString();
+			this.userScore.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.score.ToString();
 		}
 	}
 
 	private string FormatPower()
 	{
-		int power = global::Singleton<LocalPlayer>.Get().playerData.power;
+		int power = Solarmax.Singleton<LocalPlayer>.Get().playerData.power;
 		string empty = string.Empty;
 		return string.Format("{0} / 30", power);
 	}
@@ -148,7 +148,7 @@ public class StartWindowPVP : BaseWindow
 
 	public void OnCustomPlayerHead()
 	{
-		int userId = global::Singleton<LocalPlayer>.Get().playerData.userId;
+		int userId = Solarmax.Singleton<LocalPlayer>.Get().playerData.userId;
 		if (userId > 0)
 		{
 			Solarmax.Singleton<NetSystem>.Instance.helper.FriendSearch(string.Empty, userId, 0);

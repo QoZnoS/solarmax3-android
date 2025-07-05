@@ -78,17 +78,17 @@ public class SelectRaceWindow_new : BaseWindow
 				this.kuangList[i].gameObject.GetComponent<UISprite>().spriteName = "avatar_bg_normal";
 			}
 		}
-		string battleMap = global::Singleton<LocalPlayer>.Get().battleMap;
+		string battleMap = Solarmax.Singleton<LocalPlayer>.Get().battleMap;
 		this.curMap.Switch(battleMap, true);
 		this.readyBtn.isEnabled = false;
 		this.NameLabel.text = string.Empty;
 		this.DescLabel.text = string.Empty;
 		int num = 0;
-		if (global::Singleton<LocalPlayer>.Get().mathPlayer != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().mathPlayer != null)
 		{
-			for (int j = 0; j < global::Singleton<LocalPlayer>.Get().mathPlayer.Count; j++)
+			for (int j = 0; j < Solarmax.Singleton<LocalPlayer>.Get().mathPlayer.Count; j++)
 			{
-				PlayerData playerData = global::Singleton<LocalPlayer>.Get().mathPlayer[j];
+				PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().mathPlayer[j];
 				Color color = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetTeam((TEAM)((byte)num + 1)).color;
 				color.a = 1f;
 				this.playerNameList[num].text = playerData.name;
@@ -138,7 +138,7 @@ public class SelectRaceWindow_new : BaseWindow
 	public void OnStartGame()
 	{
 		Solarmax.Singleton<NetSystem>.Instance.helper.SendRaceEntry();
-		global::Singleton<LocalPlayer>.Get().battleRace = this.selectIndex + 1;
+		Solarmax.Singleton<LocalPlayer>.Get().battleRace = this.selectIndex + 1;
 		this.ClearClickEvent();
 	}
 
@@ -261,10 +261,10 @@ public class SelectRaceWindow_new : BaseWindow
 		int num = 0;
 		PlayerData playerData = null;
 		int num2 = 0;
-		while (global::Singleton<LocalPlayer>.Get().mathPlayer != null && num2 < global::Singleton<LocalPlayer>.Get().mathPlayer.Count)
+		while (Solarmax.Singleton<LocalPlayer>.Get().mathPlayer != null && num2 < Solarmax.Singleton<LocalPlayer>.Get().mathPlayer.Count)
 		{
-			playerData = global::Singleton<LocalPlayer>.Get().mathPlayer[num2];
-			if (global::Singleton<LocalPlayer>.Get().playerData.userId == playerData.userId)
+			playerData = Solarmax.Singleton<LocalPlayer>.Get().mathPlayer[num2];
+			if (Solarmax.Singleton<LocalPlayer>.Get().playerData.userId == playerData.userId)
 			{
 				break;
 			}

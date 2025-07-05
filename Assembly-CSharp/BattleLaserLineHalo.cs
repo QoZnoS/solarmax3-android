@@ -35,7 +35,7 @@ public class BattleLaserLineHalo
 		float num = mapBuildingConfig.lasergunAngle;
 		float num2 = 20f;
 		Vector3 zero = Vector3.zero;
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_LaserLineNew");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_LaserLineNew");
 		for (int i = 0; i < this.count; i++)
 		{
 			GameObject gameObject = UnityEngine.Object.Instantiate(resources) as GameObject;

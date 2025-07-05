@@ -26,7 +26,7 @@ public class StartWindow_New2 : BaseWindow
 		this.testLevel.SetActive(true);
 		this.SetChestsInfo();
 		this.noticeImage.SetActive(false);
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		Solarmax.Singleton<NetSystem>.Instance.helper.LoadClientStorage();
 		this.isShowNotice = true;
 		this.PlayAnimation("StartWindow_h4");
@@ -103,14 +103,14 @@ public class StartWindow_New2 : BaseWindow
 
 	private void SetPlayerInfo()
 	{
-		this.userNameLabel.text = string.Format("Hi, {0}", global::Singleton<LocalPlayer>.Get().playerData.name);
-		if (string.IsNullOrEmpty(global::Singleton<LocalPlayer>.Get().playerData.icon))
+		this.userNameLabel.text = string.Format("Hi, {0}", Solarmax.Singleton<LocalPlayer>.Get().playerData.name);
+		if (string.IsNullOrEmpty(Solarmax.Singleton<LocalPlayer>.Get().playerData.icon))
 		{
 			this.userIconTexture.spriteName = "select_head_head_1";
 		}
 		else
 		{
-			this.userIconTexture.spriteName = global::Singleton<LocalPlayer>.Get().playerData.icon;
+			this.userIconTexture.spriteName = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 		}
 	}
 
@@ -167,7 +167,7 @@ public class StartWindow_New2 : BaseWindow
 
 	public void OnCustomPlayerHead()
 	{
-		int userId = global::Singleton<LocalPlayer>.Get().playerData.userId;
+		int userId = Solarmax.Singleton<LocalPlayer>.Get().playerData.userId;
 		if (userId > 0)
 		{
 			Solarmax.Singleton<NetSystem>.Instance.helper.FriendSearch(string.Empty, userId, 0);
@@ -231,7 +231,7 @@ public class StartWindow_New2 : BaseWindow
 		this.curIndexComper = -1;
 		this.curUnlockcount = 0;
 		this.curUnlockfinish = 0;
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		this.chests = playerData.chesses;
 		bool flag = false;
 		for (int i = 0; i < 3; i++)
@@ -319,7 +319,7 @@ public class StartWindow_New2 : BaseWindow
 		base.Invoke("ReflashTime", 1f);
 		if (this.freshchest)
 		{
-			PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+			PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 			if (playerData.timechest > 0L)
 			{
 				DateTime serverTime = Solarmax.Singleton<TimeSystem>.Instance.GetServerTime();

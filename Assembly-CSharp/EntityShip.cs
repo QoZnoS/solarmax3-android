@@ -64,15 +64,15 @@ public class EntityShip : Entity
 		{
 			return base.go;
 		}
-		if (global::Singleton<ShipFadeManager>.Get().mShipGameObj == null)
+		if (Solarmax.Singleton<ShipFadeManager>.Get().mShipGameObj == null)
 		{
-			base.go = (global::Singleton<AssetManager>.Get().GetResources("Entity_Ship") as GameObject);
+			base.go = (Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Ship") as GameObject);
 			base.go = UnityEngine.Object.Instantiate<GameObject>(base.go);
 			SpriteRenderer component = base.go.transform.Find("scale/image").GetComponent<SpriteRenderer>();
-			global::Singleton<ShipFadeManager>.Get().BackShipMaterial(base.go, component);
+			Solarmax.Singleton<ShipFadeManager>.Get().BackShipMaterial(base.go, component);
 			base.go.transform.position = Vector3.one * 1000f;
 		}
-		return UnityEngine.Object.Instantiate<GameObject>(global::Singleton<ShipFadeManager>.Get().mShipGameObj);
+		return UnityEngine.Object.Instantiate<GameObject>(Solarmax.Singleton<ShipFadeManager>.Get().mShipGameObj);
 	}
 
 	protected override void InitGameObject()
@@ -346,7 +346,7 @@ public class EntityShip : Entity
 		this.SetScaleImage(scaleImage);
 		if (!this.warping)
 		{
-			global::Singleton<AudioManger>.Get().PlayJumpStart(base.GetPosition());
+			Solarmax.Singleton<AudioManger>.Get().PlayJumpStart(base.GetPosition());
 			this.shipState = ShipState.JUMPING;
 			return;
 		}
@@ -359,7 +359,7 @@ public class EntityShip : Entity
 		this.SetPosition(targetPosition);
 		this.ship.EnterNode(this.targetNode, true);
 		this.shipState = ShipState.ORBIT;
-		global::Singleton<AudioManger>.Get().PlayWarp(base.GetPosition());
+		Solarmax.Singleton<AudioManger>.Get().PlayWarp(base.GetPosition());
 	}
 
 	public void SetWarpTrailEffect(Node from, Node to)
@@ -435,7 +435,7 @@ public class EntityShip : Entity
 			this.ship.EnterNode(this.targetNode, false);
 			this.shipState = ShipState.ORBIT;
 			this.HideEffect();
-			global::Singleton<AudioManger>.Get().PlayJumpEnd(position);
+			Solarmax.Singleton<AudioManger>.Get().PlayJumpEnd(position);
 		}
 		this.totalJumpDist += num2;
 	}
@@ -493,7 +493,7 @@ public class EntityShip : Entity
 			this.SetColorImage(this.imageColor, 1f);
 			this.SetColorTrail(this.trailColor, 0f);
 		}
-		global::Singleton<AudioManger>.Get().PlayJumpCharge(base.GetPosition());
+		Solarmax.Singleton<AudioManger>.Get().PlayJumpCharge(base.GetPosition());
 	}
 
 	private Vector3 GetTargetPosition()

@@ -50,7 +50,7 @@ public class MakeEffect : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources(MakeEffect.makeEffect);
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(MakeEffect.makeEffect);
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.animator = base.go.GetComponent<Animator>();
 			if (this.animator == null)

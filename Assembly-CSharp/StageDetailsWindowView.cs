@@ -69,7 +69,7 @@ public class StageDetailsWindowView : BaseWindow
 	{
 		string map = this.selectLevelConfig.map;
 		string id = this.selectLevelConfig.id;
-		global::Singleton<LocalPlayer>.Get().playerData.singleFightNext = (this.selectLevelConfig.id == this.levelList[this.levelList.Count - 1]);
+		Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightNext = (this.selectLevelConfig.id == this.levelList[this.levelList.Count - 1]);
 		if (this.difficultyLevel == 0)
 		{
 			this.difficultyLevel = 1;
@@ -107,7 +107,7 @@ public class StageDetailsWindowView : BaseWindow
 	public void OnStartStageBattle()
 	{
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NoticeSelfTeam, new object[0]);
-		global::Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetShipAlpha(0f);
 		TweenAlpha tweenAlpha = base.gameObject.GetComponent<TweenAlpha>();
 		if (tweenAlpha == null)
 		{

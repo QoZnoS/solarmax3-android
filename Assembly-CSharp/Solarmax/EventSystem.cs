@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class EventSystem : Singleton<EventSystem>, Lifecycle
+	public class EventSystem : Solarmax.Singleton<EventSystem>, Lifecycle
 	{
 		public EventSystem()
 		{
@@ -14,9 +14,9 @@ namespace Solarmax
 
 		public bool Init()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("EventSystem    init  begin", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("EventSystem    init  begin", new object[0]);
 			this.mEventHandlerMap.Clear();
-			Singleton<LoggerSystem>.Instance.Debug("EventSystem    init  end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("EventSystem    init  end", new object[0]);
 			return true;
 		}
 
@@ -35,14 +35,14 @@ namespace Solarmax
 
 		public void Destroy()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("EventSystem    destroy  begin", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("EventSystem    destroy  begin", new object[0]);
 			this.mEventHandlerMap.Clear();
 			for (int i = 0; i < this.mFiredEventList.Count; i++)
 			{
 				this.mEventPool.Recycle(this.mFiredEventList[i]);
 			}
 			this.mFiredEventList.Clear();
-			Singleton<LoggerSystem>.Instance.Debug("EventSystem    destroy  end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("EventSystem    destroy  end", new object[0]);
 		}
 
 		public void RegisterEvent(EventId id, object hoster, object data, Callback<int, object, object[]> handler)

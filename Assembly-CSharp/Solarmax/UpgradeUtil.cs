@@ -198,9 +198,9 @@ namespace Solarmax
 
 		public static void ShowAppUpgradeWindow()
 		{
-			Singleton<UISystem>.Instance.ShowWindow("CommonDialogWindow");
+            Solarmax.Singleton<UISystem>.Instance.ShowWindow("CommonDialogWindow");
 			string value = LanguageDataProvider.GetValue(2225);
-			EventSystem instance = Singleton<EventSystem>.Instance;
+			EventSystem instance = Solarmax.Singleton<EventSystem>.Instance;
 			EventId id = EventId.OnCommonDialog;
 			object[] array = new object[4];
 			array[0] = 2;
@@ -222,9 +222,9 @@ namespace Solarmax
 
 		public static void ShowRestartAppWindow(int textKey)
 		{
-			Singleton<UISystem>.Instance.ShowWindow("CommonDialogWindow");
+            Solarmax.Singleton<UISystem>.Instance.ShowWindow("CommonDialogWindow");
 			string value = LanguageDataProvider.GetValue(textKey);
-			EventSystem instance = Singleton<EventSystem>.Instance;
+			EventSystem instance = Solarmax.Singleton<EventSystem>.Instance;
 			EventId id = EventId.OnCommonDialog;
 			object[] array = new object[4];
 			array[0] = 2;

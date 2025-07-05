@@ -22,7 +22,7 @@ public class SelectIconWindow : BaseWindow
 			GameObject gameObject = this.icons[i];
 			gameObject.transform.Find("block").GetComponent<UISprite>().color = this.unselectColor;
 		}
-		string icon = global::Singleton<LocalPlayer>.Get().playerData.icon;
+		string icon = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 		if (!string.IsNullOrEmpty(icon) && !icon.StartsWith("http"))
 		{
 			int num = icon.LastIndexOf('_');
@@ -56,7 +56,7 @@ public class SelectIconWindow : BaseWindow
 		int num = go.name.LastIndexOf('_');
 		string s = go.name.Substring(num + 1);
 		int index = int.Parse(s) - 1;
-		global::Singleton<AudioManger>.Get().PlayEffect("click_down");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("click_down");
 		this.Select(index);
 	}
 
@@ -65,9 +65,9 @@ public class SelectIconWindow : BaseWindow
 		if (this.selectIndex != -1)
 		{
 			string icon = SelectIconWindow.GetIcon(this.selectIndex);
-			if (!global::Singleton<LocalPlayer>.Get().playerData.icon.Equals(icon))
+			if (!Solarmax.Singleton<LocalPlayer>.Get().playerData.icon.Equals(icon))
 			{
-				global::Singleton<LocalPlayer>.Get().playerData.icon = icon;
+				Solarmax.Singleton<LocalPlayer>.Get().playerData.icon = icon;
 				Solarmax.Singleton<NetSystem>.Instance.helper.ChangeIcon(icon);
 			}
 		}

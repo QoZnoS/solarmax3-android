@@ -81,7 +81,7 @@ public class BaseNewSkill : Lifecycle2
 		{
 			return;
 		}
-		global::Singleton<AudioManger>.Get().PlayEffect(data.audio);
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect(data.audio);
 	}
 
 	protected void ShowToasts(params object[] args)

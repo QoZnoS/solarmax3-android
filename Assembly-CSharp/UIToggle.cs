@@ -125,7 +125,7 @@ public class UIToggle : UIWidgetContainer
 		if (base.enabled && this.isColliderEnabled && UICamera.currentTouchID != -2)
 		{
 			this.value = !this.value;
-			Singleton<AudioManger>.Get().PlayEffect(this.clickSound, this.clickSoundVolumn);
+            Solarmax.Singleton<AudioManger>.Get().PlayEffect(this.clickSound, this.clickSoundVolumn);
 		}
 	}
 

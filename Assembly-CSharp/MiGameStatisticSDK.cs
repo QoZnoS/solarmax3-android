@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 
-public class MiGameStatisticSDK : Singleton<MiGameStatisticSDK>
+public class MiGameStatisticSDK : Solarmax.Singleton<MiGameStatisticSDK>
 {
 	public static void Init()
 	{
@@ -15,13 +15,13 @@ public class MiGameStatisticSDK : Singleton<MiGameStatisticSDK>
 	{
 		MiGameStatisticSDK.TokenRequest request = new MiGameStatisticSDK.TokenRequest();
 		request.appId = "528288548881694720";
-		if (string.IsNullOrEmpty(Singleton<LocalAccountStorage>.Get().account))
+		if (string.IsNullOrEmpty(Solarmax.Singleton<LocalAccountStorage>.Get().account))
 		{
 			request.accountId = SystemInfo.deviceUniqueIdentifier;
 		}
 		else
 		{
-			request.accountId = Singleton<LocalAccountStorage>.Get().account;
+			request.accountId = Solarmax.Singleton<LocalAccountStorage>.Get().account;
 		}
 		request.timestamp = 0UL;
 		request.roleId = request.accountId;

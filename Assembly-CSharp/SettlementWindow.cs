@@ -48,9 +48,9 @@ public class SettlementWindow : BaseWindow
 		int num5 = Convert.ToInt32(Math.Round((double)((float)cfg.scoreper * ((float)(num + num2 + num3) + num4))));
 		if (Solarmax.Singleton<LevelDataHandler>.Instance.IsNeedSend(this.starNum, num5))
 		{
-			Solarmax.Singleton<NetSystem>.Instance.helper.RequestSetLevelSorce(cfg.id, cfg.levelGroup, global::Singleton<LocalAccountStorage>.Get().account, num5);
+			Solarmax.Singleton<NetSystem>.Instance.helper.RequestSetLevelSorce(cfg.id, cfg.levelGroup, Solarmax.Singleton<LocalAccountStorage>.Get().account, num5);
 			Solarmax.Singleton<NetSystem>.Instance.helper.SetLevelStar(Solarmax.Singleton<LevelDataHandler>.Instance.currentChapter.id, cfg.id, this.starNum, num5);
-			global::Singleton<LocalLevelScoreStorage>.Get().levelScore[Solarmax.Singleton<LevelDataHandler>.Instance.currentLevel.id] = num5;
+			Solarmax.Singleton<LocalLevelScoreStorage>.Get().levelScore[Solarmax.Singleton<LevelDataHandler>.Instance.currentLevel.id] = num5;
 			Solarmax.Singleton<LocalStorageSystem>.Instance.SaveLocalLevelScore();
 		}
 		Solarmax.Singleton<LevelDataHandler>.Instance.SetLevelStarToLocalStorage(this.starNum, num5);
@@ -96,7 +96,7 @@ public class SettlementWindow : BaseWindow
 			this.passTimeContainer.SetActive(true);
 			this.victory.SetActive(true);
 			this.achieveContainer.SetActive(false);
-			global::Singleton<AchievementManager>.Get().GetAdsAchievement();
+			Solarmax.Singleton<AchievementManager>.Get().GetAdsAchievement();
 			this.adsBtn.SetActive(false);
 			Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("SettlementWindow  UpdateUI  set num info:  destory {0}  time {1}  lost {2}", this.temphitships, this.tempTime, this.tempdestorys), new object[0]);
 			this.destroyLabel.text = this.temphitships.ToString();
@@ -185,7 +185,7 @@ public class SettlementWindow : BaseWindow
 	{
 		AdManager.ShowAd(AdManager.ShowAdType.DoubleAd, delegate(object[] param)
 		{
-			global::Singleton<AchievementManager>.Get().FinishADSAchievement(true);
+			Solarmax.Singleton<AchievementManager>.Get().FinishADSAchievement(true);
 			MonoSingleton<FlurryAnalytis>.Instance.LogPveResultLookAds();
 			this.ClaimAdsReward();
 			this.OnClickBack();
@@ -194,12 +194,12 @@ public class SettlementWindow : BaseWindow
 
 	private void ClaimAdsReward()
 	{
-		foreach (Achievement achievement in global::Singleton<AchievementManager>.Get().completeList)
+		foreach (Achievement achievement in Solarmax.Singleton<AchievementManager>.Get().completeList)
 		{
 			if (achievement.types[0] == AchievementType.Ads && Solarmax.Singleton<TaskConfigProvider>.Get().achieveToTask.ContainsKey(achievement.taskId) && Solarmax.Singleton<TaskConfigProvider>.Get().achieveToTask[achievement.taskId].status != TaskStatus.Received)
 			{
 				TaskConfig taskConfig = Solarmax.Singleton<TaskConfigProvider>.Get().achieveToTask[achievement.taskId];
-				global::Singleton<TaskModel>.Get().ClaimReward(taskConfig.id, null, 1);
+				Solarmax.Singleton<TaskModel>.Get().ClaimReward(taskConfig.id, null, 1);
 			}
 		}
 	}

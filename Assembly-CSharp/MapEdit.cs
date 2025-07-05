@@ -19,7 +19,7 @@ public class MapEdit : MonoBehaviour
 			MapEdit.tmp1 = new Callback<string>(Debug.Log);
 		}
 		instance.SetConsoleLogger(new Solarmax.Logger(MapEdit.tmp1));
-		global::Singleton<LoadResManager>.Get().Init();
+		Solarmax.Singleton<LoadResManager>.Get().Init();
 		Solarmax.Singleton<Framework>.Instance.InitLanguageAndPing();
 		if (Solarmax.Singleton<Framework>.Instance.Init())
 		{
@@ -39,7 +39,7 @@ public class MapEdit : MonoBehaviour
 		this.CreateItemList();
 		this.NewMap();
 		this.currentSelect = null;
-		global::Singleton<AssetManager>.Get().LoadBattleResources();
+		Solarmax.Singleton<AssetManager>.Get().LoadBattleResources();
 		this.StartConnectServer();
 	}
 

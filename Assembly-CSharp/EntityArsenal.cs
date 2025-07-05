@@ -15,7 +15,7 @@ public class EntityArsenal : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_Arsenal");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Arsenal");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

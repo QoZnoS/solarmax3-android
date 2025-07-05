@@ -94,7 +94,7 @@ public class DiffusionSkill : BaseNewSkill
 		{
 			this.owerNode.BombShipNumWithoutScaling(team.team, 1);
 		}
-		global::Singleton<AudioManger>.Get().PlayEffect("HitLightning2");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("HitLightning2");
 		return base.OnCast(castTeam);
 	}
 

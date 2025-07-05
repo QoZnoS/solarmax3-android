@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class GameTimeManager : Singleton<GameTimeManager>
+public class GameTimeManager : Solarmax.Singleton<GameTimeManager>
 {
 	public void Init()
 	{

@@ -472,7 +472,7 @@ public class LeagueWindow : BaseWindow
 			text = memberInfo.name;
 			num = memberInfo.score;
 			num2 = memberInfo.mvp;
-			active = (memberInfo.id == global::Singleton<LocalPlayer>.Get().playerData.userId);
+			active = (memberInfo.id == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId);
 		}
 		go.transform.Find("icon").GetComponent<UISprite>().spriteName = spriteName;
 		go.transform.Find("name").GetComponent<UILabel>().text = text;
@@ -508,7 +508,7 @@ public class LeagueWindow : BaseWindow
 		int count = this.rankList.Count;
 		while (j < count)
 		{
-			if (this.rankList[j].id == global::Singleton<LocalPlayer>.Get().playerData.userId)
+			if (this.rankList[j].id == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 			{
 				this.selfRankIndex = j;
 				break;

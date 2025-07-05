@@ -2,7 +2,7 @@
 
 namespace Solarmax
 {
-	public class Framework : Singleton<Framework>, Lifecycle
+	public class Framework : Solarmax.Singleton<Framework>, Lifecycle
 	{
 		public bool Init()
 		{
@@ -10,21 +10,21 @@ namespace Solarmax
 			{
 				return true;
 			}
-			if (Singleton<DataProviderSystem>.Instance.InitDelay())
+			if (Solarmax.Singleton<DataProviderSystem>.Instance.InitDelay())
 			{
-				if (Singleton<DataHandlerSystem>.Instance.Init())
+				if (Solarmax.Singleton<DataHandlerSystem>.Instance.Init())
 				{
-					if (Singleton<LocalStorageSystem>.Instance.Init())
+					if (Solarmax.Singleton<LocalStorageSystem>.Instance.Init())
 					{
-						if (Singleton<OldLocalStorageSystem>.Instance.Init())
+						if (Solarmax.Singleton<OldLocalStorageSystem>.Instance.Init())
 						{
-							if (Singleton<ThirdPartySystem>.Instance.Init())
+							if (Solarmax.Singleton<ThirdPartySystem>.Instance.Init())
 							{
-								if (Singleton<NetSystem>.Instance.Init())
+								if (Solarmax.Singleton<NetSystem>.Instance.Init())
 								{
-									if (Singleton<BattleSystem>.Instance.Init())
+									if (Solarmax.Singleton<BattleSystem>.Instance.Init())
 									{
-										Singleton<CollectionModel>.Get().EnsureInit();
+                                        Solarmax.Singleton<CollectionModel>.Get().EnsureInit();
 										this.IsInitFramework = true;
 										return true;
 									}
@@ -39,22 +39,22 @@ namespace Solarmax
 
 		public bool InitLanguageAndPing()
 		{
-			if (Singleton<DataProviderSystem>.Instance.Init())
+			if (Solarmax.Singleton<DataProviderSystem>.Instance.Init())
 			{
-				if (Singleton<ConfigSystem>.Instance.Init())
+				if (Solarmax.Singleton<ConfigSystem>.Instance.Init())
 				{
-					if (Singleton<LoggerSystem>.Instance.Init())
+					if (Solarmax.Singleton<LoggerSystem>.Instance.Init())
 					{
-						if (Singleton<TimeSystem>.Instance.Init())
+						if (Solarmax.Singleton<TimeSystem>.Instance.Init())
 						{
-							if (Singleton<EventSystem>.Instance.Init())
+							if (Solarmax.Singleton<EventSystem>.Instance.Init())
 							{
-								Singleton<LanguageDataProvider>.Get().Load();
-								if (Singleton<EngineSystem>.Instance.Init())
+                                Solarmax.Singleton<LanguageDataProvider>.Get().Load();
+								if (Solarmax.Singleton<EngineSystem>.Instance.Init())
 								{
 									if (MonoSingleton<UpdateSystem>.Instance.Init())
 									{
-										if (Singleton<UISystem>.Instance.Init())
+										if (Solarmax.Singleton<UISystem>.Instance.Init())
 										{
 											return true;
 										}
@@ -70,47 +70,47 @@ namespace Solarmax
 
 		public void Tick(float interval)
 		{
-			Singleton<ConfigSystem>.Instance.Tick(interval);
-			Singleton<LoggerSystem>.Instance.Tick(interval);
-			Singleton<DataProviderSystem>.Instance.Tick(interval);
-			Singleton<DataHandlerSystem>.Instance.Tick(interval);
-			Singleton<TimeSystem>.Instance.Tick(interval);
-			Singleton<EventSystem>.Instance.Tick(interval);
-			Singleton<EngineSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<ConfigSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<LoggerSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<DataProviderSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<DataHandlerSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<TimeSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<EventSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<EngineSystem>.Instance.Tick(interval);
 			MonoSingleton<UpdateSystem>.Instance.Tick(interval);
-			Singleton<LocalStorageSystem>.Instance.Tick(interval);
-			Singleton<UISystem>.Instance.Tick(interval);
-			Singleton<ThirdPartySystem>.Instance.Tick(interval);
-			Singleton<NetSystem>.Instance.Tick(interval);
-			Singleton<BattleSystem>.Instance.Tick(interval);
-			if (Singleton<LocalPlayer>.Get() != null)
+            Solarmax.Singleton<LocalStorageSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<UISystem>.Instance.Tick(interval);
+            Solarmax.Singleton<ThirdPartySystem>.Instance.Tick(interval);
+            Solarmax.Singleton<NetSystem>.Instance.Tick(interval);
+            Solarmax.Singleton<BattleSystem>.Instance.Tick(interval);
+			if (Solarmax.Singleton<LocalPlayer>.Get() != null)
 			{
-				Singleton<LocalPlayer>.Get().Tick(interval);
+                Solarmax.Singleton<LocalPlayer>.Get().Tick(interval);
 			}
 		}
 
 		public void UpdateRender(float interval)
 		{
-			Singleton<BattleSystem>.Instance.UpdateRender(interval);
+            Solarmax.Singleton<BattleSystem>.Instance.UpdateRender(interval);
 		}
 
 		public void Destroy()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("Framework destroy begin", new object[0]);
-			Singleton<ConfigSystem>.Instance.Destroy();
-			Singleton<EventSystem>.Instance.Destroy();
-			Singleton<DataProviderSystem>.Instance.Destroy();
-			Singleton<DataHandlerSystem>.Instance.Destroy();
-			Singleton<TimeSystem>.Instance.Destroy();
-			Singleton<EngineSystem>.Instance.Destroy();
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("Framework destroy begin", new object[0]);
+            Solarmax.Singleton<ConfigSystem>.Instance.Destroy();
+            Solarmax.Singleton<EventSystem>.Instance.Destroy();
+            Solarmax.Singleton<DataProviderSystem>.Instance.Destroy();
+            Solarmax.Singleton<DataHandlerSystem>.Instance.Destroy();
+            Solarmax.Singleton<TimeSystem>.Instance.Destroy();
+            Solarmax.Singleton<EngineSystem>.Instance.Destroy();
 			MonoSingleton<UpdateSystem>.Instance.Destroy();
-			Singleton<LocalStorageSystem>.Instance.Destroy();
-			Singleton<UISystem>.Instance.Destroy();
-			Singleton<ThirdPartySystem>.Instance.Destroy();
-			Singleton<NetSystem>.Instance.Destroy();
-			Singleton<BattleSystem>.Instance.Destroy();
-			Singleton<LoggerSystem>.Instance.Debug("Framework destroy end.", new object[0]);
-			Singleton<LoggerSystem>.Instance.Destroy();
+            Solarmax.Singleton<LocalStorageSystem>.Instance.Destroy();
+            Solarmax.Singleton<UISystem>.Instance.Destroy();
+            Solarmax.Singleton<ThirdPartySystem>.Instance.Destroy();
+            Solarmax.Singleton<NetSystem>.Instance.Destroy();
+            Solarmax.Singleton<BattleSystem>.Instance.Destroy();
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("Framework destroy end.", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Destroy();
 		}
 
 		public void SetWritableRootDir(string path)

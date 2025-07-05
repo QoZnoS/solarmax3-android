@@ -15,7 +15,7 @@ public class EntityAircraftCarrier : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_AircraftCarrier");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_AircraftCarrier");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

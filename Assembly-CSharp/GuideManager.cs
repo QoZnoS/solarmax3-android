@@ -140,7 +140,7 @@ public class GuideManager : MonoBehaviour
 			this.mGuidingList.Remove(list2[l]);
 		}
 		list2.Clear();
-		global::Singleton<LocalAccountStorage>.Get().guideFightLevel = this.GuideToString();
+		Solarmax.Singleton<LocalAccountStorage>.Get().guideFightLevel = this.GuideToString();
 		Solarmax.Singleton<LocalStorageSystem>.Instance.SaveLocalAccount(false);
 	}
 

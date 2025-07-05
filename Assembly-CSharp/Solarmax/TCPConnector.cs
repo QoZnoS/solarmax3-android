@@ -57,7 +57,7 @@ namespace Solarmax
 
 		public override void Connect(string address, int port)
 		{
-			Singleton<LoggerSystem>.Instance.Info(string.Format("TCPConnector  try connect addr {0} port {1}", address, port), new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("TCPConnector  try connect addr {0} port {1}", address, port), new object[0]);
 			IPEndPoint ipendPoint = TCPConnector.CreateIPEndPoint(address, port);
 			base.SetConnectStatus(ConnectionStatus.CONNECTING);
 			base.Connect(address, port);
@@ -79,20 +79,20 @@ namespace Solarmax
 		public override void SendPacket(IPacket packet)
 		{
 			int packetType = packet.GetPacketType();
-			PacketHelper helper = Singleton<NetSystem>.Instance.helper;
+			PacketHelper helper = Solarmax.Singleton<NetSystem>.Instance.helper;
 			if (packetType == 210)
 			{
-				Singleton<LoggerSystem>.Instance.Info("TCPConnector SendPacket with ID 210", new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Info("TCPConnector SendPacket with ID 210", new object[0]);
 				helper.OnLoadOneChapter(1, default(PacketEvent));
 				return;
 			}
 			if (packetType == 291)
 			{
-				Singleton<LoggerSystem>.Instance.Info("TCPConnector SendPacket with ID 291", new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Info("TCPConnector SendPacket with ID 291", new object[0]);
 				helper.OnSCAdeward(1, default(PacketEvent));
 				return;
 			}
-			Singleton<LoggerSystem>.Instance.Info(string.Format("Warning: TCPConnector SendPacket Type Error with type {0}", packetType), new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("Warning: TCPConnector SendPacket Type Error with type {0}", packetType), new object[0]);
 		}
 
 		public override void DisConnect()

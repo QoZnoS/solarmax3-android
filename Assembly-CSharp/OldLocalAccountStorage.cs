@@ -1,7 +1,7 @@
 ﻿using System;
 using Solarmax;
 
-public class OldLocalAccountStorage : global::Singleton<OldLocalAccountStorage>, OldILocalStorage
+public class OldLocalAccountStorage : Solarmax.Singleton<OldLocalAccountStorage>, OldILocalStorage
 {
 	public string Name()
 	{
@@ -32,17 +32,17 @@ public class OldLocalAccountStorage : global::Singleton<OldLocalAccountStorage>,
 		this.regtimeStamp = manager.GetLong();
 		this.localLanguage = manager.GetInt();
 		this.regtimeSaveFile = manager.GetLong();
-		if (string.IsNullOrEmpty(global::Singleton<LocalAccountStorage>.Get().name))
+		if (string.IsNullOrEmpty(Solarmax.Singleton<LocalAccountStorage>.Get().name))
 		{
-			global::Singleton<LocalAccountStorage>.Get().name = this.name;
+			Solarmax.Singleton<LocalAccountStorage>.Get().name = this.name;
 		}
-		if (global::Singleton<LocalAccountStorage>.Get().localLanguage == -1)
+		if (Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage == -1)
 		{
-			global::Singleton<LocalAccountStorage>.Get().localLanguage = this.localLanguage;
+			Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage = this.localLanguage;
 		}
-		if (string.IsNullOrEmpty(global::Singleton<LocalAccountStorage>.Get().icon))
+		if (string.IsNullOrEmpty(Solarmax.Singleton<LocalAccountStorage>.Get().icon))
 		{
-			global::Singleton<LocalAccountStorage>.Get().icon = this.icon;
+			Solarmax.Singleton<LocalAccountStorage>.Get().icon = this.icon;
 		}
 		Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalAccount(false);
 	}

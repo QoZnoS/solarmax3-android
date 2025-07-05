@@ -9,7 +9,7 @@ public class EntityClouds : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_Clouds");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Clouds");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

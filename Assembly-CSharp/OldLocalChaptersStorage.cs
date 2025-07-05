@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using NetMessage;
 using Solarmax;
 
-public class OldLocalChaptersStorage : global::Singleton<OldLocalChaptersStorage>, OldILocalStorage
+public class OldLocalChaptersStorage : Solarmax.Singleton<OldLocalChaptersStorage>, OldILocalStorage
 {
 	public string Name()
 	{

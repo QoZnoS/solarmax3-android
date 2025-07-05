@@ -42,7 +42,7 @@ public class EntityBlack : EntityNode
 
 	private GameObject CreateGO(string name)
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources(name);
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(name);
 		GameObject gameObject = UnityEngine.Object.Instantiate(resources) as GameObject;
 		this.deformations.Add(name, gameObject);
 		return gameObject;

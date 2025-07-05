@@ -104,7 +104,7 @@ public class SettingWindow : BaseWindow
 		this.quitgame.SetActive(false);
 		this.SetPage();
 		this.quitgame.SetActive(true);
-		this.sliderToggles[global::Singleton<LocalSettingStorage>.Get().sliderMode].value = true;
+		this.sliderToggles[Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode].value = true;
 		for (int i = 0; i < this.sliderToggles.Length; i++)
 		{
 			if (i != 0)
@@ -150,14 +150,14 @@ public class SettingWindow : BaseWindow
 
 	public void SetPage()
 	{
-		float value = global::Singleton<LocalSettingStorage>.Get().music;
+		float value = Solarmax.Singleton<LocalSettingStorage>.Get().music;
 		this.musicValue.value = value;
-		value = global::Singleton<LocalSettingStorage>.Get().sound;
+		value = Solarmax.Singleton<LocalSettingStorage>.Get().sound;
 		this.soundValue.value = value;
 		this.chineseOn.gameObject.SetActive(false);
 		this.TraditionalchineseOn.gameObject.SetActive(false);
 		this.englishOn.gameObject.SetActive(false);
-		int localLanguage = global::Singleton<LocalAccountStorage>.Get().localLanguage;
+		int localLanguage = Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage;
 		if (localLanguage != 40)
 		{
 			if (localLanguage == 41)
@@ -175,7 +175,7 @@ public class SettingWindow : BaseWindow
 		IL_CA:
 		for (int i = 0; i < this.effectToggles.Length; i++)
 		{
-			if (i == global::Singleton<LocalSettingStorage>.Get().effectLevel)
+			if (i == Solarmax.Singleton<LocalSettingStorage>.Get().effectLevel)
 			{
 				this.effectToggles[i].Set(true, false);
 				this.SetToggleColor(this.effectToggles[i].gameObject, true);
@@ -186,7 +186,7 @@ public class SettingWindow : BaseWindow
 				this.SetToggleColor(this.effectToggles[i].gameObject, false);
 			}
 		}
-		if (global::Singleton<LocalSettingStorage>.Get().fightOption == 1)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().fightOption == 1)
 		{
 			this.numberOn.gameObject.SetActive(true);
 			this.noralizeOn.gameObject.SetActive(false);
@@ -219,7 +219,7 @@ public class SettingWindow : BaseWindow
 		{
 			if (this.effectToggles[i].value)
 			{
-				global::Singleton<LocalSettingStorage>.Get().effectLevel = i;
+				Solarmax.Singleton<LocalSettingStorage>.Get().effectLevel = i;
 			}
 			this.SetToggleColor(this.effectToggles[i].gameObject, this.effectToggles[i].value);
 		}
@@ -231,7 +231,7 @@ public class SettingWindow : BaseWindow
 		{
 			if (this.fightOptionToggles[i].value)
 			{
-				global::Singleton<LocalSettingStorage>.Get().fightOption = i;
+				Solarmax.Singleton<LocalSettingStorage>.Get().fightOption = i;
 			}
 			this.SetToggleColor(this.fightOptionToggles[i].gameObject, this.fightOptionToggles[i].value);
 		}
@@ -262,8 +262,8 @@ public class SettingWindow : BaseWindow
 
 	public void OnClickChinese(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
-		SystemLanguage localLanguage = (SystemLanguage)global::Singleton<LocalAccountStorage>.Get().localLanguage;
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		SystemLanguage localLanguage = (SystemLanguage)Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage;
 		if (localLanguage == SystemLanguage.Chinese)
 		{
 			return;
@@ -280,8 +280,8 @@ public class SettingWindow : BaseWindow
 
 	public void OnClickEnglish(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
-		SystemLanguage localLanguage = (SystemLanguage)global::Singleton<LocalAccountStorage>.Get().localLanguage;
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		SystemLanguage localLanguage = (SystemLanguage)Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage;
 		if (localLanguage == SystemLanguage.English)
 		{
 			return;
@@ -298,8 +298,8 @@ public class SettingWindow : BaseWindow
 
 	public void OnClickChineseTraditional(GameObject go)
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
-		SystemLanguage localLanguage = (SystemLanguage)global::Singleton<LocalAccountStorage>.Get().localLanguage;
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		SystemLanguage localLanguage = (SystemLanguage)Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage;
 		if (localLanguage == SystemLanguage.ChineseTraditional)
 		{
 			return;
@@ -316,7 +316,7 @@ public class SettingWindow : BaseWindow
 
 	private void ModifyLanguange()
 	{
-		global::Singleton<LocalAccountStorage>.Get().localLanguage = (int)this.SelectLanguage;
+		Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage = (int)this.SelectLanguage;
 		Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalAccount(false);
 		Solarmax.Singleton<LanguageDataProvider>.Get().Load();
 		base.ReFreshLanguage();
@@ -325,13 +325,13 @@ public class SettingWindow : BaseWindow
 
 	public void OnClickFeedback()
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		MiGameStatisticSDK.OpenWebView();
 	}
 
 	public void OnClickNoticeback()
 	{
-		global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+		Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		if (!string.IsNullOrEmpty(LocalPlayer.LocalNotice))
 		{
 			this.announceLabel.text = LocalPlayer.LocalNotice;
@@ -344,7 +344,7 @@ public class SettingWindow : BaseWindow
 	{
 		if (this.sliderToggles[0].value)
 		{
-			global::Singleton<LocalSettingStorage>.Get().sliderMode = 0;
+			Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode = 0;
 		}
 	}
 
@@ -352,7 +352,7 @@ public class SettingWindow : BaseWindow
 	{
 		if (this.sliderToggles[1].value)
 		{
-			global::Singleton<LocalSettingStorage>.Get().sliderMode = 1;
+			Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode = 1;
 		}
 	}
 
@@ -360,7 +360,7 @@ public class SettingWindow : BaseWindow
 	{
 		if (this.sliderToggles[2].value)
 		{
-			global::Singleton<LocalSettingStorage>.Get().sliderMode = 2;
+			Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode = 2;
 		}
 	}
 
@@ -369,7 +369,7 @@ public class SettingWindow : BaseWindow
 		if (this.musicValue != null)
 		{
 			float value = this.musicValue.value;
-			global::Singleton<AudioManger>.Get().ChangeBGVolume(value);
+			Solarmax.Singleton<AudioManger>.Get().ChangeBGVolume(value);
 		}
 	}
 
@@ -383,7 +383,7 @@ public class SettingWindow : BaseWindow
 		if (this.soundValue != null)
 		{
 			float value = this.soundValue.value;
-			global::Singleton<AudioManger>.Get().ChangeSoundVolume(value);
+			Solarmax.Singleton<AudioManger>.Get().ChangeSoundVolume(value);
 		}
 	}
 
@@ -394,21 +394,21 @@ public class SettingWindow : BaseWindow
 
 	public void OnClickfenbingNormalize(GameObject go)
 	{
-		if (global::Singleton<LocalSettingStorage>.Get().fightOption != 0)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().fightOption != 0)
 		{
-			global::Singleton<LocalSettingStorage>.Get().fightOption = 0;
+			Solarmax.Singleton<LocalSettingStorage>.Get().fightOption = 0;
 			this.SetPage();
-			global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		}
 	}
 
 	public void OnClickfenbingNumber(GameObject go)
 	{
-		if (global::Singleton<LocalSettingStorage>.Get().fightOption != 1)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().fightOption != 1)
 		{
-			global::Singleton<LocalSettingStorage>.Get().fightOption = 1;
+			Solarmax.Singleton<LocalSettingStorage>.Get().fightOption = 1;
 			this.SetPage();
-			global::Singleton<AudioManger>.Get().PlayEffect("onOpen");
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect("onOpen");
 		}
 	}
 

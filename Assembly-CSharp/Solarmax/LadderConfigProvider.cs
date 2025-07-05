@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class LadderConfigProvider : Singleton<LadderConfigProvider>, IDataProvider
+	public class LadderConfigProvider : Solarmax.Singleton<LadderConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{

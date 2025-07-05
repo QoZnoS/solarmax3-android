@@ -55,9 +55,9 @@ public class StartWindow_New : BaseWindow
 
 	private void SetPlayerInfo()
 	{
-		this.userRewardLabel.text = global::Singleton<LocalPlayer>.Get().playerData.score.ToString();
-		this.userNameLabel.text = string.Format("Hi, {0}", global::Singleton<LocalPlayer>.Get().playerData.name);
-		this.userIconTexture.picUrl = global::Singleton<LocalPlayer>.Get().playerData.icon;
+		this.userRewardLabel.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.score.ToString();
+		this.userNameLabel.text = string.Format("Hi, {0}", Solarmax.Singleton<LocalPlayer>.Get().playerData.name);
+		this.userIconTexture.picUrl = Solarmax.Singleton<LocalPlayer>.Get().playerData.icon;
 	}
 
 	public override void OnUIEventHandler(EventId eventId, params object[] args)

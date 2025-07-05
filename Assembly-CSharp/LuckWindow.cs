@@ -21,7 +21,7 @@ public class LuckWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		Solarmax.Singleton<NetSystem>.Get().helper.LotteryNotesFromServer();
 		this.moneyLabel.text = playerData.money.ToString();
 		this.RefreshUI();
@@ -36,7 +36,7 @@ public class LuckWindow : BaseWindow
 		switch (eventId)
 		{
 		case EventId.OnLotteryResultDone:
-			if (global::Singleton<LuckModel>.Get().lotteryInfo.errcode == ErrCode.EC_Ok)
+			if (Solarmax.Singleton<LuckModel>.Get().lotteryInfo.errcode == ErrCode.EC_Ok)
 			{
 				this.OnLotteryResultDone();
 			}
@@ -45,9 +45,9 @@ public class LuckWindow : BaseWindow
 			break;
 		case EventId.OnLotteryExtraAwardAccepted:
 			Solarmax.Singleton<NetSystem>.Get().helper.LotteryNotesFromServer();
-			if (global::Singleton<LuckModel>.Get().lotteryAward.errcode == ErrCode.EC_Ok)
+			if (Solarmax.Singleton<LuckModel>.Get().lotteryAward.errcode == ErrCode.EC_Ok)
 			{
-				global::Singleton<LuckModel>.Get().rewardType = LuckModel.RewardType.ExtraAward;
+				Solarmax.Singleton<LuckModel>.Get().rewardType = LuckModel.RewardType.ExtraAward;
 				Solarmax.Singleton<UISystem>.Get().ShowWindow("LotteryRewardWindow");
 			}
 			break;
@@ -57,7 +57,7 @@ public class LuckWindow : BaseWindow
 		default:
 			if (eventId == EventId.UpdateMoney)
 			{
-				this.moneyLabel.text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+				this.moneyLabel.text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			}
 			break;
 		}
@@ -65,7 +65,7 @@ public class LuckWindow : BaseWindow
 
 	private void RefreshUI()
 	{
-		SCLotterNotes lotteryNotes = global::Singleton<LuckModel>.Get().lotteryNotes;
+		SCLotterNotes lotteryNotes = Solarmax.Singleton<LuckModel>.Get().lotteryNotes;
 		if (lotteryNotes == null)
 		{
 			return;
@@ -86,11 +86,11 @@ public class LuckWindow : BaseWindow
 			LotteryAwardItemBh component2 = this.extraItems[j].GetComponent<LotteryAwardItemBh>();
 			component2.SetExtraId(lottery_add_ids[j]);
 		}
-		if (global::Singleton<LuckModel>.Get().lotteryNotes != null)
+		if (Solarmax.Singleton<LuckModel>.Get().lotteryNotes != null)
 		{
 			string arg = "[0fd3fd]" + lotteryNotes.totalTimes + "[-]";
 			this.lotteryCntLabel.text = string.Format(LanguageDataProvider.GetValue(2315), arg);
-			this.freeRestTimeLabel.text = global::Singleton<LuckModel>.Get().GetFreeRestTime();
+			this.freeRestTimeLabel.text = Solarmax.Singleton<LuckModel>.Get().GetFreeRestTime();
 			Dictionary<int, bool> dictionary = new Dictionary<int, bool>();
 			for (int k = 0; k < lotteryNotes.lotteryBoxInfo.Count; k++)
 			{
@@ -116,7 +116,7 @@ public class LuckWindow : BaseWindow
 				component3.SetCanTake(canTake);
 				component3.SetHasTook(hasTook);
 			}
-			int num = 7 - global::Singleton<LuckModel>.Get().lotteryNotes.todayAdLotteryNum;
+			int num = 7 - Solarmax.Singleton<LuckModel>.Get().lotteryNotes.todayAdLotteryNum;
 			this.adLotteryBtn.GetComponentInChildren<UILabel>().text = LanguageDataProvider.Format(2323, new object[]
 			{
 				num
@@ -127,7 +127,7 @@ public class LuckWindow : BaseWindow
 
 	public void ToDraw()
 	{
-		if (global::Singleton<LuckModel>.Get().lotteryNotes == null)
+		if (Solarmax.Singleton<LuckModel>.Get().lotteryNotes == null)
 		{
 			return;
 		}
@@ -140,12 +140,12 @@ public class LuckWindow : BaseWindow
 			return;
 		}
 		this.lotteryRequesting = true;
-		Solarmax.Singleton<NetSystem>.Get().helper.LotteryFromServer(1, global::Singleton<LuckModel>.Get().lotteryNotes.currLotteryId);
+		Solarmax.Singleton<NetSystem>.Get().helper.LotteryFromServer(1, Solarmax.Singleton<LuckModel>.Get().lotteryNotes.currLotteryId);
 	}
 
 	public void CostLottery()
 	{
-		if (global::Singleton<LuckModel>.Get().lotteryNotes == null)
+		if (Solarmax.Singleton<LuckModel>.Get().lotteryNotes == null)
 		{
 			return;
 		}
@@ -153,7 +153,7 @@ public class LuckWindow : BaseWindow
 		{
 			return;
 		}
-		if (global::Singleton<LocalPlayer>.Get().playerData.money < 50)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.money < 50)
 		{
 			Tips.Make(LanguageDataProvider.GetValue(1102));
 			return;
@@ -163,12 +163,12 @@ public class LuckWindow : BaseWindow
 			return;
 		}
 		this.lotteryRequesting = true;
-		Solarmax.Singleton<NetSystem>.Get().helper.LotteryFromServer(3, global::Singleton<LuckModel>.Get().lotteryNotes.currLotteryId);
+		Solarmax.Singleton<NetSystem>.Get().helper.LotteryFromServer(3, Solarmax.Singleton<LuckModel>.Get().lotteryNotes.currLotteryId);
 	}
 
 	public void AdLottery()
 	{
-		if (global::Singleton<LuckModel>.Get().lotteryNotes == null)
+		if (Solarmax.Singleton<LuckModel>.Get().lotteryNotes == null)
 		{
 			return;
 		}
@@ -176,7 +176,7 @@ public class LuckWindow : BaseWindow
 		{
 			return;
 		}
-		int num = 7 - global::Singleton<LuckModel>.Get().lotteryNotes.todayAdLotteryNum;
+		int num = 7 - Solarmax.Singleton<LuckModel>.Get().lotteryNotes.todayAdLotteryNum;
 		if (num <= 0)
 		{
 			Tips.Make(LanguageDataProvider.GetValue(2337));
@@ -190,13 +190,13 @@ public class LuckWindow : BaseWindow
 		{
 			MonoSingleton<FlurryAnalytis>.Instance.LogLotteryLookAds();
 			this.lotteryRequesting = true;
-			Solarmax.Singleton<NetSystem>.Get().helper.LotteryFromServer(2, global::Singleton<LuckModel>.Get().lotteryNotes.currLotteryId);
+			Solarmax.Singleton<NetSystem>.Get().helper.LotteryFromServer(2, Solarmax.Singleton<LuckModel>.Get().lotteryNotes.currLotteryId);
 		});
 	}
 
 	public void OnLotteryResultDone()
 	{
-		int num = (int)global::Singleton<LuckModel>.Get().lotteryInfo.retlId;
+		int num = (int)Solarmax.Singleton<LuckModel>.Get().lotteryInfo.retlId;
 		int num2 = 0;
 		for (int i = 1; i <= 8; i++)
 		{
@@ -210,13 +210,13 @@ public class LuckWindow : BaseWindow
 		float z2 = (float)num3 - z - 1800f;
 		this.tweener = this.wheelObj.transform.DOLocalRotate(new Vector3(0f, 0f, z2), 5f, RotateMode.WorldAxisAdd);
 		this.tweener.OnComplete(new TweenCallback(this.OnWheelRotateDone));
-		global::Singleton<LuckModel>.Get().tweener = this.tweener;
+		Solarmax.Singleton<LuckModel>.Get().tweener = this.tweener;
 	}
 
 	public void OnWheelRotateDone()
 	{
 		Debug.Log("OnWheelRotateDone");
-		global::Singleton<LuckModel>.Get().rewardType = LuckModel.RewardType.Lottery;
+		Solarmax.Singleton<LuckModel>.Get().rewardType = LuckModel.RewardType.Lottery;
 		Solarmax.Singleton<UISystem>.Get().ShowWindow("LotteryRewardWindow");
 	}
 
@@ -242,8 +242,8 @@ public class LuckWindow : BaseWindow
 
 	private void UpdateContentState()
 	{
-		this.freeRestTimeLabel.text = global::Singleton<LuckModel>.Get().GetFreeRestTime();
-		if (global::Singleton<LuckModel>.Get().canFreeLottery)
+		this.freeRestTimeLabel.text = Solarmax.Singleton<LuckModel>.Get().GetFreeRestTime();
+		if (Solarmax.Singleton<LuckModel>.Get().canFreeLottery)
 		{
 			this.freeLotteryBtn.SetActive(true);
 			this.freeCountDownObj.SetActive(false);
@@ -253,7 +253,7 @@ public class LuckWindow : BaseWindow
 			this.freeLotteryBtn.SetActive(false);
 			this.freeCountDownObj.SetActive(true);
 		}
-		this.retSetLabel.text = global::Singleton<LuckModel>.Get().GetUpdateRestTime();
+		this.retSetLabel.text = Solarmax.Singleton<LuckModel>.Get().GetUpdateRestTime();
 	}
 
 	public GameObject wheelObj;

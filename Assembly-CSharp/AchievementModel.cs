@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Solarmax;
 
-public class AchievementModel : global::Singleton<AchievementModel>
+public class AchievementModel : Solarmax.Singleton<AchievementModel>
 {
 	public void Init(bool needPull = true)
 	{
@@ -19,7 +19,7 @@ public class AchievementModel : global::Singleton<AchievementModel>
 				AchievementConfig achievementConfig = Solarmax.Singleton<AchievementConfigProvider>.Get().dataList[key];
 				Achievement achievement = new Achievement();
 				achievement.id = achievementConfig.id;
-				achievement.success = global::Singleton<LocalAchievementStorage>.Get().GetStatus(achievement.id);
+				achievement.success = Solarmax.Singleton<LocalAchievementStorage>.Get().GetStatus(achievement.id);
 				achievement.levelDesc = achievementConfig.levelDesc;
 				achievement.chapterDesc = achievementConfig.chapterDesc;
 				achievement.diffcult = (AchievementDifficult)achievementConfig.difficult;
@@ -132,7 +132,7 @@ public class AchievementModel : global::Singleton<AchievementModel>
 				TaskConfig task = Solarmax.Singleton<TaskConfigProvider>.Get().GetTask(this.dicAchievements[achieveID].taskId);
 				if (task != null && task.status != TaskStatus.Received)
 				{
-					global::Singleton<TaskModel>.Get().ClaimReward(task.id, null, 1);
+					Solarmax.Singleton<TaskModel>.Get().ClaimReward(task.id, null, 1);
 				}
 			}
 		}
@@ -140,10 +140,10 @@ public class AchievementModel : global::Singleton<AchievementModel>
 
 	public static int GetGroupStars(string levelGroup)
 	{
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(levelGroup))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(levelGroup))
 		{
 			int num = 0;
-			foreach (Achievement achievement in global::Singleton<AchievementModel>.Get().achievementGroups[levelGroup].achievements)
+			foreach (Achievement achievement in Solarmax.Singleton<AchievementModel>.Get().achievementGroups[levelGroup].achievements)
 			{
 				if (achievement.success && achievement.types[0] == AchievementType.PassDiffcult)
 				{
@@ -158,10 +158,10 @@ public class AchievementModel : global::Singleton<AchievementModel>
 	public static int GetCompletedStars(string levelGroup)
 	{
 		int num = 1;
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(levelGroup))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(levelGroup))
 		{
 			num = 0;
-			foreach (Achievement achievement in global::Singleton<AchievementModel>.Get().achievementGroups[levelGroup].achievements)
+			foreach (Achievement achievement in Solarmax.Singleton<AchievementModel>.Get().achievementGroups[levelGroup].achievements)
 			{
 				if (achievement.success && achievement.types[0] == AchievementType.PassDiffcult)
 				{
@@ -175,10 +175,10 @@ public class AchievementModel : global::Singleton<AchievementModel>
 	public static int GetCompletedChallenges(string levelGroup)
 	{
 		int num = 1;
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(levelGroup))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(levelGroup))
 		{
 			num = 0;
-			foreach (Achievement achievement in global::Singleton<AchievementModel>.Get().achievementGroups[levelGroup].achievements)
+			foreach (Achievement achievement in Solarmax.Singleton<AchievementModel>.Get().achievementGroups[levelGroup].achievements)
 			{
 				if (achievement.success && achievement.types[0] != AchievementType.PassDiffcult && achievement.types[0] != AchievementType.Ads)
 				{
@@ -192,7 +192,7 @@ public class AchievementModel : global::Singleton<AchievementModel>
 	public static int GetALLCompletedStars()
 	{
 		int num = 0;
-		foreach (KeyValuePair<string, AchievementGroup> keyValuePair in global::Singleton<AchievementModel>.Get().achievementGroups)
+		foreach (KeyValuePair<string, AchievementGroup> keyValuePair in Solarmax.Singleton<AchievementModel>.Get().achievementGroups)
 		{
 			num += AchievementModel.GetCompletedStars(keyValuePair.Key);
 		}
@@ -202,9 +202,9 @@ public class AchievementModel : global::Singleton<AchievementModel>
 	public static int GetCompletedStarsByDiff(string groupID, int diff)
 	{
 		int num = 0;
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(groupID))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(groupID))
 		{
-			foreach (Achievement achievement in global::Singleton<AchievementModel>.Get().achievementGroups[groupID].achievements)
+			foreach (Achievement achievement in Solarmax.Singleton<AchievementModel>.Get().achievementGroups[groupID].achievements)
 			{
 				if (achievement.diffcult == (AchievementDifficult)diff && achievement.success)
 				{
@@ -219,9 +219,9 @@ public class AchievementModel : global::Singleton<AchievementModel>
 	{
 		all = 0;
 		completed = 0;
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(groupID))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(groupID))
 		{
-			foreach (Achievement achievement in global::Singleton<AchievementModel>.Get().achievementGroups[groupID].achievements)
+			foreach (Achievement achievement in Solarmax.Singleton<AchievementModel>.Get().achievementGroups[groupID].achievements)
 			{
 				if (achievement.types[0] == AchievementType.PassDiffcult)
 				{
@@ -238,9 +238,9 @@ public class AchievementModel : global::Singleton<AchievementModel>
 	public static List<Achievement> GetChallenges(string groupID)
 	{
 		List<Achievement> list = new List<Achievement>();
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(groupID))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(groupID))
 		{
-			foreach (Achievement achievement in global::Singleton<AchievementModel>.Get().achievementGroups[groupID].achievements)
+			foreach (Achievement achievement in Solarmax.Singleton<AchievementModel>.Get().achievementGroups[groupID].achievements)
 			{
 				if (achievement.types[0] != AchievementType.PassDiffcult)
 				{
@@ -256,9 +256,9 @@ public class AchievementModel : global::Singleton<AchievementModel>
 
 	public static bool CheckUnRecievedTask(string levelGroup)
 	{
-		if (global::Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(levelGroup))
+		if (Solarmax.Singleton<AchievementModel>.Get().achievementGroups.ContainsKey(levelGroup))
 		{
-			foreach (Achievement achievement in global::Singleton<AchievementModel>.Get().achievementGroups[levelGroup].achievements)
+			foreach (Achievement achievement in Solarmax.Singleton<AchievementModel>.Get().achievementGroups[levelGroup].achievements)
 			{
 				if (Solarmax.Singleton<TaskConfigProvider>.Get().GetTask(achievement.taskId) != null && Solarmax.Singleton<TaskConfigProvider>.Get().GetTask(achievement.taskId).status == TaskStatus.Completed)
 				{

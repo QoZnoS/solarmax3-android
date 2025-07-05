@@ -28,7 +28,7 @@ public class ResultPlayerInfo : MonoBehaviour
 		{
 			this.scoreLabel.text = team.playerData.score.ToString() + "+" + score.ToString();
 		}
-		if (team.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+		if (team.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 		{
 			this.MEbg.gameObject.SetActive(true);
 		}
@@ -39,10 +39,10 @@ public class ResultPlayerInfo : MonoBehaviour
 		if (nMoney > 0)
 		{
 			this.money.SetActive(true);
-			if (team.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+			if (team.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 			{
-				int nCurAccumulMoney = global::Singleton<LocalPlayer>.Get().nCurAccumulMoney;
-				int nMaxAccumulMoney = global::Singleton<LocalPlayer>.Get().nMaxAccumulMoney;
+				int nCurAccumulMoney = Solarmax.Singleton<LocalPlayer>.Get().nCurAccumulMoney;
+				int nMaxAccumulMoney = Solarmax.Singleton<LocalPlayer>.Get().nMaxAccumulMoney;
 				int num = nCurAccumulMoney + nMoney;
 				if (nMoney + num < nMaxAccumulMoney)
 				{
@@ -64,7 +64,7 @@ public class ResultPlayerInfo : MonoBehaviour
 		}
 		this.headBg.color = color;
 		this.headBg.alpha = 1f;
-		if (team.playerData.userId <= 0 || team.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId || Solarmax.Singleton<FriendDataHandler>.Get().IsMyFriend(team.playerData.userId))
+		if (team.playerData.userId <= 0 || team.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId || Solarmax.Singleton<FriendDataHandler>.Get().IsMyFriend(team.playerData.userId))
 		{
 			this.attenBtn.SetActive(false);
 		}

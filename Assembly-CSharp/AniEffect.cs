@@ -63,7 +63,7 @@ public class AniEffect : EffectNode
 				Debug.Log("InitEffectNode is null");
 				return;
 			}
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources(this.effectName);
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(this.effectName);
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.anitor = base.go.GetComponent<Animator>();
 			if (this.anitor == null)

@@ -4,7 +4,7 @@ using System.Text;
 using Solarmax;
 using UnityEngine;
 
-public class AudioManger : global::Singleton<AudioManger>
+public class AudioManger : Solarmax.Singleton<AudioManger>
 {
 	private AudioSource bgAudio { get; set; }
 
@@ -18,14 +18,14 @@ public class AudioManger : global::Singleton<AudioManger>
 			Debug.LogError("Find bg audio source is error!");
 			return;
 		}
-		this.bgAudio.volume = global::Singleton<LocalSettingStorage>.Get().GetMusicWithoutAccount();
+		this.bgAudio.volume = Solarmax.Singleton<LocalSettingStorage>.Get().GetMusicWithoutAccount();
 		this.effectAudio = GameObject.Find("effect").GetComponent<AudioSource>();
 		if (this.bgAudio == null)
 		{
 			Debug.LogError("Find bg audio source is error!");
 			return;
 		}
-		this.effectAudio.volume = global::Singleton<LocalSettingStorage>.Get().GetSoundWithoutAccount();
+		this.effectAudio.volume = Solarmax.Singleton<LocalSettingStorage>.Get().GetSoundWithoutAccount();
 		this.effectAudioParent = this.effectAudio.transform.parent.gameObject;
 		for (int i = 0; i < 2; i++)
 		{
@@ -76,7 +76,7 @@ public class AudioManger : global::Singleton<AudioManger>
 		{
 			return;
 		}
-		AudioClip audioClip = global::Singleton<AssetManager>.Get().GetResources(audioName) as AudioClip;
+		AudioClip audioClip = Solarmax.Singleton<AssetManager>.Get().GetResources(audioName) as AudioClip;
 		if (audioClip == null)
 		{
 			return;
@@ -139,7 +139,7 @@ public class AudioManger : global::Singleton<AudioManger>
 		GameObject gameObject = this.effectAudioParent.AddChild(this.effectAudio.gameObject);
 		gameObject.name = "effect-" + this.effectAudioList.Count;
 		AudioSource component = gameObject.GetComponent<AudioSource>();
-		component.volume = global::Singleton<LocalSettingStorage>.Get().sound;
+		component.volume = Solarmax.Singleton<LocalSettingStorage>.Get().sound;
 		this.effectAudioList.Add(component);
 		return component;
 	}
@@ -167,7 +167,7 @@ public class AudioManger : global::Singleton<AudioManger>
 	{
 		if (this.bgAudio != null)
 		{
-			global::Singleton<LocalSettingStorage>.Get().music = audioVolume;
+			Solarmax.Singleton<LocalSettingStorage>.Get().music = audioVolume;
 			this.bgAudioVolume = audioVolume;
 			this.bgAudio.volume = audioVolume;
 		}
@@ -176,7 +176,7 @@ public class AudioManger : global::Singleton<AudioManger>
 	public void ChangeSoundVolume(float audioVolume)
 	{
 		this.soundVolume = audioVolume;
-		global::Singleton<LocalSettingStorage>.Get().sound = audioVolume;
+		Solarmax.Singleton<LocalSettingStorage>.Get().sound = audioVolume;
 		int i = 0;
 		int count = this.effectAudioList.Count;
 		while (i < count)
@@ -228,7 +228,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayJumpCharge(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_JumpCharge))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_JumpCharge))
 		{
 			return;
 		}
@@ -238,7 +238,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayJumpStart(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_JumpStart))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_JumpStart))
 		{
 			return;
 		}
@@ -248,7 +248,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayJumpEnd(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_JumpEnd))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_JumpEnd))
 		{
 			return;
 		}
@@ -258,7 +258,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayCapture(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Capture))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Capture))
 		{
 			return;
 		}
@@ -268,7 +268,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayTwist(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Twist))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Twist))
 		{
 			return;
 		}
@@ -278,7 +278,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayClone(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Clone))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Clone))
 		{
 			return;
 		}
@@ -288,7 +288,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayLaser(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Laser))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Laser))
 		{
 			return;
 		}
@@ -308,7 +308,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayWarpCharge(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_WarpCharge))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_WarpCharge))
 		{
 			return;
 		}
@@ -318,7 +318,7 @@ public class AudioManger : global::Singleton<AudioManger>
 
 	public void PlayWarp(Vector3 pos)
 	{
-		if (!global::Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Warp))
+		if (!Solarmax.Singleton<GameTimeManager>.Get().CheckTimer(TimerType.T_Warp))
 		{
 			return;
 		}

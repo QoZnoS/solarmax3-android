@@ -56,7 +56,7 @@ public class AppsFlyerTool
 			return;
 		}
 		AppsFlyerTool.purchaseEvent.Clear();
-		AppsFlyerTool.purchaseEvent.Add("play_id", global::Singleton<LocalAccountStorage>.Get().account);
+		AppsFlyerTool.purchaseEvent.Add("play_id", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		AppsFlyer.trackRichEvent("custom_pvp_start", AppsFlyerTool.purchaseEvent);
 	}
 
@@ -67,7 +67,7 @@ public class AppsFlyerTool
 			return;
 		}
 		AppsFlyerTool.purchaseEvent.Clear();
-		AppsFlyerTool.purchaseEvent.Add("play_id", global::Singleton<LocalAccountStorage>.Get().account);
+		AppsFlyerTool.purchaseEvent.Add("play_id", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		AppsFlyerTool.purchaseEvent.Add("play_result", lost);
 		AppsFlyer.trackRichEvent("custom_pvp_end", AppsFlyerTool.purchaseEvent);
 	}
@@ -79,7 +79,7 @@ public class AppsFlyerTool
 			return;
 		}
 		AppsFlyerTool.purchaseEvent.Clear();
-		AppsFlyerTool.purchaseEvent.Add("play_id", global::Singleton<LocalAccountStorage>.Get().account);
+		AppsFlyerTool.purchaseEvent.Add("play_id", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		AppsFlyer.trackRichEvent("custom_pve_start", AppsFlyerTool.purchaseEvent);
 	}
 
@@ -90,7 +90,7 @@ public class AppsFlyerTool
 			return;
 		}
 		AppsFlyerTool.purchaseEvent.Clear();
-		AppsFlyerTool.purchaseEvent.Add("play_id", global::Singleton<LocalAccountStorage>.Get().account);
+		AppsFlyerTool.purchaseEvent.Add("play_id", Solarmax.Singleton<LocalAccountStorage>.Get().account);
 		AppsFlyerTool.purchaseEvent.Add("play_result", strResult);
 		AppsFlyer.trackRichEvent("custom_pve_end", AppsFlyerTool.purchaseEvent);
 	}

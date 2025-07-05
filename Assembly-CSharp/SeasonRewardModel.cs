@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Solarmax;
 
-public class SeasonRewardModel : global::Singleton<SeasonRewardModel>
+public class SeasonRewardModel : Solarmax.Singleton<SeasonRewardModel>
 {
 	public void Init(int id, int score, List<bool> status)
 	{

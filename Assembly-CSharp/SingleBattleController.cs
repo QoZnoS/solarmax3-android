@@ -38,9 +38,9 @@ public class SingleBattleController : IBattleController, Lifecycle2
 				num2++;
 			}
 		}
-		if (global::Singleton<LocalPlayer>.Get().playerData.currentTeam != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.currentTeam != null)
 		{
-			this.battleData.currentTeam = global::Singleton<LocalPlayer>.Get().playerData.currentTeam.team;
+			this.battleData.currentTeam = Solarmax.Singleton<LocalPlayer>.Get().playerData.currentTeam.team;
 		}
 		this.useCommonEndCondition = (num2 > 1);
 		return true;
@@ -120,7 +120,7 @@ public class SingleBattleController : IBattleController, Lifecycle2
 		framePacket.move = new MovePacket();
 		framePacket.move.from = from.tag;
 		framePacket.move.to = to.tag;
-		if (global::Singleton<LocalSettingStorage>.Get().fightOption == 1)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().fightOption == 1)
 		{
 			int num = (int)Solarmax.Singleton<BattleSystem>.Instance.battleData.sliderNumber;
 			framePacket.move.optype = 1;
@@ -260,7 +260,7 @@ public class SingleBattleController : IBattleController, Lifecycle2
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("SingleBattleController  QuitBattle", new object[0]);
 		if (this.battleData.winTEAM == this.battleData.currentTeam)
 		{
-			global::Singleton<AchievementManager>.Get().SettlementAchievement(finish);
+			Solarmax.Singleton<AchievementManager>.Get().SettlementAchievement(finish);
 		}
 		if (finish && this.battleData.battleType == BattlePlayType.Normalize && Solarmax.Singleton<BattleSystem>.Instance.battleData.currentTeam == this.battleData.winTEAM)
 		{
@@ -295,7 +295,7 @@ public class SingleBattleController : IBattleController, Lifecycle2
 				float battleTime = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.GetBattleTime();
 				MonoSingleton<FlurryAnalytis>.Instance.FlurryBattleEndEvent(this.battleData.matchId, "2", "0", "0", hitships.ToString(), destory.ToString(), battleTime.ToString());
 			}
-			global::Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Pve, 1);
+			Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Pve, 1);
 			GuideManager.TriggerGuidecompleted(GuildEndEvent.complteBattle);
 		}
 		else
@@ -309,7 +309,7 @@ public class SingleBattleController : IBattleController, Lifecycle2
 			MiGameAnalytics.MiAnalyticsBattleEndEvent(this.battleData.matchId, "1", "0", "0", hitships2.ToString(), destory2.ToString(), battleTime2.ToString());
 			Solarmax.Singleton<UISystem>.Get().HideAllWindow();
 			Solarmax.Singleton<BattleSystem>.Instance.BeginFadeOut();
-			global::Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.OUT, 0.1f);
+			Solarmax.Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.OUT, 0.1f);
 			Solarmax.Singleton<UISystem>.Get().FadeBattle(false, new EventDelegate(delegate()
 			{
 				if (Solarmax.Singleton<BattleSystem>.Instance.battleData.gameType == GameType.SingleLevel || Solarmax.Singleton<BattleSystem>.Instance.battleData.gameType == GameType.GuildeLevel || Solarmax.Singleton<BattleSystem>.Instance.battleData.gameType == GameType.Single)
@@ -363,7 +363,7 @@ public class SingleBattleController : IBattleController, Lifecycle2
 		GuideManager.ClearGuideData();
 		Solarmax.Singleton<NetSystem>.Instance.helper.RequestSingleMatch(this.battleData.matchId, GameType.SingleLevel, false);
 		Solarmax.Singleton<BattleSystem>.Instance.sceneManager.FadePlanet(true, 0f);
-		global::Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.IN, 0f);
+		Solarmax.Singleton<ShipFadeManager>.Get().SetFadeType(ShipFadeManager.FADETYPE.IN, 0f);
 		Solarmax.Singleton<BattleSystem>.Instance.StartLockStep();
 	}
 

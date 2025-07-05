@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class storeConfigProvider : Singleton<storeConfigProvider>, IDataProvider
+	public class storeConfigProvider : Solarmax.Singleton<storeConfigProvider>, IDataProvider
 	{
 		public string[] ProductIds { get; private set; }
 
@@ -53,7 +53,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/Store.Xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/Store.Xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

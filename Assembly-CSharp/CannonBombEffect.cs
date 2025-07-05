@@ -83,7 +83,7 @@ public class CannonBombEffect : EffectNode
 	{
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("EFF_XJ_BaoZha2");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("EFF_XJ_BaoZha2");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.effectList = base.go.GetComponentsInChildren<ParticleSystem>();
 			this.animatorList = base.go.GetComponentsInChildren<Animator>();

@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class ItemConfigProvider : Singleton<ItemConfigProvider>, IDataProvider
+	public class ItemConfigProvider : Solarmax.Singleton<ItemConfigProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -42,7 +42,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/item.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/item.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 

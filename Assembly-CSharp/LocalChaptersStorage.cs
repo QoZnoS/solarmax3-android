@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Solarmax;
 
-public class LocalChaptersStorage : global::Singleton<LocalChaptersStorage>, ILocalStorage
+public class LocalChaptersStorage : Solarmax.Singleton<LocalChaptersStorage>, ILocalStorage
 {
 	public string Name()
 	{

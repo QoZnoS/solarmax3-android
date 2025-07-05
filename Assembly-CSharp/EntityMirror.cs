@@ -9,7 +9,7 @@ public class EntityMirror : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources("Entity_Mirror");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Mirror");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

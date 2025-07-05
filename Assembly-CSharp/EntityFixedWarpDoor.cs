@@ -10,7 +10,7 @@ public class EntityFixedWarpDoor : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_FixedWarpDoor");
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_FixedWarpDoor");
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

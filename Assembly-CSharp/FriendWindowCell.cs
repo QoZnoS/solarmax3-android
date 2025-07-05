@@ -67,7 +67,7 @@ public class FriendWindowCell : MonoBehaviour
 				this.onlineLabel.color = new Color(0.43137255f, 1f, 0.3529412f, 1f);
 			}
 		}
-		else if (this.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+		else if (this.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 		{
 			this.addFriend.SetActive(false);
 			this.deleteFriend.SetActive(false);

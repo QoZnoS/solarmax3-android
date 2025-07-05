@@ -146,7 +146,7 @@ public class PaidLevelBuyTOPWindow : BaseWindow
 			Tips.Make(LanguageDataProvider.GetValue(1101));
 			return;
 		}
-		if (global::Singleton<LocalPlayer>.Get().playerData.money < payChapterInfo.nPromotionPrice)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData.money < payChapterInfo.nPromotionPrice)
 		{
 			Tips.Make(LanguageDataProvider.GetValue(1102));
 			Coroutine.DelayDo(0.2f, new EventDelegate(delegate()

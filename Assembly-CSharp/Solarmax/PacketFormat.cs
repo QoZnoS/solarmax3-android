@@ -48,7 +48,7 @@ namespace Solarmax
 					}
 				}
 			}
-			Singleton<LoggerSystem>.Instance.Debug(string.Concat(new object[]
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug(string.Concat(new object[]
 			{
 				"解包错误。。。。。。。。。。。。",
 				packetLength,

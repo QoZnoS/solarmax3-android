@@ -20,7 +20,7 @@ public class PlayerData
 		this.name = data.name;
 		if (!string.IsNullOrEmpty(this.name))
 		{
-			global::Singleton<LocalAccountStorage>.Get().name = this.name;
+			Solarmax.Singleton<LocalAccountStorage>.Get().name = this.name;
 			Solarmax.Singleton<LocalStorageSystem>.Instance.SaveLocalAccount(false);
 		}
 		this.icon = data.icon;

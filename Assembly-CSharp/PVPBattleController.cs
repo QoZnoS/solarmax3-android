@@ -589,12 +589,12 @@ public class PVPBattleController : IBattleController, Lifecycle2
 					List<Team> friendTeam = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetFriendTeam(this.battleData.winTEAM);
 					foreach (Team team2 in friendTeam)
 					{
-						global::Singleton<TaskModel>.Get().WinTeam(team2);
+						Solarmax.Singleton<TaskModel>.Get().WinTeam(team2);
 					}
 				}
 				else
 				{
-					global::Singleton<TaskModel>.Get().WinTeam(team);
+					Solarmax.Singleton<TaskModel>.Get().WinTeam(team);
 				}
 			}
 		}
@@ -623,9 +623,9 @@ public class PVPBattleController : IBattleController, Lifecycle2
 				endEvent.end_survive = battleEndData.survive;
 				csquitBattle.events.Add(endEvent);
 				Team team3 = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetTeam(battleEndData.team);
-				if (!this.battleData.isReplay && team3.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+				if (!this.battleData.isReplay && team3.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 				{
-					global::Singleton<TaskModel>.Get().PvpEndDataHandler(battleEndData);
+					Solarmax.Singleton<TaskModel>.Get().PvpEndDataHandler(battleEndData);
 				}
 			}
 			Solarmax.Singleton<NetSystem>.Instance.Send<CSQuitBattle>(90, csquitBattle, false);

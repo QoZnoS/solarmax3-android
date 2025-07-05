@@ -79,7 +79,7 @@ public class DiffusionEffect : EffectNode
 	{
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("EFF_XJ_Lightning1");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("EFF_XJ_Lightning1");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.effectList = base.go.GetComponentsInChildren<ParticleSystem>();
 			this.aniList = base.go.GetComponentsInChildren<Animator>();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class CollectionModel : Singleton<CollectionModel>
+	public class CollectionModel : Solarmax.Singleton<CollectionModel>
 	{
 		public SkinConfig ChoosedConfig
 		{
@@ -26,9 +26,9 @@ namespace Solarmax
 
 		public void EnsureInit()
 		{
-			this.bgConfigs = Singleton<SkinConfigProvider>.Get().GetAllBGData();
-			this.avatarConfigs = Singleton<SkinConfigProvider>.Get().GetAllAvatarData();
-			this.storeConfigs = Singleton<storeConfigProvider>.Get().dataList;
+			this.bgConfigs = Solarmax.Singleton<SkinConfigProvider>.Get().GetAllBGData();
+			this.avatarConfigs = Solarmax.Singleton<SkinConfigProvider>.Get().GetAllAvatarData();
+			this.storeConfigs = Solarmax.Singleton<storeConfigProvider>.Get().dataList;
 			this.cdList.Clear();
 			for (int i = 0; i < this.storeConfigs.Count; i++)
 			{
@@ -80,7 +80,7 @@ namespace Solarmax
 		{
 			if (num >= 0 && num < this.cdList.Count)
 			{
-				Singleton<LocalPlayer>.Get().showAdsRefreshTime = (float)this.cdList[num].cd;
+                Solarmax.Singleton<LocalPlayer>.Get().showAdsRefreshTime = (float)this.cdList[num].cd;
 				return this.cdList[num].GoldValue.ToString();
 			}
 			return string.Empty;

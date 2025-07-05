@@ -15,7 +15,7 @@ public class LotteryRewardWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		int takeAwardTime = global::Singleton<LuckModel>.Get().GetTakeAwardTime();
+		int takeAwardTime = Solarmax.Singleton<LuckModel>.Get().GetTakeAwardTime();
 		if (takeAwardTime > 0)
 		{
 			this.extawrardCntLabel.text = LanguageDataProvider.Format(2318, new object[]
@@ -28,15 +28,15 @@ public class LotteryRewardWindow : BaseWindow
 			this.extawrardCntLabel.text = string.Empty;
 		}
 		AwardItem awardItem;
-		if (global::Singleton<LuckModel>.Get().rewardType == LuckModel.RewardType.Lottery)
+		if (Solarmax.Singleton<LuckModel>.Get().rewardType == LuckModel.RewardType.Lottery)
 		{
-			int retId = (int)global::Singleton<LuckModel>.Get().lotteryInfo.retlId;
-			awardItem = global::Singleton<LuckModel>.Get().GetLotteryWheelItem(retId);
+			int retId = (int)Solarmax.Singleton<LuckModel>.Get().lotteryInfo.retlId;
+			awardItem = Solarmax.Singleton<LuckModel>.Get().GetLotteryWheelItem(retId);
 		}
 		else
 		{
-			int awardId = global::Singleton<LuckModel>.Get().lotteryAward.awardId;
-			awardItem = global::Singleton<LuckModel>.Get().GetExtraItem(awardId);
+			int awardId = Solarmax.Singleton<LuckModel>.Get().lotteryAward.awardId;
+			awardItem = Solarmax.Singleton<LuckModel>.Get().GetExtraItem(awardId);
 		}
 		this.numLabel.text = awardItem.itemNum.ToString();
 		if (awardItem.type == 1)
@@ -71,7 +71,7 @@ public class LotteryRewardWindow : BaseWindow
 
 	public void OnAdAndReLottery()
 	{
-		int num = 7 - global::Singleton<LuckModel>.Get().lotteryNotes.todayAdLotteryNum;
+		int num = 7 - Solarmax.Singleton<LuckModel>.Get().lotteryNotes.todayAdLotteryNum;
 		if (num <= 0)
 		{
 			Tips.Make(LanguageDataProvider.GetValue(2337));
@@ -80,7 +80,7 @@ public class LotteryRewardWindow : BaseWindow
 		AdManager.ShowAd(AdManager.ShowAdType.LotteryAd, delegate(object[] param)
 		{
 			MonoSingleton<FlurryAnalytis>.Instance.LogLotteryLookAds();
-			Solarmax.Singleton<NetSystem>.Get().helper.LotteryFromServer(2, global::Singleton<LuckModel>.Get().lotteryNotes.currLotteryId);
+			Solarmax.Singleton<NetSystem>.Get().helper.LotteryFromServer(2, Solarmax.Singleton<LuckModel>.Get().lotteryNotes.currLotteryId);
 		});
 	}
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Solarmax
 {
-	public class NetSystem : Singleton<NetSystem>, Lifecycle
+	public class NetSystem : Solarmax.Singleton<NetSystem>, Lifecycle
 	{
 		public NetSystem()
 		{
@@ -15,7 +15,7 @@ namespace Solarmax
 
 		public bool Init()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("NetSystem    init  begin", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("NetSystem    init  begin", new object[0]);
 			this.RegisterConnector(1, ConnectionType.TCP, new PacketFormat(), new PacketHandlerManager(), new Callback<bool>(this.ConnectedCallback), null, new Callback(this.DisConnectedCallback), null);
 			foreach (INetConnector netConnector in this.mConnectorMap.Values)
 			{
@@ -23,7 +23,7 @@ namespace Solarmax
 			}
 			this.helper.RegisterAllPacketHandler();
 			this.ping.Init();
-			Singleton<LoggerSystem>.Instance.Debug("NetSystem    init  end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("NetSystem    init  end", new object[0]);
 			return true;
 		}
 
@@ -38,14 +38,14 @@ namespace Solarmax
 
 		public void Destroy()
 		{
-			Singleton<LoggerSystem>.Instance.Debug("NetSystem    destroy  begin", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("NetSystem    destroy  begin", new object[0]);
 			foreach (INetConnector netConnector in this.mConnectorMap.Values)
 			{
 				netConnector.Destroy();
 			}
 			this.mCacheMap.Clear();
 			this.ping.Destroy();
-			Singleton<LoggerSystem>.Instance.Debug("NetSystem    destroy  end", new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Debug("NetSystem    destroy  end", new object[0]);
 		}
 
 		public void RegisterConnector(int uid, ConnectionType type, IPacketFormat pf, IPacketHandlerManager phm, Callback<bool> connected, Callback<int, byte[]> recieved, Callback disconnected, Callback error)
@@ -82,7 +82,7 @@ namespace Solarmax
 
 		public void Send<T>(int packetId, T proto, bool bShowC = true) where T : class
 		{
-			Singleton<LoggerSystem>.Instance.Info(string.Format("NetSystem  Send  with id {0}", packetId), new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("NetSystem  Send  with id {0}", packetId), new object[0]);
 		}
 
 		public void Send2Cache<T>(int packetId, T proto) where T : class
@@ -113,7 +113,7 @@ namespace Solarmax
 					if (this.mConnectorMap.ContainsKey(key))
 					{
 						int packetType = netPacket.GetPacketType();
-						Singleton<LoggerSystem>.Instance.Info(string.Format("NetSystem SendCache2Net type:{0}", packetType), new object[0]);
+                        Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("NetSystem SendCache2Net type:{0}", packetType), new object[0]);
 						this.mConnectorMap[key].SendPacket(netPacket);
 					}
 				}
@@ -147,33 +147,33 @@ namespace Solarmax
 
 		public void ConnectedCallback(bool status)
 		{
-			Singleton<LoggerSystem>.Instance.Info("已连接服务器：" + this.GetConnector().GetHost().ToString(), new object[0]);
+            Solarmax.Singleton<LoggerSystem>.Instance.Info("已连接服务器：" + this.GetConnector().GetHost().ToString(), new object[0]);
 		}
 
 		public void DisConnectedCallback()
 		{
 			this.ping.Pong(-1f);
-			Singleton<EventSystem>.Instance.FireEvent(EventId.NetworkStatus, new object[]
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NetworkStatus, new object[]
 			{
 				false
 			});
-			if (Singleton<LocalPlayer>.Get().isAccountTokenOver)
+			if (Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver)
 			{
 				return;
 			}
-			BattleData battleData = Singleton<BattleSystem>.Instance.battleData;
+			BattleData battleData = Solarmax.Singleton<BattleSystem>.Instance.battleData;
 			if (battleData.gameState == GameState.Game || battleData.gameState == GameState.GameWatch || battleData.gameState == GameState.Watcher)
 			{
 				if (battleData.gameType == GameType.PVP || battleData.gameType == GameType.League)
 				{
-					Singleton<EventSystem>.Instance.FireEvent(EventId.OnBattleDisconnect, new object[0]);
+                    Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnBattleDisconnect, new object[0]);
 				}
 			}
 			else if (battleData.gameType == GameType.PVP || battleData.gameType == GameType.League)
 			{
-				Singleton<BattleSystem>.Instance.Reset();
-				Singleton<UISystem>.Get().ShowWindow("CommonDialogWindow");
-				Singleton<UISystem>.Get().OnEventHandler(33, "CommonDialogWindow", new object[]
+                Solarmax.Singleton<BattleSystem>.Instance.Reset();
+                Solarmax.Singleton<UISystem>.Get().ShowWindow("CommonDialogWindow");
+                Solarmax.Singleton<UISystem>.Get().OnEventHandler(33, "CommonDialogWindow", new object[]
 				{
 					1,
 					LanguageDataProvider.GetValue(21),
@@ -184,8 +184,8 @@ namespace Solarmax
 
 		public void BackStartWindow()
 		{
-			Singleton<UISystem>.Get().HideAllWindow();
-			Singleton<UISystem>.Get().ShowWindow("HomeWindow");
+            Solarmax.Singleton<UISystem>.Get().HideAllWindow();
+            Solarmax.Singleton<UISystem>.Get().ShowWindow("HomeWindow");
 		}
 
 		private Dictionary<int, INetConnector> mConnectorMap;

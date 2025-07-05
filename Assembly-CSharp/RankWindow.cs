@@ -30,7 +30,7 @@ public class RankWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		this.model = global::Singleton<RankModel>.Get();
+		this.model = Solarmax.Singleton<RankModel>.Get();
 		this.model.Init();
 		this.wrapContent.enabled = false;
 		this.OnTabClick(this.pvpTab.gameObject);
@@ -101,7 +101,7 @@ public class RankWindow : BaseWindow
 				this.rankIcon[i].SetActive(false);
 			}
 		}
-		PlayerData playerData = global::Singleton<LocalPlayer>.Get().playerData;
+		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
 		if (this.chooseType == 0)
 		{
 			this.selfNumValue.text = playerData.score.ToString();

@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Solarmax
 {
-	public class GuideDataProvider : Singleton<GuideDataProvider>, IDataProvider
+	public class GuideDataProvider : Solarmax.Singleton<GuideDataProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -40,7 +40,7 @@ namespace Solarmax
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/playerguide.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/playerguide.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 
@@ -62,7 +62,7 @@ namespace Solarmax
 			int hashCode = strCondition.GetHashCode();
 			foreach (CTagGuideConfig ctagGuideConfig in this.mDataList.Values)
 			{
-				if (eCon != GuildCondition.GC_Level || !Singleton<LevelDataHandler>.Get().IsUnLock(strCondition))
+				if (eCon != GuildCondition.GC_Level || !Solarmax.Singleton<LevelDataHandler>.Get().IsUnLock(strCondition))
 				{
 					if (ctagGuideConfig.startCondition == eCon && ctagGuideConfig.windowHashCode == hashCode && ctagGuideConfig.id > nCurCompltedID)
 					{

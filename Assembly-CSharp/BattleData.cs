@@ -126,7 +126,7 @@ public class BattleData : Lifecycle2
 		this.voiceRoomToken = null;
 		if (this.gameType == GameType.SingleLevel || this.gameType == GameType.GuildeLevel)
 		{
-			global::Singleton<AchievementManager>.Get().Init(this);
+			Solarmax.Singleton<AchievementManager>.Get().Init(this);
 		}
 		return true;
 	}
@@ -137,7 +137,7 @@ public class BattleData : Lifecycle2
 		if (this.gameType == GameType.SingleLevel || this.gameType == GameType.GuildeLevel)
 		{
 			this.battleTime += interval;
-			global::Singleton<AchievementManager>.Get().BattleTick(interval);
+			Solarmax.Singleton<AchievementManager>.Get().BattleTick(interval);
 		}
 	}
 

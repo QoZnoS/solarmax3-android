@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Solarmax
 {
-	public class LanguageDataProvider : Singleton<LanguageDataProvider>, IDataProvider
+	public class LanguageDataProvider : Solarmax.Singleton<LanguageDataProvider>, IDataProvider
 	{
 		public string Path()
 		{
@@ -40,11 +40,11 @@ namespace Solarmax
 						}
 					}
 				}
-				Singleton<AchievementConfigProvider>.Get().SetDescs();
+                Solarmax.Singleton<AchievementConfigProvider>.Get().SetDescs();
 			}
 			catch (Exception ex)
 			{
-				Singleton<LoggerSystem>.Instance.Error("data/dictionary.xml resource failed " + ex.ToString(), new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Error("data/dictionary.xml resource failed " + ex.ToString(), new object[0]);
 			}
 		}
 
@@ -55,7 +55,7 @@ namespace Solarmax
 			{
 				systemLanguage
 			});
-			int localLaugue = Singleton<LocalAccountStorage>.Get().GetLocalLaugue();
+			int localLaugue = Solarmax.Singleton<LocalAccountStorage>.Get().GetLocalLaugue();
 			if (localLaugue >= 0)
 			{
 				systemLanguage = (SystemLanguage)localLaugue;
@@ -65,7 +65,7 @@ namespace Solarmax
 				});
 				return systemLanguage;
 			}
-			Singleton<LocalAccountStorage>.Get().localLanguage = (int)systemLanguage;
+            Solarmax.Singleton<LocalAccountStorage>.Get().localLanguage = (int)systemLanguage;
 			Debug.LogFormat("GetLanguage: Use system language: {0}", new object[]
 			{
 				systemLanguage
@@ -107,7 +107,7 @@ namespace Solarmax
 
 		public static string GetValue(int id)
 		{
-			return Singleton<LanguageDataProvider>.Instance.GetData(id);
+			return Solarmax.Singleton<LanguageDataProvider>.Instance.GetData(id);
 		}
 
 		public static string Format(int id, params object[] args)

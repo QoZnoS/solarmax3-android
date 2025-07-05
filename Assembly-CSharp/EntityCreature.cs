@@ -9,7 +9,7 @@ public class EntityCreature : EntityNode
 
 	protected override GameObject CreateGameObject()
 	{
-		UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources(base.perfab);
+		UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(base.perfab);
 		return UnityEngine.Object.Instantiate(resources) as GameObject;
 	}
 

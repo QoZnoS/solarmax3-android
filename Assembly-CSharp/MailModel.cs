@@ -1,7 +1,7 @@
 ﻿using System;
 using NetMessage;
 
-public class MailModel : Singleton<MailModel>
+public class MailModel : Solarmax.Singleton<MailModel>
 {
 	public void DeleteMail(int mailId)
 	{

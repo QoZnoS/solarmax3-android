@@ -108,7 +108,7 @@ public class BaseNewBuff : Lifecycle2
 		}
 		if (!string.IsNullOrEmpty(data.audio))
 		{
-			global::Singleton<AudioManger>.Get().PlayEffect(data.audio);
+			Solarmax.Singleton<AudioManger>.Get().PlayEffect(data.audio);
 		}
 		if (node != null && !string.IsNullOrEmpty(data.effectName))
 		{

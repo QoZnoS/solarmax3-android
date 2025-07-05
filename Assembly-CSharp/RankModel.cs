@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class RankModel : Singleton<RankModel>
+public class RankModel : Solarmax.Singleton<RankModel>
 {
 	public void Init()
 	{

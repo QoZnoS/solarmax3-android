@@ -56,7 +56,7 @@ public class HaloNode : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Entity_Halo");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Entity_Halo");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.sprite = base.go.GetComponentInChildren<SpriteRenderer>();
 		}

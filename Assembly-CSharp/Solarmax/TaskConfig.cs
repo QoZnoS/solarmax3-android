@@ -15,9 +15,9 @@ namespace Solarmax
 			set
 			{
 				this.innerStatus = value;
-				if (Singleton<TaskConfigProvider>.Get().taskStatusChanged != null && this.taskType == TaskType.Level && this.subType == FinishConntion.DestroyShip)
+				if (Solarmax.Singleton<TaskConfigProvider>.Get().taskStatusChanged != null && this.taskType == TaskType.Level && this.subType == FinishConntion.DestroyShip)
 				{
-					Singleton<TaskConfigProvider>.Get().taskStatusChanged(this.id, this.innerStatus);
+                    Solarmax.Singleton<TaskConfigProvider>.Get().taskStatusChanged(this.id, this.innerStatus);
 				}
 			}
 		}

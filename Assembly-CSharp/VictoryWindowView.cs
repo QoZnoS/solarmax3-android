@@ -53,16 +53,16 @@ public class VictoryWindowView : BaseWindow
 
 	private void SetPlayerBaseInfo()
 	{
-		if (global::Singleton<LocalPlayer>.Get().playerData != null)
+		if (Solarmax.Singleton<LocalPlayer>.Get().playerData != null)
 		{
-			this.moneyGo.GetComponent<UILabel>().text = global::Singleton<LocalPlayer>.Get().playerData.money.ToString();
+			this.moneyGo.GetComponent<UILabel>().text = Solarmax.Singleton<LocalPlayer>.Get().playerData.money.ToString();
 			this.powerGo.GetComponent<UILabel>().text = this.FormatPower();
 		}
 	}
 
 	private string FormatPower()
 	{
-		int power = global::Singleton<LocalPlayer>.Get().playerData.power;
+		int power = Solarmax.Singleton<LocalPlayer>.Get().playerData.power;
 		string empty = string.Empty;
 		return string.Format("{0} / 1000", power);
 	}

@@ -32,7 +32,7 @@ public class TeamWindow : BaseWindow
 	public override void OnShow()
 	{
 		base.OnShow();
-		if (global::Singleton<TeamInviteData>.Get().isLeader)
+		if (Solarmax.Singleton<TeamInviteData>.Get().isLeader)
 		{
 			this.inviteList.Clear();
 			this.OnTabClick(this.friendTab.gameObject);
@@ -129,7 +129,7 @@ public class TeamWindow : BaseWindow
 
 	private void SetPage()
 	{
-		List<SimplePlayerData> teamPlayers = global::Singleton<TeamInviteData>.Get().teamPlayers;
+		List<SimplePlayerData> teamPlayers = Solarmax.Singleton<TeamInviteData>.Get().teamPlayers;
 		for (int i = 0; i < this.players.Length; i++)
 		{
 			GameObject gameObject = this.players[i].transform.Find("icon").gameObject;
@@ -147,7 +147,7 @@ public class TeamWindow : BaseWindow
 				this.players[i].transform.Find("emptyicon").gameObject.SetActive(true);
 			}
 		}
-		if (global::Singleton<TeamInviteData>.Get().isLeader)
+		if (Solarmax.Singleton<TeamInviteData>.Get().isLeader)
 		{
 			this.startGameBtn.gameObject.SetActive(true);
 			this.quitGameBtn.gameObject.SetActive(false);
@@ -191,7 +191,7 @@ public class TeamWindow : BaseWindow
 
 	public void OnStartGameClick()
 	{
-		if (global::Singleton<TeamInviteData>.Get().isLeader)
+		if (Solarmax.Singleton<TeamInviteData>.Get().isLeader)
 		{
 			Solarmax.Singleton<NetSystem>.Instance.helper.TeamStart();
 		}
@@ -203,9 +203,9 @@ public class TeamWindow : BaseWindow
 
 	public void OnQuitGameClick()
 	{
-		if (!global::Singleton<TeamInviteData>.Get().isLeader)
+		if (!Solarmax.Singleton<TeamInviteData>.Get().isLeader)
 		{
-			Solarmax.Singleton<NetSystem>.Instance.helper.TeamLeave(global::Singleton<TeamInviteData>.Get().leaderId);
+			Solarmax.Singleton<NetSystem>.Instance.helper.TeamLeave(Solarmax.Singleton<TeamInviteData>.Get().leaderId);
 		}
 		else
 		{
@@ -215,7 +215,7 @@ public class TeamWindow : BaseWindow
 
 	public void OnCloseClick()
 	{
-		Solarmax.Singleton<NetSystem>.Instance.helper.TeamLeave(global::Singleton<TeamInviteData>.Get().leaderId);
+		Solarmax.Singleton<NetSystem>.Instance.helper.TeamLeave(Solarmax.Singleton<TeamInviteData>.Get().leaderId);
 	}
 
 	public UILabel friendTab;

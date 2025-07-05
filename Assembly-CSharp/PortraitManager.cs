@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class PortraitManager : Singleton<PortraitManager>
+public class PortraitManager : Solarmax.Singleton<PortraitManager>
 {
 	public Texture2D GetTexture2D(string url)
 	{

@@ -105,17 +105,17 @@ public class BattleWindow : BaseWindow
 			array[i] = (byte)voiceRoomToken[i];
 		}
 		VoiceEngine.EnterRoom(voiceRoomId, voiceTeamId, false, array);
-		global::Singleton<LocalSettingStorage>.Get().enableSpeaker = VoiceEngine.IsSpeakerEnable();
-		global::Singleton<LocalSettingStorage>.Get().enableMicrophone = VoiceEngine.IsMicrophoneEnable();
+		Solarmax.Singleton<LocalSettingStorage>.Get().enableSpeaker = VoiceEngine.IsSpeakerEnable();
+		Solarmax.Singleton<LocalSettingStorage>.Get().enableMicrophone = VoiceEngine.IsMicrophoneEnable();
 		if (!VoiceEngine.IsSpeakerEnable())
 		{
-			global::Singleton<LocalSettingStorage>.Get().enableRoomChannel = false;
-			global::Singleton<LocalSettingStorage>.Get().enableTeamChannel = false;
+			Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel = false;
+			Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel = false;
 		}
 		else
 		{
-			global::Singleton<LocalSettingStorage>.Get().enableRoomChannel = VoiceEngine.IsRoomChannelEnable();
-			global::Singleton<LocalSettingStorage>.Get().enableTeamChannel = !global::Singleton<LocalSettingStorage>.Get().enableRoomChannel;
+			Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel = VoiceEngine.IsRoomChannelEnable();
+			Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel = !Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel;
 		}
 		this.LblRoomChannel.SetActive(false);
 		this.LblTeamChannel.SetActive(false);
@@ -159,7 +159,7 @@ public class BattleWindow : BaseWindow
 				this.playerFrames[i].SetActive(false);
 			}
 		}
-		string battleMap = global::Singleton<LocalPlayer>.Get().battleMap;
+		string battleMap = Solarmax.Singleton<LocalPlayer>.Get().battleMap;
 		MapConfig data = Solarmax.Singleton<MapConfigProvider>.Instance.GetData(battleMap);
 		if (data == null)
 		{
@@ -179,7 +179,7 @@ public class BattleWindow : BaseWindow
 					{
 						break;
 					}
-					if (team.playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+					if (team.playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 					{
 						num = team.groupID;
 					}
@@ -192,7 +192,7 @@ public class BattleWindow : BaseWindow
 			int num4 = -1;
 			for (int k = 0; k < list.Count; k++)
 			{
-				if (list[k].playerData.userId == global::Singleton<LocalPlayer>.Get().playerData.userId)
+				if (list[k].playerData.userId == Solarmax.Singleton<LocalPlayer>.Get().playerData.userId)
 				{
 					num3 = k;
 				}
@@ -278,7 +278,7 @@ public class BattleWindow : BaseWindow
 		Vector2 vector = UICamera.currentCamera.WorldToScreenPoint(this.percentleft.gameObject.transform.position);
 		Vector2 vector2 = UICamera.currentCamera.WorldToScreenPoint(this.percentright.gameObject.transform.position);
 		Vector2 lastEventPosition = UICamera.lastEventPosition;
-		if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 0)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 0)
 		{
 			this.percent = (lastEventPosition.x - vector.x) / (vector2.x - vector.x);
 		}
@@ -615,7 +615,7 @@ public class BattleWindow : BaseWindow
 
 	private void SetPercent()
 	{
-		if (global::Singleton<LocalSettingStorage>.Get().fightOption != 1)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().fightOption != 1)
 		{
 			float num = this.lineTotalLength * this.percent;
 			Vector3 localPosition = this.percentZeroPos;
@@ -643,7 +643,7 @@ public class BattleWindow : BaseWindow
 	private void InitFightProgressOption()
 	{
 		this.percentGo.SetActive(false);
-		int fightOption = global::Singleton<LocalSettingStorage>.Get().fightOption;
+		int fightOption = Solarmax.Singleton<LocalSettingStorage>.Get().fightOption;
 		if (fightOption == 1)
 		{
 			this.ShowNewProgress1(false, null);
@@ -657,13 +657,13 @@ public class BattleWindow : BaseWindow
 			this.percentZeroPos = new Vector3(this.percetPic.transform.localPosition.x - this.lineTotalLength / 2f, this.percetPic.transform.localPosition.y, 0f);
 			UIAnchor component2 = this.percentGo.GetComponent<UIAnchor>();
 			component2.enabled = true;
-			if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 0)
+			if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 0)
 			{
 				component2.side = UIAnchor.Side.Bottom;
 				component2.relativeOffset.x = 0f;
 				component2.relativeOffset.y = 0.05f;
 			}
-			else if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 1)
+			else if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 1)
 			{
 				this.percentGo.transform.eulerAngles = new Vector3(0f, 0f, 90f);
 				this.percentGo.transform.localScale = new Vector3(0.56f, 0.8f, 0f);
@@ -674,7 +674,7 @@ public class BattleWindow : BaseWindow
 				this.percentLabel.transform.localPosition = new Vector3(this.percentLabel.transform.localPosition.x, -this.percentLabel.transform.localPosition.y, this.percentLabel.transform.localPosition.z);
 				this.ProcessLine.transform.localPosition = new Vector3(this.ProcessLine.transform.localPosition.x, -75f, this.ProcessLine.transform.localPosition.z);
 			}
-			else if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 2)
+			else if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 2)
 			{
 				this.percentGo.transform.eulerAngles = new Vector3(0f, 0f, 90f);
 				this.percentGo.transform.localScale = new Vector3(0.56f, 0.8f, 0f);
@@ -689,21 +689,21 @@ public class BattleWindow : BaseWindow
 	private void ShowNewProgress1(bool show, Node node = null)
 	{
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.sliderNumber = -1f;
-		if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 0)
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 0)
 		{
 			this.Processdown.SetActive(true);
 			this.Processleft.SetActive(false);
 			this.Processright.SetActive(false);
 			this.SetSelectEffect(this.unitdown[7]);
 		}
-		else if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 1)
+		else if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 1)
 		{
 			this.Processdown.SetActive(false);
 			this.Processleft.SetActive(true);
 			this.Processright.SetActive(false);
 			this.SetSelectEffect(this.unitleft[7]);
 		}
-		else if (global::Singleton<LocalSettingStorage>.Get().sliderMode == 2)
+		else if (Solarmax.Singleton<LocalSettingStorage>.Get().sliderMode == 2)
 		{
 			this.Processdown.SetActive(false);
 			this.Processleft.SetActive(false);
@@ -721,10 +721,10 @@ public class BattleWindow : BaseWindow
 		}
 		this.VoiceChatPanel.SetActive(true);
 		this.VoiceChannelPanel.SetActive(false);
-		this.BnSpeaker.SetChecked(global::Singleton<LocalSettingStorage>.Get().enableSpeaker);
-		this.BnMicrophone.SetChecked(global::Singleton<LocalSettingStorage>.Get().enableMicrophone);
-		this.BnTeamChannel.SetChecked(global::Singleton<LocalSettingStorage>.Get().enableTeamChannel);
-		this.BnRoomChannel.SetChecked(global::Singleton<LocalSettingStorage>.Get().enableRoomChannel);
+		this.BnSpeaker.SetChecked(Solarmax.Singleton<LocalSettingStorage>.Get().enableSpeaker);
+		this.BnMicrophone.SetChecked(Solarmax.Singleton<LocalSettingStorage>.Get().enableMicrophone);
+		this.BnTeamChannel.SetChecked(Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel);
+		this.BnRoomChannel.SetChecked(Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel);
 	}
 
 	private void RefreshSpeakers()
@@ -942,25 +942,25 @@ public class BattleWindow : BaseWindow
 
 	public void OnBnSpeakerClick()
 	{
-		VoiceEngine.EnableSpeaker(!global::Singleton<LocalSettingStorage>.Get().enableSpeaker);
+		VoiceEngine.EnableSpeaker(!Solarmax.Singleton<LocalSettingStorage>.Get().enableSpeaker);
 		bool flag = VoiceEngine.IsSpeakerEnable();
-		if (flag == global::Singleton<LocalSettingStorage>.Get().enableSpeaker)
+		if (flag == Solarmax.Singleton<LocalSettingStorage>.Get().enableSpeaker)
 		{
 			return;
 		}
-		global::Singleton<LocalSettingStorage>.Get().enableSpeaker = flag;
+		Solarmax.Singleton<LocalSettingStorage>.Get().enableSpeaker = flag;
 		this.BnSpeaker.SetChecked(flag);
 	}
 
 	private void SwitchMicrophone()
 	{
-		VoiceEngine.EnableMicrophone(!global::Singleton<LocalSettingStorage>.Get().enableMicrophone);
+		VoiceEngine.EnableMicrophone(!Solarmax.Singleton<LocalSettingStorage>.Get().enableMicrophone);
 		bool flag = VoiceEngine.IsMicrophoneEnable();
-		if (flag == global::Singleton<LocalSettingStorage>.Get().enableMicrophone)
+		if (flag == Solarmax.Singleton<LocalSettingStorage>.Get().enableMicrophone)
 		{
 			return;
 		}
-		global::Singleton<LocalSettingStorage>.Get().enableMicrophone = flag;
+		Solarmax.Singleton<LocalSettingStorage>.Get().enableMicrophone = flag;
 		this.BnMicrophone.SetChecked(flag);
 	}
 
@@ -971,13 +971,13 @@ public class BattleWindow : BaseWindow
 
 	private void SwitchRoomChannel()
 	{
-		VoiceEngine.EnableRoomChannel(!global::Singleton<LocalSettingStorage>.Get().enableRoomChannel);
+		VoiceEngine.EnableRoomChannel(!Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel);
 		bool flag = VoiceEngine.IsRoomChannelEnable();
-		if (flag == global::Singleton<LocalSettingStorage>.Get().enableRoomChannel)
+		if (flag == Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel)
 		{
 			return;
 		}
-		global::Singleton<LocalSettingStorage>.Get().enableRoomChannel = flag;
+		Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel = flag;
 		this.BnRoomChannel.SetChecked(flag);
 		this.BnTeamChannel.SetChecked(!flag);
 	}
@@ -989,54 +989,54 @@ public class BattleWindow : BaseWindow
 		{
 			return false;
 		}
-		global::Singleton<LocalSettingStorage>.Get().enableMicrophone = flag;
+		Solarmax.Singleton<LocalSettingStorage>.Get().enableMicrophone = flag;
 		this.BnMicrophone.SetChecked(flag);
 		return true;
 	}
 
 	public void OnBnRoomChannelClick()
 	{
-		bool flag = !global::Singleton<LocalSettingStorage>.Get().enableRoomChannel;
-		if (!this.SetMicrophoneStatus(flag, global::Singleton<LocalSettingStorage>.Get().enableTeamChannel))
+		bool flag = !Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel;
+		if (!this.SetMicrophoneStatus(flag, Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel))
 		{
 			return;
 		}
-		if (global::Singleton<LocalSettingStorage>.Get().enableMicrophone && !VoiceEngine.EnableRoomChannel(flag))
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().enableMicrophone && !VoiceEngine.EnableRoomChannel(flag))
 		{
 			return;
 		}
-		global::Singleton<LocalSettingStorage>.Get().enableRoomChannel = flag;
+		Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel = flag;
 		if (flag)
 		{
-			global::Singleton<LocalSettingStorage>.Get().enableTeamChannel = false;
+			Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel = false;
 		}
-		this.BnRoomChannel.SetChecked(global::Singleton<LocalSettingStorage>.Get().enableRoomChannel);
-		this.BnTeamChannel.SetChecked(global::Singleton<LocalSettingStorage>.Get().enableTeamChannel);
-		this.LblRoomChannel.SetActive(global::Singleton<LocalSettingStorage>.Get().enableRoomChannel);
-		this.LblTeamChannel.SetActive(global::Singleton<LocalSettingStorage>.Get().enableTeamChannel);
+		this.BnRoomChannel.SetChecked(Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel);
+		this.BnTeamChannel.SetChecked(Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel);
+		this.LblRoomChannel.SetActive(Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel);
+		this.LblTeamChannel.SetActive(Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel);
 		this.VoiceChannelPanel.SetActive(false);
 	}
 
 	public void OnBnTeamChannelClick()
 	{
-		bool flag = !global::Singleton<LocalSettingStorage>.Get().enableTeamChannel;
-		if (!this.SetMicrophoneStatus(global::Singleton<LocalSettingStorage>.Get().enableRoomChannel, flag))
+		bool flag = !Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel;
+		if (!this.SetMicrophoneStatus(Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel, flag))
 		{
 			return;
 		}
-		if (global::Singleton<LocalSettingStorage>.Get().enableMicrophone && !VoiceEngine.EnableRoomChannel(!flag))
+		if (Solarmax.Singleton<LocalSettingStorage>.Get().enableMicrophone && !VoiceEngine.EnableRoomChannel(!flag))
 		{
 			return;
 		}
-		global::Singleton<LocalSettingStorage>.Get().enableTeamChannel = flag;
+		Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel = flag;
 		if (flag)
 		{
-			global::Singleton<LocalSettingStorage>.Get().enableRoomChannel = false;
+			Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel = false;
 		}
-		this.BnRoomChannel.SetChecked(global::Singleton<LocalSettingStorage>.Get().enableRoomChannel);
-		this.BnTeamChannel.SetChecked(global::Singleton<LocalSettingStorage>.Get().enableTeamChannel);
-		this.LblRoomChannel.SetActive(global::Singleton<LocalSettingStorage>.Get().enableRoomChannel);
-		this.LblTeamChannel.SetActive(global::Singleton<LocalSettingStorage>.Get().enableTeamChannel);
+		this.BnRoomChannel.SetChecked(Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel);
+		this.BnTeamChannel.SetChecked(Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel);
+		this.LblRoomChannel.SetActive(Solarmax.Singleton<LocalSettingStorage>.Get().enableRoomChannel);
+		this.LblTeamChannel.SetActive(Solarmax.Singleton<LocalSettingStorage>.Get().enableTeamChannel);
 		this.VoiceChannelPanel.SetActive(false);
 	}
 

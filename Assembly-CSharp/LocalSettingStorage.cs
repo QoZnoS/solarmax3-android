@@ -2,7 +2,7 @@
 using Solarmax;
 using UnityEngine;
 
-public class LocalSettingStorage : global::Singleton<LocalSettingStorage>, ILocalStorage
+public class LocalSettingStorage : Solarmax.Singleton<LocalSettingStorage>, ILocalStorage
 {
 	public string Name()
 	{

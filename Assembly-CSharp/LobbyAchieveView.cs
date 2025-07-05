@@ -39,7 +39,7 @@ public class LobbyAchieveView : MonoBehaviour
 
 	public void ChangeLanguage()
 	{
-		AchievementGroup achievementGroup = global::Singleton<AchievementModel>.Get().achievementGroups[this.levelGroup];
+		AchievementGroup achievementGroup = Solarmax.Singleton<AchievementModel>.Get().achievementGroups[this.levelGroup];
 		for (int i = 0; i < achievementGroup.achievements.Count; i++)
 		{
 		}
@@ -48,7 +48,7 @@ public class LobbyAchieveView : MonoBehaviour
 	private IEnumerator ShowHandler()
 	{
 		yield return null;
-		AchievementGroup temp = global::Singleton<AchievementModel>.Get().achievementGroups[this.levelGroup];
+		AchievementGroup temp = Solarmax.Singleton<AchievementModel>.Get().achievementGroups[this.levelGroup];
 		for (int i = 0; i < temp.achievements.Count; i++)
 		{
 			Achievement achievement = temp.achievements[i];

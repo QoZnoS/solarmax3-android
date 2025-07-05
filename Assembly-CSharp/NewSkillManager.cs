@@ -169,8 +169,8 @@ public class NewSkillManager : Lifecycle2
 			NewSkillEffectConfig data3 = Solarmax.Singleton<NewSkillEffectConfigProvider>.Instance.GetData(list2[j]);
 			if (data3 != null)
 			{
-				global::Singleton<AssetManager>.Get().AddSprite(data3.effectName);
-				global::Singleton<AssetManager>.Get().AddSound(data3.audio);
+				Solarmax.Singleton<AssetManager>.Get().AddSprite(data3.effectName);
+				Solarmax.Singleton<AssetManager>.Get().AddSound(data3.audio);
 			}
 			j++;
 		}
@@ -215,8 +215,8 @@ public class NewSkillManager : Lifecycle2
 			NewSkillEffectConfig data3 = Solarmax.Singleton<NewSkillEffectConfigProvider>.Instance.GetData(list[j]);
 			if (data3 != null)
 			{
-				global::Singleton<AssetManager>.Get().AddSprite(data3.effectName);
-				global::Singleton<AssetManager>.Get().AddSound(data3.audio);
+				Solarmax.Singleton<AssetManager>.Get().AddSprite(data3.effectName);
+				Solarmax.Singleton<AssetManager>.Get().AddSound(data3.audio);
 			}
 			j++;
 		}

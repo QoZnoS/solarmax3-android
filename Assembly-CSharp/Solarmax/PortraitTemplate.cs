@@ -35,21 +35,21 @@ namespace Solarmax
 				{
 					url += ".png";
 				}
-				Texture2D texture2D = Singleton<PortraitManager>.Get().GetTexture2D(url);
+				Texture2D texture2D = Solarmax.Singleton<PortraitManager>.Get().GetTexture2D(url);
 				if (texture2D == null)
 				{
-					texture2D = Singleton<PortraitManager>.Get().GetTexture2D("select_head_1.png");
+					texture2D = Solarmax.Singleton<PortraitManager>.Get().GetTexture2D("select_head_1.png");
 				}
 				this.avatar.mainTexture = texture2D;
 				this.url = url;
-				if (Singleton<SkinConfigProvider>.Get().avatarDic.ContainsKey(url) && Singleton<SkinConfigProvider>.Get().avatarDic[url].skinType == 1)
+				if (Solarmax.Singleton<SkinConfigProvider>.Get().avatarDic.ContainsKey(url) && Solarmax.Singleton<SkinConfigProvider>.Get().avatarDic[url].skinType == 1)
 				{
 					int width = this.avatar.width;
 					int height = this.avatar.height;
-					SkinConfig skinConfig = Singleton<SkinConfigProvider>.Get().avatarDic[url];
+					SkinConfig skinConfig = Solarmax.Singleton<SkinConfigProvider>.Get().avatarDic[url];
 					if (this.effect == null)
 					{
-						UnityEngine.Object resources = Singleton<AssetManager>.Get().GetResources(skinConfig.bgImage);
+						UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources(skinConfig.bgImage);
 						this.effect = (UnityEngine.Object.Instantiate(resources) as GameObject);
 					}
 					if (this.effect != null)
@@ -92,7 +92,7 @@ namespace Solarmax
 		{
 			if (this.scroll == null)
 			{
-				Singleton<LoggerSystem>.Instance.Debug("NetTexure scrollview为空", new object[0]);
+                Solarmax.Singleton<LoggerSystem>.Instance.Debug("NetTexure scrollview为空", new object[0]);
 				return;
 			}
 			UIPanel component = this.scroll.GetComponent<UIPanel>();
@@ -119,12 +119,12 @@ namespace Solarmax
 					{
 						this.avatar.mainTexture = tex;
 					}
-					Singleton<PortraitManager>.Get().AddTexture2D(this.url, tex);
+                    Solarmax.Singleton<PortraitManager>.Get().AddTexture2D(this.url, tex);
 					www.Dispose();
 				}
 				else
 				{
-					Texture2D texture2D = Singleton<PortraitManager>.Get().GetTexture2D(this.url);
+					Texture2D texture2D = Solarmax.Singleton<PortraitManager>.Get().GetTexture2D(this.url);
 					if (texture2D != null)
 					{
 						this.avatar.mainTexture = texture2D;

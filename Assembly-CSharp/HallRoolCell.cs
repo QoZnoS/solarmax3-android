@@ -53,7 +53,7 @@ public class HallRoolCell : MonoBehaviour
 			Tips.Make(Tips.TipsType.FlowUp, LanguageDataProvider.GetValue(2201), 1f);
 			return;
 		}
-		global::Singleton<LocalPlayer>.Get().HomeWindow = "HallWindow";
+		Solarmax.Singleton<LocalPlayer>.Get().HomeWindow = "HallWindow";
 		Solarmax.Singleton<NetSystem>.Instance.helper.StartMatchReq(MatchType.MT_Room, this.roomID, string.Empty, CooperationType.CT_Null, 0, false, string.Empty, -1, string.Empty, true);
 	}
 
@@ -64,7 +64,7 @@ public class HallRoolCell : MonoBehaviour
 			Tips.Make(Tips.TipsType.FlowUp, LanguageDataProvider.GetValue(2202), 1f);
 			return;
 		}
-		global::Singleton<LocalPlayer>.Get().HomeWindow = "HallWindow";
+		Solarmax.Singleton<LocalPlayer>.Get().HomeWindow = "HallWindow";
 		Solarmax.Singleton<NetSystem>.Instance.helper.StartMatchReq(MatchType.MT_Room, this.roomID, string.Empty, CooperationType.CT_Null, 0, false, string.Empty, -1, string.Empty, false);
 	}
 

@@ -13,7 +13,7 @@ public class MailWindow : BaseWindow
 		base.RegisterEvent(EventId.OnMailReadResponse);
 		base.RegisterEvent(EventId.OnMailListResponse);
 		base.RegisterEvent(EventId.OnMailDelResponse);
-		this.mailModel = global::Singleton<MailModel>.Get();
+		this.mailModel = Solarmax.Singleton<MailModel>.Get();
 		return true;
 	}
 
@@ -69,7 +69,7 @@ public class MailWindow : BaseWindow
 			return;
 		}
 		Solarmax.Singleton<NetSystem>.Get().helper.DeleteMail(config.mailId);
-		global::Singleton<MailModel>.Get().DeleteMail(config.mailId);
+		Solarmax.Singleton<MailModel>.Get().DeleteMail(config.mailId);
 	}
 
 	public void OnMailItemClicked(GameObject go)
@@ -127,11 +127,11 @@ public class MailWindow : BaseWindow
 	{
 		this.UpdateMailInfo(null, null);
 		this.mailItemsTable.transform.DestroyChildren();
-		if (global::Singleton<MailModel>.Get().mailList == null)
+		if (Solarmax.Singleton<MailModel>.Get().mailList == null)
 		{
 			return;
 		}
-		List<Mail> mail = global::Singleton<MailModel>.Get().mailList.mail;
+		List<Mail> mail = Solarmax.Singleton<MailModel>.Get().mailList.mail;
 		for (int i = 0; i < mail.Count; i++)
 		{
 			GameObject gameObject = this.mailItemsTable.gameObject.AddChild(this.mailItemTemplate);

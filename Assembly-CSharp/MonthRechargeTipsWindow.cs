@@ -14,8 +14,8 @@ public class MonthRechargeTipsWindow : BaseWindow
 		base.OnShow();
 		DateTime d = new DateTime(1970, 1, 1);
 		long num = (long)(Solarmax.Singleton<TimeSystem>.Instance.GetServerTime() - d).TotalSeconds;
-		long num2 = (global::Singleton<LocalPlayer>.Get().month_card_end - num) / 86400L;
-		long num3 = (global::Singleton<LocalPlayer>.Get().month_card_end - num) % 86400L;
+		long num2 = (Solarmax.Singleton<LocalPlayer>.Get().month_card_end - num) / 86400L;
+		long num3 = (Solarmax.Singleton<LocalPlayer>.Get().month_card_end - num) % 86400L;
 		if (num3 > 0L)
 		{
 			num2 += 1L;

@@ -34,7 +34,7 @@ namespace Solarmax
 		{
 			if (this.info != null)
 			{
-				string text = Singleton<CultureInfoDict>.Get().FormatCurrency(this.info.feeValue, this.info.currencyType);
+				string text = Solarmax.Singleton<CultureInfoDict>.Get().FormatCurrency(this.info.feeValue, this.info.currencyType);
 				if (!string.IsNullOrEmpty(text))
 				{
 					return text;

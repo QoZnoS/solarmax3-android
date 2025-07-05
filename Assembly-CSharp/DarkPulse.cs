@@ -66,7 +66,7 @@ public class DarkPulse : EffectNode
 		}
 		if (base.go == null)
 		{
-			UnityEngine.Object resources = global::Singleton<AssetManager>.Get().GetResources("Effect_Door");
+			UnityEngine.Object resources = Solarmax.Singleton<AssetManager>.Get().GetResources("Effect_Door");
 			base.go = (UnityEngine.Object.Instantiate(resources) as GameObject);
 			this.anitor = base.go.GetComponent<Animator>();
 			this.sprites = base.go.GetComponentsInChildren<SpriteRenderer>();

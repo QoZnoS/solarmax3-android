@@ -135,7 +135,7 @@ public class ReplayBattleWindow : BaseWindow
 
 	public void OnCloseClick()
 	{
-		global::Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
+		Solarmax.Singleton<AudioManger>.Get().PlayAudioBG("Empty", 0.5f);
 		if (this.showForWatch)
 		{
 			Solarmax.Singleton<UISystem>.Get().ShowWindow("CommonDialogWindow");
