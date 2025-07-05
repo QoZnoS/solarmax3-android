@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Solarmax;
 
-public class LocalTaskStorage : global::Singleton<LocalTaskStorage>, ILocalStorage
+public class LocalTaskStorage : Solarmax.Singleton<LocalTaskStorage>, ILocalStorage
 {
 	public string Name()
 	{
@@ -78,6 +78,10 @@ public class LocalTaskStorage : global::Singleton<LocalTaskStorage>, ILocalStora
 			});
 			string key = array3[0];
 			string text2 = array3[1];
+			if (!Solarmax.Singleton<TaskConfigProvider>.Get().dataList.ContainsKey(key))
+			{
+				continue;
+			}
 			if (text2.Equals("0"))
 			{
 				this.dicTask[key] = 0;
