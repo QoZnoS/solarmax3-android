@@ -195,5 +195,6 @@ public enum EventId
 	OnMailListResponse,
 	OnMailReadResponse,
 	OnMailGetItemResponse,
-	OnMailDelResponse
+	OnMailDelResponse,
+	OnHttpCreateAccountResponse
 }

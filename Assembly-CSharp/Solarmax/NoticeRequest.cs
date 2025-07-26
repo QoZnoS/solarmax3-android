@@ -49,8 +49,12 @@ namespace Solarmax
 		public static void GetNotice(Action onResponseDelegate)
 		{
 			NoticeRequest.Notice = null;
-			string[] gameHosts = UpgradeRequest.GetGameHosts();
-			if (gameHosts == null)
+            //string[] gameHosts = UpgradeRequest.GetGameHosts();
+            string[] gameHosts = new string[]
+			{
+                "http://192.168.1.13:4242/"
+			};
+            if (gameHosts == null)
 			{
 				MonoSingleton<FlurryAnalytis>.Instance.LogEvent("GetNoticeError", "info", "EmptyHosts");
 				Debug.LogError("GetNotice: Empty hosts");

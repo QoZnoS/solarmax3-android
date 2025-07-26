@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace Solarmax
@@ -71,9 +72,14 @@ namespace Solarmax
 			{
 				if (keyValuePair.Value.levelGroup.Equals(groupId))
 				{
-					foreach (string key in keyValuePair.Value.achieveList)
+                    Dictionary<string, AchievementConfig> allAchievement = Solarmax.Singleton<AchievementConfigProvider>.Get().dataList;
+
+                    string[] achieveList = keyValuePair.Value.achieveList
+						.Where(key => allAchievement.ContainsKey(key))
+						.ToArray();
+                    foreach (string key in achieveList)
 					{
-						AchievementConfig achievementConfig = Solarmax.Singleton<AchievementConfigProvider>.Get().dataList[key];
+						AchievementConfig achievementConfig = allAchievement[key];
 						if (achievementConfig.difficult == diffcult)
 						{
 							foreach (int item in achievementConfig.types)
@@ -85,7 +91,7 @@ namespace Solarmax
 							}
 						}
 					}
-					return list;
+                    return list;
 				}
 			}
 			return list;

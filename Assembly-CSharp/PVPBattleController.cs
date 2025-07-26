@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using NetMessage;
 using Plugin;
 using Solarmax;
@@ -71,9 +72,9 @@ public class PVPBattleController : IBattleController, Lifecycle2
 	public void OnRecievedFramePacket(SCFrame frame)
 	{
 		List<global::Packet> list = new List<global::Packet>();
-		for (int i = 0; i < frame.users.Count; i++)
+        for (int i = 0; i < frame.users.Count; i++)
 		{
-			if (frame.users.Count > 4)
+            if (frame.users.Count > 4)
 			{
 				Debug.LogError(" replay error mapid= " + Solarmax.Singleton<BattleSystem>.Instance.battleData.matchId);
 			}
@@ -87,12 +88,12 @@ public class PVPBattleController : IBattleController, Lifecycle2
 				num = frame.users[i];
 			}
 			PbFrames pbFrames = frame.frames[i];
-			if (pbFrames != null && pbFrames.frames.Count != 0)
+            if (pbFrames != null && pbFrames.frames.Count != 0)
 			{
 				for (int j = 0; j < pbFrames.frames.Count; j++)
 				{
 					PbFrame pbFrame = pbFrames.frames[j];
-					if (pbFrame != null)
+                    if (pbFrame != null)
 					{
 						global::Packet packet = new global::Packet();
 						if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleType == BattlePlayType.Replay)
@@ -105,8 +106,8 @@ public class PVPBattleController : IBattleController, Lifecycle2
 						}
 						packet.packet = Json.DeCode<FramePacket>(pbFrame.content);
 						list.Add(packet);
-					}
-				}
+                    }
+                }
 			}
 		}
 		this.battleSystem.lockStep.AddFrame(frame.frameNum, list.ToArray());
@@ -146,13 +147,13 @@ public class PVPBattleController : IBattleController, Lifecycle2
 				}
 			}
 			this.battleSystem.lockStep.AddFrame(frameNum, list.ToArray());
-			list.Clear();
+            list.Clear();
 		}
 	}
 
 	public void OnRunFramePacket(FrameNode frameNode)
 	{
-		this.battleSystem.sceneManager.RunFramePacket(frameNode);
+        this.battleSystem.sceneManager.RunFramePacket(frameNode);
 	}
 
 	public void OnPlayerMove(Node from, Node to)
@@ -548,16 +549,15 @@ public class PVPBattleController : IBattleController, Lifecycle2
 
 	private void SendGiveUpFrame()
 	{
-		byte[] content = Json.EnCodeBytes(new FramePacket
+        byte[] content = Json.EnCodeBytes(new FramePacket
 		{
 			type = 2,
-			//giveup = new GiveUpPacket(),
-			giveup = 
+			giveup = new GiveUpPacket
 			{
 				team = this.battleData.currentTeam
 			}
 		});
-		PbFrame pbFrame = new PbFrame();
+        PbFrame pbFrame = new PbFrame();
 		CSFrame csframe = new CSFrame();
 		pbFrame.content = content;
 		csframe.frame = pbFrame;
@@ -787,8 +787,7 @@ public class PVPBattleController : IBattleController, Lifecycle2
 					byte[] content2 = Json.EnCodeBytes(new FramePacket
 					{
 						type = 16,
-						//effect = new DriftEffect(),
-						effect = 
+						effect = new DriftEffect
 						{
 							tag = this.bombTarget.tag,
 							effect = "Eff_XJ_Djs",
@@ -811,8 +810,7 @@ public class PVPBattleController : IBattleController, Lifecycle2
 				byte[] content3 = Json.EnCodeBytes(new FramePacket
 				{
 					type = 6,
-					//effect = new DriftEffect(),
-					effect = 
+					effect = new DriftEffect
 					{
 						tag = this.bombTarget.tag,
 						effect = "EFF_XJ_Boom_1",
@@ -835,8 +833,7 @@ public class PVPBattleController : IBattleController, Lifecycle2
 				byte[] content4 = Json.EnCodeBytes(new FramePacket
 				{
 					type = 4,
-					//bomb = new PlanetBomb(),
-					bomb = 
+					bomb = new PlanetBomb
 					{
 						tag = this.bombTarget.tag
 					}

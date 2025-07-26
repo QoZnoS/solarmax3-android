@@ -72,7 +72,9 @@ public class BattleWindow : BaseWindow
 		Color color = team.color;
 		color.a = 0.7f;
 		this.populationValueLabel.text = string.Format("{0}/{1}", team.current, team.currentMax);
-		this.ShowModeUI();
+        this.populationValueLabel.color = color;
+        this.populationLabel.color = color;
+        this.ShowModeUI();
 		this.ShowPlayerInfo();
 		this.TimerProc();
 		UIEventListener component = this.ProcessAram.GetComponent<UIEventListener>();

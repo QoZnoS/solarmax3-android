@@ -446,8 +446,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 0,
-						//move = new MovePacket(),
-						move = 
+						move = new MovePacket
 						{
 							team = (TEAM)int.Parse(scriptFrame2.pars.Split(new char[]
 							{
@@ -473,8 +472,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 7,
-						//attack = new PlanetAttack(),
-						attack = 
+						attack = new PlanetAttack
 						{
 							tag = scriptFrame2.tag
 						}
@@ -485,8 +483,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 8,
-						//addattack = new AddAttack(),
-						addattack = 
+						addattack = new AddAttack
 						{
 							tag = scriptFrame2.tag
 						}
@@ -497,8 +494,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 9,
-						//gunattack = new GunturretAttack(),
-						gunattack = 
+						gunattack = new GunturretAttack
 						{
 							tag = scriptFrame2.tag
 						}
@@ -509,8 +505,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 10,
-						//laserattack = new LasergunAttack(),
-						laserattack = 
+						laserattack = new LasergunAttack
 						{
 							tag = scriptFrame2.tag
 						}
@@ -521,8 +516,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 11,
-						//twistattack = new TwistAttack(),
-						twistattack = 
+						twistattack = new TwistAttack
 						{
 							tag = scriptFrame2.tag
 						}
@@ -533,8 +527,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 14,
-						//skill = new SkillPacket(),
-						skill = 
+						skill = new SkillPacket
 						{
 							tag = scriptFrame2.tag,
 							from = (TEAM)int.Parse(scriptFrame2.pars.Split(new char[]
@@ -557,8 +550,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 15,
-						//unknown = new UnknownSkillPacket(),
-						unknown = 
+						unknown = new UnknownSkillPacket
 						{
 							tag = scriptFrame2.tag,
 							from = (TEAM)int.Parse(scriptFrame2.pars.Split(new char[]
@@ -585,8 +577,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 4,
-						//bomb = new PlanetBomb(),
-						bomb = 
+						bomb = new PlanetBomb
 						{
 							tag = scriptFrame2.tag
 						}
@@ -597,8 +588,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 6,
-						//effect = new DriftEffect(),
-						effect = 
+						effect = new DriftEffect
 						{
 							tag = scriptFrame2.tag,
 							effect = scriptFrame2.pars.Split(new char[]
@@ -621,8 +611,7 @@ public class ReplayCollectManager
 					array = Json.EnCodeBytes(new FramePacket
 					{
 						type = 12,
-						//team = new PlanetTeam(),
-						team = 
+						team = new PlanetTeam
 						{
 							tag = scriptFrame2.tag,
 							t = (TEAM)int.Parse(scriptFrame2.pars)

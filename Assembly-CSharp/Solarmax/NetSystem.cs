@@ -29,7 +29,7 @@ namespace Solarmax
 
 		public void Tick(float interval)
 		{
-			foreach (INetConnector netConnector in this.mConnectorMap.Values)
+            foreach (INetConnector netConnector in this.mConnectorMap.Values)
 			{
 				netConnector.Tick(interval);
 			}
@@ -83,7 +83,30 @@ namespace Solarmax
 		public void Send<T>(int packetId, T proto, bool bShowC = true) where T : class
 		{
             Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("NetSystem  Send  with id {0}", packetId), new object[0]);
-		}
+            int key = 1;
+            if (this.mConnectorMap.ContainsKey(key))
+            {
+                NetPacket netPacket = new NetPacket(packetId);
+                netPacket.EncodeProto<T>(proto);
+                if (this.GetConnector().GetConnectStatus() != ConnectionStatus.CONNECTED && bShowC)
+                {
+                    if (this.IsReconnecting)
+                    {
+                        this.mCacheMap.Clear();
+                    }
+                    if (!this.IsReconnecting)
+                    {
+                        this.IsReconnecting = true;
+                        Singleton<UISystem>.Instance.ShowWindow("ReconnectWindow");
+                    }
+                    this.mCacheMap.Push(netPacket);
+                }
+                else
+                {
+                    this.mConnectorMap[key].SendPacket(netPacket);
+                }
+            }
+        }
 
 		public void Send2Cache<T>(int packetId, T proto) where T : class
 		{

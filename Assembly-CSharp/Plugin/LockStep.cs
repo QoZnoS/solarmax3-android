@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using NetMessage;
+using Solarmax;
 using UnityEngine;
 
 namespace Plugin
@@ -141,7 +144,7 @@ namespace Plugin
 
 		public void AddFrame(int frame, object[] msgList)
 		{
-			if (this.lastFrame >= frame)
+            if (this.lastFrame >= frame)
 			{
 				return;
 			}
@@ -149,7 +152,7 @@ namespace Plugin
 			frameNode.frame = frame;
 			frameNode.msgList = msgList;
 			this.frameQueue.Enqueue(frameNode);
-			this.lastFrame = frame;
+            this.lastFrame = frame;
 		}
 
 		public void RunToFrame(int frame)
@@ -359,16 +362,16 @@ namespace Plugin
 				return;
 			}
 			this.currentFrame++;
-			if (this.currentFrame % this.logicFrame == 0)
+            if (this.currentFrame % this.logicFrame == 0)
 			{
 				this.currentNode = this.frameQueue.Dequeue();
-				if (this.currentNode.frame * this.logicFrame != this.currentFrame && this.frameError != null)
+                if (this.currentNode.frame * this.logicFrame != this.currentFrame && this.frameError != null)
 				{
-					this.frameError(this.currentFrame, this.currentNode);
+                    this.frameError(this.currentFrame, this.currentNode);
 				}
 				if (this.packetHandler != null)
 				{
-					this.packetHandler(this.currentNode);
+                    this.packetHandler(this.currentNode);
 				}
 			}
 			this.currentFrameTimer = this.FRAME_TIME;

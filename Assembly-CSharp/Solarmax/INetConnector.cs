@@ -44,7 +44,8 @@ namespace Solarmax
 
 		public virtual void Connect(string address, int port)
 		{
-		}
+            this.mRemoteHost = new RemoteHost(address, port);
+        }
 
 		public virtual void SendPacket(IPacket packet)
 		{

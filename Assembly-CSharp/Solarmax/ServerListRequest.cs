@@ -19,8 +19,8 @@ namespace Solarmax
             Solarmax.Singleton<LoggerSystem>.Instance.Info("Request for game server", new object[0]);
 			string[] array = new string[]
 			{
-				"服务器"
-			};
+                "http://192.168.1.13:4242/"
+            };
 			if (array == null || array.Length < 1)
 			{
 				MonoSingleton<FlurryAnalytis>.Instance.LogEvent("GetServerListError", "info", "EmptyHosts");
@@ -34,7 +34,7 @@ namespace Solarmax
 			string languageNameConfig = Solarmax.Singleton<LanguageDataProvider>.Get().GetLanguageNameConfig();
 			string param = string.Format("language={0}", UnityWebRequest.EscapeURL(languageNameConfig));
 			ServerListRequest.mRequestor = new WebRequestor<ServerListResponse>("GetServerList", array, "serverList", param, false, onResponseDelegate);
-			ServerListRequest.mRequestor.StartRequest(-1);
+            ServerListRequest.mRequestor.StartRequest(-1);
 		}
 
 		private static WebRequestor<ServerListResponse> mRequestor;

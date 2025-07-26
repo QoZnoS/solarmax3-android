@@ -111,11 +111,11 @@ public class SceneManager : Lifecycle2
 
 	public void RunFramePacket(FrameNode node)
 	{
-		if (node.msgList == null || node.msgList.Length == 0)
+        if (node.msgList == null || node.msgList.Length == 0)
 		{
 			return;
 		}
-		for (int i = 0; i < node.msgList.Length; i++)
+        for (int i = 0; i < node.msgList.Length; i++)
 		{
 			this.ExcutePacket(node.msgList[i] as global::Packet);
 		}
@@ -123,7 +123,7 @@ public class SceneManager : Lifecycle2
 
 	private void ExcutePacket(global::Packet packet)
 	{
-		if (packet.packet.type == 0)
+        if (packet.packet.type == 0)
 		{
 			if (packet.packet.move.team == TEAM.Neutral)
 			{

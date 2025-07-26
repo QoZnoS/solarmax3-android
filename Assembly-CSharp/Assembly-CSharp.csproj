@@ -974,6 +974,7 @@
     <Compile Include="Solarmax\ConnectionType.cs" />
     <Compile Include="Solarmax\Converter.cs" />
     <Compile Include="Solarmax\Coordinates.cs" />
+    <Compile Include="Solarmax\CreateAccountRequest.cs" />
     <Compile Include="Solarmax\CTagGuideConfig.cs" />
     <Compile Include="Solarmax\DataHandlerSystem.cs" />
     <Compile Include="Solarmax\DataProviderSystem.cs" />

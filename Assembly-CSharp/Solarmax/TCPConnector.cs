@@ -58,41 +58,80 @@ namespace Solarmax
 		public override void Connect(string address, int port)
 		{
             Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("TCPConnector  try connect addr {0} port {1}", address, port), new object[0]);
-			IPEndPoint ipendPoint = TCPConnector.CreateIPEndPoint(address, port);
-			base.SetConnectStatus(ConnectionStatus.CONNECTING);
-			base.Connect(address, port);
-			if (ipendPoint != null)
-			{
-				this.mSocket = new TcpClient(ipendPoint.AddressFamily);
-			}
-			else
-			{
-				this.mSocket = new TcpClient();
-			}
-			new AsyncThread(delegate(AsyncThread thread)
-			{
-				base.SetConnectStatus(ConnectionStatus.CONNECTED);
-				base.CallbackConnected(base.IsConnected());
-			}).Start();
-		}
+			//IPEndPoint ipendPoint = TCPConnector.CreateIPEndPoint(address, port);
+			//base.SetConnectStatus(ConnectionStatus.CONNECTING);
+			//base.Connect(address, port);
+			//if (ipendPoint != null)
+			//{
+			//	this.mSocket = new TcpClient(ipendPoint.AddressFamily);
+			//}
+			//else
+			//{
+			//	this.mSocket = new TcpClient();
+			//}
+			//new AsyncThread(delegate(AsyncThread thread)
+			//{
+			//	base.SetConnectStatus(ConnectionStatus.CONNECTED);
+			//	base.CallbackConnected(base.IsConnected());
+			//}).Start();
+
+            IPEndPoint endPoint = TCPConnector.CreateIPEndPoint(address, port);
+            base.SetConnectStatus(ConnectionStatus.CONNECTING);
+            base.Connect(address, port);
+            if (endPoint != null)
+            {
+                this.mSocket = new TcpClient(endPoint.AddressFamily);
+            }
+            else
+            {
+                this.mSocket = new TcpClient();
+            }
+            AsyncThread asyncThread = new AsyncThread(delegate (AsyncThread thread)
+            {
+                try
+                {
+                    this.mSocket.NoDelay = true;
+                    if (endPoint != null)
+                    {
+                        this.mSocket.Connect(endPoint);
+                    }
+                    else
+                    {
+                        this.mSocket.Connect(this.mRemoteHost.GetAddress(), this.mRemoteHost.GetPort());
+                    }
+                    this.mSocket.GetStream().BeginRead(this.mNetStream.AsyncPipeIn, 0, INetConnector.MAX_SOCKET_BUFFER_SIZE, this.mReadCompleteCallback, this);
+                    this.SetConnectStatus(ConnectionStatus.CONNECTED);
+                }
+                catch (Exception ex)
+                {
+                    Singleton<LoggerSystem>.Instance.Error(ex.Message, new object[0]);
+                    this.SetConnectStatus(ConnectionStatus.ERROR);
+                }
+                this.CallbackConnected(this.IsConnected());
+            });
+            asyncThread.Start();
+        }
 
 		public override void SendPacket(IPacket packet)
 		{
-			int packetType = packet.GetPacketType();
-			PacketHelper helper = Solarmax.Singleton<NetSystem>.Instance.helper;
-			if (packetType == 210)
-			{
-                Solarmax.Singleton<LoggerSystem>.Instance.Info("TCPConnector SendPacket with ID 210", new object[0]);
-				helper.OnLoadOneChapter(1, default(PacketEvent));
-				return;
-			}
-			if (packetType == 291)
-			{
-                Solarmax.Singleton<LoggerSystem>.Instance.Info("TCPConnector SendPacket with ID 291", new object[0]);
-				helper.OnSCAdeward(1, default(PacketEvent));
-				return;
-			}
-            Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("Warning: TCPConnector SendPacket Type Error with type {0}", packetType), new object[0]);
+            byte[] buffer = null;
+            this.mPacketFormat.GenerateBuffer(ref buffer, packet);
+            this.mNetStream.PushOutStream(buffer);
+   //         int packetType = packet.GetPacketType();
+			//PacketHelper helper = Solarmax.Singleton<NetSystem>.Instance.helper;
+			//if (packetType == 210)
+			//{
+   //             Solarmax.Singleton<LoggerSystem>.Instance.Info("TCPConnector SendPacket with ID 210", new object[0]);
+			//	helper.OnLoadOneChapter(1, default(PacketEvent));
+			//	return;
+			//}
+			//if (packetType == 291)
+			//{
+   //             Solarmax.Singleton<LoggerSystem>.Instance.Info("TCPConnector SendPacket with ID 291", new object[0]);
+			//	helper.OnSCAdeward(1, default(PacketEvent));
+			//	return;
+			//}
+   //         Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("Warning: TCPConnector SendPacket Type Error with type {0}", packetType), new object[0]);
 		}
 
 		public override void DisConnect()

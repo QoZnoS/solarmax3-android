@@ -72,6 +72,7 @@ public class LogoWindow : BaseWindow
 		base.RegisterEvent(EventId.OnUploadOldVersionData);
 		base.RegisterEvent(EventId.OnStartSingleBattle);
 		base.RegisterEvent(EventId.OnSelectServerList);
+		base.RegisterEvent(EventId.OnHttpCreateAccountResponse);
 		return true;
 	}
 
@@ -88,8 +89,8 @@ public class LogoWindow : BaseWindow
 		this.logoutBtn.SetActive(false);
 		Solarmax.Singleton<AssetManager>.Get().LoadShipAudio();
 		Solarmax.Singleton<LocalStorageSystem>.Get().LoadStorage();
-		this.OnVisitorLoginClick();
-		MonoSingleton<FlurryAnalytis>.Instance.LogEvent("LoginWindowShow");
+        //this.OnVisitorLoginClick();
+        MonoSingleton<FlurryAnalytis>.Instance.LogEvent("LoginWindowShow");
 	}
 
 	public override void OnHide()
@@ -104,9 +105,28 @@ public class LogoWindow : BaseWindow
 		}
 	}
 
+	private void afterCreateAccount()
+	{
+        Solarmax.Singleton<ThirdPartySystem>.Instance.OnSDKLogin(
+            CreateAccountRequest.Account.AccountName,
+            CreateAccountRequest.Account.Token
+        );
+    }
+
 	public override void OnUIEventHandler(EventId eventId, params object[] args)
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("OnUIEventHandler", new object[0]);
+		if (eventId == EventId.OnHttpCreateAccountResponse)
+		{
+			string content = string.Format("服务器随机的账号为：{0}\ntoken为：{1}\n当前UUID为：{2}", CreateAccountRequest.Account.AccountName, CreateAccountRequest.Account.Token, Solarmax.Singleton<EngineSystem>.Instance.GetUUID());
+            Solarmax.Singleton<UISystem>.Get().ShowWindow("CommonDialogWindow");
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnCommonDialog, new object[]
+            {
+                1,
+                content,
+                new EventDelegate(this.afterCreateAccount)
+            });
+        }
 		if (eventId == EventId.RequestUserResult)
 		{
 			Solarmax.Singleton<LoggerSystem>.Instance.Info("OnUIEventHandler -- RequestUserResult", new object[0]);
@@ -114,7 +134,7 @@ public class LogoWindow : BaseWindow
 			if (errCode == ErrCode.EC_Ok)
 			{
 				Solarmax.Singleton<AchievementModel>.Get().Init(true);
-				this.StartSingleGame();
+                this.StartSingleGame();
 			}
 			else if (errCode == ErrCode.EC_NoExist)
 			{
@@ -305,12 +325,12 @@ public class LogoWindow : BaseWindow
 	{
 		MonoSingleton<FlurryAnalytis>.Instance.LogEvent("ShowLoginButton");
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("Start Login", new object[0]);
-		this.StatrButton.SetActive(false);
+		this.StatrButton.SetActive(true);
 		this.PlayAnimationLoop("LogoWindow_in");
-		this.OnLoginClick();
-	}
+        //this.OnLoginClick();
+    }
 
-	public void ReconnectResume()
+    public void ReconnectResume()
 	{
 		BGManager.Inst.AirShipFly(1, 0f, ShowWindowParams.None);
 		global::Coroutine.DelayDo(1.5f, new EventDelegate(delegate()
@@ -332,15 +352,50 @@ public class LogoWindow : BaseWindow
 	public void OnLoginClick()
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("On Login Click", new object[0]);
-		if (this.isLoginGameServer)
-		{
-			Solarmax.Singleton<LoggerSystem>.Instance.Info("正在登陆游戏服务器", new object[0]);
-			return;
-		}
-		this.isLoginGameServer = true;
-		this.StatrButton.SetActive(false);
-		GatewayRequest.GetGateway(this.selectedServer, new Action(this.LoginGate));
-	}
+		//if (this.isLoginGameServer)
+		//{
+		//	Solarmax.Singleton<LoggerSystem>.Instance.Info("正在登陆游戏服务器", new object[0]);
+		//	return;
+		//}
+		//this.isLoginGameServer = true;
+		//this.StatrButton.SetActive(false);
+		//GatewayRequest.GetGateway(this.selectedServer, new Action(this.LoginGate));
+
+        if (this.IsCanLogin)
+        {
+            if (this.isLoginGameServer)
+            {
+                Solarmax.Singleton<LoggerSystem>.Instance.Info("正在登陆游戏服务器", new object[0]);
+                return;
+            }
+            if (this.selectedServer == null)
+            {
+                Tips.Make(Tips.TipsType.FlowUp, LanguageDataProvider.GetValue(2134), 1f);
+                return;
+            }
+            this.isLoginGameServer = true;
+            this.StatrButton.SetActive(false);
+            GatewayRequest.GetGateway(this.selectedServer, new Action(this.LoginGate));
+            return;
+        }
+        else
+        {
+            if (this.isLogining)
+            {
+                return;
+            }
+            this.isLogining = true;
+            Debug.Log("call MiGameSDK OnLoginClick...66");
+            //MiGameLoginSDK.loginAccount();
+			// 使用请求代替 migame 的登录，根据 uuid 返回 account_name 和 token，起到相同的效果
+			// 可以在服务端做映射，可以让不同uuid获得相同的账号，但是目前只能开设后门实现，正常还是仅支持一个设备一个账号
+            CreateAccountRequest.CreateAccount(delegate
+            {
+                Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.OnHttpCreateAccountResponse);
+            });
+            return;
+        }
+    }
 
 	public void OnVisitorLoginClick()
 	{
@@ -392,10 +447,30 @@ public class LogoWindow : BaseWindow
 	private void LoginGate()
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("Login Gate.", new object[0]);
-		this.serverPanel.SetActive(false);
+        if (GatewayRequest.Response == null)
+        {
+            return;
+        }
+        if (string.IsNullOrEmpty(GatewayRequest.Response.Host))
+        {
+            string text = string.Format("EmptyHost - {0}:{1}", this.selectedServer.Name, this.selectedServer.Url);
+            Debug.LogErrorFormat("GetGatewayFailed: {0}", new object[]
+            {
+                text
+            });
+            MonoSingleton<FlurryAnalytis>.Instance.LogEvent("GetGatewayFailed", "info", text);
+            return;
+        }
+        if (Solarmax.Singleton<LocalSettingStorage>.Get().serverUrl != this.selectedServer.Url)
+        {
+            Solarmax.Singleton<LocalSettingStorage>.Get().serverUrl = this.selectedServer.Url;
+            Solarmax.Singleton<LocalStorageSystem>.Get().SaveLocalSetting();
+        }
+        this.serverPanel.SetActive(false);
 		this.progressGo.SetActive(true);
 		Solarmax.Singleton<ThirdPartySystem>.Instance.Login();
-		global::Coroutine.Start(this.ConnectGate());
+		MonoSingleton<FlurryAnalytis>.Instance.LogEvent("GetGatewaySuccess", "host", GatewayRequest.Response.Host);
+        global::Coroutine.Start(this.ConnectGate());
 	}
 
 	private IEnumerator ConnectGate()
@@ -414,16 +489,32 @@ public class LogoWindow : BaseWindow
 		MonoSingleton<FlurryAnalytis>.Instance.LogEvent("PreloadEntity");
 		yield return new WaitForSeconds(0.4f);
 		yield return Solarmax.Singleton<NetSystem>.Instance.helper.ConnectServer(true);
-		this.SetProgress(0.8f);
-		Solarmax.Singleton<LoggerSystem>.Instance.Info("Connect Gate --- Progress 80%", new object[0]);
-		yield return new WaitForSeconds(0.2f);
-		UILabel uilabel2 = this.loadingTip;
-		uilabel2.text += LanguageDataProvider.GetValue(311);
-		yield return new WaitForSeconds(0.2f);
-		this.SetProgress(1f);
-		Solarmax.Singleton<LoggerSystem>.Instance.Info("Connect Gate --- Progress 100%", new object[0]);
-		yield return new WaitForSeconds(0.3f);
-		this.CheckUser();
+        if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED)
+        {
+            MonoSingleton<FlurryAnalytis>.Instance.LogEvent("ConnectGateSuccess", "host", GatewayRequest.Response.Host);
+            this.SetProgress(0.8f);
+            yield return new WaitForSeconds(0.2f);
+            UILabel uilabel2 = this.loadingTip;
+            uilabel2.text += LanguageDataProvider.GetValue(311);
+            yield return new WaitForSeconds(0.2f);
+            this.SetProgress(1f);
+            yield return new WaitForSeconds(0.3f);
+            this.CheckUser();
+        }
+        else
+        {
+            MonoSingleton<FlurryAnalytis>.Instance.LogEvent("ConnectGateFailed", "host", GatewayRequest.Response.Host);
+        }
+  //      this.SetProgress(0.8f);
+		//Solarmax.Singleton<LoggerSystem>.Instance.Info("Connect Gate --- Progress 80%", new object[0]);
+		//yield return new WaitForSeconds(0.2f);
+		//UILabel uilabel2 = this.loadingTip;
+		//uilabel2.text += LanguageDataProvider.GetValue(311);
+		//yield return new WaitForSeconds(0.2f);
+		//this.SetProgress(1f);
+		//Solarmax.Singleton<LoggerSystem>.Instance.Info("Connect Gate --- Progress 100%", new object[0]);
+		//yield return new WaitForSeconds(0.3f);
+		//this.CheckUser();
 		yield break;
 	}
 
@@ -469,9 +560,10 @@ public class LogoWindow : BaseWindow
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("HandleSdkLoginCallBack", new object[0]);
 		string account = Solarmax.Singleton<LocalAccountStorage>.Get().account;
-		if (string.IsNullOrEmpty(account))
+        Solarmax.Singleton<LoggerSystem>.Instance.Info("HandleSdkLoginCallBack account: {0}", account);
+        if (string.IsNullOrEmpty(account))
 		{
-			return;
+            return;
 		}
 		Solarmax.Singleton<LocalStorageSystem>.Instance.SetLastLoginAccountId(account, MiPlatformSDK.IsVisitor);
 		Solarmax.Singleton<LocalStorageSystem>.Instance.LoadAccountRelated(account);
@@ -486,13 +578,13 @@ public class LogoWindow : BaseWindow
 	private void DisplayServerList()
 	{
 		Solarmax.Singleton<LoggerSystem>.Instance.Info("DisplayServerList", new object[0]);
-		if (ServerListRequest.Response == null)
+        if (ServerListRequest.Response == null)
 		{
-			return;
+            return;
 		}
-		if (ServerListRequest.Response.Servers == null || ServerListRequest.Response.Servers.Length < 1)
+        if (ServerListRequest.Response.Servers == null || ServerListRequest.Response.Servers.Length < 1)
 		{
-			Debug.LogError("GetServerListFailed: EmtpyServerList");
+            Debug.LogError("GetServerListFailed: EmtpyServerList");
 			MonoSingleton<FlurryAnalytis>.Instance.LogEvent("GetServerListFailed", "info", "EmptyServerList");
 			return;
 		}
@@ -516,8 +608,8 @@ public class LogoWindow : BaseWindow
 			{
 				num = i;
 			}
-		}
-		this.grid.Reposition();
+        }
+        this.grid.Reposition();
 		this.scrollview.ResetPosition();
 		if (num < 0 && servers.Length == 1)
 		{
@@ -548,7 +640,11 @@ public class LogoWindow : BaseWindow
 
 	public void OnServerPanelClick()
 	{
-		this.selectPanel.SetActive(true);
+        if (ServerListRequest.Response == null)
+        {
+            return;
+        }
+        this.selectPanel.SetActive(true);
 	}
 
 	public void OnCloseServerPanelClick()

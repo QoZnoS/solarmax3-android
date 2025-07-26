@@ -24,7 +24,7 @@ public class GuideManager : MonoBehaviour
 
 	private void OnEventHandler(int eventId, object data, params object[] args)
 	{
-		if (eventId == 82 || eventId == 84)
+		if (eventId == (int)EventId.NetworkStatus || eventId == (int)EventId.ReconnectResult)
 		{
 			GuideManager.ClearGuideData();
 		}

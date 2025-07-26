@@ -173,6 +173,8 @@ public class Team
 		{
 			return this.groupID != -1 && group != -1 && this.groupID == group;
 		}
+		if (group == -1)
+			return true;
 		return this.IsTeammate(group);
 	}
 
@@ -320,9 +322,9 @@ public class Team
 
 	public bool IsTeammate(int group)
 	{
-		Team team = this.teamManager.GetTeam((TEAM)group);
+        Team team = this.teamManager.GetTeam((TEAM)group);
 		LoggerSystem.CodeComments("代码注释-结盟列表的运作原理by天凌喵：结盟列表类型bool[]，表示自身与其他队伍的结盟关系。例如队伍0与队伍3结盟，那么队伍0的结盟列表第四项[3]为true,队伍3的结盟列表第一项[0]为true");
-		return this.teamFriend[group] == team.teamFriend[group] && this.teamFriend[group] && team.teamFriend[this.groupID];
+        return this.teamFriend[group] == team.teamFriend[group] && this.teamFriend[group] && team.teamFriend[this.groupID];
 	}
 
 	public bool aiEnable;

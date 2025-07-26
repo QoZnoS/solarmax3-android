@@ -30,6 +30,9 @@ namespace Solarmax
 			this.RegisterDataProvider(Solarmax.Singleton<FunctionOpenConfigProvider>.Instance);
 			this.RegisterDataProvider(Solarmax.Singleton<SeasonRewardProvider>.Instance);
 			this.RegisterDataProvider(Solarmax.Singleton<MonthCheckConfgiProvider>.Instance);
+
+			this.RegisterDataProvider(Solarmax.Singleton<RaceConfigProvider>.Instance);
+			this.RegisterDataProvider(Solarmax.Singleton<RaceSkillConfigProvider>.Instance);
 			if (!this.Load())
 			{
 				return false;

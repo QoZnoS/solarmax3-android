@@ -139,12 +139,53 @@ public class PacketHelper
 
 	public IEnumerator ConnectServer(bool bTips = true)
 	{
-		Solarmax.Singleton<NetSystem>.Instance.ping.Pong(100f);
-		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NetworkStatus, new object[]
-		{
-			true
-		});
-		yield break;
+        //Solarmax.Singleton<NetSystem>.Instance.ping.Pong(100f);
+        //Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NetworkStatus, new object[]
+        //{
+        //	true
+        //});
+        string addr = string.Empty;
+        string ip = string.Empty;
+        int port = 0;
+        addr = GatewayRequest.Response.Host.Trim();
+        string[] addrs = addr.Split(new char[]
+        {
+            ':'
+        });
+        ip = addrs[0];
+        port = int.Parse(addrs[1]);
+        this.ServerAddress = ip;
+        while (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTING)
+        {
+            yield return 1;
+        }
+        Solarmax.Singleton<NetSystem>.Instance.Connect(ip, port);
+        while (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTING)
+        {
+            yield return 1;
+        }
+        if (Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED)
+        {
+            Solarmax.Singleton<NetSystem>.Instance.ping.Pong(100f);
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NetworkStatus, new object[]
+            {
+                true
+            });
+        }
+        else
+        {
+            if (bTips)
+            {
+                Tips.Make(Tips.TipsType.FlowUp, LanguageDataProvider.GetValue(207), 1f);
+            }
+            Solarmax.Singleton<NetSystem>.Instance.Close();
+            Solarmax.Singleton<NetSystem>.Instance.ping.Pong(-1f);
+            Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.NetworkStatus, new object[]
+            {
+                false
+            });
+        }
+        yield break;
 	}
 
 	public void SendProto<T>(int MessageID, T proto) where T : class
@@ -262,7 +303,7 @@ public class PacketHelper
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.battleId = proto.battleid;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.voiceRoomId = proto.voice_join_channe_id;
 		Solarmax.Singleton<BattleSystem>.Instance.battleData.voiceRoomToken = null;
-		if (proto.Tencent_cloud_token != null)
+        if (proto.Tencent_cloud_token != null)
 		{
 			Solarmax.Singleton<BattleSystem>.Instance.battleData.voiceRoomToken = proto.Tencent_cloud_token.ToArray();
 		}
@@ -331,7 +372,7 @@ public class PacketHelper
 			array[i] = i;
 		}
 		string text = proto.group;
-		if (proto.match_type != MatchType.MT_Sing)
+        if (proto.match_type != MatchType.MT_Sing)
 		{
 			if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_1v1)
 			{
@@ -402,7 +443,7 @@ public class PacketHelper
 		}
 		bool flag = false;
 		int k;
-		for (k = 0; k < proto.data.Count; k++)
+        for (k = 0; k < proto.data.Count; k++)
 		{
 			UserData userData;
 			if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_2v2)
@@ -448,7 +489,7 @@ public class PacketHelper
 				}
 				else if (Solarmax.Singleton<LocalPlayer>.Get().playerData.userId == userData.userid)
 				{
-					Solarmax.Singleton<BattleSystem>.Instance.battleData.currentTeam = team;
+                    Solarmax.Singleton<BattleSystem>.Instance.battleData.currentTeam = team;
 					flag = true;
 				}
 				team2.aiEnable = false;
@@ -483,7 +524,7 @@ public class PacketHelper
 				});
 			}
 		}
-		if (!flag)
+        if (!flag)
 		{
 			Solarmax.Singleton<BattleSystem>.Instance.battleData.gameState = GameState.Watcher;
 		}
@@ -521,7 +562,7 @@ public class PacketHelper
 				}
 			}
 		}
-		Solarmax.Singleton<EffectManager>.Get().PreloadEffect();
+        Solarmax.Singleton<EffectManager>.Get().PreloadEffect();
 	}
 
 	public void OnNetStartBattle(int msgID, PacketEvent msgBody)
@@ -569,7 +610,7 @@ public class PacketHelper
 
 	public void OnNetFrame(SCFrame frame)
 	{
-		Solarmax.Singleton<BattleSystem>.Instance.OnRecievedFramePacket(frame);
+        Solarmax.Singleton<BattleSystem>.Instance.OnRecievedFramePacket(frame);
 	}
 
 	private void OnFinishBattle(int msgID, PacketEvent msgBody)
@@ -660,8 +701,7 @@ public class PacketHelper
 		byte[] content = Json.EnCodeBytes(new FramePacket
 		{
 			type = 1,
-			//skill = new SkillPacket(),
-			skill = 
+			skill = new SkillPacket
 			{
 				skillID = skillId,
 				from = Solarmax.Singleton<BattleSystem>.Instance.battleData.currentTeam,
@@ -690,76 +730,177 @@ public class PacketHelper
 		csgetUserData.os_version = Solarmax.Singleton<EngineSystem>.Instance.GetOS();
 		csgetUserData.ver_code = (long)UpgradeUtil.GetVersionConfig().VersionCode;
 		csgetUserData.version_name = UpgradeUtil.GetVersionConfig().VersionName;
-		this.OnRequestUser(1, default(PacketEvent));
-		MonoSingleton<FlurryAnalytis>.Instance.LogEvent("RequestUserStart");
+		//this.OnRequestUser(1, default(PacketEvent));
+        Solarmax.Singleton<NetSystem>.Instance.Send<CSGetUserData>(11, csgetUserData, false);
+        MonoSingleton<FlurryAnalytis>.Instance.LogEvent("RequestUserStart");
 	}
 
 	private void OnRequestUser(int msgId, PacketEvent msg)
 	{
-		Solarmax.Singleton<LoggerSystem>.Instance.Info("On Request User", new object[0]);
-		VoiceEngine.SetAppId(1108207306L.ToString());
-		UserData userData = new UserData();
-		PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
-		string localName = Solarmax.Singleton<LocalPlayer>.Get().GetLocalName();
-		if (!string.IsNullOrEmpty(localName))
-		{
-			Solarmax.Singleton<LoggerSystem>.Instance.Info("Get Local name: " + localName, new object[0]);
-			userData.name = localName;
-		}
-		else
-		{
-			userData.name = "";
-		}
-		int userId = playerData.userId;
-		userData.userid = playerData.userId;
-		int money = playerData.money;
-		userData.gold = playerData.money;
-		userData.account_id = "喵喵";
-		userData.battle_count = 0;
-		userData.mvp_count = 0;
-		Solarmax.Singleton<LocalPlayer>.Get().playerData.Init(userData);
-		if (playerData.raceList.Count < 1)
-		{
-			RaceData raceData = new RaceData();
-			raceData.level = 1;
-			raceData.race = 1;
-			Solarmax.Singleton<LocalPlayer>.Get().playerData.InitRace(new List<RaceData>
-			{
-				raceData
-			});
-		}
-		else
-		{
-			Solarmax.Singleton<LocalPlayer>.Get().playerData.InitRace(playerData.raceList);
-		}
-		Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver = false;
-		this.OnUserDataInit();
-		Solarmax.Singleton<LevelDataHandler>.Get().UnLockPayChapter("0");
-		Solarmax.Singleton<CollectionModel>.Get().UnLock(0);
-		Solarmax.Singleton<LocalPlayer>.Get().AddBuy("0");
-		int id = 1;
-		Solarmax.Singleton<SeasonRewardModel>.Get().Init(id, 99999, new List<bool>
-		{
-			true
-		});
-		Solarmax.Singleton<ItemDataHandler>.Get().InitPage(new Pack());
-		Solarmax.Singleton<LocalPlayer>.Get().InitAntiConfig(0L, 0L);
-		string singleCurrentLevel = Solarmax.Singleton<LocalAccountStorage>.Get().singleCurrentLevel;
-		string guideFightLevel = Solarmax.Singleton<LocalAccountStorage>.Get().guideFightLevel;
-		if (GuideManager.Guide != null && !string.IsNullOrEmpty(guideFightLevel))
-		{
-			GuideManager.Guide.InitCompletedGuide(guideFightLevel);
-		}
-		Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightLevel = singleCurrentLevel;
-		Solarmax.Singleton<LocalPlayer>.Get().playerData.adchannel = new Dictionary<AdChannel, AdConfig>();
-		MonoSingleton<FlurryAnalytis>.Instance.FlurryRequestUserSuccess(ErrCode.EC_Ok.ToString());
-		AppsFlyerTool.FlyerLoginEvent();
-		Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Login, 1);
-		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.RequestUserResult, new object[]
-		{
-			ErrCode.EC_Ok
-		});
-	}
+        Solarmax.Singleton<LoggerSystem>.Instance.Info("PacketHelper  onRequestUser", new object[0]);
+        MemoryStream source = msg.Data as MemoryStream;
+        SCGetUserData scgetUserData = Serializer.Deserialize<SCGetUserData>(source);
+        Debug.LogFormat("OnRequestUser: {0}", new object[]
+        {
+            scgetUserData.errcode
+        });
+        VoiceEngine.SetAppId(scgetUserData.tencent_appid.ToString());
+        if (scgetUserData.data != null && scgetUserData.data.data_version < 1)
+        {
+            PlayerPrefs.DeleteAll();
+            CSClearData csclearData = new CSClearData();
+            csclearData.version = 1;
+            Solarmax.Singleton<NetSystem>.Instance.Send<CSClearData>(340, csclearData, false);
+        }
+        if (scgetUserData.errcode == ErrCode.EC_Ok || scgetUserData.errcode == ErrCode.EC_NeedResume)
+        {
+            UserData data = scgetUserData.data;
+            Solarmax.Singleton<LocalPlayer>.Get().playerData.Init(data);
+            Solarmax.Singleton<LocalPlayer>.Get().playerData.InitRace(scgetUserData.race);
+            Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver = false;
+            this.OnUserDataInit();
+        }
+        if (scgetUserData.data != null && scgetUserData.data.chapterBuy != null && scgetUserData.data.chapterBuy.Count > 0)
+        {
+            for (int i = 0; i < scgetUserData.data.chapterBuy.Count; i++)
+            {
+                Solarmax.Singleton<LevelDataHandler>.Get().UnLockPayChapter(scgetUserData.data.chapterBuy[i]);
+            }
+        }
+        if (scgetUserData.data != null && scgetUserData.data.skinBuy != null && scgetUserData.data.skinBuy.Count > 0)
+        {
+            for (int j = 0; j < scgetUserData.data.skinBuy.Count; j++)
+            {
+                Solarmax.Singleton<CollectionModel>.Get().UnLock(scgetUserData.data.skinBuy[j]);
+            }
+        }
+        if (scgetUserData.data != null && scgetUserData.data.RechargeData != null)
+        {
+            if (scgetUserData.data.RechargeData.first_recharge_mark != null && scgetUserData.data.RechargeData.first_recharge_mark.Count > 0)
+            {
+                for (int k = 0; k < scgetUserData.data.RechargeData.first_recharge_mark.Count; k++)
+                {
+                    Solarmax.Singleton<LocalPlayer>.Get().AddBuy(scgetUserData.data.RechargeData.first_recharge_mark[k]);
+                }
+            }
+            Solarmax.Singleton<LocalPlayer>.Get().IsMonthCardReceive = scgetUserData.data.RechargeData.last_receive_time;
+            Solarmax.Singleton<LocalPlayer>.Get().month_card_end = scgetUserData.data.RechargeData.monthly_card_end_time;
+        }
+        if (scgetUserData.data != null)
+        {
+            int id = 0;
+            if (int.TryParse(scgetUserData.data.LadderID, out id))
+            {
+                Solarmax.Singleton<SeasonRewardModel>.Get().Init(id, scgetUserData.data.maxscore, scgetUserData.data.LadderReward);
+            }
+        }
+        if (scgetUserData.data != null && scgetUserData.data.pack != null)
+        {
+            Solarmax.Singleton<ItemDataHandler>.Get().InitPage(scgetUserData.data.pack);
+        }
+        if (scgetUserData.now > 0)
+        {
+            Solarmax.Singleton<TimeSystem>.Instance.SetServerTime(scgetUserData.now);
+        }
+        Solarmax.Singleton<LocalPlayer>.Get().InitAntiConfig(scgetUserData.online_time, scgetUserData.offline_time);
+        string singleCurrentLevel = Solarmax.Singleton<LocalAccountStorage>.Get().singleCurrentLevel;
+        string guideFightLevel = Solarmax.Singleton<LocalAccountStorage>.Get().guideFightLevel;
+        if (GuideManager.Guide != null && !string.IsNullOrEmpty(guideFightLevel))
+        {
+            GuideManager.Guide.InitCompletedGuide(guideFightLevel);
+        }
+        Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightLevel = singleCurrentLevel;
+        Solarmax.Singleton<LocalPlayer>.Get().playerData.adchannel = new Dictionary<AdChannel, AdConfig>();
+        foreach (AdConfig adConfig in scgetUserData.ad_channel)
+        {
+            AdChannel channel = adConfig.channel;
+            if (channel != AdChannel.AD_MIMENG)
+            {
+                if (channel == AdChannel.AD_PANGOLIN)
+                {
+                    AdConfig value = new AdConfig();
+                    Solarmax.Singleton<LocalPlayer>.Get().playerData.adchannel[AdChannel.AD_PANGOLIN] = value;
+                }
+            }
+            else
+            {
+                AdConfig adConfig2 = new AdConfig();
+                adConfig2.app_id = adConfig.app_id;
+                adConfig2.horizontal_video_id = adConfig.horizontal_video_id;
+                Solarmax.Singleton<LocalPlayer>.Get().playerData.adchannel[AdChannel.AD_MIMENG] = adConfig2;
+            }
+        }
+        MonoSingleton<FlurryAnalytis>.Instance.FlurryRequestUserSuccess(scgetUserData.errcode.ToString());
+        AppsFlyerTool.FlyerLoginEvent();
+        Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Login, 1);
+        Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.RequestUserResult, new object[]
+        {
+            scgetUserData.errcode
+        });
+        //Solarmax.Singleton<LoggerSystem>.Instance.Info("On Request User", new object[0]);
+        //VoiceEngine.SetAppId(1108207306L.ToString());
+        //UserData userData = new UserData();
+        //PlayerData playerData = Solarmax.Singleton<LocalPlayer>.Get().playerData;
+        //string localName = Solarmax.Singleton<LocalPlayer>.Get().GetLocalName();
+        //if (!string.IsNullOrEmpty(localName))
+        //{
+        //	Solarmax.Singleton<LoggerSystem>.Instance.Info("Get Local name: " + localName, new object[0]);
+        //	userData.name = localName;
+        //}
+        //else
+        //{
+        //	userData.name = "";
+        //}
+        //int userId = playerData.userId;
+        //userData.userid = playerData.userId;
+        //int money = playerData.money;
+        //userData.gold = playerData.money;
+        //userData.account_id = "喵喵";
+        //userData.battle_count = 0;
+        //userData.mvp_count = 0;
+        //Solarmax.Singleton<LocalPlayer>.Get().playerData.Init(userData);
+        //if (playerData.raceList.Count < 1)
+        //{
+        //	RaceData raceData = new RaceData();
+        //	raceData.level = 1;
+        //	raceData.race = 1;
+        //	Solarmax.Singleton<LocalPlayer>.Get().playerData.InitRace(new List<RaceData>
+        //	{
+        //		raceData
+        //	});
+        //}
+        //else
+        //{
+        //	Solarmax.Singleton<LocalPlayer>.Get().playerData.InitRace(playerData.raceList);
+        //}
+        //Solarmax.Singleton<LocalPlayer>.Get().isAccountTokenOver = false;
+        //this.OnUserDataInit();
+        //Solarmax.Singleton<LevelDataHandler>.Get().UnLockPayChapter("0");
+        //Solarmax.Singleton<CollectionModel>.Get().UnLock(0);
+        //Solarmax.Singleton<LocalPlayer>.Get().AddBuy("0");
+        //int id = 1;
+        //Solarmax.Singleton<SeasonRewardModel>.Get().Init(id, 99999, new List<bool>
+        //{
+        //	true
+        //});
+        //Solarmax.Singleton<ItemDataHandler>.Get().InitPage(new Pack());
+        //Solarmax.Singleton<LocalPlayer>.Get().InitAntiConfig(0L, 0L);
+        //string singleCurrentLevel = Solarmax.Singleton<LocalAccountStorage>.Get().singleCurrentLevel;
+        //string guideFightLevel = Solarmax.Singleton<LocalAccountStorage>.Get().guideFightLevel;
+        //if (GuideManager.Guide != null && !string.IsNullOrEmpty(guideFightLevel))
+        //{
+        //	GuideManager.Guide.InitCompletedGuide(guideFightLevel);
+        //}
+        //Solarmax.Singleton<LocalPlayer>.Get().playerData.singleFightLevel = singleCurrentLevel;
+        //Solarmax.Singleton<LocalPlayer>.Get().playerData.adchannel = new Dictionary<AdChannel, AdConfig>();
+        //MonoSingleton<FlurryAnalytis>.Instance.FlurryRequestUserSuccess(ErrCode.EC_Ok.ToString());
+        //AppsFlyerTool.FlyerLoginEvent();
+        //Solarmax.Singleton<TaskModel>.Get().FinishTaskEvent(FinishConntion.Login, 1);
+        //Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.RequestUserResult, new object[]
+        //{
+        //	ErrCode.EC_Ok
+        //});
+    }
 
 	private void OnUserDataInit()
 	{
@@ -834,14 +975,23 @@ public class PacketHelper
 
 	public void PingNet()
 	{
-		PacketEvent msg = new PacketEvent(1, DateTime.Now.ToBinary());
-		this.OnPong(1, msg);
-	}
+        Solarmax.Singleton<LoggerSystem>.Instance.Info("ping net", new object[0]);
+        //PacketEvent msg = new PacketEvent(1, DateTime.Now.ToBinary());
+        //this.OnPong(1, msg);
+        CSPing csping = new CSPing();
+		csping.timestamp = DateTime.Now.ToBinary();
+		//csping.timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
+        Solarmax.Singleton<NetSystem>.Instance.Send<CSPing>(23, csping, false);
+    }
 
-	private void OnPong(int msgId, PacketEvent msg)
+    private void OnPong(int msgId, PacketEvent msg)
 	{
-		float num = (float)(DateTime.Now - DateTime.FromBinary((long)msg.Data)).TotalMilliseconds;
-		Solarmax.Singleton<NetSystem>.Instance.ping.Pong(num);
+        //float num = (float)(DateTime.Now - DateTime.FromBinary((long)msg.Data)).TotalMilliseconds;
+        MemoryStream source = msg.Data as MemoryStream;
+        SCPong scpong = Serializer.Deserialize<SCPong>(source);
+		float num = (float)(DateTime.Now - DateTime.FromBinary(scpong.timestamp)).TotalMilliseconds;
+		//float num = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000 - scpong.timestamp;
+        Solarmax.Singleton<NetSystem>.Instance.ping.Pong(num);
 		Solarmax.Singleton<EventSystem>.Instance.FireEvent(EventId.PingRefresh, new object[]
 		{
 			num
@@ -2291,8 +2441,7 @@ public class PacketHelper
 		byte[] content = Json.EnCodeBytes(new FramePacket
 		{
 			type = 2,
-			//giveup = new GiveUpPacket(),
-			giveup = 
+			giveup = new GiveUpPacket
 			{
 				team = TEAM.Team_1
 			}

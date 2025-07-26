@@ -1,3 +1,4 @@
+@rm Assembly-CSharp.dll
 @"C:\Program Files\Unity\Hub\Editor\2017.4.30f1\Editor\Data\MonoBleedingEdge\lib\mono\4.5\mcs.exe" -sdk:2 -target:library -out:Assembly-CSharp.dll "@dep_mcs.txt" "@files.txt"
 @rizin -w -c "wx 35 @ 0x400000" -qq Assembly-CSharp.dll
 @adb push Assembly-CSharp.dll /data/local/tmp
