@@ -173,8 +173,6 @@ public class Team
 		{
 			return this.groupID != -1 && group != -1 && this.groupID == group;
 		}
-		if (group == -1)
-			return true;
 		return this.IsTeammate(group);
 	}
 

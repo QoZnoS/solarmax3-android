@@ -28,7 +28,13 @@ public class PVPBattleController : IBattleController, Lifecycle2
 		this.lastElapsed = 0;
 		this.narrowtimes = -2;
 		this.hasTriggerClearBarrier = false;
-		return true;
+        for (int i = 0; i < LocalPlayer.MaxTeamNum; i++)
+        {
+            Team team = Solarmax.Singleton<BattleSystem>.Instance.sceneManager.teamManager.GetTeam((TEAM)i);
+            team.groupID = i;
+            team.teamFriend[i] = true;
+        }
+        return true;
 	}
 
 	public void Tick(int frame, float interval)
