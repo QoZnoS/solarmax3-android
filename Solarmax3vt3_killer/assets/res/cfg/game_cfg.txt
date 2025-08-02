@@ -1,0 +1,10 @@
+{
+	"AppId":"5",
+	"VersionServerUrls":[
+		"https://delegate.casual.g.mi.com/version-service/v1/get-version-info"
+	],
+	"EnablePay":false,
+	"EnableFetchProducts":false,
+	"EnableVisitorLogin":true,
+	"Oversea":false
+}

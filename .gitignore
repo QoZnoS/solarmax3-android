@@ -1,4 +1,6 @@
 .vs
 Assembly-CSharp/bin/
 Assembly-CSharp/obj/
+Solarmax3vt3_killer/build/
+Solarmax3vt3_killer/dist/
 *.dll
