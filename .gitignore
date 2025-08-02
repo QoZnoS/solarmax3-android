@@ -3,4 +3,6 @@ Assembly-CSharp/bin/
 Assembly-CSharp/obj/
 Solarmax3vt3_killer/build/
 Solarmax3vt3_killer/dist/
-*.dll
+build-tools/
+build/
+Solarmax3vt3_killer/assets/bin/Data/Managed/Assembly-CSharp.dll
