@@ -1,3 +1,18 @@
 * 依赖安装
 1. 需要配置 java 环境
-2. 下载 build-tools.zip 并解压到当前目录下。确保已经安装
+2. 下载 build-tools.zip 并解压到当前目录下。确保目录结构如下：
+   + project root
+     + build-tools
+       + android-build-tools
+       + rz
+       + apktool.jar
+       + mcs.exe
+     + Solarmax3vt3_killer
+     + ...
+
+* 打包 apk
+进入 scripts 目录，点击 repack-apk.bat，会弹出一个命令行窗口，无需操作任何操作，等待它执行结束消失即可
+
+此时项目根目录中会出现 build 文件夹，其中 Solarmax3vt3_killersigned-aligned.apk 就是打包的apk
+
+

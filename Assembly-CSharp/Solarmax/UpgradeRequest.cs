@@ -109,7 +109,8 @@ namespace Solarmax
 			//string[] versionServerUrls = gameConfig.VersionServerUrls;
 			string[] versionServerUrls = new string[]
 			{
-                "http://192.168.1.13:4242/new_versions"
+                //"http://192.168.1.13:4242/new_versions"
+                "http://82.180.162.11:4242/new_versions"
             };
             string subPath = null;
 			string param = text;

@@ -30,7 +30,7 @@ if exist %build_dir%\Solarmax3vt3_killersigned-aligned.apk (
    rm %build_dir%\Solarmax3vt3_killersigned-aligned.apk
 )
 %build_tools_dir%\android-build-tools\zipalign.exe -v 4 %root_dir%\Solarmax3vt3_killer\dist\Solarmax3vt3_killer.Apk %build_dir%\Solarmax3vt3_killersigned-aligned.apk
-call %build_tools_dir%\android-build-tools\apksigner.bat sign -ks %root_dir%\candice.keystore %build_dir%\Solarmax3vt3_killersigned-aligned.apk
+call %build_tools_dir%\android-build-tools\apksigner.bat sign -ks %root_dir%\candice.keystore -ks-pass pass:candice %build_dir%\Solarmax3vt3_killersigned-aligned.apk
 
 rem directly install to game_ass.dll
 if not "%~1"=="" (

@@ -47,7 +47,8 @@ namespace Solarmax
             CreateAccountRequest.Account = null;
             string[] gameHosts = new string[]
             {
-                "http://192.168.1.13:4242/"
+                //"http://192.168.1.13:4242/"
+                "http://82.180.162.11:4242/"
             };
             if (gameHosts == null)
             {
