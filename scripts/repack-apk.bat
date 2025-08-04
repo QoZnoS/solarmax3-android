@@ -23,7 +23,7 @@ if errorlevel 1 (
 call %scripts_dir%\recompile-dll.bat
 
 cd %root_dir%
-cp %build_dir%\Assembly-CSharp.dll %root_dir%\Solarmax3vt3_killer\assets\bin\Data\Managed\Assembly-CSharp.dll
+copy %build_dir%\Assembly-CSharp.dll %root_dir%\Solarmax3vt3_killer\assets\bin\Data\Managed\Assembly-CSharp.dll
 java.exe -jar %build_tools_dir%\apktool.jar b Solarmax3vt3_killer
 rem output file is Solarmax3vt3_killer\dist\Solarmax3vt3_killer.Apk
 if exist %build_dir%\Solarmax3vt3_killersigned-aligned.apk (

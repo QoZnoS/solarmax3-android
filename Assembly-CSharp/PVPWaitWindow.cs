@@ -267,7 +267,8 @@ public class PVPWaitWindow : BaseWindow
 			{
 				this.playerGos[j] = this.player2V2[j];
 			}
-			this.cancelBtn.SetActive(false);
+			// 2v2原版不展示取消按钮，现在展示，方便玩家退出
+			//this.cancelBtn.SetActive(false);
 		}
 		else if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_1v1v1)
 		{

@@ -71,9 +71,12 @@ public class LocalPlayer : Solarmax.Singleton<LocalPlayer>
 		{
 			this.player_Offline_time -= interval;
 		}
-		this.nextSasonStart = 0.0;
-		Solarmax.Singleton<LocalPlayer>.Get().playerData.score = 0;
-		Solarmax.Singleton<NetSystem>.Instance.helper.RequestUserInit();
+		if (this.nextSasonStart <= 0.0 && Solarmax.Singleton<NetSystem>.Instance.GetConnector().GetConnectStatus() == ConnectionStatus.CONNECTED)
+		{
+			this.nextSasonStart = 60.0;
+            Solarmax.Singleton<LocalPlayer>.Get().playerData.score = 0;
+            Solarmax.Singleton<NetSystem>.Instance.helper.RequestUserInit();
+		}
 	}
 
 	public bool IsInSeason(CooperationType eType)

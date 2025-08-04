@@ -372,7 +372,7 @@ public class PacketHelper
 			array[i] = i;
 		}
 		string text = proto.group;
-        if (proto.match_type != MatchType.MT_Sing)
+        if (string.IsNullOrEmpty(text) && proto.match_type != MatchType.MT_Sing)
 		{
 			if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_1v1)
 			{
@@ -470,6 +470,16 @@ public class PacketHelper
 				{
 					team2.groupID = 1;
 				}
+				for (int m = 0; m < proto.data.Count; m++)
+				{
+					int tmpGroupId = Solarmax.Singleton<BattleSystem>.Instance.battleData.pvpUserToTeamIndex[m] < 2 ? 0 : 1;
+					if (tmpGroupId == team2.groupID)
+					{
+						// 这里 m 要对应实际的 team 号，前面的 team 是 k + 1，这里的 index 要用 m + 1
+						// TODO: MT_Sing 是否也要像前面一样适配？这样就数组越界了
+						team2.teamFriend[m + 1] = true;
+					}
+                }
 			}
 			else
 			{
@@ -1064,17 +1074,23 @@ public class PacketHelper
 
 	public void FriendLoad(int start, bool myfollow)
 	{
-		new PacketEvent(1, new CSFriendLoad
-		{
-			start = start
-		});
-	}
+		//new PacketEvent(1, new CSFriendLoad
+		//{
+		//	start = start
+		//});
+		CSFriendLoad csfriendLoad = new CSFriendLoad();
+		csfriendLoad.start = start;
+		Solarmax.Singleton<NetSystem>.Instance.Send<CSFriendLoad>(39, csfriendLoad, true);
+    }
 
 	private void OnFriendLoad(int msgId, PacketEvent msg)
 	{
-		SCFriendLoad scfriendLoad = (SCFriendLoad)msg.Data;
-		new List<SimplePlayerData>();
-		Solarmax.Singleton<FriendDataHandler>.Get().Release();
+		//SCFriendLoad scfriendLoad = (SCFriendLoad)msg.Data;
+		//new List<SimplePlayerData>();
+        MemoryStream source = msg.Data as MemoryStream;
+        SCFriendLoad scfriendLoad = Serializer.Deserialize<SCFriendLoad>(source);
+        List<SimplePlayerData> list = new List<SimplePlayerData>();
+        Solarmax.Singleton<FriendDataHandler>.Get().Release();
 		for (int i = 0; i < scfriendLoad.data.Count; i++)
 		{
 			SimplePlayerData simplePlayerData = new SimplePlayerData();
