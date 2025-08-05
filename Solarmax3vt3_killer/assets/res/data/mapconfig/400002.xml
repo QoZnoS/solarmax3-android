@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="300710" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5" teamFriend="">
+<map id="300710" player_count="4" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5" teamFriend="">
   <maplines>
     <mapline point1="L" point2="K" />
   </maplines>
@@ -24,7 +24,7 @@
     <mapbuilding type="star" size="4" tag="18" x="5" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="19" x="0" y="2" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="20" x="0" y="-2" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="3" tag="21" x="0" y="0" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="star" size="3" tag="21" x="0" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
   
 
   </mapbuildings>
@@ -33,7 +33,7 @@
     <mapplayer tag="13" ship="30" camption="2" />
     <mapplayer tag="5" ship="30" camption="3" />
     <mapplayer tag="9" ship="30" camption="4" />
-    <mapplayer tag="21" ship="20" camption="7" />
+
 
   </mapplayers>
   <candidates>

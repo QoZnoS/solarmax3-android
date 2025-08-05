@@ -20,5 +20,7 @@
 		<mapbuilding id="" type="supplyship" size="1" x="0" y="0" camption="0" tag="14" orbit="0" orbitParam1="0,0" orbitParam2="0,0" orbitClockWise="False" fAngle="0" transformBulidingID="" />
 	</mapbuildings>
 	<mapplayers>
+    <mapplayer id="" tag="2" ship="40" camption="1" />
+    <mapplayer id="" tag="0" ship="40" camption="2" />
 	</mapplayers>
 </map>
