@@ -189,7 +189,7 @@ public class BattleWindow : BaseWindow
 					num2++;
 				}
 			}
-			list.Sort((Team a, Team b) => a.groupID.CompareTo(b.groupID));
+			list.Sort((Team a, Team b) => num == 0 ? a.groupID.CompareTo(b.groupID) : b.groupID.CompareTo(a.groupID));
 			int num3 = -1;
 			int num4 = -1;
 			for (int k = 0; k < list.Count; k++)
