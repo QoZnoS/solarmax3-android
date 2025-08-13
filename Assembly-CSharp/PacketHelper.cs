@@ -985,7 +985,7 @@ public class PacketHelper
 
 	public void PingNet()
 	{
-        Solarmax.Singleton<LoggerSystem>.Instance.Info("ping net", new object[0]);
+        //Solarmax.Singleton<LoggerSystem>.Instance.Info("ping net", new object[0]);
         //PacketEvent msg = new PacketEvent(1, DateTime.Now.ToBinary());
         //this.OnPong(1, msg);
         CSPing csping = new CSPing();

@@ -167,15 +167,16 @@ public class CRoom2V2Window : BaseWindow
 		component.gameObject.SetActive(true);
 		component2.gameObject.SetActive(true);
 		gameObject.SetActive(true);
-		if (pd.userId == this.hostId)
-		{
-			gameObject2.SetActive(true);
-		}
-		else
-		{
-			gameObject2.SetActive(false);
-		}
-		component.picUrl = pd.icon;
+		gameObject2.SetActive(true);   // ther is only one fangzhu flag, so always active
+		//if (pd.userId == this.hostId)
+		//{
+		//	gameObject2.SetActive(true);
+		//}
+		//else
+		//{
+		//	gameObject2.SetActive(false);
+		//}
+        component.picUrl = pd.icon;
 		component2.text = pd.name;
 		component3.text = pd.score.ToString();
 	}

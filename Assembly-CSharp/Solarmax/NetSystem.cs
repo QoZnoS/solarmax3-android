@@ -82,7 +82,8 @@ namespace Solarmax
 
 		public void Send<T>(int packetId, T proto, bool bShowC = true) where T : class
 		{
-            Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("NetSystem  Send  with id {0}", packetId), new object[0]);
+			if (packetId != 23)
+				Solarmax.Singleton<LoggerSystem>.Instance.Info(string.Format("NetSystem  Send  with id {0}", packetId), new object[0]);
             int key = 1;
             if (this.mConnectorMap.ContainsKey(key))
             {
