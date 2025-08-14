@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <chapters>
-	<!-- 这里是章节xml。设置星座的星图和解锁条件、宇宙之心的主题等等。 -->
-	<!-- 主线章节（星座） -->
 	<chapter id="1001" needstar="0" costGold="0" salePrice="-1" name="11001" describe="31001" starchart="Btn_CopyUI_11.png" type="0" posX="0" posY="0" comment="-1" commentMultiple="-1">
 		<line id="1" point1="1" point2="2" />
 		<line id="2" point1="2" point2="3" />
@@ -474,7 +472,6 @@
 		<point id="15" x="-200" y="-219" z="0" level="1021150" size="1.5" greekLetter="λ" greekPosX="-20" greekPosY="21" />
 		<point id="16" x="-313" y="-250" z="0" level="1021160" size="0.75" />
 	</chapter>
-	<!-- 主题章节 -->
 	<chapter id="3001" needstar="0" costGold="1000" salePrice="-1" name="13001" describe="33001" starchart="Btn_CopyUI_101.jpg" type="1" comment="3" commentMultiple="10" />
 	<chapter id="3002" needstar="0" costGold="1000" salePrice="-1" name="13002" describe="33002" starchart="Btn_CopyUI_102.jpg" type="1" comment="3" commentMultiple="10" />
 	<chapter id="3003" needstar="0" costGold="1000" salePrice="-1" name="13003" describe="33003" starchart="Btn_CopyUI_103.jpg" type="1" comment="3" commentMultiple="10" />
@@ -511,7 +508,9 @@
 	<chapter id="3034" needstar="0" costGold="1000" salePrice="900" name="13034" describe="33034" starchart="Btn_CopyUI_103.jpg" type="1" comment="3" commentMultiple="10" />
 	<chapter id="3035" needstar="0" costGold="1000" salePrice="900" name="13035" describe="33035" starchart="Btn_CopyUI_102.jpg" type="1" comment="3" commentMultiple="10" />
 	<chapter id="3036" needstar="0" costGold="1000" salePrice="900" name="13036" describe="33036" starchart="Btn_CopyUI_129.jpg" type="1" comment="3" commentMultiple="10" />
-	<!-- 合作模式章节 -->
+	<chapter id="3037" needstar="0" costGold="2222" salePrice="2222" name="13037" describe="33037" starchart="Btn_CopyUI_pvp2.jpg" type="1" comment="5" commentMultiple="10" />
+	<chapter id="3038" needstar="0" costGold="3333" salePrice="3333" name="13038" describe="33038" starchart="Btn_CopyUI_pvp3.jpg" type="1" comment="5" commentMultiple="10" />
+	<chapter id="3039" needstar="0" costGold="4444" salePrice="4444" name="13039" describe="33039" starchart="Btn_CopyUI_pvp4.jpg" type="1" comment="5" commentMultiple="10" />
 	<chapter id="4000" needstar="0" costGold="1" salePrice="-1" name="14000" describe="34000" starchart="Btn_CopyUI_54.jpg" chapterBg="bg54.jpg" type="2" comment="-1" commentMultiple="-1" />
 	<chapter id="4001" needstar="0" costGold="1500" salePrice="-1" name="14001" describe="34001" starchart="Btn_CopyUI_51.jpg" chapterBg="bg51.jpg" type="2" comment="-1" commentMultiple="-1" />
 	<chapter id="4002" needstar="0" costGold="1500" salePrice="-1" name="14002" describe="34002" starchart="Btn_CopyUI_52.jpg" chapterBg="bg52.jpg" type="2" comment="-1" commentMultiple="-1" />
