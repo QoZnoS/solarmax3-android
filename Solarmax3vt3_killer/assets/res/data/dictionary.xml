@@ -818,6 +818,7 @@
 	<language id="420103" chinese="420103" english="420103" traditionalChinese="420103" />
 	<language id="420104" chinese="420104" english="420104" traditionalChinese="420104" />
 	<language id="420105" chinese="420105" english="420105" traditionalChinese="420105" />
+	<language id="420106" chinese="420106" english="420106" traditionalChinese="420106" />
 	<language id="420201" chinese="420201" english="420201" traditionalChinese="420201" />
 	<language id="420202" chinese="420202" english="420202" traditionalChinese="420202" />
 	<language id="420203" chinese="420203" english="420203" traditionalChinese="420203" />
@@ -842,6 +843,9 @@
 	<language id="420603" chinese="420603" english="420603" traditionalChinese="420603" />
 	<language id="420701" chinese="420701" english="420701" traditionalChinese="420701" />
 	<language id="420702" chinese="420702" english="420702" traditionalChinese="420702" />
+	<language id="420703" chinese="420703" english="420703" traditionalChinese="420703" />
+	<language id="420704" chinese="420704" english="420704" traditionalChinese="420704" />
+	<language id="420705" chinese="420705" english="420705" traditionalChinese="420705" />
 	<language id="420801" chinese="420801" english="420801" traditionalChinese="420801" />
 	<language id="420802" chinese="420802" english="420802" traditionalChinese="420802" />
 	<language id="420803" chinese="420803" english="420803" traditionalChinese="420803" />
