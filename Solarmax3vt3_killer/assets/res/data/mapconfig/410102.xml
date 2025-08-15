@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="410102" player_count="2" vertical="True" defaultAIStrategy="-1" teamAITypes="" teamFriend="">
+<map id="410102" player_count="2" vertical="True">
   <mapbuildings>
     <mapbuilding type="star" size="2" tag="A" x="-4.5" y="3" camption="0" fAngle="0" orbit="1" orbitParam1="-4.5" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="C" x="-7.5" y="0" camption="0" fAngle="0" orbit="1" orbitParam1="-4.5" orbitParam2="" orbitClockWise="False" />

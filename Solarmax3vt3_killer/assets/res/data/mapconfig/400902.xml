@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="400902" player_count="4" vertical="True" defaultAIStrategy="-1" teamAITypes="" teamFriend="">
+<map id="400902" player_count="4" vertical="True">
   <mapbuildings>
     <mapbuilding type="Lasergun" size="1" tag="C" x="-3" y="0" camption="0" lasergunAngle="270" lasergunRotateSkip="45" lasergunRange="180" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Mirror" size="1" tag="D" x="3" y="3" camption="0" fAngle="315" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />

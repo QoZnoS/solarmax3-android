@@ -306,6 +306,9 @@
 	<language id="13034" chinese="步步为营Ⅳ" english="Step by step Ⅳ" traditionalChinese="步步為營Ⅳ" />
 	<language id="13035" chinese="黑暗视角Ⅲ" english="Dark Perspective Ⅲ" traditionalChinese="黑暗視角Ⅲ" />
 	<language id="13036" chinese="对酒当歌" english="Sing While Drinking" traditionalChinese="對酒當歌" />
+	<language id="13037" chinese="PVP二人切磋" english="PVP2" traditionalChinese="PVP二人切磋" />
+	<language id="13038" chinese="PVP三人混战" english="PVP3" traditionalChinese="PVP三人混战" />
+	<language id="13039" chinese="PVP四人混战" english="PVP4" traditionalChinese="PVP四人混战" />
 	<!-- 宇宙之心关卡名 -->
 	<language id="300101" chinese="竹蜻蜓" english="Bamboo Dragonfly" traditionalChinese="竹蜻蜓" />
 	<language id="300102" chinese="任意门" english="Arbitrary Gate" traditionalChinese="任意門" />
@@ -694,6 +697,175 @@
 	<language id="305708" chinese="剑指虚空" english="Point To Vanity" traditionalChinese="劍指虛空" />
 	<language id="305709" chinese="收复山河" english="Regain" traditionalChinese="收復山河" />
 	<language id="305710" chinese="颠沛流离" english="Exuberant" traditionalChinese="顛沛流離" />
+	<language id="400101" chinese="400101" english="400101" traditionalChinese="400101" />
+	<language id="400102" chinese="400102" english="400102" traditionalChinese="400102" />
+	<language id="400103" chinese="400103" english="400103" traditionalChinese="400103" />
+	<language id="400104" chinese="400104" english="400104" traditionalChinese="400104" />
+	<language id="400201" chinese="400201" english="400201" traditionalChinese="400201" />
+	<language id="400202" chinese="400202" english="400202" traditionalChinese="400202" />
+	<language id="400203" chinese="400203" english="400203" traditionalChinese="400203" />
+	<language id="400204" chinese="400204" english="400204" traditionalChinese="400204" />
+	<language id="400205" chinese="400205" english="400205" traditionalChinese="400205" />
+	<language id="400207" chinese="400207" english="400207" traditionalChinese="400207" />
+	<language id="400208" chinese="400208" english="400208" traditionalChinese="400208" />
+	<language id="400209" chinese="400209" english="400209" traditionalChinese="400209" />
+	<language id="400301" chinese="400301" english="400301" traditionalChinese="400301" />
+	<language id="400302" chinese="400302" english="400302" traditionalChinese="400302" />
+	<language id="400303" chinese="400303" english="400303" traditionalChinese="400303" />
+	<language id="400304" chinese="400304" english="400304" traditionalChinese="400304" />
+	<language id="400401" chinese="400401" english="400401" traditionalChinese="400401" />
+	<language id="400402" chinese="400402" english="400402" traditionalChinese="400402" />
+	<language id="400403" chinese="400403" english="400403" traditionalChinese="400403" />
+	<language id="400404" chinese="400404" english="400404" traditionalChinese="400404" />
+	<language id="400501" chinese="400501" english="400501" traditionalChinese="400501" />
+	<language id="400502" chinese="400502" english="400502" traditionalChinese="400502" />
+	<language id="400503" chinese="400503" english="400503" traditionalChinese="400503" />
+	<language id="400504" chinese="400504" english="400504" traditionalChinese="400504" />
+	<language id="400505" chinese="400505" english="400505" traditionalChinese="400505" />
+	<language id="400601" chinese="400601" english="400601" traditionalChinese="400601" />
+	<language id="400602" chinese="400602" english="400602" traditionalChinese="400602" />
+	<language id="400603" chinese="400603" english="400603" traditionalChinese="400603" />
+	<language id="400604" chinese="400604" english="400604" traditionalChinese="400604" />
+	<language id="400701" chinese="400701" english="400701" traditionalChinese="400701" />
+	<language id="400702" chinese="400702" english="400702" traditionalChinese="400702" />
+	<language id="400703" chinese="400703" english="400703" traditionalChinese="400703" />
+	<language id="400704" chinese="400704" english="400704" traditionalChinese="400704" />
+	<language id="400801" chinese="400801" english="400801" traditionalChinese="400801" />
+	<language id="400802" chinese="400802" english="400802" traditionalChinese="400802" />
+	<language id="400803" chinese="400803" english="400803" traditionalChinese="400803" />
+	<language id="400804" chinese="400804" english="400804" traditionalChinese="400804" />
+	<language id="400805" chinese="400805" english="400805" traditionalChinese="400805" />
+	<language id="400807" chinese="400807" english="400807" traditionalChinese="400807" />
+	<language id="400808" chinese="400808" english="400808" traditionalChinese="400808" />
+	<language id="400901" chinese="400901" english="400901" traditionalChinese="400901" />
+	<language id="400902" chinese="400902" english="400902" traditionalChinese="400902" />
+	<language id="400903" chinese="400903" english="400903" traditionalChinese="400903" />
+	<language id="400904" chinese="400904" english="400904" traditionalChinese="400904" />
+	<language id="401001" chinese="401001" english="401001" traditionalChinese="401001" />
+	<language id="401002" chinese="401002" english="401002" traditionalChinese="401002" />
+	<language id="401003" chinese="401003" english="401003" traditionalChinese="401003" />
+	<language id="401004" chinese="401004" english="401004" traditionalChinese="401004" />
+	<language id="401005" chinese="401005" english="401005" traditionalChinese="401005" />
+	<language id="401006" chinese="401006" english="401006" traditionalChinese="401006" />
+	<language id="401007" chinese="401007" english="401007" traditionalChinese="401007" />
+	<language id="401101" chinese="401101" english="401101" traditionalChinese="401101" />
+	<language id="401102" chinese="401102" english="401102" traditionalChinese="401102" />
+	<language id="401103" chinese="401103" english="401103" traditionalChinese="401103" />
+	<language id="401104" chinese="401104" english="401104" traditionalChinese="401104" />
+	<language id="401105" chinese="401105" english="401105" traditionalChinese="401105" />
+	<language id="401106" chinese="401106" english="401106" traditionalChinese="401106" />
+	<language id="401107" chinese="401107" english="401107" traditionalChinese="401107" />
+	<language id="401108" chinese="401108" english="401108" traditionalChinese="401108" />
+	<language id="401201" chinese="401201" english="401201" traditionalChinese="401201" />
+	<language id="401203" chinese="401203" english="401203" traditionalChinese="401203" />
+	<language id="401204" chinese="401204" english="401204" traditionalChinese="401204" />
+	<language id="401205" chinese="401205" english="401205" traditionalChinese="401205" />
+	<language id="401206" chinese="401206" english="401206" traditionalChinese="401206" />
+	<language id="401207" chinese="401207" english="401207" traditionalChinese="401207" />
+	<language id="401208" chinese="401208" english="401208" traditionalChinese="401208" />
+	<language id="410101" chinese="410101" english="410101" traditionalChinese="410101" />
+	<language id="410102" chinese="410102" english="410102" traditionalChinese="410102" />
+	<language id="410103" chinese="410103" english="410103" traditionalChinese="410103" />
+	<language id="410201" chinese="410201" english="410201" traditionalChinese="410201" />
+	<language id="410202" chinese="410202" english="410202" traditionalChinese="410202" />
+	<language id="410203" chinese="410203" english="410203" traditionalChinese="410203" />
+	<language id="410301" chinese="410301" english="410301" traditionalChinese="410301" />
+	<language id="410302" chinese="410302" english="410302" traditionalChinese="410302" />
+	<language id="410304" chinese="410304" english="410304" traditionalChinese="410304" />
+	<language id="410305" chinese="410305" english="410305" traditionalChinese="410305" />
+	<language id="410401" chinese="410401" english="410401" traditionalChinese="410401" />
+	<language id="410402" chinese="410402" english="410402" traditionalChinese="410402" />
+	<language id="410403" chinese="410403" english="410403" traditionalChinese="410403" />
+	<language id="410404" chinese="410404" english="410404" traditionalChinese="410404" />
+	<language id="410405" chinese="410405" english="410405" traditionalChinese="410405" />
+	<language id="410406" chinese="410406" english="410406" traditionalChinese="410406" />
+	<language id="410501" chinese="410501" english="410501" traditionalChinese="410501" />
+	<language id="410502" chinese="410502" english="410502" traditionalChinese="410502" />
+	<language id="410503" chinese="410503" english="410503" traditionalChinese="410503" />
+	<language id="410504" chinese="410504" english="410504" traditionalChinese="410504" />
+	<language id="410601" chinese="410601" english="410601" traditionalChinese="410601" />
+	<language id="410602" chinese="410602" english="410602" traditionalChinese="410602" />
+	<language id="410604" chinese="410604" english="410604" traditionalChinese="410604" />
+	<language id="410701" chinese="410701" english="410701" traditionalChinese="410701" />
+	<language id="410702" chinese="410702" english="410702" traditionalChinese="410702" />
+	<language id="410703" chinese="410703" english="410703" traditionalChinese="410703" />
+	<language id="410802" chinese="410802" english="410802" traditionalChinese="410802" />
+	<language id="410803" chinese="410803" english="410803" traditionalChinese="410803" />
+	<language id="410804" chinese="410804" english="410804" traditionalChinese="410804" />
+	<language id="410805" chinese="410805" english="410805" traditionalChinese="410805" />
+	<language id="410901" chinese="410901" english="410901" traditionalChinese="410901" />
+	<language id="410902" chinese="410902" english="410902" traditionalChinese="410902" />
+	<language id="410903" chinese="410903" english="410903" traditionalChinese="410903" />
+	<language id="410904" chinese="410904" english="410904" traditionalChinese="410904" />
+	<language id="411001" chinese="411001" english="411001" traditionalChinese="411001" />
+	<language id="411002" chinese="411002" english="411002" traditionalChinese="411002" />
+	<language id="411003" chinese="411003" english="411003" traditionalChinese="411003" />
+	<language id="411004" chinese="411004" english="411004" traditionalChinese="411004" />
+	<language id="411005" chinese="411005" english="411005" traditionalChinese="411005" />
+	<language id="411006" chinese="411006" english="411006" traditionalChinese="411006" />
+	<language id="411101" chinese="411101" english="411101" traditionalChinese="411101" />
+	<language id="411102" chinese="411102" english="411102" traditionalChinese="411102" />
+	<language id="411103" chinese="411103" english="411103" traditionalChinese="411103" />
+	<language id="411104" chinese="411104" english="411104" traditionalChinese="411104" />
+	<language id="411105" chinese="411105" english="411105" traditionalChinese="411105" />
+	<language id="411106" chinese="411106" english="411106" traditionalChinese="411106" />
+	<language id="411107" chinese="411107" english="411107" traditionalChinese="411107" />
+	<language id="411108" chinese="411108" english="411108" traditionalChinese="411108" />
+	<language id="411109" chinese="411109" english="411109" traditionalChinese="411109" />
+	<language id="411201" chinese="411201" english="411201" traditionalChinese="411201" />
+	<language id="411203" chinese="411203" english="411203" traditionalChinese="411203" />
+	<language id="411204" chinese="411204" english="411204" traditionalChinese="411204" />
+	<language id="411206" chinese="411206" english="411206" traditionalChinese="411206" />
+    <language id="411207" chinese="411207" english="411207" traditionalChinese="411207" />
+	<language id="420101" chinese="420101" english="420101" traditionalChinese="420101" />
+	<language id="420102" chinese="420102" english="420102" traditionalChinese="420102" />
+	<language id="420103" chinese="420103" english="420103" traditionalChinese="420103" />
+	<language id="420104" chinese="420104" english="420104" traditionalChinese="420104" />
+	<language id="420105" chinese="420105" english="420105" traditionalChinese="420105" />
+	<language id="420201" chinese="420201" english="420201" traditionalChinese="420201" />
+	<language id="420202" chinese="420202" english="420202" traditionalChinese="420202" />
+	<language id="420203" chinese="420203" english="420203" traditionalChinese="420203" />
+	<language id="420301" chinese="420301" english="420301" traditionalChinese="420301" />
+	<language id="420302" chinese="420302" english="420302" traditionalChinese="420302" />
+	<language id="420303" chinese="420303" english="420303" traditionalChinese="420303" />
+	<language id="420305" chinese="420305" english="420305" traditionalChinese="420305" />
+	<language id="420307" chinese="420307" english="420307" traditionalChinese="420307" />
+	<language id="420308" chinese="420308" english="420308" traditionalChinese="420308" />
+	<language id="420309" chinese="420309" english="420309" traditionalChinese="420309" />
+	<language id="420401" chinese="420401" english="420401" traditionalChinese="420401" />
+	<language id="420402" chinese="420402" english="420402" traditionalChinese="420402" />
+	<language id="420403" chinese="420403" english="420403" traditionalChinese="420403" />
+	<language id="420404" chinese="420404" english="420404" traditionalChinese="420404" />
+	<language id="420405" chinese="420405" english="420405" traditionalChinese="420405" />
+	<language id="420501" chinese="420501" english="420501" traditionalChinese="420501" />
+	<language id="420502" chinese="420502" english="420502" traditionalChinese="420502" />
+	<language id="420503" chinese="420503" english="420503" traditionalChinese="420503" />
+	<language id="420504" chinese="420504" english="420504" traditionalChinese="420504" />
+	<language id="420601" chinese="420601" english="420601" traditionalChinese="420601" />
+	<language id="420602" chinese="420602" english="420602" traditionalChinese="420602" />
+	<language id="420603" chinese="420603" english="420603" traditionalChinese="420603" />
+	<language id="420701" chinese="420701" english="420701" traditionalChinese="420701" />
+	<language id="420702" chinese="420702" english="420702" traditionalChinese="420702" />
+	<language id="420703" chinese="420703" english="420703" traditionalChinese="420703" />
+	<language id="420801" chinese="420801" english="420801" traditionalChinese="420801" />
+	<language id="420802" chinese="420802" english="420802" traditionalChinese="420802" />
+	<language id="420803" chinese="420803" english="420803" traditionalChinese="420803" />
+	<language id="420805" chinese="420805" english="420805" traditionalChinese="420805" />
+	<language id="420901" chinese="420901" english="420901" traditionalChinese="420901" />
+	<language id="420902" chinese="420902" english="420902" traditionalChinese="420902" />
+	<language id="420903" chinese="420903" english="420903" traditionalChinese="420903" />
+	<language id="421001" chinese="421001" english="421001" traditionalChinese="421001" />
+	<language id="421002" chinese="421002" english="421002" traditionalChinese="421002" />
+	<language id="421003" chinese="421003" english="421003" traditionalChinese="421003" />
+	<language id="421004" chinese="421004" english="421004" traditionalChinese="421004" />
+	<language id="421005" chinese="421005" english="421005" traditionalChinese="421005" />
+	<language id="421101" chinese="421101" english="421101" traditionalChinese="421101" />
+	<language id="421102" chinese="421102" english="421102" traditionalChinese="421102" />
+	<language id="421103" chinese="421103" english="421103" traditionalChinese="421103" />
+	<language id="421104" chinese="421104" english="421104" traditionalChinese="421104" />
+	<language id="421201" chinese="421201" english="421201" traditionalChinese="421201" />
+	<language id="421202" chinese="421202" english="421202" traditionalChinese="421202" />
+	<language id="421203" chinese="421203" english="421203" traditionalChinese="421203" />
 	<!-- 教程文字 -->
 	<language id="1001" chinese="获得{0}颗星\n可解锁" english="Get {0} stars\n to unlock" traditionalChinese="獲得{0}顆星\n可解鎖" />
 	<language id="1002" chinese="点击屏幕进入战斗" english="Tap the screen to join the battle" traditionalChinese="點擊熒幕進入戰鬥" />
@@ -865,6 +1037,9 @@
 	<language id="33034" chinese="你将面对的是，极具挑战的谜题" english="You will face a new challenging puzzle" traditionalChinese="你將面對的是，極具挑戰的謎題" />
 	<language id="33035" chinese="黑暗视角，再次归来" english="Dark perspective, returning again" traditionalChinese="黑暗視角，再次歸來" />
 	<language id="33036" chinese="这片星系回荡着永恒的诗歌，是古人曾经生活的地方" english="This galaxy resounds with eternal poetry, the place where the ancients once lived" traditionalChinese="這片星系迴盪著永恆的詩歌，是古人曾經生活的地方" />
+	<language id="33037" chinese="指挥官，欢迎来到竞赛模拟试验场！" english="Welcome to PVP-simulator!" traditionalChinese="指挥官，欢迎来到竞赛模拟试验场！" />
+	<language id="33038" chinese="指挥官，欢迎来到竞赛模拟试验场！" english="Welcome to PVP-simulator!" traditionalChinese="指挥官，欢迎来到竞赛模拟试验场！" />
+	<language id="33039" chinese="指挥官，欢迎来到竞赛模拟试验场！" english="Welcome to PVP-simulator!" traditionalChinese="指挥官，欢迎来到竞赛模拟试验场！" />
 	<!-- 星图上的名称 -->
 	<language id="21001" chinese="海王星" english="Neptune" traditionalChinese="海王星" />
 	<language id="21002" chinese="金星" english="Venus" traditionalChinese="金星" />
