@@ -736,6 +736,7 @@
 	<language id="400804" chinese="400804" english="400804" traditionalChinese="400804" />
 	<language id="400805" chinese="400805" english="400805" traditionalChinese="400805" />
 	<language id="400807" chinese="400807" english="400807" traditionalChinese="400807" />
+	<language id="400808" chinese="400808" english="400808" traditionalChinese="400808" />
 	<language id="400901" chinese="400901" english="400901" traditionalChinese="400901" />
 	<language id="400902" chinese="400902" english="400902" traditionalChinese="400902" />
 	<language id="400903" chinese="400903" english="400903" traditionalChinese="400903" />
@@ -754,12 +755,14 @@
 	<language id="401105" chinese="401105" english="401105" traditionalChinese="401105" />
 	<language id="401106" chinese="401106" english="401106" traditionalChinese="401106" />
 	<language id="401107" chinese="401107" english="401107" traditionalChinese="401107" />
+	<language id="401108" chinese="401108" english="401108" traditionalChinese="401108" />
 	<language id="401201" chinese="401201" english="401201" traditionalChinese="401201" />
 	<language id="401203" chinese="401203" english="401203" traditionalChinese="401203" />
 	<language id="401204" chinese="401204" english="401204" traditionalChinese="401204" />
 	<language id="401205" chinese="401205" english="401205" traditionalChinese="401205" />
 	<language id="401206" chinese="401206" english="401206" traditionalChinese="401206" />
 	<language id="401207" chinese="401207" english="401207" traditionalChinese="401207" />
+	<language id="401208" chinese="401208" english="401208" traditionalChinese="401208" />
 	<language id="410101" chinese="410101" english="410101" traditionalChinese="410101" />
 	<language id="410102" chinese="410102" english="410102" traditionalChinese="410102" />
 	<language id="410103" chinese="410103" english="410103" traditionalChinese="410103" />
@@ -844,7 +847,6 @@
 	<language id="420701" chinese="420701" english="420701" traditionalChinese="420701" />
 	<language id="420702" chinese="420702" english="420702" traditionalChinese="420702" />
 	<language id="420703" chinese="420703" english="420703" traditionalChinese="420703" />
-	<language id="420704" chinese="420704" english="420704" traditionalChinese="420704" />
 	<language id="420801" chinese="420801" english="420801" traditionalChinese="420801" />
 	<language id="420802" chinese="420802" english="420802" traditionalChinese="420802" />
 	<language id="420803" chinese="420803" english="420803" traditionalChinese="420803" />
