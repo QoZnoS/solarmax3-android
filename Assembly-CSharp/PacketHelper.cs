@@ -481,6 +481,16 @@ public class PacketHelper
 					}
                 }
 			}
+			else if (Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_2vPC || Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_3vPC || Solarmax.Singleton<BattleSystem>.Instance.battleData.battleSubType == CooperationType.CT_4vPC)
+			{
+				// 针对合作模式独立出来，避免影响混战的逻辑（理论上并不会影响，为了减少测试）
+				team2.groupID = array[k];
+				for (int m = 0; m < proto.data.Count; m++)
+				{
+					if (array[m] == array[k])
+						team2.teamFriend[m + 1] = true;
+				}
+			}
 			else
 			{
 				team2.groupID = array[k];
