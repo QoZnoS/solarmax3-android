@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="430701" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,5,5" teamFriend="">
+<map id="430701" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,1,1" teamFriend="">
   <maplines>
     <mapline point1="B" point2="A" />
     <mapline point1="C" point2="A" />

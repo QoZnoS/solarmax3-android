@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="431103" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,3,3" teamFriend="">
+<map id="431103" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,6,6" teamFriend="">
   <maplines>
     <mapline point1="O" point2="N" />
     <mapline point1="k" point2="l" />
@@ -108,7 +108,7 @@
     <mapplayer tag="g" ship="0" camption="0" />
     <mapplayer tag="17" ship="0" camption="0" />
     <mapplayer tag="_" ship="0" camption="0" />
-    <mapplayer tag="32" ship="40" camption="7" />
+    <mapplayer tag="32" ship="60" camption="7" />
   </mapplayers>
   <candidates>
     <candidate transformBulidingID="" />

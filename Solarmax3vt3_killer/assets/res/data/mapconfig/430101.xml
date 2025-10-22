@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="430101" player_count="5" vertical="True" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,5,5" teamFriend="">
+<map id="430101" player_count="5" vertical="True" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,1,1" teamFriend="">
   <mapbuildings>
     <mapbuilding type="star" size="1" tag="b" x="-7" y="-3" camption="4" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="d" x="-5" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
@@ -34,7 +34,7 @@
     <mapplayer tag="I" ship="0" camption="7" />
     <mapplayer tag="k" ship="0" camption="7" />
     <mapplayer tag="G" ship="0" camption="7" />
-    <mapplayer tag="J" ship="0" camption="7" />
+    <mapplayer tag="J" ship="10" camption="7" />
   </mapplayers>
   <candidates>
     <candidate transformBulidingID="" />

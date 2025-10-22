@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="431104" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,4,4" teamFriend="">
+<map id="431104" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,5,5" teamFriend="">
   <maplines>
     <mapline point1="O" point2="N" />
     <mapline point1="k" point2="l" />
@@ -22,12 +22,12 @@
   </maplines>
   <mapbuildings>
     <mapbuilding type="star" size="1" tag="A" x="-6" y="3" camption="1" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="B" x="-4.5" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="star" size="1" tag="B" x="-4.5" y="3" camption="1" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="C" x="-3" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="D" x="-1.5" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="F" x="1.5" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="G" x="3" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="H" x="4.5" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="star" size="1" tag="H" x="4.5" y="3" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="I" x="6" y="3" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="J" x="-6" y="1.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="L" x="-6" y="-1.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
@@ -37,12 +37,12 @@
     <mapbuilding type="star" size="1" tag="P" x="6" y="1.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="R" x="6" y="-1.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="S" x="6" y="-3" camption="4" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="T" x="-4.5" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="star" size="1" tag="T" x="-4.5" y="-3" camption="3" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="U" x="-3" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="V" x="-1.5" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="X" x="1.5" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="Y" x="3" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="Z" x="4.5" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="star" size="1" tag="Z" x="4.5" y="-3" camption="4" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="\" x="-4.5" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="]" x="-3" y="1.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="_" x="0" y="1.5" camption="0" fAngle="0" orbit="1" orbitParam1="0,0" orbitParam2="" orbitClockWise="False" />
@@ -108,7 +108,7 @@
     <mapplayer tag="g" ship="0" camption="0" />
     <mapplayer tag="17" ship="0" camption="0" />
     <mapplayer tag="_" ship="0" camption="0" />
-    <mapplayer tag="32" ship="60" camption="7" />
+    <mapplayer tag="32" ship="100" camption="7" />
   </mapplayers>
   <candidates>
     <candidate transformBulidingID="" />
