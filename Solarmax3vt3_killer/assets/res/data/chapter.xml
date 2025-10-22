@@ -517,4 +517,9 @@
 	<chapter id="4003" needstar="0" costGold="1500" salePrice="-1" name="14003" describe="34003" starchart="Btn_CopyUI_53.jpg" chapterBg="bg53.jpg" type="2" comment="-1" commentMultiple="-1" />
 	<chapter id="4004" needstar="0" costGold="1500" salePrice="-1" name="14004" describe="34004" starchart="Btn_CopyUI_55.jpg" chapterBg="bg55.jpg" type="2" comment="-1" commentMultiple="-1" />
 	<chapter id="4005" needstar="0" costGold="1500" salePrice="-1" name="14005" describe="34005" starchart="Btn_CopyUI_56.jpg" chapterBg="bg56.jpg" type="2" comment="-1" commentMultiple="-1" />
+	<chapter id="4006" needstar="0" costGold="1500" salePrice="-1" name="14006" describe="34006" starchart="Btn_CopyUI_54.jpg" chapterBg="bg56.jpg" type="2" comment="-1" commentMultiple="-1" />
+	<chapter id="4007" needstar="0" costGold="1500" salePrice="-1" name="14007" describe="34007" starchart="Btn_CopyUI_54.jpg" chapterBg="bg56.jpg" type="2" comment="-1" commentMultiple="-1" />
+	<chapter id="4008" needstar="0" costGold="1500" salePrice="-1" name="14008" describe="34008" starchart="Btn_CopyUI_54.jpg" chapterBg="bg56.jpg" type="2" comment="-1" commentMultiple="-1" />
+	<chapter id="4009" needstar="0" costGold="1500" salePrice="-1" name="14009" describe="34009" starchart="Btn_CopyUI_54.jpg" chapterBg="bg56.jpg" type="2" comment="-1" commentMultiple="-1" />
+	<chapter id="4010" needstar="0" costGold="1500" salePrice="-1" name="14010" describe="34010" starchart="Btn_CopyUI_54.jpg" chapterBg="bg56.jpg" type="2" comment="-1" commentMultiple="-1" />
 </chapters>

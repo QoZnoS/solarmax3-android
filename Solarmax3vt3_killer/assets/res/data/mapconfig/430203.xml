@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="430203" player_count="5" vertical="True" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,3,3" teamFriend="">
+<map id="430203" player_count="5" vertical="True" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,6,6" teamFriend="">
   <mapbuildings>
     <mapbuilding type="star" size="1" tag="b" x="-7" y="-3" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="d" x="-5" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
@@ -34,11 +34,11 @@
     <mapbuilding type="star" size="1" tag="Z" x="7" y="3" camption="3" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="b" ship="30" camption="2" />
+    <mapplayer tag="b" ship="35" camption="2" />
     <mapplayer tag="d" ship="0" camption="0" />
-    <mapplayer tag="g" ship="30" camption="1" />
-    <mapplayer tag="A" ship="30" camption="1" />
-    <mapplayer tag="E" ship="30" camption="2" />
+    <mapplayer tag="g" ship="35" camption="1" />
+    <mapplayer tag="A" ship="35" camption="1" />
+    <mapplayer tag="E" ship="35" camption="2" />
     <mapplayer tag="r" ship="0" camption="7" />
     <mapplayer tag="H" ship="0" camption="7" />
     <mapplayer tag="M" ship="0" camption="7" />
@@ -52,10 +52,10 @@
     <mapplayer tag="P" ship="0" camption="7" />
     <mapplayer tag="F" ship="0" camption="7" />
     <mapplayer tag="O" ship="0" camption="7" />
-    <mapplayer tag="Z" ship="30" camption="3" />
-    <mapplayer tag="W" ship="30" camption="4" />
-    <mapplayer tag="X" ship="30" camption="3" />
-    <mapplayer tag="Y" ship="30" camption="4" />
+    <mapplayer tag="Z" ship="35" camption="3" />
+    <mapplayer tag="W" ship="35" camption="4" />
+    <mapplayer tag="X" ship="35" camption="3" />
+    <mapplayer tag="Y" ship="35" camption="4" />
   </mapplayers>
   <candidates>
     <candidate transformBulidingID="" />

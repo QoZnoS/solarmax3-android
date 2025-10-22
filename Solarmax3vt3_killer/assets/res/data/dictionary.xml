@@ -939,6 +939,11 @@
 	<language id="14003" chinese="离子星云" english="Lon Nebula" traditionalChinese="離子星雲" />
 	<language id="14004" chinese="圣所" english="Sanctuary" traditionalChinese="聖所" />
 	<language id="14005" chinese="云冢" english="Cloud Mound" traditionalChinese="雲冢" />
+	<language id="14006" chinese="暗星系" english="Dark galaxy" traditionalChinese="暗星系" />
+	<language id="14007" chinese="中央黑洞" english="Galactic Center" traditionalChinese="中央黑洞" />
+	<language id="14008" chinese="昴星团" english="Pleiades" traditionalChinese="昴星團" />
+	<language id="14009" chinese="创世之柱" english="Pillars of Creation" traditionalChinese="創世之柱" />
+	<language id="14010" chinese="波江空洞" english="Eridanus Hollow" traditionalChinese="波江空洞" />
 	<!-- 合作模式关卡名 -->
 	<language id="430000" chinese="敬请期待" english="Coming soon" traditionalChinese="敬請期待" />
 	<language id="430001" chinese="地心引力" english="Gravity" traditionalChinese="地心引力" />
@@ -964,15 +969,15 @@
 	<language id="431001" chinese="时机战" english="Timing" traditionalChinese="時機戰" />
 	<language id="431002" chinese="上帝之眼-时机战" english="God's Eyes - Timing" traditionalChinese="上帝之眼-時機戰" />
 	<language id="431101" chinese="迂回" english="Roundabout" traditionalChinese="迂回" />
-	<language id="431102" chinese="风暴云团-迂回" english="Storm Clouds - Roundabout" traditionalChinese="風暴雲團-迂回" />
+	<language id="431102" chinese="离子星云-迂回" english="Storm Clouds - Roundabout" traditionalChinese="離子星雲-迂回" />
 	<language id="431201" chinese="逆时营救" english="Rescue" traditionalChinese="逆時營救" />
-	<language id="431202" chinese="风暴云团-逆时营救" english="Storm Clouds - Rescue" traditionalChinese="風暴雲團-逆時營救" />
+	<language id="431202" chinese="离子星云-逆时营救" english="Storm Clouds - Rescue" traditionalChinese="離子星雲-逆時營救" />
 	<language id="431301" chinese="战友" english="Comrade" traditionalChinese="戰友" />
-	<language id="431302" chinese="风暴云团-战友" english="Storm Clouds - Comrade" traditionalChinese="風暴雲團-戰友" />
+	<language id="431302" chinese="离子星云-战友" english="Storm Clouds - Comrade" traditionalChinese="離子星雲-戰友" />
 	<language id="431401" chinese="激光阵" english="Laser Array" traditionalChinese="鐳射陣" />
-	<language id="431402" chinese="风暴云团-激光阵" english="Storm Clouds - Laser Array" traditionalChinese="風暴雲團-鐳射陣" />
+	<language id="431402" chinese="离子星云-激光阵" english="Storm Clouds - Laser Array" traditionalChinese="離子星雲-鐳射陣" />
 	<language id="431501" chinese="地雷战" english="Mine" traditionalChinese="地雷戰" />
-	<language id="431502" chinese="风暴云团-地雷战" english="Storm Clouds - Mine" traditionalChinese="風暴雲團-地雷戰" />
+	<language id="431502" chinese="离子星云-地雷战" english="Storm Clouds - Mine" traditionalChinese="離子星雲-地雷戰" />
 	<language id="434101" chinese="敌后作战" english="War Behind The Enemy" traditionalChinese="敵後作戰" />
 	<language id="434102" chinese="圣所-敌后作战" english="Sanctuary - War Behind The Enemy" traditionalChinese="聖所-敵後作戰" />
 	<language id="434201" chinese="保卫家园" english="Defend Homes" traditionalChinese="保衛家園" />
@@ -1000,6 +1005,11 @@
 	<language id="34003" chinese="突破重重阻碍" english="Breakthrough obstacle" traditionalChinese="突破重重阻礙" />
 	<language id="34004" chinese="神之居所迎来了新的挑战者" english="The home of God welcomes new challengers" traditionalChinese="神之居所迎來了新的挑戰者" />
 	<language id="34005" chinese="猜猜哪朵云将是你的衣冠冢" english="Guess which cloud will be your grave" traditionalChinese="猜猜哪朵雲將是你的衣冠塚" />
+	<language id="34006" chinese="未知领域的新挑战" english="New Challenges in Unknown Star Territory" traditionalChinese="未知領域的新挑戰" />
+	<language id="34007" chinese="向银河系中心进军" english="Marching towards the Galactic center" traditionalChinese="向銀河系中心進軍" />
+	<language id="34008" chinese="二十八分之九的神话" english="The Woe of the Pleiades" traditionalChinese="二十八分之九的神話" />
+	<language id="34009" chinese="直面神祗" english="Face the Gods" traditionalChinese="直面神祗" />
+	<language id="34010" chinese="前方-未确认的终点" english="Ahead - Unconfirmed destination" traditionalChinese="前方-未確認的終點" />
 	<!-- 宇宙之心主题介绍 -->
 	<language id="33001" chinese="机器喵主题，很神奇，快来体验" english="Copycat theme, it’s amazing, come experience" traditionalChinese="機器喵主題，很神奇，快來體驗" />
 	<language id="33002" chinese="黑暗视角，再次体验" english="Darkside view, experience again" traditionalChinese="黑暗視角，再次體驗" />
