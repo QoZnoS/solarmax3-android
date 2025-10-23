@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="432603" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="" teamFriend="">
+<map id="432603" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,6,6" teamFriend="">
   <maplines>
     <mapline point1="K" point2="J" />
     <mapline point1="M" point2="L" />
@@ -56,7 +56,7 @@
     <mapbuilding type="AddTower" size="1" tag="p" x="-3" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="G" ship="200" camption="7" />
+    <mapplayer tag="G" ship="166" camption="7" />
     <mapplayer tag="\" ship="30" camption="1" />
     <mapplayer tag="]" ship="30" camption="2" />
     <mapplayer tag="^" ship="30" camption="3" />

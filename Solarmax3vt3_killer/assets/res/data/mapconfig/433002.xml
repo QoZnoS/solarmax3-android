@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="433002" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="" teamFriend="">
+<map id="433002" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,4,4" teamFriend="">
   <maplines>
     <mapline point1="G" point2="E" />
     <mapline point1="G" point2="N" />
@@ -52,8 +52,8 @@
     <mapplayer tag="Q" ship="30" camption="2" />
     <mapplayer tag="U" ship="0" camption="7" />
     <mapplayer tag="W" ship="0" camption="7" />
-    <mapplayer tag="X" ship="0" camption="7" />
-    <mapplayer tag="V" ship="0" camption="7" />
+    <mapplayer tag="X" ship="10" camption="7" />
+    <mapplayer tag="V" ship="10" camption="7" />
     <mapplayer tag="g" ship="0" camption="7" />
     <mapplayer tag="h" ship="0" camption="7" />
     <mapplayer tag="e" ship="0" camption="7" />
