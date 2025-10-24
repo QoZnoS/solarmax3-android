@@ -49,9 +49,9 @@
     <mapplayer tag="K" ship="0" camption="7" />
     <mapplayer tag="I" ship="0" camption="7" />
     <mapplayer tag="k" ship="30" camption="4" />
-    <mapplayer tag="G" ship="30" camption="1" />
+    <mapplayer tag="G" ship="30" camption="2" />
     <mapplayer tag="F" ship="30" camption="4" />
-    <mapplayer tag="O" ship="30" camption="2" />
+    <mapplayer tag="O" ship="30" camption="3" />
     <mapplayer tag="Z" ship="0" camption="0" />
     <mapplayer tag="W" ship="0" camption="0" />
     <mapplayer tag="a" ship="0" camption="7" />
@@ -65,7 +65,7 @@
     <mapplayer tag="U" ship="0" camption="7" />
     <mapplayer tag="S" ship="0" camption="7" />
     <mapplayer tag="V" ship="30" camption="3" />
-    <mapplayer tag="l" ship="30" camption="3" />
+    <mapplayer tag="l" ship="30" camption="1" />
     <mapplayer tag="[" ship="30" camption="1" />
     <mapplayer tag="\" ship="30" camption="2" />
     <mapplayer tag="_" ship="0" camption="0" />

@@ -56,6 +56,9 @@
     <mapbuilding type="AddTower" size="1" tag="k" x="3.5" y="2" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="AddTower" size="1" tag="l" x="3.5" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="AddTower" size="1" tag="m" x="3.5" y="-2" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="shipyard" size="1" tag="213" x="1.5" y="2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="shipyard" size="1" tag="214" x="1.5" y="0" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="shipyard" size="1" tag="215" x="1.5" y="-2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="barrier" size="1" tag="n" x="0" y="0.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="barrier" size="1" tag="o" x="0" y="-0.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="barrier" size="1" tag="p" x="0" y="-1.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
@@ -107,8 +110,8 @@
     <mapplayer tag="a" ship="0" camption="1" />
     <mapplayer tag="`" ship="0" camption="1" />
     <mapplayer tag="b" ship="0" camption="1" />
-    <mapplayer tag="c" ship="60" camption="7" />
-    <mapplayer tag="u" ship="60" camption="7" />
+    <mapplayer tag="c" ship="120" camption="7" />
+    <mapplayer tag="u" ship="120" camption="7" />
     <mapplayer tag="6" ship="0" camption="4" />
     <mapplayer tag="1" ship="0" camption="3" />
     <mapplayer tag="t" ship="0" camption="2" />

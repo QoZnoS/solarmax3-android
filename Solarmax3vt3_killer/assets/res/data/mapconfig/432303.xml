@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="432303" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="" teamFriend="">
+<map id="432303" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,5,6,6" teamFriend="">
+  <maplines>
   <maplines>
     <mapline point1="]" point2="^" />
     <mapline point1="`" point2="_" />
@@ -32,17 +33,17 @@
     <mapbuilding type="barrier" size="1" tag="`" x="0" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="B" ship="30" camption="1" />
-    <mapplayer tag="A" ship="30" camption="2" />
-    <mapplayer tag="C" ship="30" camption="3" />
-    <mapplayer tag="D" ship="30" camption="4" />
+    <mapplayer tag="B" ship="40" camption="1" />
+    <mapplayer tag="A" ship="40" camption="2" />
+    <mapplayer tag="C" ship="40" camption="3" />
+    <mapplayer tag="D" ship="40" camption="4" />
     <mapplayer tag="G" ship="0" camption="7" />
     <mapplayer tag="I" ship="0" camption="7" />
     <mapplayer tag="N" ship="0" camption="7" />
-    <mapplayer tag="Z" ship="0" camption="7" />
-    <mapplayer tag="[" ship="0" camption="7" />
-    <mapplayer tag="Y" ship="0" camption="7" />
-    <mapplayer tag="\" ship="0" camption="7" />
+    <mapplayer tag="Z" ship="10" camption="7" />
+    <mapplayer tag="[" ship="10" camption="7" />
+    <mapplayer tag="Y" ship="10" camption="7" />
+    <mapplayer tag="\" ship="10" camption="7" />
   </mapplayers>
   <candidates>
     <candidate transformBulidingID="" />

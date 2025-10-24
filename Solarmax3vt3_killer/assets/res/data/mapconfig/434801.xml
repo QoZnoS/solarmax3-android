@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map id="434801" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,2,2" teamFriend="">
+<map id="434801" player_count="5" vertical="False" defaultAIStrategy="-1" teamAITypes="5,5,5,5,5,5,4,4" teamFriend="">
   <maplines>
     <mapline point1="W" point2="H" />
     <mapline point1="V" point2="I" />
@@ -71,9 +71,9 @@
     <mapbuilding type="barrier" size="1" tag="s" x="0" y="1.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="c" x="6.5" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="u" x="6.5" y="-3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="v" x="3.5" y="2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="y" x="3.5" y="0" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="z" x="3.5" y="-2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="shipyard" size="1" tag="v" x="3.5" y="2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="shipyard" size="1" tag="y" x="3.5" y="0" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="shipyard" size="1" tag="z" x="3.5" y="-2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="1" x="6.5" y="1" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Mirror" size="1" tag="2" x="7.5" y="3" camption="1" fAngle="90" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Mirror" size="1" tag="3" x="7.5" y="1" camption="2" fAngle="90" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
@@ -96,13 +96,13 @@
     <mapplayer tag="B" ship="0" camption="2" />
     <mapplayer tag="C" ship="0" camption="3" />
     <mapplayer tag="D" ship="0" camption="4" />
-    <mapplayer tag="v" ship="30" camption="7" />
-    <mapplayer tag="z" ship="30" camption="7" />
+    <mapplayer tag="v" ship="50" camption="7" />
+    <mapplayer tag="z" ship="50" camption="7" />
     <mapplayer tag="2" ship="0" camption="1" />
     <mapplayer tag="3" ship="0" camption="2" />
     <mapplayer tag="4" ship="0" camption="4" />
     <mapplayer tag="5" ship="0" camption="3" />
-    <mapplayer tag="y" ship="30" camption="7" />
+    <mapplayer tag="y" ship="50" camption="7" />
     <mapplayer tag="a" ship="0" camption="1" />
     <mapplayer tag="`" ship="0" camption="2" />
     <mapplayer tag="b" ship="0" camption="1" />
