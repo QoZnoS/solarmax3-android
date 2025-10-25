@@ -33,21 +33,23 @@ public class DiffusionSkill : BaseNewSkill
 
 	public override bool OnCast(Team castTeam)
 	{
-		DiffusionSkill.teams = this.sceneManager.teamManager.GetFriendTeam(this.owerNode.currentTeam.team);
-		if (DiffusionSkill.teams.Count == 0)
+		// DiffusionSkill.teams = this.sceneManager.teamManager.GetFriendTeam(this.owerNode.currentTeam.team);
+		// if (DiffusionSkill.teams.Count == 0)
+		// {
+		// 	return base.OnCast(castTeam);
+		// }
+		// Team team = DiffusionSkill.teams[0];
+		Team team = this.sceneManager.teamManager.GetTeam((TEAM)0);
+		for (int i = 0; i < LocalPlayer.MaxTeamNum; i++)
 		{
-			return base.OnCast(castTeam);
-		}
-		Team team = DiffusionSkill.teams[0];
-		for (int i = 0; i < DiffusionSkill.teams.Count; i++)
-		{
-			if (this.owerNode.GetShipCount((int)DiffusionSkill.teams[i].team) > 0)
+			Team team2 = this.sceneManager.teamManager.GetTeam((TEAM)i);
+			if (this.owerNode.GetShipCount((int)team2.team) > 0 && this.owerNode.currentTeam.IsFriend(team2.groupID))
 			{
-				team = DiffusionSkill.teams[i];
+				team = team2;
 				break;
 			}
 		}
-		if (this.owerNode.GetShipCount((int)castTeam.team) > 0)
+		if (this.owerNode.GetShipCount((int)castTeam.team) > 0 && castTeam.currentMax - castTeam.current > 0)
 		{
 			team = castTeam;
 		}
@@ -56,11 +58,18 @@ public class DiffusionSkill : BaseNewSkill
 			return base.OnCast(castTeam);
 		}
 		int num = castTeam.currentMax - castTeam.current;
-		if (num <= 0)
+		int num2 = team.currentMax - team.current;
+		if (num <= 0 && num2 <= 0)
 		{
 			return base.OnCast(castTeam);
 		}
-		num++;
+		if (team == castTeam)
+		{
+			num++;
+		} else
+		{
+			num2++;
+		}
 		this.delayDoKey.Clear();
 		List<Node> list = this.sceneManager.nodeManager.GetUsefulNodeList();
 		list = this.RandomSortList<Node>(list);
@@ -72,17 +81,25 @@ public class DiffusionSkill : BaseNewSkill
 			Node node = list[j];
 			if (node != this.owerNode)
 			{
-				float num2 = this.owerNode.GetWidth() * this.owerNode.GetAttackRage();
-				if ((this.owerNode.GetPosition() - node.GetPosition()).magnitude <= num2)
+				float range = this.owerNode.GetWidth() * this.owerNode.GetAttackRage();
+				if ((this.owerNode.GetPosition() - node.GetPosition()).magnitude <= range)
 				{
 					Solarmax.Singleton<EffectManager>.Get().PlayDiffusionEffect(this.owerNode, this.owerNode.GetPosition(), node.GetPosition());
-					node.AddShip((int)castTeam.team, 1, true, true);
+					if (num > 0)
+					{
+						node.AddShip((int)castTeam.team, 1, true, true);
+						num--;
+					}
+					else
+                    {
+						node.AddShip((int)team.team, 1, true, true);
+						num2--;
+                    }
 					if (!flag)
 					{
 						flag = true;
 					}
-					num--;
-					if (num <= 0)
+					if (num <= 0 && num2 <= 0)
 					{
 						break;
 					}
