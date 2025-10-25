@@ -83,7 +83,7 @@
     <mapplayer tag="B" ship="30" camption="2" />
     <mapplayer tag="C" ship="30" camption="3" />
     <mapplayer tag="D" ship="30" camption="4" />
-    <mapplayer tag="E" ship="30" camption="7" />
+    <mapplayer tag="E" ship="80" camption="7" />
   </mapplayers>
   <candidates>
     <candidate transformBulidingID="" />
