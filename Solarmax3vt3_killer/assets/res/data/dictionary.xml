@@ -146,7 +146,7 @@
 	<language id="101010" chinese="黑暗双J" english="J" traditionalChinese="黑暗雙J" />
 	<language id="101101" chinese="翼宿一" english="Alkes" traditionalChinese="翼宿一" />
 	<language id="101102" chinese="翼宿十六" english="AlSharasif" traditionalChinese="翼宿十六" />
-	<language id="101103" chinese="翼宿二" english="Cloneturret" traditionalChinese="翼宿二" />
+	<language id="101103" chinese="翼宿二" english="CloneTurret" traditionalChinese="翼宿二" />
 	<language id="101104" chinese="翼宿三" english="Manyways" traditionalChinese="翼宿三" />
 	<language id="101105" chinese="翼宿六" english="Different Ways" traditionalChinese="翼宿六" />
 	<language id="101106" chinese="翼宿十三" english="All In Range" traditionalChinese="翼宿十三" />
@@ -243,7 +243,7 @@
 	<language id="101908" chinese="八面来风" english="Wind" traditionalChinese="八面來風" />
 	<language id="101909" chinese="九死一生" english="9 Deaths" traditionalChinese="九死一生" />
 	<language id="101910" chinese="十字危机" english="10 Crisis" traditionalChinese="十字危機" />
-	<language id="102001" chinese="导弹平台" english="Missile Platform" traditionalChinese="導彈平台" />
+	<language id="102001" chinese="导弹平台" english="MissileSilo" traditionalChinese="導彈平台" />
 	<language id="102002" chinese="启动" english="Start Up" traditionalChinese="啟動" />
 	<language id="102003" chinese="对射" english="Opposite Shot" traditionalChinese="對射" />
 	<language id="102004" chinese="乱战" english="Chaos War" traditionalChinese="亂戰" />
@@ -563,7 +563,7 @@
 	<language id="303905" chinese="脉冲战争" english="Pulse War" traditionalChinese="脈沖戰爭" />
 	<language id="303906" chinese="扩散中心" english="Diffusion Center" traditionalChinese="擴散中心" />
 	<language id="303907" chinese="射线集结" english="Ray Assembly" traditionalChinese="射線集結" />
-	<language id="303908" chinese="增援航母" english="Reinforce Cloneturret" traditionalChinese="增援航母" />
+	<language id="303908" chinese="增援航母" english="Reinforce CloneTurret" traditionalChinese="增援航母" />
 	<language id="303909" chinese="纵列集合" english="Column Set" traditionalChinese="縱列集合" />
 	<language id="303910" chinese="终结之战" english="Final War" traditionalChinese="終結之戰" />
 	<language id="304601" chinese="扩散辐射" english="Diffused Radiation" traditionalChinese="擴散輻射" />
@@ -890,7 +890,7 @@
 	<language id="1021" chinese="不知道如何通关?你可以尝试添加官方群并向群内人员求助通关技巧。" english="Don't know how to win?Please check out others recording." traditionalChinese="不知道如何通關?點擊排行榜查看其他玩家通關錄影" />
 	<language id="1022" chinese="扩散装置：消耗友方飞船，将这一飞船扩散到范围内的天体上，并提供飞船上限。" english="Diffusion: Consume your own strength and increase the building strength within the scope." traditionalChinese="擴散裝置：消耗自己兵力,增加範圍內建築兵力" />
 	<language id="1023" chinese="伽马射线：定时出现的宇宙灾难，摧毁所有触碰到它的飞船" english="Gamma rays: randomly shoot a ray to destroy all the touched spacecraft." traditionalChinese="伽馬射線：隨機射出一道射線，摧毀所有觸碰到的飛船" />
-	<language id="1024" chinese="导弹平台：每隔一段时间发射一枚导弹将敌方最大的天体变回中立" english="Missile platform: launching a missile to turn enemy buildings back to neutral" traditionalChinese="導彈平台：發射一枚導彈將敵方建築變回中立" />
+	<language id="1024" chinese="导弹平台：每隔一段时间发射一枚导弹将敌方最大的天体变回中立" english="MissileSilo: launching a missile to turn enemy buildings back to neutral" traditionalChinese="導彈平台：發射一枚導彈將敵方建築變回中立" />
 	<!-- 挑战文字 -->
 	<language id="7100" chinese="通关{0}难度" english="Pass {0} mode" traditionalChinese="通關{0}難度" />
 	<language id="7101" chinese="飞船损失 ≤ ({0}/{1})" english="Ship lost  ≤ ({0}/{1})" traditionalChinese="飛船損失 ≤ ({0}/{1})" />
@@ -915,23 +915,23 @@
 	<language id="7120" chinese="不占领太空堡垒通关" english="Don't occupy  SpaceCastle" traditionalChinese="不佔領太空堡壘通關" />
 	<language id="7121" chinese="不占领星球通关" english="Don't occupy  Star" traditionalChinese="不佔領星球通關" />
 	<language id="7122" chinese="不占领传送门通关" english="Don't occupy  Teleport" traditionalChinese="不佔領傳送門通關" />
-	<language id="7123" chinese="不占领脉冲炮通关" english="Don't occupy Lasercannon" traditionalChinese="不佔領脈衝炮通關" />
-	<language id="7124" chinese="不占领脉冲炮和炮塔通关" english="Don't occupy Lasercannon and Tower" traditionalChinese="不佔領脈衝炮和炮塔通關" />
-	<language id="7125" chinese="不占领黑洞武器通关" english="Don't occupy Pulsecannon" traditionalChinese="不佔領黑洞武器通關" />
+	<language id="7123" chinese="不占领脉冲炮通关" english="Don't occupy LaserCannon" traditionalChinese="不佔領脈衝炮通關" />
+	<language id="7124" chinese="不占领脉冲炮和炮塔通关" english="Don't occupy LaserCannon and Tower" traditionalChinese="不佔領脈衝炮和炮塔通關" />
+	<language id="7125" chinese="不占领黑洞武器通关" english="Don't occupy PulseCannon" traditionalChinese="不佔領黑洞武器通關" />
 	<language id="7126" chinese="不占领变型装置通关" english="Don't occupy Unknownstar" traditionalChinese="不佔領變型裝置通關" />
 	<language id="7127" chinese="不占领捕获塔通关" english="Don't occupy AntiCaptureTower" traditionalChinese="不佔領捕獲塔通關" />
 	<language id="7128" chinese="不占领星球外任意装置通关" english="Don't occupy any device except Star" traditionalChinese="不佔領星球外任意裝置通關" />
-	<language id="7129" chinese="不占领航母通关" english="Don't occupy Cloneturret" traditionalChinese="不佔領航母通關" />
+	<language id="7129" chinese="不占领航母通关" english="Don't occupy CloneTurret" traditionalChinese="不佔領航母通關" />
 	<language id="7130" chinese="不占领射线炮通关" english="Don't occupy Lasergun" traditionalChinese="不佔領射線炮通關" />
 	<language id="7131" chinese="不丢失初始太空堡垒通关" english="Don't lose your Castle" traditionalChinese="不丟失初始太空堡壘通關" />
-	<language id="7132" chinese="不丢失脉冲炮和炮塔通关" english="Don't lose your Lasercannon and Tower in start" traditionalChinese="不丟失脈衝炮和炮塔通關" />
-	<language id="7133" chinese="不丢失脉冲炮通关" english="Don't lose your Lasercannon" traditionalChinese="不丟失脈衝炮通關" />
+	<language id="7132" chinese="不丢失脉冲炮和炮塔通关" english="Don't lose your LaserCannon and Tower in start" traditionalChinese="不丟失脈衝炮和炮塔通關" />
+	<language id="7133" chinese="不丢失脉冲炮通关" english="Don't lose your LaserCannon" traditionalChinese="不丟失脈衝炮通關" />
 	<language id="7134" chinese="不占领敌方捕获塔通关" english="Don't occupy AntiCaptureTower" traditionalChinese="不佔領敵方捕獲塔通關" />
 	<language id="7135" chinese="不丢失所有初始建筑通关" english="Don't lose all your buildings in start" traditionalChinese="不丟失所有初始建築通關" />
 	<language id="7136" chinese="不占领初始建筑以外任何建筑" english="Don't occupy all buildings except in start" traditionalChinese="不佔領初始建築以外任何建築" />
 	<language id="7137" chinese="不占领扩散装置过关" english="Don't occupy Diffusion" traditionalChinese="不佔領擴散裝置過關" />
 	<language id="7138" chinese="只占领射线炮和初始星球" english="Only occupy Lasergun and your buildings in start" traditionalChinese="只占領射線炮和初始星球" />
-	<language id="7139" chinese="不占领导弹平台通关" english="Don't occupy Missile platform" traditionalChinese="不佔領導彈平臺通關" />
+	<language id="7139" chinese="不占领导弹平台通关" english="Don't occupy MissileSilo" traditionalChinese="不佔領導彈平臺通關" />
 	<!-- 合作模式名称 -->
 	<language id="14000" chinese="银河之界" english="Galaxy's Boundary" traditionalChinese="銀河之界" />
 	<language id="14001" chinese="腥红之域" english="Bloody Red" traditionalChinese="腥紅之域" />
@@ -1039,6 +1039,16 @@
 	<language id="434902" chinese="创世之柱-躁动之敌" english="Pillars of Creation - Restless Enemy" traditionalChinese="創世之柱-躁動之敵" />
 	<language id="435001" chinese="场外援助" english="Off-field assistance" traditionalChinese="場外援助" />
 	<language id="435002" chinese="创世之柱-场外援助" english="Pillars of Creation - Off-field assistance" traditionalChinese="創世之柱-場外援助" />
+	<language id="435101" chinese="扩散阵地" english="Diffusion Position" traditionalChinese="擴散陣地" />
+	<language id="435102" chinese="波江空洞-扩散阵地" english="Eridanus Hollow - Diffusion Position" traditionalChinese="波江空洞-擴散陣地" />
+	<language id="435201" chinese="两个世界" english="Two Worlds" traditionalChinese="兩個世界" />
+	<language id="435202" chinese="波江空洞-两个世界" english="Eridanus Hollow - Two Worlds" traditionalChinese="波江空洞-兩個世界" />
+	<language id="435301" chinese="四行仓库" english="Quadruple warehouse" traditionalChinese="四行倉庫" />
+	<language id="435302" chinese="波江空洞-四行仓库" english="Eridanus Hollow - Quadruple warehouse" traditionalChinese="波江空洞-四行倉庫" />
+	<language id="435401" chinese="地下探险" english="Underground Adventure" traditionalChinese="地下探險" />
+	<language id="435402" chinese="波江空洞-地下探险" english="Eridanus Hollow - Underground Adventure" traditionalChinese="波江空洞-地下探險" />
+	<language id="435501" chinese="小行星带" english="Asteroid belt" traditionalChinese="小行星帶" />
+	<language id="435502" chinese="波江空洞-小行星带" english="Eridanus Hollow - Asteroid belt" traditionalChinese="波江空洞-小行星帶" />
 	<!-- 合作模式介绍 -->
 	<language id="34000" chinese="来自宇宙的挑战书-合作关卡" english="Challenge book from the universe-cooperation level" traditionalChinese="來自宇宙的挑戰書-合作關卡" />
 	<language id="34001" chinese="对抗来自腥红领域的强大敌人" english="Fight powerful enemies from the blush field" traditionalChinese="對抗來自腥紅領域的強大敵人" />
