@@ -88,7 +88,7 @@
     <mapbuilding type="Lasercannon" size="1" tag="y" x="3" y="0" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="B" ship="100" camption="7" />
+    <mapplayer tag="B" ship="80" camption="7" />
     <mapplayer tag="A" ship="50" camption="1" />
     <mapplayer tag="C" ship="50" camption="2" />
     <mapplayer tag="D" ship="50" camption="3" />
