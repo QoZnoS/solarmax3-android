@@ -36,10 +36,10 @@
     <mapbuilding type="star" size="1" tag="h" x="1.5" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="A" ship="30" camption="1" />
-    <mapplayer tag="C" ship="30" camption="2" />
-    <mapplayer tag="E" ship="30" camption="3" />
-    <mapplayer tag="B" ship="30" camption="4" />
+    <mapplayer tag="A" ship="35" camption="1" />
+    <mapplayer tag="C" ship="35" camption="2" />
+    <mapplayer tag="E" ship="35" camption="3" />
+    <mapplayer tag="B" ship="35" camption="4" />
     <mapplayer tag="K" ship="30" camption="7" />
     <mapplayer tag="M" ship="30" camption="7" />
     <mapplayer tag="D" ship="30" camption="7" />
