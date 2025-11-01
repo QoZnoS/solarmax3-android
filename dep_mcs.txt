@@ -1,5 +1,3 @@
--r:DllDepend/System.Core.dll
-
 -r:DllDepend/Assembly-CSharp-firstpass.dll
 -r:DllDepend/Debuger.dll
 -r:DllDepend/DOTween.dll

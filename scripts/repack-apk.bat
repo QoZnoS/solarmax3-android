@@ -27,7 +27,7 @@ copy %build_dir%\Assembly-CSharp.dll %root_dir%\Solarmax3vt3_killer\assets\bin\D
 java.exe -jar %build_tools_dir%\apktool.jar b Solarmax3vt3_killer
 rem output file is Solarmax3vt3_killer\dist\Solarmax3vt3_killer.Apk
 if exist %build_dir%\Solarmax3vt3_killersigned-aligned.apk (
-   rm %build_dir%\Solarmax3vt3_killersigned-aligned.apk
+   del %build_dir%\Solarmax3vt3_killersigned-aligned.apk
 )
 %build_tools_dir%\android-build-tools\zipalign.exe -v 4 %root_dir%\Solarmax3vt3_killer\dist\Solarmax3vt3_killer.Apk %build_dir%\Solarmax3vt3_killersigned-aligned.apk
 call %build_tools_dir%\android-build-tools\apksigner.bat sign -ks %root_dir%\candice.keystore -ks-pass pass:candice %build_dir%\Solarmax3vt3_killersigned-aligned.apk
