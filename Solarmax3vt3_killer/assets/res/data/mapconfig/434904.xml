@@ -32,8 +32,10 @@
   </mapbuildings>
   <mapplayers>
     <mapplayer tag="7" ship="25" camption="1" />
+    <mapplayer tag="2" ship="5" camption="1" />
+    <mapplayer tag="6" ship="5" camption="1" />
     <mapplayer tag="24" ship="30" camption="2" />
-    <mapplayer tag="28" ship="30" camption="3" />
+    <mapplayer tag="28" ship="45" camption="3" />
     <mapplayer tag="27" ship="30" camption="4" />
     <mapplayer tag="8" ship="6" camption="7" />
     <mapplayer tag="11" ship="6" camption="7" />
