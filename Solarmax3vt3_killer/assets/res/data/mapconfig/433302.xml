@@ -34,7 +34,7 @@
     <mapbuilding type="star" size="1" tag="21" x="3" y="0" camption="7" fAngle="0" orbit="1" orbitParam1="5,0" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="22" x="7" y="0" camption="7" fAngle="0" orbit="1" orbitParam1="5,0" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="castle" size="1" tag="23" x="-3" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="AddTower" size="1" tag="24" x="1" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="Twist" size="1" tag="24" x="1" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Lasercannon" size="1" tag="25" x="5" y="0" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Lasercannon" size="1" tag="26" x="0" y="2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Lasercannon" size="1" tag="27" x="0" y="-2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />

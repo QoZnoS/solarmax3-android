@@ -40,10 +40,10 @@
     <mapbuilding type="Lasercannon" size="1" tag="27" x="-1" y="-2" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="1" ship="70" camption="1" />
-    <mapplayer tag="2" ship="70" camption="2" />
-    <mapplayer tag="3" ship="70" camption="3" />
-    <mapplayer tag="4" ship="70" camption="4" />
+    <mapplayer tag="1" ship="80" camption="1" />
+    <mapplayer tag="2" ship="80" camption="2" />
+    <mapplayer tag="3" ship="80" camption="3" />
+    <mapplayer tag="4" ship="80" camption="4" />
     <mapplayer tag="17" ship="3" camption="7" />
     <mapplayer tag="18" ship="3" camption="7" />
     <mapplayer tag="19" ship="3" camption="7" />
