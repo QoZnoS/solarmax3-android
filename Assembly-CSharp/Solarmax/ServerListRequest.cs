@@ -20,7 +20,7 @@ namespace Solarmax
 			string[] array = new string[]
 			{
                 //"http://192.168.1.13:4242/"
-                "http://82.180.162.11:4242/"
+                "http://49.232.135.109:4242/"
             };
 			if (array == null || array.Length < 1)
 			{
