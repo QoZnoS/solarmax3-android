@@ -35,7 +35,8 @@
     <mapbuilding type="star" size="1" tag="-15" x="-7.5" y="-1.5" camption="0" fAngle="0" orbit="1" orbitParam1="-6.5,-2" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="castle" size="1" tag="16" x="-1" y="0" camption="7" fAngle="0" orbit="4" orbitParam1="0,-15" orbitParam2="0,4" orbitClockWise="False" />
     <mapbuilding type="Diffusion" size="1" tag="17" x="1.206" y="-7" camption="7" fAngle="0" orbit="4" orbitParam1="0,-15" orbitParam2="0,4" orbitClockWise="False" />
-    <mapbuilding type="tower" size="2" tag="18" x="0" y="-15.078" camption="7" fAngle="0" orbit="4" orbitParam1="0,-15" orbitParam2="0,4" orbitClockWise="False" />
+	<mapbuilding type="Diffusion" size="1" tag="19" x="1.22" y="-5" camption="7" fAngle="0" orbit="4" orbitParam1="0,-15" orbitParam2="0,4" orbitClockWise="False" />
+    <mapbuilding type="star" size="5" tag="18" x="0" y="-15.078" camption="7" fAngle="0" orbit="4" orbitParam1="0,-15" orbitParam2="0,4" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
     <mapplayer tag="3" ship="30" camption="3" />
