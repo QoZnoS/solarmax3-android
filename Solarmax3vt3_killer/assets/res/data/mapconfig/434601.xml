@@ -30,7 +30,7 @@
     <mapbuilding type="tower" size="1" tag="C1" x="-4" y="-4" camption="0" fAngle="0" orbit="0" orbitParam1="0,0" orbitParam2="" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="A" ship="30" camption="7" />
+    <mapplayer tag="A" ship="50" camption="7" />
     <mapplayer tag="T" ship="50" camption="4" />
     <mapplayer tag="U" ship="50" camption="2" />
     <mapplayer tag="V" ship="50" camption="1" />
