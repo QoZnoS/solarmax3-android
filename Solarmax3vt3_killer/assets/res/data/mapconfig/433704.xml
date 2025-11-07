@@ -10,7 +10,7 @@
     <mapbuilding type="barrier" size="1" tag="C" x="6" y="2" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="barrier" size="1" tag="D" x="10" y="1" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="2" tag="1" x="-7" y="0" camption="1" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="tower" size="1" tag="2" x="-5" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="tower" size="1" tag="2" x="-5" y="0" camption="1" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="2" tag="3" x="-2" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="2" tag="4" x="-6" y="-2" camption="0" fAngle="0" orbit="1" orbitParam1="-4.5,-2.5" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Lasercannon" size="1" tag="5" x="-5" y="-4" camption="0" fAngle="0" orbit="1" orbitParam1="-4.5,-2.5" orbitParam2="" orbitClockWise="False" />
@@ -19,7 +19,7 @@
     <mapbuilding type="star" size="1" tag="8" x="-1" y="-2" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="2" tag="9" x="-1" y="-4" camption="3" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="2" tag="10" x="7" y="0" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="tower" size="1" tag="11" x="5" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="tower" size="1" tag="11" x="5" y="0" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="2" tag="12" x="2" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="2" tag="13" x="6" y="-2" camption="0" fAngle="0" orbit="1" orbitParam1="4.5,-2.5" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Lasercannon" size="1" tag="14" x="5" y="-4" camption="0" fAngle="0" orbit="1" orbitParam1="4.5,-2.5" orbitParam2="" orbitClockWise="False" />

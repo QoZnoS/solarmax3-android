@@ -17,7 +17,7 @@
     <mapbuilding type="star" size="1" tag="13" x="5.5" y="-2.5" camption="0" fAngle="0" orbit="1" orbitParam1="6.5,-2" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="shipyard" size="1" tag="14" x="7" y="-3" camption="0" fAngle="0" orbit="1" orbitParam1="6.5,-2" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="15" x="7.5" y="-1.5" camption="0" fAngle="0" orbit="1" orbitParam1="6.5,-2" orbitParam2="" orbitClockWise="False" />
-	<mapbuilding type="star" size="1" tag="-0" x="-2" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+	  <mapbuilding type="star" size="1" tag="-0" x="-2" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="supplyship" size="1" tag="-1" x="-4" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="-2" x="-6" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="3" tag="-3" x="-8" y="3" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
@@ -39,10 +39,10 @@
     <mapbuilding type="star" size="5" tag="18" x="0" y="-15.078" camption="7" fAngle="0" orbit="4" orbitParam1="0,-15" orbitParam2="0,4" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="3" ship="30" camption="3" />
-    <mapplayer tag="9" ship="30" camption="4" />
-    <mapplayer tag="-3" ship="30" camption="2" />
-    <mapplayer tag="-9" ship="30" camption="1" />
+    <mapplayer tag="3" ship="40" camption="3" />
+    <mapplayer tag="9" ship="40" camption="4" />
+    <mapplayer tag="-3" ship="40" camption="2" />
+    <mapplayer tag="-9" ship="40" camption="1" />
     <mapplayer tag="16" ship="100" camption="7" />
   </mapplayers>
   <candidates>

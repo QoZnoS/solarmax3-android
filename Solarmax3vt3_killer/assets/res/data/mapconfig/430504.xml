@@ -30,10 +30,10 @@
     <mapbuilding type="AddTower" size="1" tag="`" x="-5" y="3.5" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="AddTower" size="1" tag="j" x="-5" y="-3.5" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="AddTower" size="1" tag="m" x="7" y="-1.5" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="AddTower" size="1" tag="n" x="0" y="-2" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="AddTower" size="1" tag="o" x="-2" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="AddTower" size="1" tag="p" x="2" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="AddTower" size="1" tag="q" x="0" y="2" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="AddTower" size="1" tag="n" x="0" y="-2" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="AddTower" size="1" tag="o" x="-2" y="0" camption="1" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="AddTower" size="1" tag="p" x="2" y="0" camption="4" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="AddTower" size="1" tag="q" x="0" y="2" camption="3" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="AddTower" size="1" tag="r" x="0" y="-3.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="AddTower" size="1" tag="s" x="0" y="3.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="Twist" size="1" tag="t" x="3.4" y="1.2" camption="3" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
@@ -62,10 +62,10 @@
   <mapplayers>
     <mapplayer tag="M" ship="0" camption="0" />
     <mapplayer tag="L" ship="0" camption="0" />
-    <mapplayer tag="k" ship="60" camption="4" />
-    <mapplayer tag="V" ship="60" camption="3" />
-    <mapplayer tag="[" ship="60" camption="1" />
-    <mapplayer tag="\" ship="60" camption="2" />
+    <mapplayer tag="k" ship="0" camption="4" />
+    <mapplayer tag="V" ship="0" camption="3" />
+    <mapplayer tag="[" ship="0" camption="1" />
+    <mapplayer tag="\" ship="0" camption="2" />
     <mapplayer tag="R" ship="20" camption="7" />
     <mapplayer tag="_" ship="0" camption="7" />
     <mapplayer tag="m" ship="0" camption="0" />

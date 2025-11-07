@@ -60,10 +60,10 @@
     <mapbuilding type="barrier" size="1" tag="s" x="2.25" y="-2.25" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
   </mapbuildings>
   <mapplayers>
-    <mapplayer tag="_" ship="30" camption="1" />
-    <mapplayer tag="^" ship="30" camption="2" />
-    <mapplayer tag="]" ship="30" camption="3" />
-    <mapplayer tag="\" ship="30" camption="4" />
+    <mapplayer tag="_" ship="40" camption="1" />
+    <mapplayer tag="^" ship="40" camption="2" />
+    <mapplayer tag="]" ship="40" camption="3" />
+    <mapplayer tag="\" ship="40" camption="4" />
     <mapplayer tag="I" ship="20" camption="7" />
     <mapplayer tag="H" ship="20" camption="7" />
     <mapplayer tag="K" ship="20" camption="7" />
