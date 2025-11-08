@@ -53,4 +53,5 @@
 	<coo id="1905" name="435501" playerNum="4" posX="80" posY="100" chapter="4010" levelId1="435501" rewardType1="1" reward1="2" levelId2="435502" rewardType2="1" reward2="4" levelId3="435503" rewardType3="1" reward3="6" levelId4="435504" rewardType4="1" reward4="8" />
 	<coo id="2001" name="433601" playerNum="4" posX="-900" posY="100" chapter="4011" levelId1="433601" rewardType1="1" reward1="2" levelId2="433602" rewardType2="1" reward2="4" levelId3="433603" rewardType3="1" reward3="6" levelId4="433604" rewardType4="1" reward4="8" />
 	<coo id="2002" name="433701" playerNum="4" posX="-650" posY="-200" chapter="4011" levelId1="433701" rewardType1="1" reward1="2" levelId2="433702" rewardType2="1" reward2="4" levelId3="433703" rewardType3="1" reward3="6" levelId4="433704" rewardType4="1" reward4="8" />
+	<coo id="1903" name="433801" playerNum="4" posX="-420" posY="224" chapter="4011" levelId1="433801" rewardType1="1" reward1="2" levelId2="433802" rewardType2="1" reward2="4" levelId3="433803" rewardType3="1" reward3="6" levelId4="433804" rewardType4="1" reward4="8" />
 </coos>
