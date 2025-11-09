@@ -1049,13 +1049,16 @@
 	<language id="435402" chinese="波江空洞-地下探险" english="Eridanus Hollow - Underground Adventure" traditionalChinese="波江空洞-地下探險" />
 	<language id="435501" chinese="小行星带" english="Asteroid belt" traditionalChinese="小行星帶" />
 	<language id="435502" chinese="波江空洞-小行星带" english="Eridanus Hollow - Asteroid belt" traditionalChinese="波江空洞-小行星帶" />
-	<language id="433601" chinese="空" english="Asteroid belt" traditionalChinese="" />
-	<language id="433602" chinese="费米气泡" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡" />
-	<language id="433701" chinese="空" english="Asteroid belt" traditionalChinese="小行星帶" />
-	<language id="433702" chinese="费米气泡-空" english="Eridanus Hollow - Asteroid belt" traditionalChinese="" />
+	<language id="433601" chinese="指尖游走" english="Asteroid belt" traditionalChinese="指尖游走" />
+	<language id="433602" chinese="费米气泡-指尖游走" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-指尖游走" />
+	<language id="433701" chinese="军事基地" english="Asteroid belt" traditionalChinese="军事基地" />
+	<language id="433702" chinese="费米气泡-军事基地" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-军事基地" />
 	<language id="433801" chinese="救赎" english="Asteroid belt" traditionalChinese="救赎" />
 	<language id="433802" chinese="费米气泡-救赎" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-救赎" />
-
+	<language id="433901" chinese="暗流" english="Asteroid belt" traditionalChinese="向内进发" />
+	<language id="433902" chinese="费米气泡-暗流" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-向内进发" />	
+	<language id="434001" chinese="向内进发" english="Asteroid belt" traditionalChinese="" />
+	<language id="434002" chinese="费米气泡-向内进发" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-向内进发" />
 	<!-- 合作模式介绍 -->
 	<language id="34000" chinese="来自宇宙的挑战书-合作关卡" english="Challenge book from the universe-cooperation level" traditionalChinese="來自宇宙的挑戰書-合作關卡" />
 	<language id="34001" chinese="对抗来自腥红领域的强大敌人" english="Fight powerful enemies from the blush field" traditionalChinese="對抗來自腥紅領域的強大敵人" />
