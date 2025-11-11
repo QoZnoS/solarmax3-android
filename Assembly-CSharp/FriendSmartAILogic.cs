@@ -2239,7 +2239,7 @@ public class FriendSmartAILogic : BaseAILogic
 									num8 = node2.TeamStrength(t.team, false) - num;
 									if (node2.PredictedTeamStrength(t.team, true) >= num * 2)
 									{
-										num8 = (int)((float)node2.PredictedTeamStrength(t.team, true) * UnityEngine.Random.Range(0.4f, 0.55f));
+										num8 = (int)((float)node2.PredictedTeamStrength(t.team, true) * Solarmax.Singleton<BattleSystem>.Instance.battleData.rand.Range(0.4f, 0.55f));
 									}
 								}
 								else
@@ -2452,10 +2452,10 @@ public class FriendSmartAILogic : BaseAILogic
 									num8 = node2.TeamStrength(t.team, false) - num;
 									if (node2.PredictedTeamStrength(t.team, true) >= num * 2)
 									{
-										num8 = (int)((float)node2.PredictedTeamStrength(t.team, true) * UnityEngine.Random.Range(0.4f, 0.55f));
+										num8 = (int)((float)node2.PredictedTeamStrength(t.team, true) * Solarmax.Singleton<BattleSystem>.Instance.battleData.rand.Range(0.4f, 0.55f));
 										if (node4.nodeType == NodeType.Tower || node4.nodeType == NodeType.Twist || node4.nodeType == NodeType.Castle)
 										{
-											num8 = (int)((float)node2.PredictedTeamStrength(t.team, true) * UnityEngine.Random.Range(0.65f, 1f));
+											num8 = (int)((float)node2.PredictedTeamStrength(t.team, true) * Solarmax.Singleton<BattleSystem>.Instance.battleData.rand.Range(0.65f, 1f));
 										}
 									}
 								}
