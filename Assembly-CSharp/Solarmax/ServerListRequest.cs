@@ -17,11 +17,7 @@ namespace Solarmax
 		public static void GetServerList(Action onResponseDelegate)
 		{
             Solarmax.Singleton<LoggerSystem>.Instance.Info("Request for game server", new object[0]);
-			string[] array = new string[]
-			{
-                //"http://192.168.1.13:4242/"
-                "http://49.232.135.109:4242/"
-            };
+            string[] array = UpgradeUtil.GetGameConfig().ServerUrls;
 			if (array == null || array.Length < 1)
 			{
 				MonoSingleton<FlurryAnalytis>.Instance.LogEvent("GetServerListError", "info", "EmptyHosts");

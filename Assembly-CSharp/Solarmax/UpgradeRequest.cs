@@ -107,12 +107,8 @@ namespace Solarmax
 			UpgradeRequest.mOnResponseDelegate = onResponseDelegate;
 			string tag = "GetVersion";
 			//string[] versionServerUrls = gameConfig.VersionServerUrls;
-			string[] versionServerUrls = new string[]
-			{
-                //"http://192.168.1.13:4242/new_versions"
-                "http://49.232.135.109:4242/new_versions"
-            };
-            string subPath = null;
+			string[] versionServerUrls = UpgradeUtil.GetGameConfig().ServerUrls;
+            string subPath = "new_versions";
 			string param = text;
 			bool encrypt = true;
 			if (UpgradeRequest.tmp0 == null)

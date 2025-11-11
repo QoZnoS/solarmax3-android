@@ -45,11 +45,7 @@ namespace Solarmax
 
         public static void CreateAccount(Action onResponseDelegate) {
             CreateAccountRequest.Account = null;
-            string[] gameHosts = new string[]
-            {
-                //"http://192.168.1.13:4242/"
-                "http://49.232.135.109:4242/"
-            };
+            string[] gameHosts = UpgradeUtil.GetGameConfig().ServerUrls;
             if (gameHosts == null)
             {
                 MonoSingleton<FlurryAnalytis>.Instance.LogEvent("GetNoticeError", "info", "EmptyHosts");

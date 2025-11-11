@@ -50,11 +50,7 @@ namespace Solarmax
 		{
 			NoticeRequest.Notice = null;
             //string[] gameHosts = UpgradeRequest.GetGameHosts();
-            string[] gameHosts = new string[]
-			{
-                //"http://192.168.1.13:4242/"
-                "http://49.232.135.109:4242/"
-            };
+            string[] gameHosts = UpgradeUtil.GetGameConfig().ServerUrls;
             if (gameHosts == null)
 			{
 				MonoSingleton<FlurryAnalytis>.Instance.LogEvent("GetNoticeError", "info", "EmptyHosts");

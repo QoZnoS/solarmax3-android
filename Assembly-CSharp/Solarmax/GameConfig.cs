@@ -9,6 +9,8 @@ namespace Solarmax
 
 		public string[] VersionServerUrls;
 
+		public string[] ServerUrls;
+
 		public bool EnablePay;
 
 		public bool EnableFetchProducts;
