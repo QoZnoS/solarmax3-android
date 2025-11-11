@@ -45,8 +45,11 @@ public class DiffusionSkill : BaseNewSkill
 			Team team2 = this.sceneManager.teamManager.GetTeam((TEAM)i);
 			if (this.owerNode.GetShipCount((int)team2.team) > 0 && this.owerNode.currentTeam.IsFriend(team2.groupID))
 			{
-				team = team2;
-				break;
+				if (team2.currentMax - team2.current > 0)
+                {
+					team = team2;
+					break;
+                }
 			}
 		}
 		if (this.owerNode.GetShipCount((int)castTeam.team) > 0 && castTeam.currentMax - castTeam.current > 0)
