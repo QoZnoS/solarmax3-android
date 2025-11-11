@@ -26,14 +26,14 @@
     <mapbuilding type="teleport" size="1" tag="[" x="6.5" y="0" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="teleport" size="1" tag="\" x="-6.5" y="0" camption="7" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="teleport" size="1" tag="k" x="0" y="0" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="]" x="4.5" y="3" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="AddTower" size="1" tag="]" x="4.5" y="3" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="^" x="4.5" y="1" camption="2" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="_" x="4.5" y="-1" camption="4" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="`" x="4.5" y="-3" camption="4" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="a" x="-4.5" y="3" camption="1" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="AddTower" size="1" tag="`" x="4.5" y="-3" camption="4" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="AddTower" size="1" tag="a" x="-4.5" y="3" camption="1" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="b" x="-4.5" y="1" camption="1" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="c" x="-4.5" y="-1" camption="3" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
-    <mapbuilding type="star" size="1" tag="d" x="-4.5" y="-3" camption="3" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
+    <mapbuilding type="AddTower" size="1" tag="d" x="-4.5" y="-3" camption="3" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="1" x="0.5" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="2" x="-0.5" y="3" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />
     <mapbuilding type="star" size="1" tag="3" x="-2" y="3.5" camption="0" fAngle="0" orbit="0" orbitParam1="" orbitParam2="" orbitClockWise="False" />

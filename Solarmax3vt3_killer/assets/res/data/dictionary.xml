@@ -1013,8 +1013,8 @@
 	<language id="432602" chinese="中央黑洞-鹿角十重" english="Galactic Center - Ten layers of antlers" traditionalChinese="中央黑洞-鹿角十重" />
 	<language id="432701" chinese="探测船" english="Exploration ship" traditionalChinese="探測船" />
 	<language id="432702" chinese="中央黑洞-探测船" english="Galactic Center - Exploration ship" traditionalChinese="中央黑洞-探測船" />
-	<language id="432801" chinese="恒星系群" english="Star system clusters" traditionalChinese="恆星系群" />
-	<language id="432802" chinese="中央黑洞-恒星系群" english="Galactic Center - Star system clusters" traditionalChinese="中央黑洞-恆星系群" />
+	<language id="432801" chinese="循环打击" english="Star system clusters" traditionalChinese="循环打击" />
+	<language id="432802" chinese="中央黑洞-循环打击" english="Galactic Center - Star system clusters" traditionalChinese="中央黑洞-循环打击" />
 	<language id="432901" chinese="阴阳池" english="Yin-Yang Pond" traditionalChinese="陰陽池" />
 	<language id="432902" chinese="中央黑洞-阴阳池" english="Galactic Center - Yin-Yang Pond" traditionalChinese="中央黑洞-陰陽池" />
 	<language id="433001" chinese="临近黑洞" english="Near a black hole" traditionalChinese="臨近黑洞" />
@@ -1049,10 +1049,16 @@
 	<language id="435402" chinese="波江空洞-地下探险" english="Eridanus Hollow - Underground Adventure" traditionalChinese="波江空洞-地下探險" />
 	<language id="435501" chinese="小行星带" english="Asteroid belt" traditionalChinese="小行星帶" />
 	<language id="435502" chinese="波江空洞-小行星带" english="Eridanus Hollow - Asteroid belt" traditionalChinese="波江空洞-小行星帶" />
-	<language id="433601" chinese="救赎" english="Asteroid belt" traditionalChinese="小行星帶" />
-	<language id="433602" chinese="费米气泡-救赎" english="Eridanus Hollow - Asteroid belt" traditionalChinese="波江空洞-小行星帶" />
-	<language id="433701" chinese="循环打击" english="Asteroid belt" traditionalChinese="小行星帶" />
-	<language id="433702" chinese="费米气泡-循环打击" english="Eridanus Hollow - Asteroid belt" traditionalChinese="波江空洞-小行星帶" />
+	<language id="433601" chinese="指尖游走" english="Asteroid belt" traditionalChinese="指尖游走" />
+	<language id="433602" chinese="费米气泡-指尖游走" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-指尖游走" />
+	<language id="433701" chinese="军事基地" english="Asteroid belt" traditionalChinese="军事基地" />
+	<language id="433702" chinese="费米气泡-军事基地" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-军事基地" />
+	<language id="433801" chinese="救赎" english="Asteroid belt" traditionalChinese="救赎" />
+	<language id="433802" chinese="费米气泡-救赎" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-救赎" />
+	<language id="433901" chinese="暗流" english="Asteroid belt" traditionalChinese="向内进发" />
+	<language id="433902" chinese="费米气泡-暗流" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-向内进发" />	
+	<language id="434001" chinese="向内进发" english="Asteroid belt" traditionalChinese="" />
+	<language id="434002" chinese="费米气泡-向内进发" english="Eridanus Hollow - Asteroid belt" traditionalChinese="费米气泡-向内进发" />
 	<!-- 合作模式介绍 -->
 	<language id="34000" chinese="来自宇宙的挑战书-合作关卡" english="Challenge book from the universe-cooperation level" traditionalChinese="來自宇宙的挑戰書-合作關卡" />
 	<language id="34001" chinese="对抗来自腥红领域的强大敌人" english="Fight powerful enemies from the blush field" traditionalChinese="對抗來自腥紅領域的強大敵人" />

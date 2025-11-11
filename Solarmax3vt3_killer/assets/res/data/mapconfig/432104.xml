@@ -55,10 +55,10 @@
     <mapplayer tag="B" ship="30" camption="2" />
     <mapplayer tag="C" ship="30" camption="3" />
     <mapplayer tag="D" ship="30" camption="4" />
-    <mapplayer tag="K" ship="35" camption="7" />
-    <mapplayer tag="L" ship="10" camption="7" />
-    <mapplayer tag="M" ship="10" camption="7" />
-    <mapplayer tag="N" ship="35" camption="7" />
+    <mapplayer tag="K" ship="25" camption="7" />
+    <mapplayer tag="L" ship="20" camption="7" />
+    <mapplayer tag="M" ship="20" camption="7" />
+    <mapplayer tag="N" ship="25" camption="7" />
   </mapplayers>
   <candidates>
     <candidate transformBulidingID="" />
