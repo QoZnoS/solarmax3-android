@@ -45,3 +45,52 @@
 1. 创建房间中还有一个 ct_null 暂不确认场景，应该是没有入口的
 2. 被邀请时，客户端不发出 start-match 请求，服务端主动推送
 
+** start match
+#+begin_src mermaid :file "images/output.png"
+  sequenceDiagram
+      participant U1 as 玩家1
+      participant S as 服务端
+      participant RM as 房间管理
+      participant U2 as 玩家2
+      participant U3 as 玩家N
+
+      Note over U1, U3: 匹配阶段
+
+      U1 ->> S: 1. start-match 请求
+      S ->> RM: 分配房间（新建或加入）
+      RM -->> S: 房间信息
+      S -->> U1: 2. start-match 响应
+      S ->> U1: 3. match-init 消息
+
+      loop 监听玩家变更
+          S ->> U1: 4. match-update 消息
+          S ->> U2: 4. match-update 消息
+          S ->> U3: 4. match-update 消息
+      end
+
+      Note over S, U3: 条件：房间人数达到要求
+
+      Note over U1, U3: 准备与开始阶段
+
+      S ->> U1: 5. ready 请求
+      S ->> U2: 5. ready 请求
+      S ->> U3: 5. ready 请求
+
+      S ->> U1: 6. start-battle 请求
+      S ->> U2: 6. start-battle 请求
+      S ->> U3: 6. start-battle 请求
+
+      Note over U1, U3: 游戏进行阶段
+
+      loop 游戏进行中
+          U1 ->> S: 玩家操作
+          U2 ->> S: 玩家操作
+          U3 ->> S: 玩家操作
+          S ->> U1: 同步游戏状态
+          S ->> U2: 同步游戏状态
+          S ->> U3: 同步游戏状态
+      end
+#+end_src
+
+#+RESULTS:
+[[file:images/output.png]]
